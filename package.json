@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.0.0-beta2",
+    "gulp": "^4.0.2"
+  },
+  "name": "p2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "browser-sync start --proxy 'localhost/p2' --files './*.php' --browser 'chrome'",
+    "gulp": "gulp"
+  },
+  "keywords": [],
+  "author": "lapabla",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.14"
+  },
+  "description": ""
+}

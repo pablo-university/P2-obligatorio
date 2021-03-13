@@ -1,7 +1,7 @@
 
 <?php include_once 'header.php';?>
 
-<div class='container container-fluid bg-light py-5'>
+<div class='container min-vh-100 col-xxl-10 bg-light py-5'>
 
 
 

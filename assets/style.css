@@ -1,0 +1,17 @@
+#burguer-menu {
+    overflow: visible;
+  }
+  #burguer-menu rect {
+    transition: all 1s;
+  }
+  #burguer-menu.active rect:first-child {
+    transform: rotateZ(45deg) translateY(33px);
+    transform-origin: center;
+  }
+  #burguer-menu.active rect:nth-child(2) {
+    display: none;
+  }
+  #burguer-menu.active rect:last-child {
+    transform: rotateZ(-45deg) translateY(-30px);
+    transform-origin: center;
+  }

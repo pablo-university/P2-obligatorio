@@ -15,9 +15,17 @@
     <div class='container container-fluid bg-light d-flex flex-column'>
         <a href="./client" class="btn btn-secondary stretched-link">IR A CLIENTE</a>
 
+
         <?php
 
-echo __DIR__;
+        
+        // ejemplo de clase anonima
+        $obj = new class(){
+            public $bar = 'valor por defecto';
+
+        };
+        echo $obj->bar;
+
 
 
      ?>

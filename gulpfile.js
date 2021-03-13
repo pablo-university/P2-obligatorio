@@ -7,6 +7,11 @@ const { series, src, dest, watch } = require('gulp');
     return src('./node_modules/bootstrap/dist/css/bootstrap.css')
     .pipe(dest('output/'));
 } */
+function getBootstrap(cb) {
+    console.log('getting bootstrap!')
+    return src('./node_modules/bootstrap/scss/*.scss')
+    .pipe(dest('assets/scss-from-bootstrap/'))
+}
 
 exports.default = function (cb) {
     browserSync.init({
@@ -18,6 +23,7 @@ exports.default = function (cb) {
     });
 /*  onsole.log('////inicio default///')
     watch('./*.css', css); */
+    getBootstrap();
     cb()
 };
 

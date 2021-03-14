@@ -1,37 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>inicio</title>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
-
-</head>
-
-<body>
-    <div class='container container-fluid bg-light d-flex flex-column'>
-        <a href="./client" class="btn btn-secondary stretched-link">IR A CLIENTE</a>
-
-
-        <?php
-
-        
+<?php $content = function (){ ?>
+    <a href="client/">IR A CLIENTE</a>
+    <br/>
+    <br/>
+    <?php
         // ejemplo de clase anonima
-        $obj = new class(){
-            public $bar = 'valor por defecto';
-
+        $obj = new class() {
+            public $bar = 'estas en la carpeta p2, usa /client';
         };
         echo $obj->bar;
-
-
-
      ?>
-    </div>
+     <br/>
+<?php } ?>
 
-
-</body>
-
-</html>
+<?php include_once 'components/basic_layout.php'; ?>
+<?php basic_layout($content); ?>

@@ -61,24 +61,24 @@
         </div>
     </div>
     <!-- foto y texto -->
-    <div class='container'>
+    <div class='container-fluid ps-xl-0'>
         <div class='row row-cols-xl-2'>
             <!-- carrusel -->
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="../assets/img/carrusel-1.jpg" class="d-block w-100" alt="...">
+                        <img src="../assets/img/carrusel-1.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
                     </div>
                     <div class="carousel-item">
-                        <img src="../assets/img/carrusel-2.jpg" class="d-block w-100" alt="...">
+                        <img src="../assets/img/carrusel-2.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
                     </div>
                     <div class="carousel-item">
-                        <img src="../assets/img/carrusel-3.jpg" class="d-block w-100" alt="...">
+                        <img src="../assets/img/carrusel-3.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
                     </div>
                 </div>
             </div>
             <!-- texto con boton -->
-            <div class='flex-row m-auto'>
+            <div class='flex-row m-auto pe-xl-5'>
                 <div class=''>
                     <h2 class=''>A MODERN CLOCK</h2>
                     <p>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum.</p>

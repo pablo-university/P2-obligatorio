@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 
-<body class='container'>
+<body class=''>
 
     <!-- aqui agrego el contenido que sea pasado a la funcion basic_layout -->
     <?php $content(); ?>

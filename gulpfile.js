@@ -28,7 +28,7 @@ function scssCompiler(cb) {
     const result = sass.renderSync({
         file: "./assets/index.scss",
         sourceMap: true,
-        outFile: "out/"
+        outFile: "assets/index.css"
       })
     // escribo el archivo con node nativo
     fs.writeFile('assets/index.css',result.css.toString() , function (err) {

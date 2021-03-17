@@ -1,0 +1,17 @@
+@use 'burguer-menu';
+// -----------------
+$enable-negative-margins: true;
+$font-family-base: 'Roboto Mono', monospace;
+
+.container-client{
+  
+  header nav{
+    padding-top: 7rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+@import '../scss-from-bootstrap/bootstrap.scss';
+
+
+

@@ -17,7 +17,7 @@ function serverBrowserSync(cb){
 // traigo bootstrap
 function getBootstrap(cb) {
     console.log('>>>getting bootstrap!')
-    return src('./node_modules/bootstrap/scss/*.scss')
+    return src('./node_modules/bootstrap/scss/**/*.scss')
         .pipe(dest('assets/scss-from-bootstrap/'))
 }
 
@@ -26,20 +26,24 @@ function scssCompiler(cb) {
     console.log('>>>tocaste el sass');
     // uso la api de sass o dart sass
     const result = sass.renderSync({
-        file: "./assets/index.scss",
+        file: "assets/scss/index.scss",
         sourceMap: true,
-        outFile: "assets/index.css"
+        outFile: "assets/scss/index.css"
       })
+      const {map} = result;
     // escribo el archivo con node nativo
     fs.writeFile('assets/index.css',result.css.toString() , function (err) {
         if (err) throw err;
+        // escribo mapas de origen
+        fs.writeFile('assets/index.css.map',result.map.toString(),(err)=>{if (err) throw err;});
+        // ------------
         console.log('>>>Sass guardado!');
       });
     cb()
 }
 
 // con gulp sass puedo ejecutar esta tarea ahora publica
-exports.sass = series(scssCompiler);
+exports.sass = series(getBootstrap, scssCompiler);
 // exporto funcion default
 exports.default = function (cb) {
     // ejecuto servidor browserSync
@@ -49,7 +53,7 @@ exports.default = function (cb) {
     getBootstrap();
 
     // escucho para compilar sass
-    watch(['./assets/index.scss'], scssCompiler);
+    watch(['./assets/scss/index.scss'], scssCompiler);
 
     cb()
 };

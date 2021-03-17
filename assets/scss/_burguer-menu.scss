@@ -1,4 +1,3 @@
-
 #burguer-menu {
     overflow: visible;
   }
@@ -16,5 +15,11 @@
     transform: rotateZ(-45deg) translateY(-30px);
     transform-origin: center;
   }
-//------------------
-
+  //------------------
+  #scroll-down-target{
+    transition: 1s all .5s;
+  }
+  #scroll-down-target.scrollDown{
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }

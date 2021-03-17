@@ -1,7 +1,8 @@
 <!-- contenedor del menu-->
-<div class='sticky-top bg-dark'>
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark container py-xl-5">
+<header class='sticky-top bg-dark'>
+
+    <nav id='scroll-down-target' class="navbar sticky-top navbar-expand-lg navbar-dark container py-xl-5">
         <div class="container-fluid px-0">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
                 aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,10 +51,10 @@
             </div>
         </div>
     </nav>
-</div>
+</header>
 
 <!-- contenedor de reloj moderno y foto -->
-<div class='container-fluid min-vh-100 px-0'>
+<section class='container-fluid px-0'>
     <!-- reloj moderno -->
     <div class='bg-dark'>
         <div class='container' style='height: 3.7rem;'>
@@ -67,23 +68,36 @@
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="../assets/img/carrusel-1.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
+                        <img src="../assets/img/carrusel-1.jpg" class="d-block w-100" alt="..." alt="..."
+                            style='object-fit: cover; max-height:90vh;'>
                     </div>
                     <div class="carousel-item">
-                        <img src="../assets/img/carrusel-2.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
+                        <img src="../assets/img/carrusel-2.jpg" class="d-block w-100" alt="..." alt="..."
+                            style='object-fit: cover; max-height:90vh;'>
                     </div>
                     <div class="carousel-item">
-                        <img src="../assets/img/carrusel-3.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
+                        <img src="../assets/img/carrusel-3.jpg" class="d-block w-100" alt="..." alt="..."
+                            style='object-fit: cover; max-height:90vh;'>
                     </div>
                 </div>
             </div>
             <!-- texto con boton -->
-            <div class='flex-row m-auto pe-xl-5'>
-                <div class=''>
-                    <h2 class=''>A MODERN CLOCK</h2>
-                    <p>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum.</p>
+            <div class='flex-row m-auto'>
+                <div class='w-75'>
+                    <figure>
+                        <blockquote class="blockquote">
+                            <h2>Titulo ejemplo</h2>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                            Someone famous in <cite title="Source Title">Source Title</cite>
+                        </figcaption>
+                    </figure>
+                    <p>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of by Cicero, written in 45 BC. This book
+                        is a treatise on the theory of ethics, very popular during the Renaissance. The first line
+                        of Lorem Ipsum.</p>
                     <button type="button" class='btn btn-outline-dark'>SABER MAS</button>
                 </div>
             </div>
         </div>
     </div>
+</section>

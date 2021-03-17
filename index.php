@@ -2,7 +2,7 @@
 <?php include_once "{$__DIR__}/utils/constants.php"; ?>
 <?php include_once "{$__DIR__}/components/button.php"; ?>
 
-
+<!-- ----------CONTENIDO--------------->
 <?php $content = function (){ ?>
     <a href="client/">IR A CLIENTE</a>
     <br/>
@@ -13,16 +13,11 @@
             public $bar = 'estas en la carpeta p2, usa /client';
         };
         echo $obj->bar;
-        button();
-        button();
-        button();
-        button();
-        button();
-        button();
-        button();
+        
      ?>
      <br/>
 <?php } ?>
+<!-- ----------fin de contenido---------->
 
-<?php include_once 'components/basic_layout.php'; ?>
+<?php include_once 'components/template/layout.php'; ?>
 <?php basic_layout($content); ?>

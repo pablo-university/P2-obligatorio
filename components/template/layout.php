@@ -1,5 +1,5 @@
 <?php $__DIR__ = __DIR__."/";?>
-<?php include_once "$__DIR__../utils/constants.php"; ?>
+<?php include_once "$__DIR__../../utils/constants.php"; ?>
 
 <!-- funcion principal que define mi layout basico -->
 <?php function basic_layout($content) { ?>
@@ -19,7 +19,7 @@
         rel="stylesheet">
 
     <script src="<?php echo LOCAL_HOST ?>node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <link rel="stylesheet" href="<?php echo LOCAL_HOST ?>node_modules/bootstrap/dist/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="<?php echo LOCAL_HOST ?>node_modules/bootstrap/dist/css/bootstrap.css"> -->
     </link>
 
     <link rel="stylesheet" href="<?php echo LOCAL_HOST ?>assets/index.css">

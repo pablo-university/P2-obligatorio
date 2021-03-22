@@ -1,35 +1,4 @@
 @charset "UTF-8";
-#burguer-menu {
-  overflow: visible;
-}
-
-#burguer-menu rect {
-  transition: all 1s;
-}
-
-#burguer-menu.active rect:first-child {
-  transform: rotateZ(45deg) translateY(33px);
-  transform-origin: center;
-}
-
-#burguer-menu.active rect:nth-child(2) {
-  display: none;
-}
-
-#burguer-menu.active rect:last-child {
-  transform: rotateZ(-45deg) translateY(-30px);
-  transform-origin: center;
-}
-
-#scroll-down-target {
-  transition: 1s all 0.5s;
-}
-
-#scroll-down-target.scrollDown {
-  padding-top: 1rem !important;
-  padding-bottom: 1rem !important;
-}
-
 .container-client header nav {
   padding-top: 7rem !important;
   padding-bottom: 3rem !important;
@@ -11561,6 +11530,36 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+#burguer-menu {
+  overflow: visible;
+}
+
+#burguer-menu rect {
+  transition: all 1s;
+}
+
+#burguer-menu.active rect:first-child {
+  transform: rotateZ(45deg) translateY(33px);
+  transform-origin: center;
+}
+
+#burguer-menu.active rect:nth-child(2) {
+  display: none;
+}
+
+#burguer-menu.active rect:last-child {
+  transform: rotateZ(-45deg) translateY(-30px);
+  transform-origin: center;
+}
+
+#scroll-down-target {
+  transition: 1s all 0.5s;
+}
+
+#scroll-down-target.scrollDown {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
 }
 
 /*# sourceMappingURL=index.css.map */

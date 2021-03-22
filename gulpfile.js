@@ -4,7 +4,7 @@ const { series, src, dest, watch, gulp } = require('gulp');
 const sass = require('sass');
 const fs = require('fs');
 
-function serverBrowserSync(cb){
+function serverBrowserSync(cb) {
     browserSync.init({
         proxy: 'localhost/p2',
         browser: 'chrome',
@@ -29,16 +29,13 @@ function scssCompiler(cb) {
         file: "assets/scss/index.scss",
         sourceMap: true,
         outFile: "assets/scss/index.css"
-      })
-      const {map} = result;
-    // escribo el archivo con node nativo
-    fs.writeFile('assets/index.css',result.css.toString() , function (err) {
-        if (err) throw err;
-        // escribo mapas de origen
-        fs.writeFile('assets/index.css.map',result.map.toString(),(err)=>{if (err) throw err;});
-        // ------------
-        console.log('>>>Sass guardado!');
-      });
+    })
+
+    // escribo mapas de origen y el .css con node
+    fs.writeFile('assets/index.css.map', result.map.toString(), (err) => { if (err) throw err; });
+    // ------------
+    fs.writeFile('assets/index.css', result.css.toString(), function (err) {if (err) throw err;});
+    console.log('>>>Sass guardado!');
     cb()
 }
 

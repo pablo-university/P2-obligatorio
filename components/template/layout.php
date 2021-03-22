@@ -1,5 +1,4 @@
-<?php $__DIR__ = __DIR__."/";?>
-<?php include_once "$__DIR__../../utils/constants.php"; ?>
+<?php include_once __DIR__.'/../../utils/constants.php';?>
 
 <!-- funcion principal que define mi layout basico -->
 <?php function basic_layout($content) { ?>

@@ -1,6 +1,5 @@
-<?php $__DIR__ = __DIR__."/";?>
-<?php include_once "{$__DIR__}/utils/constants.php"; ?>
-<?php include_once "{$__DIR__}/components/button.php"; ?>
+<?php include_once __DIR__.'/utils/constants.php';?>
+<?php include_once __DIR__.'/components/button.php';?>
 
 <!-- ----------CONTENIDO--------------->
 <?php $content = function (){ ?>
@@ -19,5 +18,5 @@
 <?php } ?>
 <!-- ----------fin de contenido---------->
 
-<?php include_once 'components/template/layout.php'; ?>
+<?php include_once __DIR__.'/components/template/layout.php';?>
 <?php basic_layout($content); ?>

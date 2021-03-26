@@ -20,6 +20,8 @@
     <script src="<?php echo LOCAL_HOST ?>node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <!-- <link rel="stylesheet" href="<?php echo LOCAL_HOST ?>node_modules/bootstrap/dist/css/bootstrap.css"> -->
     </link>
+    <!-- Bootstrap icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="<?php echo LOCAL_HOST ?>assets/index.css">
 </head>

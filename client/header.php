@@ -25,7 +25,7 @@
                 </a>
                 <ul class="navbar-nav m-auto mb-2 mb-lg-0 gap-lg-5">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">inicio</a>
+                        <a class="nav-link active" aria-current="page" href="./index.php">inicio</a>
                     </li>
 
                     <!-- probando menu dropdown -->
@@ -47,7 +47,7 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">contacto</a>
+                        <a class="nav-link" href="./contact.php" tabindex="-1" aria-disabled="true">contacto</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -59,48 +59,3 @@
     </nav>
 </header>
 
-<!-- contenedor de reloj moderno y foto -->
-<section class='container-fluid px-0'>
-    <!-- reloj moderno -->
-    <div class='bg-dark'>
-        <div class='container' style='height: 3.7rem;'>
-            <h1 class='text-white text-end m-0 display-3' style='margin-bottom-' ;>A MODERN CLOCK</h1>
-        </div>
-    </div>
-    <!-- foto y texto -->
-    <div class='container-fluid ps-xl-0'>
-        <div class='row row-cols-xl-2'>
-            <!-- carrusel -->
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="../assets/img/carrusel-1.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../assets/img/carrusel-2.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../assets/img/carrusel-3.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
-                    </div>
-                </div>
-            </div>
-            <!-- texto con boton -->
-            <div class='flex-row m-auto'>
-                <div class='w-75'>
-                    <figure>
-                        <blockquote class="blockquote">
-                            <h2>Titulo ejemplo</h2>
-                        </blockquote>
-                        <figcaption class="blockquote-footer">
-                            Someone famous in <cite title="Source Title">Source Title</cite>
-                        </figcaption>
-                    </figure>
-                    <p>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of by Cicero, written in 45 BC. This book
-                        is a treatise on the theory of ethics, very popular during the Renaissance. The first line
-                        of Lorem Ipsum.</p>
-                    <button type="button" class='btn btn-outline-dark'>SABER MAS</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>

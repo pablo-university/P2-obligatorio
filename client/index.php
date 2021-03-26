@@ -1,15 +1,8 @@
 <!-- contenido de client -->
 <?php $content = function () { ?>
 <div class='container-client'>
-    <?php include_once 'header.php';?>
-
-    <div class='container min-vh-100 col-xxl-10 bg-light py-5'>
-
-        
-
-    </div>
-
-    
+    <?php include_once __DIR__.'/header.php';?>
+    <?php include_once __DIR__.'/sections.php';?>
 
     <!-- footer -->
     <?php include_once 'footer.php';?>

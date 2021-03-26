@@ -19,4 +19,4 @@
 <!-- ----------fin de contenido---------->
 
 <?php include_once __DIR__.'/components/template/layout.php';?>
-<?php basic_layout($content); ?>
+<?php layout($content); ?>

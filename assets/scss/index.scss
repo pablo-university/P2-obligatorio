@@ -3,6 +3,7 @@
 $enable-negative-margins: true;
 $font-family-base: 'Roboto Mono', monospace;
 
+
 .container-client{
   header nav{
     padding-top: 7rem !important;
@@ -13,6 +14,18 @@ $font-family-base: 'Roboto Mono', monospace;
 @import '../scss-from-bootstrap/bootstrap.scss';
 @include meta.load-css("burguer-menu", $with: null);
 
+.btn-primary{
+  @extend .btn-primary;
+  background-color: rgb(29, 29, 29) !important;
+  border: 1px solid black !important;
+  &:hover{
+    background-color: white !important;
+    color: black;
+  }
+  &:focus{
+    box-shadow: 0 0 0 6px #0000002b !important;
+  }
+}
 
 
 

@@ -1,7 +1,7 @@
 <?php include_once __DIR__.'/../../utils/constants.php';?>
 
 <!-- funcion principal que define mi layout basico -->
-<?php function basic_layout($content) { ?>
+<?php function layout($content) { ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +26,7 @@
 
 <body class=''>
 
-    <!-- aqui agrego el contenido que sea pasado a la funcion basic_layout -->
+    <!-- aqui agrego el contenido que sea pasado a la funcion layout -->
     <?php $content(); ?>
 
     

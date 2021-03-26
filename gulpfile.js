@@ -1,6 +1,6 @@
 //var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
-const { series, src, dest, watch, gulp } = require('gulp');
+const { series, parallel, src, dest, watch, gulp } = require('gulp');
 const sass = require('sass');
 const fs = require('fs');
 
@@ -39,20 +39,15 @@ function scssCompiler(cb) {
     cb()
 }
 
+function watching(cb) {
+     // escucho para compilar sass
+    watch(['./assets/scss/index.scss'], scssCompiler);
+    cb();
+}
+
 // con gulp sass puedo ejecutar esta tarea ahora publica
 exports.sass = series(getBootstrap, scssCompiler);
 // exporto funcion default
-exports.default = function (cb) {
-    // ejecuto servidor browserSync
-    serverBrowserSync();
-
-    // traigo bootstrap los sass al iniciar
-    getBootstrap();
-
-    // escucho para compilar sass
-    watch(['./assets/scss/index.scss'], scssCompiler);
-
-    cb()
-};
+exports.default = parallel(serverBrowserSync, getBootstrap, watching);
 
 // https://www.youtube.com/watch?v=y9LlnLTH87U

@@ -1,4 +1,5 @@
 @use 'sass:meta';
+@use 'detail-sale' as *;
 // -----------------
 $enable-negative-margins: true;
 $font-family-base: 'Roboto Mono', monospace;

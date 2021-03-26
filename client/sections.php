@@ -15,13 +15,13 @@
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="../assets/img/carrusel-1.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
+                        <img src="../assets/img/client-carrusel-1.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
                     </div>
                     <div class="carousel-item">
-                        <img src="../assets/img/carrusel-2.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
+                        <img src="../assets/img/client-carrusel-2.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
                     </div>
                     <div class="carousel-item">
-                        <img src="../assets/img/carrusel-3.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
+                        <img src="../assets/img/client-carrusel-3.jpg" class="d-block w-100" alt="..." alt="..." style='object-fit: cover; max-height:90vh;'>
                     </div>
                 </div>
             </div>
@@ -66,38 +66,49 @@
     <div class='p-5'></div>
     <h3>Características</h3>
     <!-- propiedades cards -->
-    <div class="card-group">
+    <div class="card-group flex-column flex-lg-row gap-4">
         <div class="card">
-            <img src="..." class="card-img-top" alt="...">
+            <img src="<?php echo LOCAL_HOST; ?>assets/img/client-card-1.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
             <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <small class="text-muted"></small>
             </div>
         </div>
         <div class="card">
-            <img src="..." class="card-img-top" alt="...">
+            <img src="<?php echo LOCAL_HOST; ?>assets/img/client-card-2.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
             </div>
             <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <small class="text-muted"></small>
             </div>
         </div>
         <div class="card">
-            <img src="..." class="card-img-top" alt="...">
+            <img src="<?php echo LOCAL_HOST; ?>assets/img/client-card-3.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
             </div>
             <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <small class="text-muted"></small>
             </div>
         </div>
     </div>
     <!-- ------- -->
     <div class='p-5'></div>
 </section>
+
+
+<!-- CONTENIDO DEL card_product -->
+<section class='container col-xxl-10 bg-info py-5 text-center'>
+    <h3>Linea en sale</h3>
+
+    <?php include_once __DIR__ . '/components/card_product.php'; ?>
+    <?php card_product(null); ?>
+
+</section>
+<!-- fin de card_product -->

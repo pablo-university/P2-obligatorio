@@ -46,8 +46,9 @@ function watching(cb) {
 }
 
 // con gulp sass puedo ejecutar esta tarea ahora publica
-exports.sass = series(getBootstrap, scssCompiler);
+exports.getBootstrap = getBootstrap;
+exports.sass = scssCompiler;
 // exporto funcion default
-exports.default = parallel(serverBrowserSync, getBootstrap, watching);
+exports.default = parallel(serverBrowserSync, watching);
 
 // https://www.youtube.com/watch?v=y9LlnLTH87U

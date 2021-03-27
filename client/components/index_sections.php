@@ -1,4 +1,4 @@
-<?php include_once __DIR__ . '/../utils/constants.php'; ?>
+<?php include_once __DIR__ . '/../../utils/constants.php'; ?>
 
 <!-- contenedor de reloj moderno y foto -->
 <section class='container-fluid px-0'>
@@ -108,31 +108,18 @@
     <h3>Linea en sale</h3>
 
     <div class="row row-cols-lg-4 justify-content-evenly my-5">
-        <?php include_once __DIR__ . '/components/card_product.php'; ?>
-        <?php card_product([
-            'img' => '/assets/img/products/watch-1.jpg',
-            'title' => 'QQ de lujo',
-            'price' => 2500,
-            'sale' => true
-        ]); ?>
-        <?php card_product([
-            'img' => '/assets/img/products/watch-2.jpg',
-            'title' => 'Otro reloj',
-            'price' => 350,
-            'sale' => false
-        ]); ?>
-        <?php card_product([
-            'img' => '/assets/img/products/watch-3.jpg',
-            'title' => 'Otro reloj',
-            'price' => 350,
-            'sale' => true
-        ]); ?>
-        <?php card_product([
-            'img' => '/assets/img/products/watch-2.jpg',
-            'title' => 'Otro reloj',
-            'price' => 350,
-            'sale' => false
-        ]); ?>
+        <?php include_once __DIR__ . '/card_product.php'; ?>
+        
+        <?php 
+        for ($i=1; $i < 5; $i++) { 
+            card_product([
+                'img' => "/assets/img/products/watch-$i.jpg",
+                'title' => 'Otro reloj',
+                'price' => 350,
+                'sale' => false
+            ]);
+        }
+        ?>
     </div>
 
 

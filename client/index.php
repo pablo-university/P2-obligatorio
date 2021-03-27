@@ -2,15 +2,15 @@
 <?php $content = function () { ?>
 <div class='container-client'>
     <!-- header -->
-    <?php include_once __DIR__.'/header.php';?>
+    <?php include_once __DIR__.'/components/header.php';?>
     <!-- ----- -->
 
     <!-- secciones de client -->
-    <?php include_once __DIR__.'/sections.php';?>
+    <?php include_once __DIR__.'/components/index_sections.php';?>
     <!-- ---- -->
 
     <!-- footer -->
-    <?php include_once 'footer.php';?>
+    <?php include_once __DIR__.'/components/footer.php';?>
     <!-------------------------- -->
     
 </div> <!-- container-client -->

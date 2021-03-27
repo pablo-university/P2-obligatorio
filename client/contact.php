@@ -5,7 +5,7 @@
 <?php function content()
 { ?>
     <div class='container-client'>
-        <?php include_once __DIR__ . '/header.php'; ?>
+        <?php include_once __DIR__ . '/components/header.php'; ?>
 
         <section class='container col-xxl-10 py-5'>
 
@@ -85,7 +85,7 @@
             })()
         </script>
 
-        <?php include_once __DIR__ . '/footer.php'; ?>
+        <?php include_once __DIR__ . '/components/footer.php'; ?>
 
         <!-- cierre de container-client -->
     </div>

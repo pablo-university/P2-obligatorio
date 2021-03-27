@@ -1,0 +1,13 @@
+.card.card--product {
+    .card__sale {
+        width: fit-content;
+        box-shadow: -13px 5px 0 10px rgb(186, 255, 159);
+        padding: 0 !important;
+        height: 0;
+    }
+    transition: box-shadow .3s;
+    &:hover{
+        box-shadow: 0 0 20px 0 #00000047;
+        
+    }
+}

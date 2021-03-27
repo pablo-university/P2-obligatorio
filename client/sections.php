@@ -62,11 +62,11 @@
 </section>
 
 <!-- propiedades -->
-<section class='container col-xxl-10 bg-info py-5 text-center'>
+<section class='container col-xxl-10 bg-info py-5'>
     <div class='p-5'></div>
     <h3>Características</h3>
     <!-- propiedades cards -->
-    <div class="card-group flex-column flex-lg-row gap-4">
+    <div class="card-group flex-column flex-lg-row gap-4 py-5">
         <div class="card">
             <img src="<?php echo LOCAL_HOST; ?>assets/img/client-card-1.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -104,11 +104,37 @@
 
 
 <!-- CONTENIDO DEL card_product -->
-<section class='container col-xxl-10 bg-info py-5 text-center'>
+<section class='container col-xxl-10  py-5'>
     <h3>Linea en sale</h3>
 
-    <?php include_once __DIR__ . '/components/card_product.php'; ?>
-    <?php card_product(null); ?>
+    <div class="row row-cols-lg-4 justify-content-evenly my-5">
+        <?php include_once __DIR__ . '/components/card_product.php'; ?>
+        <?php card_product([
+            'img' => '/assets/img/products/watch-1.jpg',
+            'title' => 'QQ de lujo',
+            'price' => 2500,
+            'sale' => true
+        ]); ?>
+        <?php card_product([
+            'img' => '/assets/img/products/watch-2.jpg',
+            'title' => 'Otro reloj',
+            'price' => 350,
+            'sale' => false
+        ]); ?>
+        <?php card_product([
+            'img' => '/assets/img/products/watch-3.jpg',
+            'title' => 'Otro reloj',
+            'price' => 350,
+            'sale' => true
+        ]); ?>
+        <?php card_product([
+            'img' => '/assets/img/products/watch-2.jpg',
+            'title' => 'Otro reloj',
+            'price' => 350,
+            'sale' => false
+        ]); ?>
+    </div>
+
 
 </section>
 <!-- fin de card_product -->

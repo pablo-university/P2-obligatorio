@@ -17,12 +17,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;700&display=swap"
         rel="stylesheet">
 
+    <!-- Bootstrap js -->
     <script src="<?php echo LOCAL_HOST ?>node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <!-- <link rel="stylesheet" href="<?php echo LOCAL_HOST ?>node_modules/bootstrap/dist/css/bootstrap.css"> -->
-    </link>
+  
     <!-- Bootstrap icons CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
+    <!-- MY CSS -->
     <link rel="stylesheet" href="<?php echo LOCAL_HOST ?>assets/index.css">
 </head>
 
@@ -33,7 +34,6 @@
 
     
     <script src='<?php echo LOCAL_HOST ?>assets/index.js'></script>
-    <!-- <script src='../assets/index.js'></script> -->
 
 </body>
 

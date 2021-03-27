@@ -1,9 +1,15 @@
 @charset "UTF-8";
-.detail-sale {
+.card.card--product {
+  transition: box-shadow 0.3s;
+}
+.card.card--product .card__sale {
   width: fit-content;
   box-shadow: -13px 5px 0 10px #baff9f;
   padding: 0 !important;
   height: 0;
+}
+.card.card--product:hover {
+  box-shadow: 0 0 20px 0 #00000047;
 }
 
 .container-client header nav {
@@ -11573,10 +11579,12 @@ textarea.form-control-lg {
   background-color: #1d1d1d !important;
   border: 1px solid black !important;
 }
+
 .btn-primary:hover {
   background-color: white !important;
   color: black;
 }
+
 .btn-primary:focus {
   box-shadow: 0 0 0 6px #0000002b !important;
 }

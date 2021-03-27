@@ -14,7 +14,7 @@
                 <!-- /// -->
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="./index.php">
                     <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 5.5V14L16 18" stroke="#F1F1F1" stroke-width="2" />
                         <mask id="path-2-inside-1" fill="white">
@@ -25,12 +25,16 @@
                 </a>
                 <ul class="navbar-nav m-auto mb-2 mb-lg-0 gap-lg-5">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.php">inicio</a>
+                        <a class="nav-link 
+                        <?php echo (str_contains(basename($_SERVER["REQUEST_URI"]), "index") ? 'active' : ''); ?>" aria-current="page" href="./index.php">
+                            inicio
+                        </a>
                     </li>
 
                     <!-- probando menu dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle 
+                        <?php echo (str_contains(basename($_SERVER["REQUEST_URI"]), "cat") ? 'active' : ''); ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Categorías
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -47,7 +51,10 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="./contact.php" tabindex="-1" aria-disabled="true">contacto</a>
+                        <a class="nav-link
+                         <?php echo (str_contains(basename($_SERVER["REQUEST_URI"]), "conta") ? 'active' : ''); ?>" href="./contact.php" tabindex="-1" aria-disabled="true">
+                            contacto
+                        </a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -58,4 +65,3 @@
         </div>
     </nav>
 </header>
-

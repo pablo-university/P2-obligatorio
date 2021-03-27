@@ -1,5 +1,5 @@
 @use 'sass:meta';
-@use 'detail-sale' as *;
+@use 'card-product' as *;
 // -----------------
 $enable-negative-margins: true;
 $font-family-base: 'Roboto Mono', monospace;
@@ -16,20 +16,11 @@ $font-family-base: 'Roboto Mono', monospace;
 }
 
 @import '../scss-from-bootstrap/bootstrap.scss';
-@include meta.load-css("burguer-menu", $with: null);
 
-.btn-primary{
-  @extend .btn-primary;
-  background-color: rgb(29, 29, 29) !important;
-  border: 1px solid black !important;
-  &:hover{
-    background-color: white !important;
-    color: black;
-  }
-  &:focus{
-    box-shadow: 0 0 0 6px #0000002b !important;
-  }
-}
+@include meta.load-css("burguer-menu", $with: null);
+@include meta.load-css("btn", $with: null);
+
+
 
 
 

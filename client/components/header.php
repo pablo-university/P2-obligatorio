@@ -38,12 +38,12 @@
                             Categorías
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">uno</a></li>
-                            <li><a class="dropdown-item" href="#">dos</a></li>
+                            <li><a class="dropdown-item" href="./shop.php">uno</a></li>
+                            <li><a class="dropdown-item" href="./shop.php">dos</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">tres</a></li>
+                            <li><a class="dropdown-item" href="./shop.php">tres</a></li>
                         </ul>
                     </li>
                     <!-- ------------------------- -->

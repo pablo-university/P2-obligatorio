@@ -1,11 +1,7 @@
 @use 'sass:meta';
 @use 'card-product' as *;
+@use 'variables' as *;
 // -----------------
-$enable-negative-margins: true;
-$font-family-base: 'Roboto Mono', monospace;
-
-
-
 
 
 .container-client{

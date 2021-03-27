@@ -7,7 +7,7 @@
     <div class='container-client'>
         <?php include_once __DIR__ . '/components/header.php'; ?>
 
-        <section class='container col-xxl-10 py-5'>
+        <section class='container py-5'>
 
             <!-- titulo -->
             <h3>Contacto</h3>

@@ -46,7 +46,7 @@
 </section>
 
 <!-- Nuestra filosofia -->
-<section class='container col-xxl-10 bg-info py-5 text-center'>
+<section class='container bg-info py-5 text-center'>
     <div class='p-5'></div>
     <h3>Nuestra filosofía</h3>
     <p class='col-xl-6 m-auto'>Nuestra misión es enriquecer la vida cotidiana de las personas en el mundo al exponerles una marca de relojes japonesa confiable y de calidad.
@@ -62,7 +62,7 @@
 </section>
 
 <!-- propiedades -->
-<section class='container col-xxl-10 bg-info py-5'>
+<section class='container bg-info py-5'>
     <div class='p-5'></div>
     <h3>Características</h3>
     <!-- propiedades cards -->
@@ -104,7 +104,7 @@
 
 
 <!-- CONTENIDO DEL card_product -->
-<section class='container col-xxl-10  py-5'>
+<section class='container py-5'>
     <h3>Linea en sale</h3>
 
     <div class="row row-cols-lg-4 justify-content-evenly my-5">

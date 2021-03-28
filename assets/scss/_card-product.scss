@@ -1,7 +1,8 @@
+@use 'variables';
 .card.card--product {
     .card__sale {
         width: fit-content;
-        box-shadow: -13px 5px 0 10px rgb(186, 255, 159);
+        box-shadow: -13px 5px 0 10px variables.$primary;
         padding: 0 !important;
         height: 0;
     }

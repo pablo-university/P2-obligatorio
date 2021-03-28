@@ -1,5 +1,4 @@
-<?php function button(){ ?>
-
-<button type="button" class='btn btn-primary'>HOLA!</button>
+<?php function button($content){ ?>
+<a href="<?php echo $content['href']; ?>" class='btn btn-primary'><?php echo $content['content']; ?></a>
 
 <?php } ?>

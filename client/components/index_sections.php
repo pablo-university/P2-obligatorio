@@ -5,7 +5,7 @@
     <!-- reloj moderno -->
     <div class='bg-dark'>
         <div class='container' style='height: 3.7rem;'>
-            <h1 class='text-white text-end m-0 display-3' style='margin-bottom-' ;>A MODERN CLOCK</h1>
+            <h1 class='text-white text-end m-0 display-3'>A MODERN CLOCK</h1>
         </div>
     </div>
     <!-- foto y texto -->
@@ -113,6 +113,7 @@
         <?php 
         for ($i=1; $i < 5; $i++) { 
             card_product([
+                '_id'=>'7467942',
                 'img' => "/assets/img/products/watch-$i.jpg",
                 'title' => 'Otro reloj',
                 'price' => 350,

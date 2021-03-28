@@ -5,7 +5,7 @@
 <?php $content = function (){ ?>
     <a href="client/">IR A CLIENTE</a>
     <br/>
-    <?php button(); ?>
+    <?php button(['href'=>'./client', 'content'=>'IR A CLIENT']); ?>
     <?php
         // ejemplo de clase anonima
         $obj = new class() {

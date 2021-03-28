@@ -1,3 +1,5 @@
+import './nprogress.js';
+
 // maneja amburguesa
 document.querySelector('#burguer-menu').addEventListener('click', activaMenu);
 
@@ -18,6 +20,6 @@ function checkScroll(e) {
     } else {
         elem.classList.remove('scrollDown');
     }
-
-
 }
+
+

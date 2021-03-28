@@ -1,0 +1,1 @@
+ErrorDocument 404 http://localhost/p2/client/404.php

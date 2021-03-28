@@ -1,3 +1,5 @@
+<?php include_once __DIR__.'/../components/template/layout.php';?>
+
 <!-- contenido de client -->
 <?php $content = function () { ?>
 <div class='container-client'>
@@ -18,5 +20,4 @@
 <?php } ?> <!-- cierre de content -->
 
 <!-- agrego y ejecuto mi template base -->
-<?php include_once __DIR__.'/../components/template/layout.php';?>
 <?php layout($content); ?>

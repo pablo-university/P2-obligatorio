@@ -1,5 +1,5 @@
 <?php include_once __DIR__ . '/../components/template/index.php'; ?>
-<?php include_once __DIR__ . '/components/card_product.php'; ?>
+<?php include_once __DIR__ . '/components/product_card.php'; ?>
 
 
 

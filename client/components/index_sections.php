@@ -1,4 +1,5 @@
 <?php include_once __DIR__ . '/../../utils/constants.php'; ?>
+<?php include_once __DIR__ . '/product_card.php'; ?>
 
 <!-- contenedor de reloj moderno y foto -->
 <section class='container-fluid px-0'>
@@ -108,7 +109,6 @@
     <h3>Linea en sale</h3>
 
     <div class="row row-cols-lg-4 justify-content-evenly my-5">
-        <?php include_once __DIR__ . '/card_product.php'; ?>
         
         <?php 
         for ($i=1; $i < 5; $i++) { 

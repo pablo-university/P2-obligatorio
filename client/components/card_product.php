@@ -1,7 +1,6 @@
 <?php include_once __DIR__ . '/../../utils/constants.php'; ?>
 <?php function card_product($content): void
 { ?>
-    <!-- DESTRUCTURACIÓN -->
     <?php
     [
         'img' => $img,

@@ -1,4 +1,4 @@
-<aside class="col-4">
+<aside class="col-0 col-lg-4">
     <form action="">
         <h4>Display type</h4>
         <div class="form-check">

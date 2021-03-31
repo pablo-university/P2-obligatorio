@@ -2,21 +2,18 @@
 @use 'variables' as *;
 // -----------------
 
-
-.container-client{
-  header nav{
-    padding-top: 7rem !important;
-    padding-bottom: 3rem !important;
-  }
+.container-client {
+    @media (min-width: 575px) {
+        header nav {
+            padding-top: 7rem !important;
+            padding-bottom: 3rem !important;
+        }
+    }
 }
 
-@import '../scss-from-bootstrap/bootstrap.scss';
+@import "../scss-from-bootstrap/bootstrap.scss";
 
 @include meta.load-css("burguer-menu", $with: null);
 @include meta.load-css("btn", $with: null);
 @include meta.load-css("card-product");
 @include meta.load-css("nprogress");
-
-
-
-

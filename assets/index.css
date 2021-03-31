@@ -1,7 +1,9 @@
 @charset "UTF-8";
-.container-client header nav {
-  padding-top: 7rem !important;
-  padding-bottom: 3rem !important;
+@media (min-width: 575px) {
+  .container-client header nav {
+    padding-top: 7rem !important;
+    padding-bottom: 3rem !important;
+  }
 }
 
 /*!
@@ -11609,5 +11611,14 @@ function activaMenu(e) {
   border-left-color: #4ed3eb;
   display: none !important;
 }
+
+/* NProgress.configure({ easing: 'ease', speed: 500 });//default is 200
+NProgress.start();
+//carga de pagina para nprogres
+document.addEventListener('DOMContentLoaded', function () {
+    NProgress.done();
+}, false); */
+/* <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" integrity="sha512-bUg5gaqBVaXIJNuebamJ6uex//mjxPk8kljQTdM1SwkNrQD7pjS+PerntUSD+QRWPNJ0tq54/x4zRV8bLrLhZg==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.css" integrity="sha512-DanfxWBasQtq+RtkNAEDTdX4Q6BPCJQ/kexi/RftcP0BcA4NIJPSi7i31Vl+Yl5OCfgZkdJmCqz+byTOIIRboQ==" crossorigin="anonymous" /> */
 
 /*# sourceMappingURL=index.css.map */

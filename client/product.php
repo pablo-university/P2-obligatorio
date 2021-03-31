@@ -19,7 +19,7 @@
 
             <!-- si producto existe -->
             <?php if (!empty($_GET['_id'])) : ?>
-                <div class="row row-cols-1 row-cols-xl-2 bg-success">
+                <div class="row row-cols-1 row-cols-xl-2">
 
                     <!-- columna foto -->
                     <div>

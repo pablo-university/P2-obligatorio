@@ -2,6 +2,10 @@
 @use 'variables' as *;
 // -----------------
 
+img{
+    object-fit: cover;
+}
+
 .container-client {
     @media (min-width: 575px) {
         header nav {
@@ -17,3 +21,4 @@
 @include meta.load-css("btn", $with: null);
 @include meta.load-css("card-product");
 @include meta.load-css("nprogress");
+@include meta.load-css("login");

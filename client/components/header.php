@@ -4,15 +4,23 @@
 
     <nav id='scroll-down-target' class="navbar sticky-top navbar-expand-lg navbar-dark container py-xl-5">
         <div class="container-fluid px-0">
-            <button class="navbar-toggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <!-- <span class="navbar-toggler-icon"></span> -->
-                <svg id="burguer-menu" class="" viewBox="0 0 100 80" width="40" height="40">
-                    <rect width="100" height="15" rx="5"></rect>
-                    <rect y="30" width="100" height="15" rx="5"></rect>
-                    <rect y="60" width="100" height="15" rx="5"></rect>
-                </svg>
-                <!-- /// -->
+            
+            <button
+                class="navbar-toggler hamburger hamburger--collapse mb-3 p-2"
+                type="button"
+
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+
+            >
+                <span class="hamburger-box">
+                    <span class="hamburger-inner" />
+                </span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="./index.php">
                     <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">

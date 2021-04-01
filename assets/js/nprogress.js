@@ -3,7 +3,7 @@ NProgress.configure({ easing: 'ease', speed: 500 });//default is 200
 
 
 // INICIAME!!!!
-// NProgress.start();
+NProgress.start();
 
 
 

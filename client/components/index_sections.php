@@ -1,3 +1,4 @@
+<?php include_once __DIR__ . '/../../connectors/connection.php'; ?>
 <?php include_once __DIR__ . '/../../utils/constants.php'; ?>
 <?php include_once __DIR__ . '/product_card.php'; ?>
 
@@ -104,25 +105,52 @@
 </section>
 
 
+
 <!-- CONTENIDO DEL card_product -->
 <section class='container py-5'>
+
     <h3>Linea en sale</h3>
 
     <div class="row row-cols-lg-4 justify-content-evenly my-5">
-        
-        <?php 
-        for ($i=1; $i < 5; $i++) { 
-            card_product([
-                '_id'=>'7467942',
-                'img' => "/assets/img/products/watch-$i.jpg",
-                'title' => 'Otro reloj',
-                'price' => 350,
-                'sale' => false
-            ]);
+
+        <?php
+        // creo mi query
+        $query = "
+            SELECT *
+            FROM products
+            INNER JOIN images
+            ON products._id = images.id_product
+            WHERE sale = '1'
+            LIMIT 4;
+            ";
+            /* 
+SELECT *
+FROM products
+INNER JOIN images
+ON products._id = images.id_product
+WHERE sale = '1'
+LIMIT 4 */
+
+        // hago una consulta
+        $res = mysqli_query($conn, $query);
+
+        // si la consulta no es vacia la recorro
+        if (empty($res)) {
+            echo "no hay productos para mostrar...";
+        } else {
+            while ($data = mysqli_fetch_object($res)) {
+
+                card_product([
+                    '_id' => $data->_id,
+                    'img' => $data->url,
+                    'title' => $data->title,
+                    'price' => $data->price,
+                    'sale' => $data->sale
+                ]);
+            }
         }
+
         ?>
     </div>
-
-
 </section>
 <!-- fin de card_product -->

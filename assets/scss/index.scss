@@ -2,22 +2,29 @@
 @use 'variables' as *;
 // -----------------
 
-img{
+img {
     object-fit: cover;
 }
 
 .container-client {
-    @media (min-width: 575px) {
-        header nav {
-            padding-top: 7rem !important;
-            padding-bottom: 3rem !important;
-        }
+    // por defecto el nav es pequeño
+    header nav {
+        padding-top: 6rem !important;
+        padding-bottom: 3rem !important;
+        transition: .3s all 0.5s;
+    }
+    // cuando el scroll es cero engordo el nav
+    header nav.scrollDown {
+        padding-top: .5rem !important;
+        padding-bottom: .5rem !important;
+        
+        
     }
 }
 
 @import "../scss-from-bootstrap/bootstrap.scss";
 
-@include meta.load-css("burguer-menu", $with: null);
+// @include meta.load-css("burguer-menu", $with: null);
 @include meta.load-css("btn", $with: null);
 @include meta.load-css("card-product");
 @include meta.load-css("nprogress");

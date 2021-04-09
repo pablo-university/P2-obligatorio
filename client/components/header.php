@@ -2,7 +2,7 @@
 
 <header class='sticky-top bg-dark'>
 
-    <nav id='scroll-down-target' class="navbar sticky-top navbar-expand-lg navbar-dark container py-xl-5">
+    <nav  class="navbar sticky-top navbar-expand-lg navbar-dark container py-xl-5">
         <div class="container-fluid px-0">
             
             <button

@@ -65,4 +65,6 @@
         <?php include_once __DIR__ . '/components/footer.php'; ?>
     </div>
 <?php } ?>
+
+
 <?php layout("content") ?>

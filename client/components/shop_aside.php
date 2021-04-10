@@ -5,19 +5,19 @@
             <!-- Color -->
             <h4>Color</h4>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='color1' value="color1" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name='color[]' value="color1" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                     Color 1
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name='color[]' value="color2"  id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                     Color 2
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name='color[]' value="color3" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                     Color 3
                 </label>
@@ -102,7 +102,9 @@
     <p>probando obtener</p>
     <?php
     $res = $_REQUEST;
-    echo '<pre>' . var_export($res, true) . '</pre>';
+    echo '<pre>' . var_export($res['color'], true) . '</pre>';
 
     ?>
 </aside>
+
+<!-- basicamente con name='pepe[]' en varios checkbox obtengo como array ese pepe en el request -->

@@ -26,26 +26,34 @@
                 <?php include_once __DIR__ . '/components/shop_aside.php'; ?>
 
                 <!-- productos -->
-                <main class="col-12 col-lg-8">
-                    <!-- ------------ -->
-                    <div class='row row-cols-xxl-4 row-cols-md-2  pb-5'>
-                        <?php
-                        for ($n = 0; $n < 2; $n++) {
-                            for ($i = 1; $i < 3; $i++) {
-                                card_product([
-                                    '_id' => '234234234',
-                                    'img' => "watch-$i.jpg",
-                                    'title' => 'Otro reloj',
-                                    'price' => 350,
-                                    'sale' => false
-                                ]);
+                <main class="col-12 col-lg-8 overflow-auto">
+
+                    <!-- caja de products -->
+                    <div class='row row-cols-xxl-4 row-cols-md-2 gy-3 pb-5'>
+
+                        <!-- si no exisste request hago una petición basica -->
+                        <?php if (empty($_REQUEST)) { ?>
+                            <?php
+                            for ($n = 0; $n < 2; $n++) {
+                                for ($i = 1; $i < 3; $i++) {
+                                    card_product([
+                                        '_id' => '234234234',
+                                        'img' => "watch-$i.jpg",
+                                        'title' => 'Otro reloj',
+                                        'price' => 350,
+                                        'sale' => false
+                                    ]);
+                                }
                             }
-                        }
-                        ?>
+                            ?>
+                        <?php } ?>
+
+
+
                     </div>
 
                     <!-- pagination -->
-<!--                     <nav aria-label="Page navigation example">
+                    <!--                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item">
                                 <a class="page-link" href="#" aria-label="Previous">

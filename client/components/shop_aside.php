@@ -1,28 +1,108 @@
 <aside class="col-0 col-lg-4">
-    <form action="">
+    <form action="" class="d-grid gap-3">
 
-        <!-- Display type -->
-        <h4>Display type</h4>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-                Analogio
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-            <label class="form-check-label" for="flexRadioDefault2">
-                Digital
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
-            <label class="form-check-label" for="flexRadioDefault3">
-                Analogio-Digital
-            </label>
+        <div>
+            <!-- Color -->
+            <h4>Color</h4>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name='color1' value="color1" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Color 1
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Color 2
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Color 3
+                </label>
+            </div>
         </div>
 
-        <!-- otro filtro -->
+        <div>
+            <!-- Ocación -->
+            <h4>Ocación</h4>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Ocación x
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Ocación x
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Ocación x
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <!-- Marca -->
+            <h4>Marca</h4>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Marca x
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Marca x
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Marca x
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <!-- Envío -->
+            <h4>Envío</h4>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Envío
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <!-- Sale -->
+            <h4>Sale</h4>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Sale
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <button class="btn btn-primary" type="submit">BUSCAR</button>
+        </div>
 
     </form>
+
+
+    <p>probando obtener</p>
+    <?php
+    $res = $_REQUEST;
+    echo '<pre>' . var_export($res, true) . '</pre>';
+
+    ?>
 </aside>

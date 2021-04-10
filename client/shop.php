@@ -1,3 +1,4 @@
+<?php include_once __DIR__ . '/../connectors/connection.php'; ?>
 <?php include_once __DIR__ . '/../components/template/index.php'; ?>
 <?php include_once __DIR__ . '/components/product_card.php'; ?>
 
@@ -26,27 +27,42 @@
                 <?php include_once __DIR__ . '/components/shop_aside.php'; ?>
 
                 <!-- productos -->
-                <main class="col-12 col-lg-8 overflow-auto">
+                <main class="col-12 col-lg-8 overflow-autox">
 
                     <!-- caja de products -->
                     <div class='row row-cols-xxl-4 row-cols-md-2 gy-3 pb-5'>
 
                         <!-- si no exisste request hago una petición basica -->
-                        <?php if (empty($_REQUEST)) { ?>
-                            <?php
-                            for ($n = 0; $n < 2; $n++) {
-                                for ($i = 1; $i < 3; $i++) {
+                        <?php if (empty($_REQUEST)) {
+
+                            $query = "
+                            SELECT *
+                            FROM products
+                            INNER JOIN images
+                            ON products._id = images.id_product
+                            LIMIT 4;
+                            ";
+                            global $conn;
+                            // hago una consulta
+                            $res = mysqli_query($conn, $query);
+
+                            // si la consulta no es vacia la recorro
+                            if (empty($res)) {
+                                echo "no hay productos para mostrar...";
+                            } else {
+                                while ($data = mysqli_fetch_object($res)) {
+                                    echo '<pre>' . var_export($data, true) . '</pre>';
+
                                     card_product([
-                                        '_id' => '234234234',
-                                        'img' => "watch-$i.jpg",
-                                        'title' => 'Otro reloj',
-                                        'price' => 350,
-                                        'sale' => false
+                                        '_id' => $data->_id,
+                                        'img' => $data->url,
+                                        'title' => $data->title,
+                                        'price' => $data->price,
+                                        'sale' => $data->sale
                                     ]);
                                 }
                             }
-                            ?>
-                        <?php } ?>
+                        } ?>
 
 
 

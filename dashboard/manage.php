@@ -11,11 +11,10 @@
         
     <?php } ?>
 
-
-
-
-
     <?php layout_dashboard($content_dashboard) ?>
+
+
+
 
 <?php } ?>
 <!-- cierre de layout -->

@@ -4,8 +4,10 @@ img {
 }
 
 .container-client header nav {
-  padding-top: 6rem !important;
-  padding-bottom: 3rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  /* padding-top: 6rem !important;
+  padding-bottom: 3rem !important; */
   transition: 0.3s all 0.5s;
 }
 .container-client header nav.scrollDown {

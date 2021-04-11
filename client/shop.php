@@ -47,7 +47,7 @@
                             $res = mysqli_query($conn, $query);
 
                             // si la consulta no es vacia la recorro
-                            if (empty($res)) {
+                            if ($res->num_rows < 1) {
                                 echo "no hay productos para mostrar...";
                             } else {
                                 while ($data = mysqli_fetch_object($res)) {
@@ -62,7 +62,12 @@
                                     ]);
                                 }
                             }
-                        } ?>
+                        } else {
+                            echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
+                            echo "<hr><br>";
+                            shop_aside_filter("card_product");
+                        }
+                        ?>
 
 
 

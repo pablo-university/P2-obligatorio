@@ -1,3 +1,5 @@
+<?php include_once __DIR__ . '/../../connectors/connection.php'; ?>
+
 <aside class="col-0 col-lg-4">
     <form action="" class="d-grid gap-3">
 
@@ -5,44 +7,57 @@
             <!-- Color -->
             <h4>Color</h4>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='color[]' value="color1" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name='color[]' value="bage" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Color 1
+                    bage
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='color[]' value="color2"  id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name='color[]' value="negro" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Color 2
+                    negro
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='color[]' value="color3" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name='color[]' value="dorado" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Color 3
+                    dorado
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name='color[]' value="plateado" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    plateado
                 </label>
             </div>
         </div>
+
 
         <div>
             <!-- Ocación -->
             <h4>Ocación</h4>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name='moment[]' value="clásico" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Ocación x
+                    clásico
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name='moment[]' value="fashion" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Ocación x
+                    fashion
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name='moment[]' value="deportivo" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Ocación x
+                    deportivo
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name='moment[]' value="smart" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    smart
                 </label>
             </div>
         </div>
@@ -101,8 +116,56 @@
 
     <p>probando obtener</p>
     <?php
-    $res = $_REQUEST;
-    echo '<pre>' . var_export($res['color'], true) . '</pre>';
+
+    // OBTIENE Y CREA EL QUERY
+    function shop_aside_filter($card_product): void
+    {
+        $query = [];
+        /*
+        recorro el request, que contiene arrays asociativos de names
+        y por cada name recorro para obtener valores (name = value)
+        y dejarlos en un array */
+        foreach ($_REQUEST as $name => $arr) {
+            foreach ($arr as $value) {
+                array_push($query, "$name = '$value'");
+            }
+        }
+        // por ultimo tomo el array query, uso implode y agrego el AND
+        $query = implode(" AND ", $query);
+
+
+        // COMPLETO MI QUERY
+        $query = "
+        SELECT *
+        FROM products
+        INNER JOIN images
+        ON products._id = images.id_product
+        WHERE $query;
+        ";
+
+        global $conn;
+        $res = mysqli_query($conn, $query);
+
+
+
+        // si la consulta no es vacia la recorro
+        if ($res->num_rows < 1) {
+            echo "<p>no hay productos para mostrar...<p/>";
+        } else {
+            while ($data = mysqli_fetch_object($res)) {
+
+                card_product([
+                    '_id' => $data->_id,
+                    'img' => $data->url,
+                    'title' => $data->title,
+                    'price' => $data->price,
+                    'sale' => $data->sale
+                ]);
+            }
+        }
+    }
+
+
 
     ?>
 </aside>

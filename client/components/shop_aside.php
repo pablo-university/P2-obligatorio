@@ -66,21 +66,27 @@
             <!-- Marca -->
             <h4>Marca</h4>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name='brand[]' value="kaunas" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Marca x
+                kaunas
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name='brand[]' value="casio" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Marca x
+                casio
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name='brand[]' value="addidas" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Marca x
+                addidas
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name='brand[]' value="lotus" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                lotus
                 </label>
             </div>
         </div>
@@ -89,7 +95,7 @@
             <!-- Envío -->
             <h4>Envío</h4>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name="shipping[]" value="1" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                     Envío
                 </label>
@@ -100,7 +106,7 @@
             <!-- Sale -->
             <h4>Sale</h4>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name="shipping[]" value="1" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                     Sale
                 </label>

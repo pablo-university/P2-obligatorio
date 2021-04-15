@@ -1,4 +1,3 @@
-<?php include_once __DIR__ . '/../../connectors/connection.php'; ?>
 
 <aside class="col-0 col-lg-4">
     <form action="" class="d-grid gap-3">
@@ -120,11 +119,10 @@
     </form>
 
 
-    <p>probando obtener</p>
     <?php
 
     // OBTIENE Y CREA EL QUERY
-    function shop_aside_filter($card_product): void
+    function shop_aside_filter($card_product, $conn): void
     {
         $query = [];
         /*
@@ -148,10 +146,8 @@
         ON products._id = images.id_product
         WHERE $query;
         ";
-
-        global $conn;
+        
         $res = mysqli_query($conn, $query);
-
 
 
         // si la consulta no es vacia la recorro

@@ -1,4 +1,3 @@
-<?php include_once __DIR__ . '/../connectors/connection.php'; ?>
 <?php include_once __DIR__ . '/../components/template/index.php'; ?>
 <?php include_once __DIR__ . '/components/product_card.php'; ?>
 
@@ -7,7 +6,13 @@
 <?php function content()
 { ?>
     <div class='container-client'>
+
+        <!-- HEADER -->
         <?php include_once __DIR__ . '/components/header.php'; ?>
+
+        <!-- CONECTION ACA PARA SHOP -->
+        <?php include_once __DIR__ . '/../connectors/connection.php'; ?>
+
         <div class='container py-5 bg-light'>
             <p>aqui irian las migas de pan</p>
             <!-- titulo y select de ordenación -->
@@ -23,7 +28,8 @@
 
 
             <div class="row gx-5">
-                <!-- aside de filtrado -->
+                
+                <!-- ASIDE FILTRADO -->
                 <?php include_once __DIR__ . '/components/shop_aside.php'; ?>
 
                 <!-- productos -->
@@ -42,7 +48,7 @@
                             ON products._id = images.id_product
                             LIMIT 4;
                             ";
-                            global $conn;
+                            // global $conn;
                             // hago una consulta
                             $res = mysqli_query($conn, $query);
 
@@ -51,8 +57,6 @@
                                 echo "no hay productos para mostrar...";
                             } else {
                                 while ($data = mysqli_fetch_object($res)) {
-                                    echo '<pre>' . var_export($data, true) . '</pre>';
-
                                     card_product([
                                         '_id' => $data->_id,
                                         'img' => $data->url,
@@ -65,7 +69,8 @@
                         } else {
                             echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
                             echo "<hr><br>";
-                            shop_aside_filter("card_product");
+                            
+                            shop_aside_filter("card_product", $conn);
                         }
                         ?>
 

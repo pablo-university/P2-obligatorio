@@ -123,13 +123,6 @@
             WHERE sale = '1'
             LIMIT 4;
             ";
-            /* 
-SELECT *
-FROM products
-INNER JOIN images
-ON products._id = images.id_product
-WHERE sale = '1'
-LIMIT 4 */
 
         // hago una consulta
         $res = mysqli_query($conn, $query);

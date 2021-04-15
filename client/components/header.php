@@ -1,21 +1,12 @@
-<!-- contenedor del menu-->
+<?php include_once __DIR__ . '/../../connectors/connection.php'; ?>
 
+<!-- contenedor del menu-->
 <header class='sticky-top bg-dark'>
 
-    <nav  class="navbar sticky-top navbar-expand-lg navbar-dark container py-xl-5">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark container py-xl-5">
         <div class="container-fluid px-0">
-            
-            <button
-                class="navbar-toggler hamburger hamburger--collapse mb-3 p-2"
-                type="button"
 
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarTogglerDemo01"
-                aria-controls="navbarTogglerDemo01"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-
-            >
+            <button class="navbar-toggler hamburger hamburger--collapse mb-3 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="hamburger-box">
                     <span class="hamburger-inner" />
                 </span>
@@ -46,12 +37,35 @@
                             Categorías
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="./shop.php">uno</a></li>
-                            <li><a class="dropdown-item" href="./shop.php">dos</a></li>
+
+                            <!-- MENU DE CATEGORÍAS -->
+                            <?php
+                            $query_menu = "
+                            SELECT DISTINCT user_type
+                            FROM products;
+                            ";
+                            // reconecto porque en shop no me detectaba $conn
+                            // $conn = mysqli_connect(HOST, USER_NAME, PASSWORD, DB);
+                            
+                            // hago una consulta
+                            // global $conn;
+                            $res = mysqli_query($conn, $query_menu);
+                            
+                            // si la consulta no es vacia la recorro
+                            if (empty($res)) {
+                                echo "error al traer menu";
+                            } else {
+                                while ($data = mysqli_fetch_object($res)) {
+                                    // genero items de menu
+                                    echo "<li><a class=\"dropdown-item\" href=\"./shop.php?user_type[]=$data->user_type\">$data->user_type</a></li>";
+                                }
+                            }
+
+                            ?>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="./shop.php">tres</a></li>
+                            <!-- otro li -->
                         </ul>
                     </li>
                     <!-- ------------------------- -->

@@ -1,3 +1,10 @@
+<?php 
+
+
+
+?>
+
+
 <h1>Titulo de producto</h1>
 <p class="mb-5 lead">descripcion breve o detalle</p>
 

@@ -28,7 +28,7 @@
 
 
             <div class="row gx-5">
-                
+
                 <!-- ASIDE FILTRADO -->
                 <?php include_once __DIR__ . '/components/shop_aside.php'; ?>
 
@@ -38,7 +38,7 @@
                     <!-- caja de products -->
                     <div class='row row-cols-xxl-4 row-cols-md-2 gy-3 pb-5'>
 
-                        <!-- si no exisste request hago una petición basica -->
+                        <!-- TRAE PRODUCTOS BASICO -->
                         <?php if (empty($_REQUEST)) {
 
                             $query = "
@@ -48,7 +48,7 @@
                             ON products._id = images.id_product
                             LIMIT 4;
                             ";
-                            // global $conn;
+
                             // hago una consulta
                             $res = mysqli_query($conn, $query);
 
@@ -66,10 +66,14 @@
                                     ]);
                                 }
                             }
+                            // ORDENAR ASC O DESC
+                        } elseif (!empty($_REQUEST['order_by'])) {
+                            echo "intentaste acceder a orderBy";
+                            // ORDENAR POR FILTROS
                         } else {
                             echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
                             echo "<hr><br>";
-                            
+
                             shop_aside_filter("card_product", $conn);
                         }
                         ?>

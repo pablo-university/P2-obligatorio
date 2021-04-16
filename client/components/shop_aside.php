@@ -140,12 +140,12 @@
 
         // COMPLETO MI QUERY
         $query = "
-        SELECT *
-        FROM products
-        INNER JOIN images
-        ON products._id = images.id_product
+        SELECT P._id, I.url, P.title, P.price, P.sale
+        FROM products AS P
+        INNER JOIN images AS I
+        ON P._id = I.id_product
         WHERE $query
-        GROUP BY (products._id)
+        GROUP BY (P._id)
         ;
         ";
         

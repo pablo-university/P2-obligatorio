@@ -144,7 +144,9 @@
         FROM products
         INNER JOIN images
         ON products._id = images.id_product
-        WHERE $query;
+        WHERE $query
+        GROUP BY (products._id)
+        ;
         ";
         
         $res = mysqli_query($conn, $query);

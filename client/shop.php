@@ -42,11 +42,11 @@
                         <?php if (empty($_REQUEST)) {
 
                             $query = "
-                            SELECT *
-                            FROM products
-                            INNER JOIN images
-                            ON products._id = images.id_product
-                            LIMIT 4;
+                            SELECT P._id, I.url, P.title, P.price, P.sale
+                            FROM products AS P, images AS I
+                            WHERE P._id = I.id_product
+                            GROUP BY P._id
+                            ;
                             ";
 
                             // hago una consulta
@@ -57,6 +57,7 @@
                                 echo "no hay productos para mostrar...";
                             } else {
                                 while ($data = mysqli_fetch_object($res)) {
+                                    echo '<pre>' . var_export($data, true) . '</pre>';
                                     card_product([
                                         '_id' => $data->_id,
                                         'img' => $data->url,

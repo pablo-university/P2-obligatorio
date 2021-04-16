@@ -1,5 +1,24 @@
 <?php 
 
+include_once __DIR__.'/../../connectors/connection.php';
+
+$_id = $_REQUEST['_id'];
+
+$query = "
+SELECT * FROM products
+WHERE _id = $_id
+";
+
+$res = $conn->query($query);
+
+if ($res->num_rows < 1):
+  echo "no hay resultados";
+else:
+  while ($data = $res->fetch_object()):
+    
+  endwhile;
+endif;
+
 
 
 ?>

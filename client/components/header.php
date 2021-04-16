@@ -44,8 +44,6 @@
                             SELECT DISTINCT user_type
                             FROM products;
                             ";
-                            // reconecto porque en shop no me detectaba $conn
-                            // $conn = mysqli_connect(HOST, USER_NAME, PASSWORD, DB);
                             
                             // hago una consulta
                             // global $conn;
@@ -65,6 +63,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
+                            <li><a class="dropdown-item" href="./shop.php">Ir a shop</a></li>
                             <!-- otro li -->
                         </ul>
                     </li>

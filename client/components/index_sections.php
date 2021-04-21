@@ -59,7 +59,7 @@
 <!-- video -->
 <section class='container-fluid bg-primary p-0'>
     <video loop autoplay class='w-100'>
-        <source src="<?php echo LOCAL_HOST; ?>assets/img/show.webm" type="video/webm">
+        <source src="<?php echo LOCAL_HOST; ?>assets/img/show.mp4" type="video/webm">
     </video>
 </section>
 

@@ -5,11 +5,11 @@
 <?php $content = function (){ ?>
     <a href="client/">IR A CLIENTE</a>
     <br/>
-    <?php button(['href'=>'./client', 'content'=>'IR A CLIENT']); ?>
+    <?php button(['href'=>'./dashboard', 'content'=>'IR A DASH']); ?>
     <?php
         // ejemplo de clase anonima
         $obj = new class() {
-            public $bar = 'estas en la carpeta p2, usa /client';
+            public $bar = 'estas en la carpeta p2, usa /client o /dashboard';
         };
         echo $obj->bar;
         

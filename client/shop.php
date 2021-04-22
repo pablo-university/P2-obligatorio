@@ -18,11 +18,24 @@
             <!-- titulo y select de ordenación -->
             <div class="d-flex justify-content-between pb-4 pe-5">
                 <h1>Shop</h1>
-                <select class="form-select w-auto" aria-label="Default select example">
-                    <option value="1" selected>Menor precio</option>
-                    <option value="2">Mayor precio</option>
-                    <option value="3">Three</option>
-                </select>
+                <form action="./shop.php" method="get" id='order-by'>
+                    <select class="form-select w-auto" aria-label="Default select example">
+                        <option selected disabled>Ordenar</option>
+                        <option value="desc">Mayor precio</option>
+                        <option value="asc">Menor precio</option>
+                    </select>
+                </form>
+                <script>
+                    const select = document.querySelector('#order-by select');
+                    select.onchange = function(e){
+                        console.log(select.value)
+                        if (select.value == 'asc') {
+                            window.location.href = './shop.php?order_asc'
+                        } else {
+                            window.location.href = './shop.php?order_desc'
+                        }
+                    }
+                </script>
             </div>
 
 
@@ -38,16 +51,51 @@
                     <!-- caja de products -->
                     <div class='row row-cols-xxl-4 row-cols-md-2 gy-3 pb-5'>
 
-                        <!-- TRAE PRODUCTOS BASICO -->
-                        <?php if (empty($_REQUEST)) {
+                        <!-- TRAE PRODUCTOS NEW -->
+                        <?php
 
-                            $query = "
-                            SELECT P._id, I.url, P.title, P.price, P.sale
-                            FROM products AS P, images AS I
-                            WHERE P._id = I.id_product
-                            GROUP BY P._id
-                            ;
-                            ";
+                        // defino query
+                        $query = null;
+
+                        $SELECT_FROM = "
+                        SELECT P._id, I.url, P.title, P.price, P.sale
+                        FROM products AS P
+                        ";
+                        $JOIN_IMAGES = "
+                        INNER JOIN images AS I
+                        ON P._id = I.id_product
+                        ";
+                        // matcheo vacia? search? order_by? O SINO FILTRAR!
+                        $query = match (true) { //matchea con el que de true
+                            empty($_REQUEST) => "
+                                $SELECT_FROM
+                                $JOIN_IMAGES
+                                GROUP BY P._id
+                                ;
+                                ",
+                            isset($_REQUEST['search']) => "
+                                $SELECT_FROM
+                                $JOIN_IMAGES
+                                WHERE P.title LIKE '%$_REQUEST[search]%' OR P.description LIKE '%$_REQUEST[search]%'
+                                GROUP BY P._id
+                                ",
+                            isset($_REQUEST['order_asc']) => "
+                                $SELECT_FROM
+                                $JOIN_IMAGES
+                                GROUP BY P._id
+                                ORDER BY P.price ASC
+                                ",
+                            isset($_REQUEST['order_desc']) => "
+                                $SELECT_FROM
+                                $JOIN_IMAGES
+                                GROUP BY P._id
+                                ORDER BY P.price DESC
+                                ",
+                            default => null
+                        };
+
+                        // query con datos, consulta normal
+                        if (!empty($query)) :
 
                             // hago una consulta
                             $res = mysqli_query($conn, $query);
@@ -67,17 +115,16 @@
                                     ]);
                                 }
                             }
-                            // ORDENAR ASC O DESC
-                        } elseif (!empty($_REQUEST['order_by'])) {
-                            echo "intentaste acceder a orderBy";
-                            // ORDENAR POR FILTROS
-                        } else {
+
+                        // sino filtrar
+                        else :
                             echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
                             echo "<hr><br>";
-
                             shop_aside_filter("card_product", $conn);
-                        }
+                        endif;
+
                         ?>
+
 
 
 

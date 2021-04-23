@@ -28,7 +28,8 @@ img {
     }
 }
 
-@import "../scss-from-bootstrap/bootstrap.scss";
+// @import "../scss-from-bootstrap/bootstrap.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 // @include meta.load-css("burguer-menu", $with: null);
 @include meta.load-css("btn", $with: null);

@@ -1,6 +1,6 @@
 <?php include_once __DIR__ . '/../components/template/index.php'; ?>
 <?php include_once __DIR__ . '/components/product_card.php'; ?>
-
+<?php include_once __DIR__.'/controllers/shop_aside_filter.php';?>
 
 
 <?php function content()
@@ -120,6 +120,7 @@
                         else :
                             echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
                             echo "<hr><br>";
+                            // esta función ahora es un controller
                             shop_aside_filter("card_product", $conn);
                         endif;
 

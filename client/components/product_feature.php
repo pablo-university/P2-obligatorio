@@ -1,7 +1,7 @@
 <?php
 
 include_once __DIR__ . '/../../connectors/connection.php';
-include_once __DIR__ . '/../controllers/get_band.php';
+include_once __DIR__ . '/../controllers/product_get_band.php';
 
 $_id = $_REQUEST['_id'];
 
@@ -102,7 +102,7 @@ endif;
               break;
 
             case 'band':
-              echo '<td>' . ($get_band($_id)) . '</td>';
+              echo '<td>' . ($product_get_band($_id)) . '</td>';
               break;
 
             default:

@@ -1,7 +1,7 @@
 <?php 
 include_once __DIR__.'/../../connectors/connection.php';
 
-$get_band = function ($_id) use ($conn){
+$product_get_band = function ($_id) use ($conn){
 
     $query = "
     SELECT B.band FROM products P

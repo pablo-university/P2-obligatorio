@@ -1,94 +1,79 @@
+<?php include_once __DIR__ . '/../../connectors/connection.php'; ?>
+
 
 <aside class="col-0 col-lg-4">
     <form action="" class="d-grid gap-3">
 
+
+        <?php
+        // GET PROPERTY FOR ASIDE PANEL
+        $query_color = "
+            SELECT DISTINCT * FROM color
+            ";
+        $query_moment = "
+            SELECT DISTINCT * FROM moment
+            ";
+        $query_brand = "
+            SELECT DISTINCT * FROM brand
+            ";
+
+        $res_color = $conn->query($query_color);
+        $res_moment = $conn->query($query_moment);
+        $res_brand = $conn->query($query_brand);
+
+        ?>
+
+        <!-- color -->
         <div>
-            <!-- Color -->
             <h4>Color</h4>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='color[]' value="bage" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    bage
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='color[]' value="negro" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    negro
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='color[]' value="dorado" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    dorado
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='color[]' value="plateado" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    plateado
-                </label>
-            </div>
+            <?php if ($res_color->num_rows < 1) { ?>
+                <?php echo "no result"; ?>
+            <?php } else { ?>
+                <?php while ($data = mysqli_fetch_object($res_color)) : ?>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name='color[]' value="<?= $data->color ?>" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            <?= $data->color ?>
+                        </label>
+                    </div>
+                <?php endwhile; ?>
+            <?php } ?>
         </div>
 
-
+        <!-- Momento -->
         <div>
-            <!-- Ocación -->
-            <h4>Ocación</h4>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='moment[]' value="clásico" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    clásico
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='moment[]' value="fashion" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    fashion
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='moment[]' value="deportivo" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    deportivo
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='moment[]' value="smart" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    smart
-                </label>
-            </div>
+            <h4>Momento</h4>
+            <?php if ($res_color->num_rows < 1) { ?>
+                <?php echo "no result"; ?>
+            <?php } else { ?>
+                <?php while ($data = mysqli_fetch_object($res_moment)) : ?>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name='moment[]' value="<?= $data->moment ?>" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            <?= $data->moment ?>
+                        </label>
+                    </div>
+                <?php endwhile; ?>
+            <?php } ?>
         </div>
 
+        <!-- Marca -->
         <div>
-            <!-- Marca -->
             <h4>Marca</h4>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='brand[]' value="kaunas" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                kaunas
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='brand[]' value="casio" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                casio
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='brand[]' value="addidas" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                addidas
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name='brand[]' value="lotus" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                lotus
-                </label>
-            </div>
+            <?php if ($res_brand->num_rows < 1) { ?>
+                <?php echo "no result"; ?>
+            <?php } else { ?>
+                <?php while ($data = mysqli_fetch_object($res_brand)) : ?>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name='brand[]' value="<?= $data->brand ?>" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            <?= $data->brand ?>
+                        </label>
+                    </div>
+                <?php endwhile; ?>
+            <?php } ?>
         </div>
+
 
         <div>
             <!-- Envío -->
@@ -135,7 +120,7 @@
             }
         }
         // por ultimo tomo el array query, uso implode y agrego el AND
-        $query = implode(" AND ", $query);
+        $query = implode(" OR ", $query);//cambie and por or -> imposible color = negro AND color = gris
 
 
         // COMPLETO MI QUERY
@@ -148,7 +133,7 @@
         GROUP BY (P._id)
         ;
         ";
-        
+
         $res = mysqli_query($conn, $query);
 
 

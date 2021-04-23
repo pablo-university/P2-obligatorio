@@ -103,54 +103,6 @@
 
     </form>
 
-    <script>
-        let watchShopDataLocal = localStorage.getItem('watchShopDataLocal');
-        const inputs = document.querySelectorAll('input[type*="checkbox"]');
-
-        // setear si encontro algo
-        if (watchShopDataLocal) {
-            const arrayFromLocal = JSON.parse(watchShopDataLocal)
-            
-            arrayFromLocal.forEach(function(value) {
-                document.querySelector(`input[value*="${value}"]`).checked = true;
-            });
-        }
-
-        // EVENTO
-        inputs.forEach((elem) => {
-
-            // EVENTO
-            elem.addEventListener('click', function() {
-
-                // traigo nuevamente datos locales
-                watchShopDataLocal = localStorage.getItem('watchShopDataLocal');
-
-                // si local existe
-                if (watchShopDataLocal) {
-
-                    // leo el JSON le agrego cosas
-                    const data = JSON.parse(watchShopDataLocal);
-                    console.log('datos traidos desde local ', data)
-
-                    // lo vuelvo a guardar
-                    const valor = this.getAttribute("value");
-
-                    // si ya esta inlcuido no lo incluyas
-                    if (!data.includes(valor)) {
-                        const newData = [...data, valor];
-                        localStorage.setItem('watchShopDataLocal', JSON.stringify(newData))
-                    }
-
-                } else {
-                    // si no existe seteo por primera vez
-                    const data = [this.getAttribute("value")];
-                    localStorage.setItem('watchShopDataLocal', JSON.stringify(data))
-                }
-
-            })
-        });
-    </script>
-
 </aside>
 
 <!-- basicamente con name='pepe[]' en varios checkbox obtengo como array ese pepe en el request -->

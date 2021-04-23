@@ -1,0 +1,1 @@
+_mis controllers son idealmente funciones que hacen llamados a la db y retornan algo esencialmente, como mucho que escupan algo de html o un resultado pero no los considero para crear estructura html o diseñar componente, para eso intento usar la otra carpeta_

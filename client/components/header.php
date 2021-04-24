@@ -6,7 +6,7 @@
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark container py-xl-5">
         <div class="container-fluid px-0">
 
-            <button class="navbar-toggler hamburger hamburger--collapse mb-3 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler hamburger hamburger--collapse" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="hamburger-box">
                     <span class="hamburger-inner" />
                 </span>

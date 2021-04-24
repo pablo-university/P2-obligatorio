@@ -20,7 +20,8 @@ pasarselo a la función Layout comun. -->
             <?php include_once __DIR__ . '/header.php'; ?>
 
             <div class="container-fluid">
-                <div class="row">
+            <!-- minimo 100vh -->
+                <div class="row min-vh-100">
 
 
 

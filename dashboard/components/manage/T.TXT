@@ -1,0 +1,18 @@
+_id-> int primary key
+band -> _band
+brand-> _brand
+case ->redondo o cuadrado 
+color-> _color
+description-> varchar
+display_type-> _display_type
+last_modification -> date
+model -> int
+moment-> _moment
+price-> int
+sale -> booleano
+shipping-> booleano
+stock-> int
+submersible-> booleano
+title -> varchar
+user_type-> _user_type
+weight-> int gramos

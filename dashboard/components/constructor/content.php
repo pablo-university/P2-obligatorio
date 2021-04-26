@@ -1,7 +1,19 @@
+<?php include_once __DIR__ . '/../../controllers/class_get_props.php'; ?>
+<?php
+$res_bands = $class_get_props->get_bands();
+$res_brands = $class_get_props->get_brands();
+$res_cases = $class_get_props->get_cases();
+$res_colors = $class_get_props->get_colors();
+$res_display_types = $class_get_props->get_display_types();
+$res_moments = $class_get_props->get_moments();
+$res_user_type = $class_get_props->get_user_type();
+
+?>
+
 <div class="mt-5 mb-5">
     <h3 class="p-3">Ingreso de productos</h3>
 
-    <form action="./manage.php" class="row row-cols-sm-2">
+    <form action="./constructor.php" class="row row-cols-sm-2">
 
 
         <div>
@@ -15,7 +27,9 @@
             <!-- band -->
             <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
                 <option selected disabled>Seleciona una banda para el reloj</option>
-                <option value="1">One</option>
+                <?php while ($data = $res_bands->fetch_object()) { ?>
+                    <option value="<?= $data->band ?>"><?= $data->band ?></option>
+                <?php } ?>
             </select>
 
             <!-- brand -->
@@ -49,10 +63,10 @@
             </select>
 
             <!-- model -->
-            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                <option selected disabled>Modelo</option>
-                <option value="1">One</option>
-            </select>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="floatingInputx" max='9999' placeholder="name@example.com">
+                <label for="floatingInputx">Modelo</label>
+            </div>
 
             <!-- moment -->
             <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
@@ -91,9 +105,9 @@
             </div>
 
             <!-- stock -->
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Stock</label>
-                <input type="number" max='50' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="floatingInputx" max='50' placeholder="name@example.com">
+                <label for="floatingInputx">Stock (cantidad)</label>
             </div>
 
             <!-- submersible -->
@@ -110,9 +124,9 @@
             </select>
 
             <!-- weight -->
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Peso (gramos)</label>
-                <input type="number" max='500' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="floatingInputx" max='500' placeholder="name@example.com">
+                <label for="floatingInputx">Peso (gramos)</label>
             </div>
 
 

@@ -4,37 +4,22 @@ include_once __DIR__ . '/../../connectors/connection.php';
 
 
 
-$constructor_get_band = function () use ($conn) {
-    $query = "
-    SELECT *
-    FROM band
-    ";
+// $constructor_get_band = function () use ($conn) {
+//     $query = "
+//     SELECT *
+//     FROM band
+//     ";
 
-    $res = $conn->query($query);
-
-
-    if ($res->num_rows < 1) :
-        return null;
-    else :
-        return $res;
-    endif;
-};
-
-$constructor_get_band = function () use ($conn) {
-    $query = "
-    SELECT *
-    FROM band
-    ";
-
-    $res = $conn->query($query);
+//     $res = $conn->query($query);
 
 
-    if ($res->num_rows < 1) :
-        return null;
-    else :
-        return $res;
-    endif;
-};
+//     if ($res->num_rows < 1) :
+//         return null;
+//     else :
+//         return $res;
+//     endif;
+// };
+
 
 class Mi
 {
@@ -62,7 +47,7 @@ class Mi
         if ($res->num_rows < 1) :
             return null;
         else :
-            var_dump($res);
+            // var_dump($res);
             return $res;
         endif;
     }
@@ -80,7 +65,7 @@ class Mi
         if ($res->num_rows < 1) :
             return null;
         else :
-            var_dump($res);
+            // var_dump($res);
             return $res;
         endif;
     }
@@ -98,7 +83,7 @@ class Mi
         if ($res->num_rows < 1) :
             return null;
         else :
-            var_dump($res);
+            // var_dump($res);
             return $res;
         endif;
     }
@@ -116,7 +101,7 @@ class Mi
         if ($res->num_rows < 1) :
             return null;
         else :
-            var_dump($res);
+            // var_dump($res);
             return $res;
         endif;
     }
@@ -134,7 +119,43 @@ class Mi
         if ($res->num_rows < 1) :
             return null;
         else :
-            var_dump($res);
+            // var_dump($res);
+            return $res;
+        endif;
+    }
+
+    // Get moments
+    public function get_moments()
+    {
+        $query = "
+        SELECT * 
+        FROM moment
+        ";
+
+        $res = $this->conn->query($query);
+
+        if ($res->num_rows < 1) :
+            return null;
+        else :
+            // var_dump($res);
+            return $res;
+        endif;
+    }
+
+    // Get moments
+    public function get_user_type()
+    {
+        $query = "
+        SELECT *
+        FROM moment
+        ";
+
+        $res = $this->conn->query($query);
+
+        if ($res->num_rows < 1) :
+            return null;
+        else :
+            // var_dump($res);
             return $res;
         endif;
     }
@@ -142,12 +163,16 @@ class Mi
 }
 
 $class_get_props = new Mi($conn);
-$class_get_props->get_bands();
-echo "<hr>";
-$class_get_props->get_brands();
-echo "<hr>";
-$class_get_props->get_cases();
-echo "<hr>";
-$class_get_props->get_colors();
-echo "<hr>";
-$class_get_props->get_display_types();
+// $class_get_props->get_bands();
+// echo "<hr>";
+// $class_get_props->get_brands();
+// echo "<hr>";
+// $class_get_props->get_cases();
+// echo "<hr>";
+// $class_get_props->get_colors();
+// echo "<hr>";
+// $class_get_props->get_display_types();
+// echo "<hr>";
+// $class_get_props->get_moments();
+// echo "<hr>";
+// $class_get_props->get_user_type();

@@ -5,11 +5,17 @@
 
 
         <div>
+
+            <!-- title -->
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputx" placeholder="name@example.com">
+                <label for="floatingInputx">Ingresa titulo de producto</label>
+            </div>
+
+            <!-- band -->
             <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
                 <option selected disabled>Seleciona una banda para el reloj</option>
                 <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
             </select>
 
             <!-- brand -->
@@ -31,10 +37,10 @@
             </select>
 
             <!-- description -->
-            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                <option selected disabled>dESCRIPCION</option>
-                <option value="1">One</option>
-            </select>
+            <div class="form-floating mb-3">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Descripción</label>
+            </div>
 
             <!-- display_type -->
             <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
@@ -55,10 +61,11 @@
             </select>
 
             <!-- price -->
-            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                <option selected disabled>Precio</option>
-                <option value="1">One</option>
-            </select>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputx" placeholder="name@example.com">
+                <label for="floatingInputx">Ingresa price de producto</label>
+                <div id="emailHelp" class="form-text">decir algo sobre el precio</div>
+            </div>
 
         </div>
 
@@ -83,23 +90,13 @@
                 <label class="form-check-label" for="flexSwitchCheckDefault">Envío gratis</label>
             </div>
 
-            <!-- stock -->
-            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                <option selected disabled>S</option>
-                <option value="1">One</option>
-            </select>
-
             <!-- submersible -->
             <div class="form-check form-switch mb-3">
                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Sumergible</label>
             </div>
 
-            <!-- title -->
-            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                <option selected disabled>Case</option>
-                <option value="1">One</option>
-            </select>
+
 
             <!-- user_type -->
             <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
@@ -108,14 +105,14 @@
             </select>
 
             <!-- weight -->
-            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                <option selected disabled>Case</option>
-                <option value="1">One</option>
-            </select>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Peso (gramos)</label>
+                <input type="number" max='500' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
 
             <!-- image -->
             <div class="mb-3">
-                <label for="formFileSm" class="form-label">Small file input example</label>
+                <label for="formFileSm" class="form-label">Ingresa imagen</label>
                 <input class="form-control form-control-md" id="formFileSm" type="file">
             </div>
 

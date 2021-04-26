@@ -90,12 +90,17 @@
                 <label class="form-check-label" for="flexSwitchCheckDefault">Envío gratis</label>
             </div>
 
+            <!-- stock -->
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Stock</label>
+                <input type="number" max='50' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+
             <!-- submersible -->
             <div class="form-check form-switch mb-3">
                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Sumergible</label>
             </div>
-
 
 
             <!-- user_type -->
@@ -109,6 +114,7 @@
                 <label for="exampleInputEmail1" class="form-label">Peso (gramos)</label>
                 <input type="number" max='500' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
+
 
             <!-- image -->
             <div class="mb-3">

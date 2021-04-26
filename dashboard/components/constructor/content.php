@@ -1,12 +1,13 @@
 <?php include_once __DIR__ . '/../../controllers/class_get_props.php'; ?>
 <?php
+ini_set("default_charset", "UTF-8");
 $res_bands = $class_get_props->get_bands();
 $res_brands = $class_get_props->get_brands();
 $res_cases = $class_get_props->get_cases();
 $res_colors = $class_get_props->get_colors();
 $res_display_types = $class_get_props->get_display_types();
 $res_moments = $class_get_props->get_moments();
-$res_user_type = $class_get_props->get_user_type();
+$res_user_types = $class_get_props->get_user_types();
 
 ?>
 
@@ -25,29 +26,35 @@ $res_user_type = $class_get_props->get_user_type();
             </div>
 
             <!-- band -->
-            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+            <select name="product_band" class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
                 <option selected disabled>Seleciona una banda para el reloj</option>
                 <?php while ($data = $res_bands->fetch_object()) { ?>
-                    <option value="<?= $data->band ?>"><?= $data->band ?></option>
+                    <option value="<?= $data->_id ?>"><?= $data->band ?></option>
                 <?php } ?>
             </select>
 
             <!-- brand -->
             <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
                 <option selected disabled>Marca</option>
-                <option value="1">One</option>
+                <?php while ($data = $res_brands->fetch_object()) { ?>
+                    <option value="<?= $data->brand ?>"><?= $data->brand ?></option>
+                <?php } ?>
             </select>
 
             <!-- case -->
             <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
                 <option selected disabled>Case</option>
-                <option value="1">One</option>
+                <?php while ($data = $res_cases->fetch_object()) { ?>
+                    <option value="<?= $data->case ?>"><?= $data->case ?></option>
+                <?php } ?>
             </select>
 
             <!-- color -->
             <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
                 <option selected disabled>Color</option>
-                <option value="1">One</option>
+                <?php while ($data = $res_colors->fetch_object()) { ?>
+                    <option value="<?= $data->color ?>"><?= $data->color ?></option>
+                <?php } ?>
             </select>
 
             <!-- description -->
@@ -59,19 +66,23 @@ $res_user_type = $class_get_props->get_user_type();
             <!-- display_type -->
             <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
                 <option selected disabled>Tipo de display</option>
-                <option value="1">One</option>
+                <?php while ($data = $res_display_types->fetch_object()) { ?>
+                    <option value="<?= $data->display_type ?>"><?= $data->display_type ?></option>
+                <?php } ?>
             </select>
 
             <!-- model -->
             <div class="form-floating mb-3">
                 <input type="number" class="form-control" id="floatingInputx" max='9999' placeholder="name@example.com">
-                <label for="floatingInputx">Modelo</label>
+                <label for="floatingInputx">Número de modelo</label>
             </div>
 
             <!-- moment -->
             <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
                 <option selected disabled>Momento</option>
-                <option value="1">One</option>
+                <?php while ($data = $res_moments->fetch_object()) { ?>
+                    <option value="<?= $data->moment ?>"><?= $data->moment ?></option>
+                <?php } ?>
             </select>
 
             <!-- price -->
@@ -120,7 +131,10 @@ $res_user_type = $class_get_props->get_user_type();
             <!-- user_type -->
             <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
                 <option selected disabled>Tipo de usuario</option>
-                <option value="1">One</option>
+                <?php while ($data = $res_user_types->fetch_object()) { ?>
+                    <option value="<?= $data->user_type ?>"><?= $data->user_type ?></option>
+                <?php } ?>
+               
             </select>
 
             <!-- weight -->

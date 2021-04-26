@@ -143,11 +143,11 @@ class Mi
     }
 
     // Get moments
-    public function get_user_type()
+    public function get_user_types()
     {
         $query = "
         SELECT *
-        FROM moment
+        FROM user_type
         ";
 
         $res = $this->conn->query($query);

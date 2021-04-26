@@ -21,12 +21,12 @@ $res_user_types = $class_get_props->get_user_types();
 
             <!-- title -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInputx" placeholder="name@example.com">
+                <input type="text" class="form-control" name="title" id="floatingInputx" placeholder="name@example.com">
                 <label for="floatingInputx">Ingresa titulo de producto</label>
             </div>
 
             <!-- band -->
-            <select name="product_band" class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+            <select class="form-select form-select-md mb-3" name="product_band" aria-label=".form-select-lg example">
                 <option selected disabled>Seleciona una banda para el reloj</option>
                 <?php while ($data = $res_bands->fetch_object()) { ?>
                     <option value="<?= $data->_id ?>"><?= $data->band ?></option>
@@ -34,7 +34,7 @@ $res_user_types = $class_get_props->get_user_types();
             </select>
 
             <!-- brand -->
-            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+            <select class="form-select form-select-md mb-3" name="brand" aria-label=".form-select-lg example">
                 <option selected disabled>Marca</option>
                 <?php while ($data = $res_brands->fetch_object()) { ?>
                     <option value="<?= $data->brand ?>"><?= $data->brand ?></option>
@@ -42,7 +42,7 @@ $res_user_types = $class_get_props->get_user_types();
             </select>
 
             <!-- case -->
-            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+            <select class="form-select form-select-md mb-3" name="case" aria-label=".form-select-lg example">
                 <option selected disabled>Case</option>
                 <?php while ($data = $res_cases->fetch_object()) { ?>
                     <option value="<?= $data->case ?>"><?= $data->case ?></option>
@@ -50,7 +50,7 @@ $res_user_types = $class_get_props->get_user_types();
             </select>
 
             <!-- color -->
-            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+            <select class="form-select form-select-md mb-3" name="color" aria-label=".form-select-lg example">
                 <option selected disabled>Color</option>
                 <?php while ($data = $res_colors->fetch_object()) { ?>
                     <option value="<?= $data->color ?>"><?= $data->color ?></option>
@@ -59,12 +59,12 @@ $res_user_types = $class_get_props->get_user_types();
 
             <!-- description -->
             <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <textarea  class="form-control"  name='description' id="floatingTextarea2" placeholder="Leave a comment here" style="height: 100px"></textarea>
                 <label for="floatingTextarea2">Descripción</label>
             </div>
 
             <!-- display_type -->
-            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+            <select  class="form-select form-select-md mb-3" name="display_type" aria-label=".form-select-lg example">
                 <option selected disabled>Tipo de display</option>
                 <?php while ($data = $res_display_types->fetch_object()) { ?>
                     <option value="<?= $data->display_type ?>"><?= $data->display_type ?></option>
@@ -73,12 +73,12 @@ $res_user_types = $class_get_props->get_user_types();
 
             <!-- model -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="floatingInputx" max='9999' placeholder="name@example.com">
+                <input type="number" class="form-control" name="model" id="floatingInputx" max='9999' placeholder="name@example.com">
                 <label for="floatingInputx">Número de modelo</label>
             </div>
 
             <!-- moment -->
-            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+            <select class="form-select form-select-md mb-3" name="moment" aria-label=".form-select-lg example">
                 <option selected disabled>Momento</option>
                 <?php while ($data = $res_moments->fetch_object()) { ?>
                     <option value="<?= $data->moment ?>"><?= $data->moment ?></option>
@@ -87,7 +87,7 @@ $res_user_types = $class_get_props->get_user_types();
 
             <!-- price -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInputx" placeholder="name@example.com">
+                <input type="text" class="form-control" name="price" id="floatingInputx" placeholder="name@example.com">
                 <label for="floatingInputx">Ingresa price de producto</label>
                 <div id="emailHelp" class="form-text">decir algo sobre el precio</div>
             </div>
@@ -95,41 +95,34 @@ $res_user_types = $class_get_props->get_user_types();
         </div>
 
         <div>
-            <!-- BAND -->
-            <!-- 
-                deberias desplegar las bandas disponibles
-                luego insertar el elemento, obtener su _id
-                y con ello insertar en la tabla product_band
-                la relacion con el id de product y el id de
-                la banda seleccionada -->
 
             <!-- sale -->
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" name="sale"  id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">En sale</label>
             </div>
 
             <!-- shipping -->
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" name="shipping"  id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Envío gratis</label>
             </div>
 
             <!-- stock -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="floatingInputx" max='50' placeholder="name@example.com">
+                <input type="number" class="form-control" name="stock" id="floatingInputx" max='50' placeholder="name@example.com">
                 <label for="floatingInputx">Stock (cantidad)</label>
             </div>
 
             <!-- submersible -->
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" name="submersible" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Sumergible</label>
             </div>
 
 
             <!-- user_type -->
-            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+            <select class="form-select form-select-md mb-3" name="user_type" aria-label=".form-select-lg example">
                 <option selected disabled>Tipo de usuario</option>
                 <?php while ($data = $res_user_types->fetch_object()) { ?>
                     <option value="<?= $data->user_type ?>"><?= $data->user_type ?></option>
@@ -139,7 +132,7 @@ $res_user_types = $class_get_props->get_user_types();
 
             <!-- weight -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="floatingInputx" max='500' placeholder="name@example.com">
+                <input type="number" class="form-control" name="weight" id="floatingInputx" max='500' placeholder="name@example.com">
                 <label for="floatingInputx">Peso (gramos)</label>
             </div>
 
@@ -159,3 +152,5 @@ $res_user_types = $class_get_props->get_user_types();
 
     </form>
 </div>
+
+<?php include_once __DIR__.'/../../controllers/add_new_product.php';?>

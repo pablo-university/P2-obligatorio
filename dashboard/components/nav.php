@@ -17,7 +17,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./list.php" style="line-break: anywhere;">
+        <a class="nav-link" href="./list_update_delete.php" style="line-break: anywhere;">
           <span data-feather="shopping-cart"></span>
           Listado/Update/Delete
         </a>

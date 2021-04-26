@@ -1,11 +1,13 @@
 <?php include_once __DIR__ . '/components/layout_dashboard.php'; ?>
+<?php include_once __DIR__.'/components/header_content.php';?>
 
 
 
 
 <?php $content_dashboard = function (): void { ?>
 
-    <?php include_once __DIR__.'/components/constructor/header.php';?>
+    
+    <?php header_content('Gestor de contenidos')?>
 
 
     <?php include_once __DIR__.'/components/constructor/content.php';?>

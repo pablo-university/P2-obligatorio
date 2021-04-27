@@ -9,7 +9,11 @@ function serverBrowserSync(cb) {
         proxy: 'localhost/p2',
         browser: 'chrome',
         files: [
-            "./**/*.css", "*.js", "./**/*.php"
+            "./assets/*.css", 
+            "./assets/*.js", 
+            "./client/*.js", 
+            "./dashboard/*.js",
+            "./**/*.php"
         ]
     });
 }

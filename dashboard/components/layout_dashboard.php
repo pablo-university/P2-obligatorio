@@ -12,7 +12,7 @@ pasarselo a la función Layout comun. -->
 { ?>
 
 
-<!-- me re costó encontrar que la función hija tenga alcance a esta variable, solucione con use -->
+    <!-- me re costó encontrar que la función hija tenga alcance a esta variable, solucione con use -->
     <?php $content = function () use ($args) { ?>
 
         <div class="container-dashboard">
@@ -20,7 +20,7 @@ pasarselo a la función Layout comun. -->
             <?php include_once __DIR__ . '/header.php'; ?>
 
             <div class="container-fluid">
-            <!-- minimo 100vh -->
+                <!-- minimo 100vh -->
                 <div class="row min-vh-100">
 
 
@@ -40,8 +40,14 @@ pasarselo a la función Layout comun. -->
 
             <!-- iconos de este theme -->
             <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+            
             <!-- chart js -->
-            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+            <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script> -->
+
+            <!-- traigo version mas nueva de cahrtjs -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
             <script src="charts.js"></script>
         </div>
 

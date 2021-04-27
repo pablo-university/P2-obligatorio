@@ -27,10 +27,15 @@
     <?php } ?>
   </div>
 
-  
-  <canvas id="chartA"></canvas>
 
-  <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+
+  <!-- CLASS CHARTS INFO -->
+  <?php include_once __DIR__ . '/api/chart_info.php'; ?>
+  <?= $chart_info->get_labels_brands(); ?>
+  <canvas id="chartBrands" data-labels='<?= $chart_info->get_labels_brands(); ?>' data-data='10 20 40 20' >
+  </canvas>
+  <!-- ----------------- -->
+
 
 
 

@@ -1,6 +1,6 @@
 /* globals Chart:false, feather:false */
 
-(function () {
+/* (function () {
   'use strict'
 
   feather.replace()
@@ -50,39 +50,54 @@
       }
     }
   })
+})() */
+
+
+
+
+// chartMoment
+(function () {
+
+  // getContentFromPHP
+  const node = document.getElementById('chartBrands');
+  const dataLabels = node.getAttribute('data-labels');
+  const dataData = node.getAttribute('data-data');
+  console.log({dataData, dataLabels});
+ 
+  console.log(dataLabels.split(' '))
+
+  const labels = dataLabels.split(' ');
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Marcas (cantidad por marca)',
+      backgroundColor: 'rgb(255, 100, 130, .70)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [10, 60, 5, 80, 20, 30, 45],
+    }]
+  };
+  const config = {
+    // type: 'line',
+    type: 'bar',
+    data,
+    options: {
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom'
+        },
+        title: {
+          display: true,
+          text: 'Gráfico de marcas'
+        }
+      }
+
+    }
+  };
+
+
+  var chartBrands = new Chart(
+    node,
+    config
+  );
 })()
-
-
-
-
-// CHART A
-  (function () {
-    const labels = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-    ];
-    const data = {
-      labels: labels,
-      datasets: [{
-        label: 'My First dataset',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [0, 10, 5, 2, 20, 30, 45],
-      }]
-    };
-    const config = {
-      type: 'line',
-      data,
-      options: {}
-    };
-
-
-    var chartA = new Chart(
-      document.getElementById('chartA'),
-      config
-    );
-  })()

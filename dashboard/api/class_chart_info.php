@@ -11,7 +11,7 @@ class Chart_info
     ) {
     }
 
-    public function get_labels_brands()
+    private function get_labels_brands()
     {
         $query = "
             SELECT *
@@ -24,21 +24,29 @@ class Chart_info
         if ($res->num_rows < 1) :
             echo "res fail";
         else :
-            $array = [];
+            $array_labels = [];
 
             while ($data = $res->fetch_object()) {
-                array_push($array, $data->brand);
+                array_push($array_labels, $data->brand);
             }
             
             // retorno mi JSON
-            return json_encode(["labels" => $array], JSON_UNESCAPED_UNICODE);
+            return $array_labels;
         endif;
     }
 
 
 
-    public function get_data_brands()
+    private function get_data_brands()
     {
+        foreach ($this->get_labels_brands() as $key => $value) {
+            $query = "
+            SELECT COUNT(*) AS res
+            FROM products P
+            WHERE P.brand = $value
+            ";
+        }
+        // ---
         $query = "
             SELECT COUNT(*) AS res
             FROM products P
@@ -53,16 +61,22 @@ class Chart_info
         else :
             $array = [];
 
+            // $res->fetch_object()->res;
+
+            
+            echo "----";
             while ($data = $res->fetch_object()) {
-                array_push($array, $data->moment);
+                array_push($array, $data->res);
             }
 
-
-            // echo implode(' ', $array);
-            // no funciono!
-
-            // echo json_encode(["data" => $array], JSON_UNESCAPED_UNICODE);
+            return $array[0];
         endif;
+    }
+
+    public function chart_main(){
+        $array_data =  $this->get_data_brands();
+        $array_labels = $this->get_labels_brands();
+        return json_encode(["labels" => $array_labels, "data" => $array_data], JSON_UNESCAPED_UNICODE);
     }
 }
 

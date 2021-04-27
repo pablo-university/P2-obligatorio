@@ -27,36 +27,72 @@
             <th>stock</th>
             <th>Tipo de usuario</th>
             <th>Peso</th>
+            <th>Actualizar</th>
+            <th>Eliminar</th>
          </tr>
       </thead>
       <tbody>
 
+         <form action="./A">
+
+            <!-- PINTO PRODUCTOS -->
+            <?php while ($data = $res_all_products->fetch_object()) { ?>
+
+               <tr>
+                  <!-- estos datos estarían incompletos solo serian para mostraer e identificar el producto -->
+                  <th><?= $data->title ?></th>
+                  <!-- poner la banda aqui, quiza recicle la funcion de producto especifico -->
+                  <td><?= $data->brand ?></td>
+                  <td><?= $data->case ?></td>
+                  <td><?= $data->display_type ?></td>
+                  <td><?= $data->moment ?></td>
+                  <td><?= $data->price ?></td>
+                  <td><?= $data->stock ?></td>
+                  <td><?= $data->user_type ?></td>
+                  <td><?= $data->weight ?></td>
+
+                  <!-- UPDATE -->
+                  <td class=''>
+                     <div class='form-check'>
+                        <form action="./list_update_delete.php?update_at=<?= $data->_id ?>"> 
+                           <button title="Actualizar" type="submit" class="border rounded-circle w-auto"><i class="bi bi-pencil-square"></i></button>
+                        </form>
+                     </div>
+                  </td>
+
+                  <!-- DELETE -->
+                  <td class=''>
+                     <div class='form-check'>
+                        <input class="form-check-input m-auto" type="checkbox" name="exampleRadios" value="" id="defaultCheck1">
+                     </div>
+                  </td>
+
+               </tr>
 
 
-         <!-- PINTO PRODUCTOS -->
-         <?php while ($data = $res_all_products->fetch_object()) { ?>
+            <?php } ?>
 
             <tr>
-               <!-- estos datos estarían incompletos solo serian para mostraer e identificar el producto -->
-               <th><?= $data->title ?></th>
-               <!-- poner la banda aqui, quiza recicle la funcion de producto especifico -->
-               <td><?= $data->brand ?></td>
-               <td><?= $data->case ?></td>
-               <td><?= $data->display_type ?></td>
-               <td><?= $data->moment ?></td>
-               <td><?= $data->price ?></td>
-               <td><?= $data->stock ?></td>
-               <td><?= $data->user_type ?></td>
-               <td><?= $data->weight ?></td>
+               <td colspan="9"></td>
+               <td>otter</td>
+               <td>ELIMINAR</td>
             </tr>
 
-         <?php } ?>
-
+            <!-- AQUI BTN ELIMINAR -->
+         </form>
 
 
       </tbody>
    </table>
 
+
+
+
+
+
+   <p class="text-secondary fst-italic">
+      *Se está mostrando una vista simplificada de los datos, no están completos
+   </p>
 <?php } ?>
 
 <?php layout_dashboard($content_dashboard) ?>

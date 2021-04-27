@@ -33,8 +33,8 @@
       </thead>
       <tbody>
 
-         <form action="./A">
-
+         <form action="./list_update_delete.php">
+            <p>peep</p>
             <!-- PINTO PRODUCTOS -->
             <?php while ($data = $res_all_products->fetch_object()) { ?>
 
@@ -54,16 +54,16 @@
                   <!-- UPDATE -->
                   <td class=''>
                      <div class='form-check'>
-                        <form action="./list_update_delete.php?update_at=<?= $data->_id ?>"> 
-                           <button title="Actualizar" type="submit" class="border rounded-circle w-auto"><i class="bi bi-pencil-square"></i></button>
-                        </form>
+                        <a href="./constructor.php?update_at=<?= $data->_id ?>" class="text-secondary bi bi-pencil-square color">
+                        </a>
+                        <!-- <i class="bi bi-pencil-square"> -->
                      </div>
                   </td>
 
-                  <!-- DELETE -->
+                  <!-- DELETE (checkbox) -->
                   <td class=''>
                      <div class='form-check'>
-                        <input class="form-check-input m-auto" type="checkbox" name="exampleRadios" value="" id="defaultCheck1">
+                        <input class="form-check-input m-auto" type="checkbox" name="delete[]" value="<?= $data->_id ?>" id="defaultCheck1">
                      </div>
                   </td>
 
@@ -72,11 +72,6 @@
 
             <?php } ?>
 
-            <tr>
-               <td colspan="9"></td>
-               <td>otter</td>
-               <td>ELIMINAR</td>
-            </tr>
 
             <!-- AQUI BTN ELIMINAR -->
          </form>
@@ -85,8 +80,10 @@
       </tbody>
    </table>
 
-
-
+   <!-- ENVIA PARA ELIMINAR -->
+   <div class="d-flex justify-content-end">
+      <button title="Actualizar" type="submit" class="btn btn-primary mb-3">ELIMINAR</button>
+   </div>
 
 
 

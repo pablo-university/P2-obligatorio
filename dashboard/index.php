@@ -31,8 +31,10 @@
 
   <!-- CLASS CHARTS INFO -->
   <?php include_once __DIR__ . '/api/chart_info.php'; ?>
+
   <?= $chart_info->get_labels_brands(); ?>
-  <canvas id="chartBrands" data-labels='<?= $chart_info->get_labels_brands(); ?>' data-data='10 20 40 20' >
+  
+  <canvas id="chartBrands" data-labels='pepe maria jasin' data-data='10 20 40 20' >
   </canvas>
   <!-- ----------------- -->
 

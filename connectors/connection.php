@@ -19,8 +19,12 @@ $conn = mysqli_connect(HOST, USER_NAME, PASSWORD, DB);
 $conn->set_charset("utf8");
 // mysqli_set_charset($conn, "UTF8");
 // printf("Conjunto de caracteres inicial: %s\n", $conn->character_set_name());
+
 // MOSTRAR ERRORES
 ini_set('display_errors', 1);
+
+// HEADER JSON
+// header('Content-Type: application/json');
 // --------
 
 if (!$conn) {

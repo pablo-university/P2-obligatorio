@@ -2,7 +2,7 @@
 
 include_once __DIR__ . '/../../connectors/connection.php';
 
-header('Content-Type: application/json');
+
 
 class Chart_info
 {

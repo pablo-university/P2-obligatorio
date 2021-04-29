@@ -7,15 +7,16 @@ include_once __DIR__ . '/../../connectors/connection.php';
 class Chart_info
 {
     public function __construct(
-        public $conn = null
+        public $conn = null,
+        public $target = 'brand'
     ) {
     }
 
-    private function get_labels_brands()
+    private function get_labels()
     {
         $query = "
             SELECT *
-            FROM brand
+            FROM $this->target
             ";
 
         // aca piensa que $conn es null pero se lo paso en el constructor
@@ -24,12 +25,16 @@ class Chart_info
         if ($res->num_rows < 1) :
             echo "res fail";
         else :
+
             $array_labels = [];
 
+            // obtengo target del objeto
+            $target = $this->target;
+
             while ($data = $res->fetch_object()) {
-                array_push($array_labels, $data->brand);
+                array_push($array_labels, $data->$target);
             }
-            
+
             // retorno mi JSON
             return $array_labels;
         endif;
@@ -37,47 +42,37 @@ class Chart_info
 
 
 
-    private function get_data_brands()
+    private function get_data()
     {
-        foreach ($this->get_labels_brands() as $key => $value) {
+        $data = [];
+        // por cda marca encontrada contá cuántos productos hay
+        foreach ($this->get_labels() as $key => $value) {
             $query = "
             SELECT COUNT(*) AS res
             FROM products P
-            WHERE P.brand = $value
+            WHERE P.$this->target = '$value'
             ";
+
+            $res = $this->conn->query($query);
+
+            if ($res->num_rows < 1) :
+                return [];
+            else :
+                array_push($data, $res->fetch_object()->res);
+            endif;
         }
-        // ---
-        $query = "
-            SELECT COUNT(*) AS res
-            FROM products P
-            WHERE P.brand = 'kaunas'
-            ";
 
-        // aca piensa que $conn es null pero se lo paso en el constructor
-        $res = $this->conn->query($query);
-
-        if ($res->num_rows < 1) :
-            echo "res fail";
-        else :
-            $array = [];
-
-            // $res->fetch_object()->res;
-
-            
-            echo "----";
-            while ($data = $res->fetch_object()) {
-                array_push($array, $data->res);
-            }
-
-            return $array[0];
-        endif;
+        return $data;
     }
 
-    public function chart_main(){
-        $array_data =  $this->get_data_brands();
-        $array_labels = $this->get_labels_brands();
+    public function chart_main()
+    {
+        $array_data =  $this->get_data();
+        $array_labels = $this->get_labels();
         return json_encode(["labels" => $array_labels, "data" => $array_data], JSON_UNESCAPED_UNICODE);
     }
 }
 
-$chart_info = new Chart_info($conn);
+
+
+// $chart_info = new Chart_info($conn, 'brand');

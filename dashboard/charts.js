@@ -1,85 +1,40 @@
-/* globals Chart:false, feather:false */
 
-/* (function () {
-  'use strict'
-
-  feather.replace()
-
-  // Graphs
-  var ctx = document.getElementById('myChart')
-  // eslint-disable-next-line no-unused-vars
-  var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-      ],
-      datasets: [{
-        data: [
-          15339,
-          21345,
-          18483,
-          24003,
-          23489,
-          24092,
-          12034
-        ],
-        lineTension: 0,
-        backgroundColor: 'transparent',
-        borderColor: 'green',
-        borderWidth: 4,
-        pointBackgroundColor: 'green'
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: false
-          }
-        }]
-      },
-      legend: {
-        display: false
-      }
-    }
-  })
-})() */
+// me deja en dashboard
+const href = window.location.href;
 
 
 
+// chartUserType
+(async function () {
 
-// chartMoment
-(function () {
 
-  // getContentFromPHP
-  const node = document.getElementById('chartBrands');
-  const dataLabels = node.getAttribute('data-labels');
-  const dataData = node.getAttribute('data-data');
-  console.log({dataData, dataLabels});
- 
-  console.log(dataLabels.split(' '))
+  let response = await fetch(`${href}/api/?target=user_type`);
 
-  const labels = dataLabels.split(' ');
+    response = await response.json();
+    console.log(response)
+
   const data = {
-    labels: labels,
+    labels: [
+      'Hombre',
+      'Mujer',
+      'infantil',
+      'unisex'
+    ],
     datasets: [{
-      label: 'Marcas (cantidad por marca)',
-      backgroundColor: 'rgb(255, 100, 130, .70)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [10, 60, 5, 80, 20, 30, 45],
+      label: 'My First Dataset',
+      data: [11, 16, 7, 3],
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(75, 192, 192)',
+        'rgb(255, 205, 86)',
+        'rgb(201, 203, 207)'
+      ]
     }]
   };
   const config = {
     // type: 'line',
-    type: 'bar',
-    data,
+    type: 'polarArea',
+    data: data,
     options: {
       plugins: {
         legend: {
@@ -88,16 +43,61 @@
         },
         title: {
           display: true,
-          text: 'Gráfico de marcas'
+          text: 'Gráfico tipo de usuarios'
         }
       }
 
     }
   };
 
-
-  var chartBrands = new Chart(
+  const node = document.getElementById('chartUserType');
+  var chartUserType = new Chart(
     node,
     config
   );
-})()
+})();
+
+
+  // chartMoment --------------------
+  (async function () {
+
+console.log('soy moment')
+    let response = await fetch(`${href}/api/?target=brand`);
+
+    response = await response.json();
+    // console.log(response)
+
+    const data = {
+      labels: response.labels,
+      datasets: [{
+        label: 'Marcas (cantidad por marca)',
+        backgroundColor: 'rgb(255, 100, 130, .70)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: response.data,
+      }]
+    };
+    const config = {
+      // type: 'line',
+      type: 'bar',
+      data: data,
+      options: {
+        plugins: {
+          legend: {
+            display: true,
+            position: 'bottom'
+          },
+          title: {
+            display: true,
+            text: 'Gráfico de marcas'
+          }
+        }
+
+      }
+    };
+
+    const node = document.getElementById('chartBrands');
+    var chartBrands = new Chart(
+      node,
+      config
+    );
+  })();

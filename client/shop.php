@@ -13,7 +13,7 @@
         <!-- CONECTION ACA PARA SHOP -->
         <?php include_once __DIR__ . '/../connectors/connection.php'; ?>
 
-        <div class='container py-5 bg-light'>
+        <div class='container shop py-5 bg-light'>
             <p>aqui irian las migas de pan</p>
             <!-- titulo y select de ordenación -->
             <div class="d-flex justify-content-between pb-4 pe-5">

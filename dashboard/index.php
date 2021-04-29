@@ -27,14 +27,12 @@
     <?php } ?>
   </div>
 
+  <canvas id="chartUserType" data-labels='pepe maria jasin' data-data='10 20 40 20'>
+  </canvas>
 
 
-  <!-- CLASS CHARTS INFO -->
-  <?php include_once __DIR__ . '/api/class_chart_info.php'; ?>
-
-  <?= $chart_info->chart_main(); ?>
-  
-  <canvas id="chartBrands" data-labels='pepe maria jasin' data-data='10 20 40 20' >
+  <!-- obtengo los datos con la api que me armé con php -->
+  <canvas id="chartBrands" data-labels='pepe maria jasin' data-data='10 20 40 20'>
   </canvas>
   <!-- ----------------- -->
 

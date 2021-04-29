@@ -9,29 +9,31 @@ AND se exaustivo en que si seleccionas mas de una propiedad cumpla eso (tener ma
 function shop_aside_filter($card_product, $conn): void
 {
     $query = [];
-    $sub_query = [];
+    $clause_in = [];
+    $sub_clause_in = [];
     /*
     0) recorro el request, que contiene arrays asociativos de names
     y por cada name recorro para obtener valores (name = value)
     e irlos procesando (marque con pasos) */
     foreach ($_REQUEST as $name => $arr) {
         foreach ($arr as $value) {
-            // 1) agregar a sub query
-            array_push($sub_query, "$name = '$value'");
+            // 1) agregar a sub_clause_in
+            array_push($sub_clause_in, "'$value'");
         }
-        // 2) implode con OR
-        $sub_query = implode(" OR ", $sub_query);
+        // 2) implode con ,
+        $in_values = implode(",", $sub_clause_in);
 
-        // 3) agrego eso al query principal + paréntesis curvos
-        array_push($query, '(' . $sub_query . ')');
+        // 3) agrego nueva clausula IN
+        array_push($clause_in, "$name IN ($in_values)");
 
-        // 4) vacio sub query
-        $sub_query = [];
+        // 4) vacio in_values
+        $in_values = "";
+        $sub_clause_in = [];
     }
-    // 5) por ultimo tomo el array query, uso implode y agrego el AND
-    $query = implode(" AND ", $query); //no es estricto en una porpiedad con valores, pero si cuando tiene varias!
 
-    
+    // 5) por ultimo uso implode y agrego el AND
+    $query = implode(" AND ", $clause_in); //no es estricto en una porpiedad con valores, pero si cuando tiene varias!
+
     // COMPLETO MI QUERY
     $query = "
     SELECT P._id, I.url, P.title, P.price, P.sale
@@ -42,7 +44,8 @@ function shop_aside_filter($card_product, $conn): void
     GROUP BY (P._id)
     ;
     ";
-    echo "$query";
+
+    
     $res = mysqli_query($conn, $query);
 
 

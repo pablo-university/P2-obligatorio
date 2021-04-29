@@ -118,8 +118,8 @@
 
                         // sino filtrar
                         else :
-                            echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
-                            echo "<hr><br>";
+                            /* echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
+                            echo "<hr><br>"; */
                             // esta función ahora es un controller
                             shop_aside_filter("card_product", $conn);
                         endif;

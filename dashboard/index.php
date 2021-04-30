@@ -27,6 +27,7 @@
     <?php } ?>
   </div>
 
+
   <canvas id="chartUserType" data-labels='pepe maria jasin' data-data='10 20 40 20'>
   </canvas>
 

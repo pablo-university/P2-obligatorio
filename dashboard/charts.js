@@ -18,7 +18,7 @@ const fetchConfig = {
   let response = node.getAttribute('data-chart');
   response = await JSON.parse(response);
 
-// console.log(response)
+  // console.log(response)
 
   const data = {
     labels: response.labels,
@@ -52,7 +52,7 @@ const fetchConfig = {
     }
   };
 
-  
+
   var chartUserType = new Chart(
     node,
     config
@@ -60,7 +60,58 @@ const fetchConfig = {
 })();
 
 
-// chartMoment --------------------
+
+// chartMoment
+(async function () {
+
+  const node = document.getElementById('chartMoment');
+
+  let response = node.getAttribute('data-chart');
+  response = await JSON.parse(response);
+
+  // console.log(response)
+
+  
+  const data = {
+    labels: response.labels,
+    datasets: [
+      {
+        label: 'Tipo de usuario',
+        data: response.data,
+        borderColor: 'rgb(200, 60, 100)',
+        backgroundColor: 'rgb(200, 60, 100)',
+        fill: true// relleno?
+      }
+    ]
+  };
+  const config = {
+    // type: 'line',
+    type: 'line',
+    data: data,
+    options: {
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom'
+        },
+        title: {
+          display: true,
+          text: 'Gráfico tipo de usuarios'
+        }
+      }
+
+    }
+  };
+
+
+  var chartUserType = new Chart(
+    node,
+    config
+  );
+})();
+
+
+// chartBrands --------------------
 (async function () {
 
   const node = document.getElementById('chartBrands');
@@ -96,7 +147,7 @@ const fetchConfig = {
     }
   };
 
-  
+
   var chartBrands = new Chart(
     node,
     config

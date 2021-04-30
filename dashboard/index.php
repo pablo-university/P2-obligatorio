@@ -1,11 +1,11 @@
 <?php include_once __DIR__ . '/components/layout_dashboard.php'; ?>
 <?php include_once __DIR__ . '/components/header_content.php'; ?>
-<?php include_once __DIR__.'/api/class_chart_info.php';?>
-<?php include_once __DIR__.'/../connectors/connection.php';?>
+<?php include_once __DIR__ . '/api/class_chart_info.php'; ?>
+<?php include_once __DIR__ . '/../connectors/connection.php'; ?>
 
 
 
-<?php $content_dashboard = function () use ($conn){ ?>
+<?php $content_dashboard = function () use ($conn) { ?>
 
   <?php header_content('Dashboard') ?>
 
@@ -28,21 +28,30 @@
     <?php } ?>
   </div>
 
-<?php 
-// inicio mis objetos
-$chartUserType = new Chart_info($conn, 'user_type');
-$brand = new Chart_info($conn, 'brand');
+  <?php
+  // inicio mis objetos
+  $chartUserType = new Chart_info($conn, 'user_type');
+  $moment = new Chart_info($conn, 'moment');
+  $brand = new Chart_info($conn, 'brand');
 
-?>
+  ?>
+  <main>
 
-  <canvas id="chartUserType" data-chart='<?= $chartUserType->chart_main(); ?>'>
-  </canvas>
+    <!-- chartUserType -->
+    <canvas id="chartUserType" data-chart='<?= $chartUserType->chart_main(); ?>'>
+    </canvas>
+
+    <!-- user type -->
+    <canvas id="chartMoment" data-chart='<?= $moment->chart_main(); ?>'>
+    </canvas>
+
+    <!-- brand -->
+    <canvas id="chartBrands" data-chart='<?= $brand->chart_main(); ?>'>
+    </canvas>
 
 
-  <!-- obtengo los datos con la api que me armé con php -->
-  <canvas id="chartBrands" data-chart='<?= $brand->chart_main(); ?>'>
-  </canvas>
-  <!-- ----------------- -->
+  </main>
+
 
 
 

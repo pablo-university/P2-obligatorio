@@ -20,4 +20,12 @@ if (empty($_REQUEST)) {
 
 ?>
 
+
+<?php 
+/* 
+NOTA: NO HACER COMENTARIOS YA QUE RETORNA LOS COMENTARIOS Y ROMPE TODO
+una vez instanciado mi objeto de consulta me trae los datos
+y los retorna como JSON, luego serán recuperados
+por js para crear las gráficas por la biblioteca chartJS  */
+?>
 <?= $chart_info->chart_main(); ?>

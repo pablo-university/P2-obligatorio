@@ -69,7 +69,8 @@ class Chart_info
     {
         $array_data =  $this->get_data();
         $array_labels = $this->get_labels();
-        return json_encode(["labels" => $array_labels, "data" => $array_data], JSON_UNESCAPED_UNICODE);
+        $response = json_encode(["labels" => $array_labels, "data" => $array_data], JSON_UNESCAPED_UNICODE);
+        return $response;
     }
 }
 

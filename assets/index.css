@@ -12590,4 +12590,12 @@ textarea {
   resize: none;
 }
 
+.hover-shadow-lg {
+  transition: all 1s;
+}
+
+.hover-shadow-lg:hover {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.18) !important;
+}
+
 /*# sourceMappingURL=index.css.map */

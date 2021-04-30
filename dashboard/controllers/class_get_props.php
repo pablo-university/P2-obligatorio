@@ -159,6 +159,23 @@ class Mi
             return $res;
         endif;
     }
+
+    // count_total_value (para index saber valores en sale etc...)
+    public function count_total_value($value){
+        $query = "
+        SELECT COUNT($value) AS res
+        FROM user_type
+        ";
+
+        $res = $this->conn->query($query);
+
+        if ($res->num_rows < 1) :
+            return null;
+        else :
+            // var_dump($res);
+            return $res;
+        endif;
+    }
     
 }
 

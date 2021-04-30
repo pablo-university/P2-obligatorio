@@ -47,7 +47,10 @@ const fetchConfig = {
           display: true,
           text: 'Gráfico tipo de usuarios'
         }
-      }
+      },
+    responsive:true,
+    maintainAspectRatio: true,
+    aspectRatio: 2
 
     }
   };
@@ -79,7 +82,7 @@ const fetchConfig = {
         label: 'Tipo de usuario',
         data: response.data,
         borderColor: 'rgb(200, 60, 100)',
-        backgroundColor: 'rgb(200, 60, 100)',
+        backgroundColor: 'rgb(200, 60, 100, .8)',
         fill: true// relleno?
       }
     ]
@@ -100,7 +103,10 @@ const fetchConfig = {
         }
       }
 
-    }
+    },
+    responsive:true,
+    maintainAspectRatio: true,
+    aspectRatio: 2
   };
 
 
@@ -142,8 +148,10 @@ const fetchConfig = {
           display: true,
           text: 'Gráfico de marcas'
         }
-      }
-
+      },
+      responsive:true,
+      maintainAspectRatio: true,
+    aspectRatio: 4
     }
   };
 

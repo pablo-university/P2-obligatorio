@@ -36,14 +36,20 @@
 
   ?>
   <main>
+    <div class="row row-cols-md-2
+     charts">
+      <!-- chartUserType -->
+      <div>
+        <canvas id="chartUserType" data-chart='<?= $chartUserType->chart_main(); ?>'>
+        </canvas>
+      </div>
 
-    <!-- chartUserType -->
-    <canvas id="chartUserType" data-chart='<?= $chartUserType->chart_main(); ?>'>
-    </canvas>
-
-    <!-- user type -->
-    <canvas id="chartMoment" data-chart='<?= $moment->chart_main(); ?>'>
-    </canvas>
+      <!-- user type -->
+      <div>
+        <canvas style="height: 100%!important;"  id="chartMoment" data-chart='<?= $moment->chart_main(); ?>'>
+        </canvas>
+      </div>
+    </div>
 
     <!-- brand -->
     <canvas id="chartBrands" data-chart='<?= $brand->chart_main(); ?>'>

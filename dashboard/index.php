@@ -1,10 +1,11 @@
 <?php include_once __DIR__ . '/components/layout_dashboard.php'; ?>
 <?php include_once __DIR__ . '/components/header_content.php'; ?>
+<?php include_once __DIR__.'/api/class_chart_info.php';?>
+<?php include_once __DIR__.'/../connectors/connection.php';?>
 
 
 
-
-<?php $content_dashboard = function (): void { ?>
+<?php $content_dashboard = function () use ($conn){ ?>
 
   <?php header_content('Dashboard') ?>
 
@@ -27,13 +28,19 @@
     <?php } ?>
   </div>
 
+<?php 
+// inicio mis objetos
+$chartUserType = new Chart_info($conn, 'user_type');
+$brand = new Chart_info($conn, 'brand');
 
-  <canvas id="chartUserType" data-labels='pepe maria jasin' data-data='10 20 40 20'>
+?>
+
+  <canvas id="chartUserType" data-chart='<?= $chartUserType->chart_main(); ?>'>
   </canvas>
 
 
   <!-- obtengo los datos con la api que me armé con php -->
-  <canvas id="chartBrands" data-labels='pepe maria jasin' data-data='10 20 40 20'>
+  <canvas id="chartBrands" data-chart='<?= $brand->chart_main(); ?>'>
   </canvas>
   <!-- ----------------- -->
 

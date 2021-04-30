@@ -13,10 +13,12 @@ const fetchConfig = {
 // chartUserType
 (async function () {
 
+  const node = document.getElementById('chartUserType');
 
-  let response = await fetch(`${href}/api/?target=user_type`, fetchConfig);
+  let response = node.getAttribute('data-chart');
+  response = await JSON.parse(response);
 
-  response = await response.json();
+// console.log(response)
 
   const data = {
     labels: response.labels,
@@ -50,7 +52,7 @@ const fetchConfig = {
     }
   };
 
-  const node = document.getElementById('chartUserType');
+  
   var chartUserType = new Chart(
     node,
     config
@@ -61,11 +63,10 @@ const fetchConfig = {
 // chartMoment --------------------
 (async function () {
 
-  console.log('soy moment')
-  let response = await fetch(`${href}/api/?target=brand`, fetchConfig);
+  const node = document.getElementById('chartBrands');
 
-  response = await response.json();
-  // console.log(response)
+  let response = node.getAttribute('data-chart');
+  response = await JSON.parse(response);
 
   const data = {
     labels: response.labels,
@@ -95,7 +96,7 @@ const fetchConfig = {
     }
   };
 
-  const node = document.getElementById('chartBrands');
+  
   var chartBrands = new Chart(
     node,
     config

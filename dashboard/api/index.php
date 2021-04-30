@@ -1,10 +1,8 @@
 <?php
+header('Content-Type: application/json');
 include_once __DIR__ . '/class_chart_info.php';
 include_once __DIR__.'/../../connectors/connection.php';
 
-?>
-
-<?php
 
 // Si request contiene algo creo una instancia
 // sino retorno mensaje vacio
@@ -17,11 +15,6 @@ if (empty($_REQUEST)) {
     $chart_info = new Chart_info($conn, $_REQUEST['target']);
 }
 
-
-?>
-
-
-<?php 
 /* 
 NOTA: NO HACER COMENTARIOS YA QUE RETORNA LOS COMENTARIOS Y ROMPE TODO
 una vez instanciado mi objeto de consulta me trae los datos

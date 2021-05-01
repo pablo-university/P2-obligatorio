@@ -16,13 +16,30 @@ class Mi
     ) {
     }
 
-    public function get_all_products()
+    // trae todo y si hay busqueda busca
+    public function get_all_products($search)
     {
         $query = "
         SELECT *
-        FROM products
+        FROM products AS P
         ";
 
+        // si search esta seteado...
+        if (isset($search)):
+            $query .= "
+            WHERE 
+            title LIKE '%$search%' OR 
+            description LIKE '%$search%' OR
+            P.brand LIKE '%$search%' OR
+            P.case LIKE '%$search%' OR
+            P.display_type LIKE '%$search%' OR
+            P.price LIKE '%$search%' OR
+            P.stock LIKE '%$search%' OR
+            P.user_type LIKE '%$search%'
+            ";
+        endif;
+
+        
         $res = $this->conn->query($query);
 
         if ($res->num_rows < 1) :

@@ -76,7 +76,15 @@
                             isset($_REQUEST['search']) => "
                                 $SELECT_FROM
                                 $JOIN_IMAGES
-                                WHERE P.title LIKE '%$_REQUEST[search]%' OR P.description LIKE '%$_REQUEST[search]%'
+                                WHERE 
+                                    P.title LIKE '%$_REQUEST[search]%' OR 
+                                    P.description LIKE '%$_REQUEST[search]%' OR
+                                    P.brand LIKE '%$_REQUEST[search]%' OR
+                                    P.case LIKE '%$_REQUEST[search]%' OR
+                                    P.display_type LIKE '%$_REQUEST[search]%' OR
+                                    P.price LIKE '%$_REQUEST[search]%' OR
+                                    P.stock LIKE '%$_REQUEST[search]%' OR
+                                    P.user_type LIKE '%$_REQUEST[search]%'
                                 GROUP BY P._id
                                 ",
                             isset($_REQUEST['order_asc']) => "
@@ -99,7 +107,7 @@
 
                             // hago una consulta
                             $res = mysqli_query($conn, $query);
-
+echo "$query";
                             // si la consulta no es vacia la recorro
                             if ($res->num_rows < 1) {
                                 echo "no hay productos para mostrar...";

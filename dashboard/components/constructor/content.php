@@ -1,13 +1,13 @@
 <?php include_once __DIR__ . '/../../controllers/class_get_props.php'; ?>
 <?php
 ini_set("default_charset", "UTF-8");
-$res_bands = $class_get_props->get_bands();
-$res_brands = $class_get_props->get_brands();
-$res_cases = $class_get_props->get_cases();
-$res_colors = $class_get_props->get_colors();
-$res_display_types = $class_get_props->get_display_types();
-$res_moments = $class_get_props->get_moments();
-$res_user_types = $class_get_props->get_user_types();
+$res_bands = $class_get_props->get_prop('band','band');
+$res_brands = $class_get_props->get_prop('brand','brand');
+$res_cases = $class_get_props->get_prop('products','case');
+$res_colors = $class_get_props->get_prop('color','color');
+$res_display_types = $class_get_props->get_prop('display_type','display_type');
+$res_moments = $class_get_props->get_prop('moment','moment');
+$res_user_types = $class_get_props->get_prop('user_type','user_type');
 
 ?>
 

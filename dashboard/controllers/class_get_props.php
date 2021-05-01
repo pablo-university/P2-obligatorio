@@ -4,23 +4,6 @@ include_once __DIR__ . '/../../connectors/connection.php';
 
 
 
-// $constructor_get_band = function () use ($conn) {
-//     $query = "
-//     SELECT *
-//     FROM band
-//     ";
-
-//     $res = $conn->query($query);
-
-
-//     if ($res->num_rows < 1) :
-//         return null;
-//     else :
-//         return $res;
-//     endif;
-// };
-
-
 class Mi
 {
 
@@ -33,48 +16,10 @@ class Mi
     ) {
     }
 
-    // Get bands
-    public function get_bands()
+    public function get_all_products()
     {
         $query = "
         SELECT *
-        FROM band
-        ";
-
-        // aca piensa que $conn es null pero se lo paso en el constructor
-        $res = $this->conn->query($query);
-
-        if ($res->num_rows < 1) :
-            return null;
-        else :
-            // var_dump($res);
-            return $res;
-        endif;
-    }
-
-    // Get brands
-    public function get_brands()
-    {
-        $query = "
-        SELECT *
-        FROM brand
-        ";
-
-        $res = $this->conn->query($query);
-
-        if ($res->num_rows < 1) :
-            return null;
-        else :
-            // var_dump($res);
-            return $res;
-        endif;
-    }
-
-    // Trae cases
-    public function get_cases()
-    {
-        $query = "
-        SELECT DISTINCT products.case
         FROM products
         ";
 
@@ -83,17 +28,16 @@ class Mi
         if ($res->num_rows < 1) :
             return null;
         else :
-            // var_dump($res);
             return $res;
         endif;
     }
 
-    // Trae colors
-    public function get_colors()
+    // trae propiedades, hay que especificarle tabla y columna
+    public function get_prop($table, $column)
     {
         $query = "
-        SELECT *
-        FROM color
+        SELECT DISTINCT $table.$column
+        FROM $table
         ";
 
         $res = $this->conn->query($query);
@@ -106,59 +50,6 @@ class Mi
         endif;
     }
 
-    // Get display type
-    public function get_display_types()
-    {
-        $query = "
-        SELECT *
-        FROM display_type
-        ";
-
-        $res = $this->conn->query($query);
-
-        if ($res->num_rows < 1) :
-            return null;
-        else :
-            // var_dump($res);
-            return $res;
-        endif;
-    }
-
-    // Get moments
-    public function get_moments()
-    {
-        $query = "
-        SELECT * 
-        FROM moment
-        ";
-
-        $res = $this->conn->query($query);
-
-        if ($res->num_rows < 1) :
-            return null;
-        else :
-            // var_dump($res);
-            return $res;
-        endif;
-    }
-
-    // Get moments
-    public function get_user_types()
-    {
-        $query = "
-        SELECT *
-        FROM user_type
-        ";
-
-        $res = $this->conn->query($query);
-
-        if ($res->num_rows < 1) :
-            return null;
-        else :
-            // var_dump($res);
-            return $res;
-        endif;
-    }
 
     // count_total_value (para index top, saber total valores en sale etc...)
     public function count_value_in_true($table, $column)
@@ -179,22 +70,13 @@ class Mi
         endif;
     }
 }
+// get_all_products
+$get_all_products = new Mi($conn);
 
 // Instancia para traer todas las propiedades
 $class_get_props = new Mi($conn);
-// $class_get_props->get_bands();
-// echo "<hr>";
-// $class_get_props->get_brands();
-// echo "<hr>";
-// $class_get_props->get_cases();
-// echo "<hr>";
-// $class_get_props->get_colors();
-// echo "<hr>";
-// $class_get_props->get_display_types();
-// echo "<hr>";
-// $class_get_props->get_moments();
-// echo "<hr>";
-// $class_get_props->get_user_type();
-// -------------------------
 
+// instancia para contar valores de cantidad envio gratis en sale etc
 $count_value_in_true = new Mi($conn);
+
+

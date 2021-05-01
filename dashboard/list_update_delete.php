@@ -5,36 +5,36 @@
 
 
 <?php $content_dashboard = function (): void { ?>
-   <?php include_once __DIR__ . '/controllers/get_all_products.php'; ?>
 
+   <?php include_once __DIR__ . '/controllers/class_get_props.php'; ?>
 
    <?php header_content('Listado, actualización y eliminación de contenido'); ?>
 
-   <table class="table table-striped table-hover">
+   <form action="./list_update_delete.php">
 
-      <!-- OBTENGO PRODUCTOS -->
-      <?php $res_all_products = $get_all_products(); ?>
+      <table class="table table-striped table-hover">
+
+         <!-- OBTENGO PRODUCTOS -->
+         <?php $res_all_products = $get_all_products->get_all_products(); ?>
+
+         <thead>
+            <tr>
+               <th>Titulo</th>
+               <th>Marca</th>
+               <th>case</th>
+               <th>display</th>
+               <th>momento</th>
+               <th>precio</th>
+               <th>stock</th>
+               <th>Tipo de usuario</th>
+               <th>Peso</th>
+               <th>Actualizar</th>
+               <th>Eliminar</th>
+            </tr>
+         </thead>
+         <tbody>
 
 
-      <thead>
-         <tr>
-            <th>Titulo</th>
-            <th>Marca</th>
-            <th>case</th>
-            <th>display</th>
-            <th>momento</th>
-            <th>precio</th>
-            <th>stock</th>
-            <th>Tipo de usuario</th>
-            <th>Peso</th>
-            <th>Actualizar</th>
-            <th>Eliminar</th>
-         </tr>
-      </thead>
-      <tbody>
-
-         <form action="./list_update_delete.php">
-            <p>peep</p>
             <!-- PINTO PRODUCTOS -->
             <?php while ($data = $res_all_products->fetch_object()) { ?>
 
@@ -73,17 +73,16 @@
             <?php } ?>
 
 
-            <!-- AQUI BTN ELIMINAR -->
-         </form>
 
+         </tbody>
+      </table>
 
-      </tbody>
-   </table>
+      <!-- ENVIA PARA ELIMINAR -->
+      <div class="d-flex justify-content-end">
+         <button title="eliminar" type="submit" class="btn btn-primary mb-3">ELIMINAR</button>
+      </div>
 
-   <!-- ENVIA PARA ELIMINAR -->
-   <div class="d-flex justify-content-end">
-      <button title="Actualizar" type="submit" class="btn btn-primary mb-3">ELIMINAR</button>
-   </div>
+   </form>
 
 
 

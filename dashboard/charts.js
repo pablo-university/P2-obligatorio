@@ -26,9 +26,9 @@ const fetchConfig = {
       label: 'My First Dataset',
       data: response.data,
       backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(75, 192, 192)',
-        'rgb(255, 205, 86)',
+        'rgb(200, 192, 255)',
+        'rgb(255, 150, 200)',
+        'rgb(255, 100, 150)',
         'rgb(201, 203, 207)'
       ]
     }]
@@ -81,8 +81,8 @@ const fetchConfig = {
       {
         label: 'Tipo de usuario',
         data: response.data,
-        borderColor: 'rgb(200, 60, 100)',
-        backgroundColor: 'rgb(200, 60, 100, .8)',
+        borderColor: 'rgb(0, 0, 0, .6)',
+        backgroundColor: 'rgb(255, 150, 200)',
         fill: true// relleno?
       }
     ]
@@ -129,7 +129,7 @@ const fetchConfig = {
     labels: response.labels,
     datasets: [{
       label: 'Marcas (cantidad por marca)',
-      backgroundColor: 'rgb(255, 100, 130, .70)',
+      backgroundColor: 'rgb(255, 100, 150)',
       borderColor: 'rgb(255, 99, 132)',
       data: response.data,
     }]

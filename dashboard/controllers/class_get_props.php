@@ -160,11 +160,13 @@ class Mi
         endif;
     }
 
-    // count_total_value (para index saber valores en sale etc...)
-    public function count_total_value($value){
+    // count_total_value (para index top, saber total valores en sale etc...)
+    public function count_value_in_true($table, $column)
+    {
         $query = "
-        SELECT COUNT($value) AS res
-        FROM user_type
+        SELECT COUNT($column) AS res
+        FROM $table
+        WHERE $column IS TRUE
         ";
 
         $res = $this->conn->query($query);
@@ -176,9 +178,9 @@ class Mi
             return $res;
         endif;
     }
-    
 }
 
+// Instancia para traer todas las propiedades
 $class_get_props = new Mi($conn);
 // $class_get_props->get_bands();
 // echo "<hr>";
@@ -193,3 +195,6 @@ $class_get_props = new Mi($conn);
 // $class_get_props->get_moments();
 // echo "<hr>";
 // $class_get_props->get_user_type();
+// -------------------------
+
+$count_value_in_true = new Mi($conn);

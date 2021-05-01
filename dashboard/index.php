@@ -10,20 +10,7 @@
   <?php header_content('Dashboard') ?>
 
   <!-- CARDS DE NIEVL SUPERIOR -->
-
-  <div class="row row-cols-lg-4 g-2">
-    <?php for ($i = 0; $i < 4; $i++) {   ?>
-      <div class="col">
-        <div class="card border-0 shadow-sm mb-3 hover-shadow-lg" style="max-width: 18rem;">
-          <div class="card-header">Headder</div>
-          <div class="card-body text-dark">
-            <p class="card-text fw-light mb-2"> of the card's content.</p>
-            <h2 class="card-title display-6 fw-bold">Dark card title</h2>
-          </div>
-        </div>
-      </div>
-    <?php } ?>
-  </div>
+ <?php include_once __DIR__.'/components/index_card_top.php';?>
 
   <?php
   // inicio mis objetos

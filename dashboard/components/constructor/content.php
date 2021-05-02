@@ -14,7 +14,7 @@ $res_user_types = $class_get_props->get_prop('user_type','user_type');
 <div class="mt-5 mb-5">
     <h3 class="p-3">Ingreso de productos</h3>
 
-    <form action="./constructor.php" class="row row-cols-sm-2">
+    <form action="./constructor.php" enctype="multipart/form-data" method="POST" class="row row-cols-sm-2">
 
 
         <div>
@@ -140,7 +140,7 @@ $res_user_types = $class_get_props->get_prop('user_type','user_type');
             <!-- image -->
             <div class="mb-3">
                 <label for="formFileSm" class="form-label">Ingresa imagen</label>
-                <input class="form-control form-control-md" id="formFileSm" type="file">
+                <input type="file" class="form-control form-control-md" name="image" id="formFileSm" >
             </div>
 
             <div class="d-grid justify-content-end">

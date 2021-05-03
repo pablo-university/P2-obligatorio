@@ -21,7 +21,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
             <!-- title -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="title" id="floatingInputx" placeholder="name@example.com">
+                <input type="text" class="form-control" name="title" id="floatingInputx" placeholder="name@example.com" value="_prueba_title">
                 <label for="floatingInputx">Ingresa titulo de producto</label>
             </div>
 
@@ -98,13 +98,13 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
             <!-- sale -->
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" name="sale" id="flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" name="sale" value="1" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">En sale</label>
             </div>
 
             <!-- shipping -->
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" name="shipping" id="flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" name="shipping" value="1" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Envío gratis</label>
             </div>
 
@@ -116,7 +116,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
             <!-- submersible -->
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" name="submersible" id="flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" name="submersible" value="1" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Sumergible</label>
             </div>
 
@@ -140,7 +140,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
             <!-- image -->
             <div class="mb-3">
                 <label for="formFileSm" class="form-label">Ingresa imagen</label>
-                <input type="file" class="form-control form-control-md" name="image[]" multiple id="formFileSm">
+                <input type="file" class="form-control form-control-md" name="image[]" multiple id="formFileSm" >
             </div>
             
 

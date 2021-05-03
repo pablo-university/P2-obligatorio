@@ -53,8 +53,9 @@ class Mi
     public function get_prop($table, $column)
     {
         $query = "
-        SELECT DISTINCT $table.$column
+        SELECT DISTINCT $table.$column, _id
         FROM $table
+        GROUP BY ($table.$column)
         ";
 
         $res = $this->conn->query($query);

@@ -1,12 +1,46 @@
 <?php
-// generar id
-// https://www.w3schools.com/php/func_misc_uniqid.asp
+include_once __DIR__ . '/../../connectors/connection.php';
 // aqui en este php estaría agregando a la base de datos
 
-echo '<pre>' . var_export($_FILES['image'], true) . '</pre>';
+// echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
 
-// ----------------
+function set_product($conn)
+{
+    echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
 
+    if (!isset($_REQUEST)) {
+        return 'request isn´t setted';
+    } else {
+        $to_insert = [];
+        $insert_value = [];
+
+        // obtener key value
+        foreach ($_REQUEST as $key => $value) {
+            if (!str_contains($key, 'product_band')) {
+                array_push($to_insert, 'products.'.$key);
+                array_push($insert_value, "'$value'");
+            }
+        }
+
+        $to_insert = implode(', ', $to_insert);
+        $insert_value = implode(', ', $insert_value);
+
+        // create query
+        $query = "
+        INSERT INTO products ($to_insert)
+        VALUES ($insert_value);
+        ";
+
+        echo "$query";
+
+        if (!$conn->query($query)) {
+            return '>>error en la query';
+        } else {
+            return '>>query correcta, datos ingresados!';
+        }
+    }
+}
+echo set_product($conn);
 
 function upload_image()
 {
@@ -36,7 +70,7 @@ function upload_image()
         // target path
         $target_path = __DIR__ . '/../../assets/img/products/test/';
         // echo $target_path;
-        
+
 
         // check variable de control
         if ($upload_control) {
@@ -44,12 +78,11 @@ function upload_image()
             foreach ($_FILES['image']['tmp_name'] as $key => $value) {
 
                 $target_path = $target_path . uniqid() . '.jpg';
-                
-            
+
+
                 if (!move_uploaded_file($value, $target_path)) {
                     return "Error al subir el archivo<br>";
                 }
-
             }
 
             return "Ha sido subido satisfactoriamente<br>";
@@ -59,4 +92,4 @@ function upload_image()
     }
 }
 
-echo upload_image();
+// echo upload_image();

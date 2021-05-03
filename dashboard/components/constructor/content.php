@@ -1,13 +1,13 @@
 <?php include_once __DIR__ . '/../../controllers/class_get_props.php'; ?>
 <?php
 ini_set("default_charset", "UTF-8");
-$res_bands = $class_get_props->get_prop('band','band');
-$res_brands = $class_get_props->get_prop('brand','brand');
-$res_cases = $class_get_props->get_prop('products','case');
-$res_colors = $class_get_props->get_prop('color','color');
-$res_display_types = $class_get_props->get_prop('display_type','display_type');
-$res_moments = $class_get_props->get_prop('moment','moment');
-$res_user_types = $class_get_props->get_prop('user_type','user_type');
+$res_bands = $class_get_props->get_prop('band', 'band');
+$res_brands = $class_get_props->get_prop('brand', 'brand');
+$res_cases = $class_get_props->get_prop('products', 'case');
+$res_colors = $class_get_props->get_prop('color', 'color');
+$res_display_types = $class_get_props->get_prop('display_type', 'display_type');
+$res_moments = $class_get_props->get_prop('moment', 'moment');
+$res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
 ?>
 
@@ -59,12 +59,12 @@ $res_user_types = $class_get_props->get_prop('user_type','user_type');
 
             <!-- description -->
             <div class="form-floating mb-3">
-                <textarea  class="form-control"  name='description' id="floatingTextarea2" placeholder="Leave a comment here" style="height: 100px"></textarea>
+                <textarea class="form-control" name='description' id="floatingTextarea2" placeholder="Leave a comment here" style="height: 100px"></textarea>
                 <label for="floatingTextarea2">Descripción</label>
             </div>
 
             <!-- display_type -->
-            <select  class="form-select form-select-md mb-3" name="display_type" aria-label=".form-select-lg example">
+            <select class="form-select form-select-md mb-3" name="display_type" aria-label=".form-select-lg example">
                 <option selected disabled>Tipo de display</option>
                 <?php while ($data = $res_display_types->fetch_object()) { ?>
                     <option value="<?= $data->display_type ?>"><?= $data->display_type ?></option>
@@ -98,13 +98,13 @@ $res_user_types = $class_get_props->get_prop('user_type','user_type');
 
             <!-- sale -->
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" name="sale"  id="flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" name="sale" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">En sale</label>
             </div>
 
             <!-- shipping -->
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" name="shipping"  id="flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" name="shipping" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Envío gratis</label>
             </div>
 
@@ -127,7 +127,7 @@ $res_user_types = $class_get_props->get_prop('user_type','user_type');
                 <?php while ($data = $res_user_types->fetch_object()) { ?>
                     <option value="<?= $data->user_type ?>"><?= $data->user_type ?></option>
                 <?php } ?>
-               
+
             </select>
 
             <!-- weight -->
@@ -140,8 +140,9 @@ $res_user_types = $class_get_props->get_prop('user_type','user_type');
             <!-- image -->
             <div class="mb-3">
                 <label for="formFileSm" class="form-label">Ingresa imagen</label>
-                <input type="file" class="form-control form-control-md" name="image" id="formFileSm" >
+                <input type="file" class="form-control form-control-md" name="image[]" multiple id="formFileSm">
             </div>
+            
 
             <div class="d-grid justify-content-end">
                 <button type="submit" class="btn btn-primary">GUARDAR</button>
@@ -153,4 +154,4 @@ $res_user_types = $class_get_props->get_prop('user_type','user_type');
     </form>
 </div>
 
-<?php include_once __DIR__.'/../../controllers/add_new_product.php';?>
+<?php include_once __DIR__ . '/../../controllers/add_new_product.php'; ?>

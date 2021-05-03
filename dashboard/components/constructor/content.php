@@ -26,7 +26,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
             </div>
 
             <!-- band -->
-            <select class="form-select form-select-md mb-3" name="product_band" aria-label=".form-select-lg example">
+            <select class="form-select form-select-md mb-3" name="band" aria-label=".form-select-lg example">
                 <option selected disabled>Seleciona una banda para el reloj</option>
                 <?php while ($data = $res_bands->fetch_object()) { ?>
                     <option value="<?= $data->_id ?>"><?= $data->band ?></option>

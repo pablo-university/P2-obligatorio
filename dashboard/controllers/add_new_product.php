@@ -2,12 +2,31 @@
 include_once __DIR__ . '/../../connectors/connection.php';
 // aqui en este php estaría agregando a la base de datos
 
-// echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
+echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
 
+// set product band
+function set_product_band($conn, $valor)
+{
+    $query = "
+    INSERT INTO product_band (id_product, id_band)
+    VALUES ('$valor', '$_REQUEST[band]');
+    ";
+
+    if (!$conn->query($query)) {
+        return ">>error en set_product_band::<br>$query";
+    } else {
+        return ">>set_product_band correcta::<br>$query";
+    }
+}
+
+function set_image($conn, $_id_product)  {
+   /*  realizar una inserción en la tabla de imágenes
+    con el id de producto correspondiente */
+}
+
+// set product
 function set_product($conn)
 {
-    echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
-
     if (!isset($_REQUEST)) {
         return 'request isn´t setted';
     } else {
@@ -16,8 +35,9 @@ function set_product($conn)
 
         // obtener key value
         foreach ($_REQUEST as $key => $value) {
-            if (!str_contains($key, 'product_band')) {
-                array_push($to_insert, 'products.'.$key);
+            //no proceso esto ya que lo hago en set_product_band
+            if (!str_contains($key, 'band')) {
+                array_push($to_insert, 'products.' . $key);
                 array_push($insert_value, "'$value'");
             }
         }
@@ -31,17 +51,21 @@ function set_product($conn)
         VALUES ($insert_value);
         ";
 
-        echo "$query";
+        echo "Query:: $query<br>";
 
-        if (!$conn->query($query)) {
+        // inserto datos
+        if (!$conn->query($query)) {//$conn->query($query)
             return '>>error en la query';
         } else {
+            // obtengo ultimo _id y lo paso a set_product_band
+            echo set_product_band($conn, $conn->insert_id);
             return '>>query correcta, datos ingresados!';
         }
     }
 }
-echo set_product($conn);
+// echo set_product($conn);
 
+// upload image
 function upload_image()
 {
     // si la imagen existe

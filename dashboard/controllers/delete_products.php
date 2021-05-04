@@ -1,26 +1,46 @@
-<?php 
-include_once __DIR__.'/../../connectors/connection.php';
+<p>
+    <?php
+    include_once __DIR__ . '/../../connectors/connection.php';
 
-function delete_products($_id) {
-global $conn;
 
-    $query = "
-        DELETE
-        FROM products
-        WHERE products._id = $_id
-        ";
+    if (!empty($_REQUEST['delete'])) {
+        $id = 324;
+        /* 
+        para cda id deberé recorrerlos y borrar con las
+        siguientes querys */
 
-        // aca piensa que $conn es null pero se lo paso en el constructor
-        $res = $conn->query($query);
+        foreach ($_REQUEST['delete'] as $key => $id) {
+            echo "la id a borrar es: $id <br>";
 
-        if ($res->num_rows < 1) :
-            return null;
-        else :
-            
-            return $res;
-        endif;
-}
+            $query_products = "
+            DELETE
+            FROM products
+            WHERE products._id = $id
+            ";
 
-?>
+            $query_product_band = "
+            DELETE
+            FROM product_band
+            WHERE product_band.id_product = $id
+            ";
+
+            $query_images = "
+            DELETE
+            FROM images
+            WHERE images.id_product = $id
+            ";
+
+            $conn->query($query_product_band);
+            $conn->query($query_images);                                    
+            $conn->query($query_products);
+        }
+
+        echo ">>se borraron los datos";   
+    }
+
+
+
+    ?>
+</p>
 
 <!-- eliminar producto y sus relaciones dentro de las tablas -->

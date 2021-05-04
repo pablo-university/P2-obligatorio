@@ -10,7 +10,7 @@
     <?php header_content('Gestor de contenidos')?>
 
 
-    <?php include_once __DIR__.'/components/constructor/content.php';?>
+    <?php include_once __DIR__.'/components/constructor_content.php';?>
 
 
 <?php } ?>

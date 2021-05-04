@@ -1,4 +1,4 @@
-<?php include_once __DIR__ . '/../../controllers/class_get_props.php'; ?>
+<?php include_once __DIR__ . '/../controllers/class_get_props.php'; ?>
 <?php
 ini_set("default_charset", "UTF-8");
 $res_bands = $class_get_props->get_prop('band', 'band');
@@ -164,4 +164,4 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
     </form>
 </div>
 
-<?php include_once __DIR__ . '/../../controllers/add_new_product.php'; ?>
+<?php include_once __DIR__ . '/../controllers/add_new_product.php'; ?>

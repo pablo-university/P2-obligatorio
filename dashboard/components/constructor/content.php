@@ -21,7 +21,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
             <!-- title -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="title" id="floatingInputx" placeholder="name@example.com" value="_prueba_title">
+                <input type="text" class="form-control" name="title" id="floatingInputx" placeholder="name@example.com" required>
                 <label for="floatingInputx">Ingresa titulo de producto</label>
             </div>
 

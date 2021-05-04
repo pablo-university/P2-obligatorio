@@ -27,7 +27,7 @@ class Add_new_product
     }
 
     // set product band
-    protected function set_product_band()
+    public function set_product_band()
     {
         // si funciona puedo tomar mi variable global de objeto last_id_inserted
         $id_inserted = $this->conn->insert_id;
@@ -40,9 +40,9 @@ class Add_new_product
         ";
 
         if (!$this->conn->query($query)) {
-            return ">>error en set_product_band::<br>";
+            return '>>error en set_product_band<br>';
         } else {
-            return ">>set_product_band correcta::<br>";
+            return '>>set_product_band correcta<br>';
         }
     }
 
@@ -67,59 +67,34 @@ class Add_new_product
         // si la imagen existe
         if (isset($_FILES['image'])) {
 
-            $upload_control = true;
-            $msg = '';
-
-            // type control
-            foreach ($_FILES['image']['type'] as $key => $value) {
-                if (!($value == "image/jpeg")) {
-                    $msg = "Tus archivos tiene que ser jpg.<BR>";
-                    $upload_control = false;
-                }
-            }
-            // size control
-            foreach ($_FILES['image']['size'] as $key => $value) {
-                if (($value > 5242880)) {
-                    $msg = $msg . "Un archivo es mayor que 5mb<BR>";
-                    $upload_control = false;
-                }
-            }
-
             // target path
             $target_path = __DIR__ . '/../../assets/img/products/';
-            // echo $target_path;
 
-            // check variable de control
-            if ($upload_control) {
+            foreach ($_FILES['image']['tmp_name'] as $key => $value) {
 
-                foreach ($_FILES['image']['tmp_name'] as $key => $value) {
+                $name = uniqid() . '.jpg';
+                $target_path = $target_path . $name;
 
-                    $name = uniqid() . '.jpg';
-                    $target_path = $target_path . $name;
-
-                    // mover archivo a directorio
-                    if (!move_uploaded_file($value, $target_path)) {
-                        return "Error al subir al guardar archivo<br>";
-                    }
-
-                    // cada que guarde inserto en sql
-                    $msg .= $this->set_image($name);
+                // mover archivo a directorio
+                if (!move_uploaded_file($value, $target_path)) {
+                    return "Error al subir al guardar archivo<br>";
                 }
-                // tomo mensajes de set_image + imagen subida correctamente
-                $msg .= ">>upload_image correcta::<br>";
-                return $msg;
-            } else {
-                return $msg;
+
+                // cada que guarde inserto relacion product_band
+                $this->set_image($name);
             }
+
+            // para debuguear
+            return '>>imagenes subidas<br>';
         }
     }
 
     // set product
     public function set_product()
     {
-        if (!isset($_REQUEST)) {
-            return 'request isn´t setted';
-        } else {
+        
+        if (!empty($_REQUEST)) {
+
             $to_insert = [];
             $insert_value = [];
 
@@ -143,37 +118,24 @@ class Add_new_product
 
             // inserto datos
             if (!$this->conn->query($query)) { //$this->conn->query($query)
-                return '>>error en la query';
+                return 'error al guardar';
             } else {
-                // AL INSERTAR PRODUCTO SE DISPARAN LAS FUNCIONES DE RELACIONES
-
                 // obtengo ultimo _id en mi propiedad de objeto
                 $this->last_id_inserted = $this->conn->insert_id;
 
-                $set_product_band = $this->set_product_band();
-                $upload_image = $this->upload_image();
+                // seteo la banda
+                $this->set_product_band();
+                // guardo imagen y seteo la relación (bucle dentro de imagen)
+                $this->upload_image();
 
-                return "
-                $set_product_band
-                $upload_image
-                >>query correcta, datos ingresados!
-                ";
+                return 'Datos guardados!';
             }
         }
     }
 }
 
-
 $prueba = new Add_new_product($conn);
+
+echo $prueba->set_product();
+
 ?>
-
-
-
-<?php $res = $prueba->set_product(); ?>
-
-<!-- para pruebas! -->
-<?= $res ?>
-<!-- ------ -->
-
-
-<?= (isset($res)) ? "Los datos fueron guardados!" : 'algo salio mal =(' ;?>

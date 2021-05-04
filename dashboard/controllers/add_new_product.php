@@ -32,15 +32,17 @@ class Add_new_product
         // si funciona puedo tomar mi variable global de objeto last_id_inserted
         $id_inserted = $this->conn->insert_id;
 
+        // cuando pueda tener multiples bandas deberia recorrer
+        // el request[band] y obtener las bandas asociadas
         $query = "
         INSERT INTO product_band (id_product, id_band)
         VALUES ('$id_inserted', '$_REQUEST[band]');
         ";
 
         if (!$this->conn->query($query)) {
-            return ">>error en set_product_band::<br>$query";
+            return ">>error en set_product_band::<br>";
         } else {
-            return ">>set_product_band correcta::<br>$query";
+            return ">>set_product_band correcta::<br>";
         }
     }
 
@@ -53,9 +55,9 @@ class Add_new_product
         VALUES ('$url', '$this->last_id_inserted', 'empty', 'empty');
         ";
         if (!$this->conn->query($query)) {
-            return ">>error en set_image::<br>$query";
+            return ">>error en set_image::<br>";
         } else {
-            return ">>set_image correcta::<br>$query";
+            return ">>set_image correcta::<br>";
         }
     }
 
@@ -66,8 +68,7 @@ class Add_new_product
         if (isset($_FILES['image'])) {
 
             $upload_control = true;
-            $msg = 'todo ok';
-
+            $msg = '';
 
             // type control
             foreach ($_FILES['image']['type'] as $key => $value) {
@@ -76,7 +77,6 @@ class Add_new_product
                     $upload_control = false;
                 }
             }
-
             // size control
             foreach ($_FILES['image']['size'] as $key => $value) {
                 if (($value > 5242880)) {
@@ -86,7 +86,7 @@ class Add_new_product
             }
 
             // target path
-            $target_path = __DIR__ . '/../../assets/img/products/test/';
+            $target_path = __DIR__ . '/../../assets/img/products/';
             // echo $target_path;
 
             // check variable de control
@@ -103,10 +103,11 @@ class Add_new_product
                     }
 
                     // cada que guarde inserto en sql
-                    $this->set_image($name);
+                    $msg .= $this->set_image($name);
                 }
-
-                return ">>upload_image correcta<br>";
+                // tomo mensajes de set_image + imagen subida correctamente
+                $msg .= ">>upload_image correcta::<br>";
+                return $msg;
             } else {
                 return $msg;
             }
@@ -140,22 +141,23 @@ class Add_new_product
             VALUES ($insert_value);
             ";
 
-            echo "Query:: $query<br>";
-
             // inserto datos
             if (!$this->conn->query($query)) { //$this->conn->query($query)
                 return '>>error en la query';
             } else {
-                // AL INSERTAR PRODUCTO SE DESPRENDEN LAS DEMAS
+                // AL INSERTAR PRODUCTO SE DISPARAN LAS FUNCIONES DE RELACIONES
 
-                // obtengo ultimo _id y lo paso a set_product_band
+                // obtengo ultimo _id en mi propiedad de objeto
                 $this->last_id_inserted = $this->conn->insert_id;
 
-                echo $this->set_product_band();
-                // aqui ejecutar guardado de imagen
-                echo $this->upload_image();
+                $set_product_band = $this->set_product_band();
+                $upload_image = $this->upload_image();
 
-                return '>>query correcta, datos ingresados!';
+                return "
+                $set_product_band
+                $upload_image
+                >>query correcta, datos ingresados!
+                ";
             }
         }
     }
@@ -163,4 +165,15 @@ class Add_new_product
 
 
 $prueba = new Add_new_product($conn);
-echo $prueba->set_product();
+?>
+
+
+
+<?php $res = $prueba->set_product(); ?>
+
+<!-- para pruebas! -->
+<?= $res ?>
+<!-- ------ -->
+
+
+<?= (isset($res)) ? "Los datos fueron guardados!" : 'algo salio mal =(' ;?>

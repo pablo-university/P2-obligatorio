@@ -33,6 +33,16 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
                 <?php } ?>
             </select>
 
+            <!-- para cuando lo haga con multiples bandas -->
+            <!-- <?php while ($data = $res_bands->fetch_object()) { ?>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="band[]" value="<?= $data->_id ?>" id="<?= $data->band ?>">
+                    <label class="form-check-label" for="<?= $data->band ?>">
+                        <?= $data->band ?>
+                    </label>
+                </div>
+            <?php } ?> -->
+
             <!-- brand -->
             <select class="form-select form-select-md mb-3" name="brand" aria-label=".form-select-lg example">
                 <option selected disabled>Marca</option>
@@ -140,9 +150,9 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
             <!-- image -->
             <div class="mb-3">
                 <label for="formFileSm" class="form-label">Ingresa imagen</label>
-                <input type="file" class="form-control form-control-md" name="image[]" multiple id="formFileSm" >
+                <input type="file" class="form-control form-control-md" name="image[]" multiple id="formFileSm">
             </div>
-            
+
 
             <div class="d-grid justify-content-end">
                 <button type="submit" class="btn btn-primary">GUARDAR</button>

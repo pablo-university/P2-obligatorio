@@ -21,6 +21,11 @@
         $res_moment = $conn->query($query_moment);
         $res_brand = $conn->query($query_brand);
 
+        // evalúa si el valor actual del recorrido está en la query, si está retorna checked para asignar al input
+        $is_checked = fn ($key, $value) => (isset($_REQUEST[$key])) ?
+            ((in_array($value, $_REQUEST[$key])) ? 'checked' : '') :
+            '';
+
         ?>
 
         <!-- color -->
@@ -30,9 +35,8 @@
                 <?php echo "no result"; ?>
             <?php } else { ?>
                 <?php while ($data = mysqli_fetch_object($res_color)) : ?>
-                    <?php $is_checked = (in_array($data->color, $_REQUEST['color'])) ? 'checked' : 'unchecked'; ?>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name='color[]' value="<?= $data->color ?>" id="<?= $data->color ?>" <?= $is_checked ?>>
+                        <input class="form-check-input" type="checkbox" name='color[]' value="<?= $data->color ?>" id="<?= $data->color ?>" <?= $is_checked('color', $data->color); ?>>
                         <label class="form-check-label" for="<?= $data->color ?>">
                             <?= $data->color ?>
                         </label>
@@ -49,7 +53,7 @@
             <?php } else { ?>
                 <?php while ($data = mysqli_fetch_object($res_moment)) : ?>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name='moment[]' value="<?= $data->moment ?>" id="<?= $data->moment ?>">
+                        <input class="form-check-input" type="checkbox" name='moment[]' value="<?= $data->moment ?>" id="<?= $data->moment ?>" <?= $is_checked('moment', $data->moment); ?>>
                         <label class="form-check-label" for="<?= $data->moment ?>">
                             <?= $data->moment ?>
                         </label>
@@ -66,7 +70,7 @@
             <?php } else { ?>
                 <?php while ($data = mysqli_fetch_object($res_brand)) : ?>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name='brand[]' value="<?= $data->brand ?>" id="<?= $data->brand ?>">
+                        <input class="form-check-input" type="checkbox" name='brand[]' value="<?= $data->brand ?>" id="<?= $data->brand ?>" <?= $is_checked('brand', $data->brand); ?>>
                         <label class="form-check-label" for="<?= $data->brand ?>">
                             <?= $data->brand ?>
                         </label>
@@ -80,7 +84,7 @@
             <!-- Envío -->
             <h4>Envío</h4>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="shipping[]" value="1" id="shipping">
+                <input class="form-check-input" type="checkbox" name="shipping[]" value="1" id="shipping" <?= $is_checked('shipping', 1); ?>>
                 <label class="form-check-label" for="shipping">
                     Envío
                 </label>
@@ -91,7 +95,7 @@
             <!-- Sale -->
             <h4>Sale</h4>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="sale[]" value="1" id="sale">
+                <input class="form-check-input" type="checkbox" name="sale[]" value="1" id="sale" <?= $is_checked('sale', 1); ?>>
                 <label class="form-check-label" for="sale">
                     Sale
                 </label>

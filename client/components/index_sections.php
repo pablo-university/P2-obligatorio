@@ -147,3 +147,7 @@
     </div>
 </section>
 <!-- fin de card_product -->
+
+
+<!-- PRODUCTOS RANDOMICOS -->
+<?php include_once __DIR__.'/product_rand.php';?>

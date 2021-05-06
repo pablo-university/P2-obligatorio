@@ -2,3 +2,10 @@ $enable-negative-margins: true;
 $font-family-base: 'Roboto Mono', monospace;
 
 $primary: rgb(78, 211, 235);
+
+
+// scss-docs-start border-radius-variables
+$border-radius:               0;
+/* $border-radius-sm:            .2rem !default;
+$border-radius-lg:            .3rem !default;
+$border-radius-pill:          50rem !default; */

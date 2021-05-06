@@ -1,3 +1,6 @@
+// ESTE CODIGO NO SE ESTA USANDO PERO QUEDA COMO EVOLUCIÓN Y PROCESO
+// pd: deje el php al final para que recuerde que selecciono el usuario, hablo de los checked del shop
+
 if (document.querySelector(`.container-client .shop`)) {
 
     let watchShopDataLocal = localStorage.getItem('watchShopDataLocal');

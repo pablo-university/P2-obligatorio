@@ -36,11 +36,13 @@
 
 
 
-            <!-- SI PRODUCTO NO EXISTE -->
+                <!-- SI PRODUCTO NO EXISTE -->
             <?php else : ?>
                 <h3>no se otorgó _id</h3>
             <?php endif; ?>
 
+            <!-- productos randomicos -->
+            <?php include_once __DIR__ . '/components/product_rand.php'; ?>
 
         </main>
 

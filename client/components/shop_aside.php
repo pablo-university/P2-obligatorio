@@ -30,8 +30,9 @@
                 <?php echo "no result"; ?>
             <?php } else { ?>
                 <?php while ($data = mysqli_fetch_object($res_color)) : ?>
+                    <?php $is_checked = (in_array($data->color, $_REQUEST['color'])) ? 'checked' : 'unchecked'; ?>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name='color[]' value="<?= $data->color ?>" id="<?= $data->color ?>">
+                        <input class="form-check-input" type="checkbox" name='color[]' value="<?= $data->color ?>" id="<?= $data->color ?>" <?= $is_checked ?>>
                         <label class="form-check-label" for="<?= $data->color ?>">
                             <?= $data->color ?>
                         </label>

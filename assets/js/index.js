@@ -1,5 +1,5 @@
 import './nprogress.js';
-import './shopAsideUX.js';
+// import './shopAsideUX.js';
 
 
 // menu scroll

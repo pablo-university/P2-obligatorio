@@ -14,6 +14,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 <div class="mt-5 mb-5">
     <h3 class="p-3">Ingreso de productos</h3>
 
+<!-- puedo usar aca $_SERVER['PHP_SELF'] -->
     <form action="./constructor.php" enctype="multipart/form-data" method="POST" class="row row-cols-sm-2">
 
 

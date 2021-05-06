@@ -32,7 +32,7 @@
                 <div class='w-75'>
                     <figure>
                         <blockquote class="blockquote">
-                            <h2>Juega tranquilo!</h2>
+                            <h2>Jugá tranquilo!</h2>
                         </blockquote>
                         <figcaption class="blockquote-footer">
                             somos personas de confianza, seguros

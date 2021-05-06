@@ -1,6 +1,6 @@
 <?php include_once __DIR__ . '/../components/template/index.php'; ?>
 <?php include_once __DIR__ . '/components/product_card.php'; ?>
-<?php include_once __DIR__.'/controllers/shop_aside_filter.php';?>
+<?php include_once __DIR__ . '/controllers/shop_aside_filter.php'; ?>
 
 
 <?php function content()
@@ -14,7 +14,9 @@
         <?php include_once __DIR__ . '/../connectors/connection.php'; ?>
 
         <div class='container shop py-5 bg-light'>
-            <p>aqui irian las migas de pan</p>
+
+            <?php include_once __DIR__.'/components/breadcrumb.php';?>
+
             <!-- titulo y select de ordenación -->
             <div class="d-flex justify-content-between pb-4 pe-5">
                 <h1>Shop</h1>
@@ -27,7 +29,7 @@
                 </form>
                 <script>
                     const select = document.querySelector('#order-by select');
-                    select.onchange = function(e){
+                    select.onchange = function(e) {
                         console.log(select.value)
                         if (select.value == 'asc') {
                             window.location.href = './shop.php?order_asc'
@@ -67,6 +69,7 @@
                         ";
                         // matcheo vacia? search? order_by? O SINO FILTRAR!
                         $query = match (true) { //matchea con el que de true
+                            // cuando no se setea el request
                             empty($_REQUEST) => "
                                 $SELECT_FROM
                                 $JOIN_IMAGES
@@ -101,19 +104,19 @@
                                 ",
                             default => null
                         };
-
+                        // echo "$query";
                         // query con datos, consulta normal
                         if (!empty($query)) :
 
                             // hago una consulta
                             $res = mysqli_query($conn, $query);
-echo "$query";
+
                             // si la consulta no es vacia la recorro
                             if ($res->num_rows < 1) {
                                 echo "no hay productos para mostrar...";
                             } else {
                                 while ($data = mysqli_fetch_object($res)) {
-                                    echo '<pre>' . var_export($data, true) . '</pre>';
+                                    // echo '<pre>' . var_export($data, true) . '</pre>';
                                     card_product([
                                         '_id' => $data->_id,
                                         'img' => $data->url,

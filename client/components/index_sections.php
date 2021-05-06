@@ -32,15 +32,15 @@
                 <div class='w-75'>
                     <figure>
                         <blockquote class="blockquote">
-                            <h2>Jugá tranquilo!</h2>
+                            <h2>El tiempo es un amigo</h2>
                         </blockquote>
                         <figcaption class="blockquote-footer">
-                            somos personas de confianza, seguros
+                            creemos que con nuestros productos debes sentirte confiado
                         </figcaption>
                     </figure>
                     <p> Desde 1976, más de 500 millones de relojes han sido comprados y amados por personas en más de 120 países. Esta marca significa "Calidad y cantidad". Lo que significa que combinamos estos rasgos mediante la producción de relojes confiables y de calidad utilizando la artesanía japonesa en Cantidades para personas de todo el mundo.
                     </p>
-                    <a href="./shop.php" class='btn btn-outline-dark'>GO TO SHOP</a>
+                    <a href="./shop.php" class='btn btn-outline-dark'>IR AL SHOP</a>
                 </div>
             </div>
         </div>
@@ -48,26 +48,28 @@
 </section>
 
 <!-- Nuestra filosofia -->
-<section class='container bg-info py-5 text-center'>
-    <div class='p-5'></div>
-    <h3>Nuestra filosofía</h3>
-    <p class='col-xl-6 m-auto'>Nuestra misión es enriquecer la vida cotidiana de las personas en el mundo al exponerles una marca de relojes japonesa confiable y de calidad.
-        Hacemos esto ofreciendo nuestras colecciones asequibles disponibles para todos, en todas partes.</p>
-    <div class='p-5'></div>
+<section class="bg-dark text-white-50">
+    <div class='container py-5 text-center'>
+        <div class='p-5'></div>
+        <h3>Nuestra filosofía</h3>
+        <p class='col-xl-6 m-auto'>Nuestra misión es enriquecer la vida cotidiana de las personas en el mundo al exponerles una marca de relojes japonesa confiable y de calidad.
+            Hacemos esto ofreciendo nuestras colecciones asequibles disponibles para todos, en todas partes.</p>
+        <div class='p-5'></div>
+    </div>
 </section>
 
 <!-- video -->
-<section class='container-fluid bg-primary p-0'>
+<section class='container-fluid p-0'>
     <video loop autoplay class='w-100'>
         <source src="<?php echo LOCAL_HOST; ?>assets/img/show.mp4" type="video/webm">
     </video>
 </section>
 
 <!-- PRODUCTS IN SALE -->
-<?php include_once __DIR__.'/product_in_sale.php';?>
+<?php include_once __DIR__ . '/product_in_sale.php'; ?>
 
 <!-- propiedades -->
-<section class='container bg-info py-5'>
+<section class='container py-5'>
     <div class='p-5'></div>
     <h3>Características</h3>
     <!-- propiedades cards -->
@@ -110,4 +112,4 @@
 
 
 <!-- PRODUCTOS RANDOMICOS -->
-<?php include_once __DIR__.'/product_rand.php';?>
+<?php include_once __DIR__ . '/product_rand.php'; ?>

@@ -6,25 +6,25 @@ img {
     object-fit: cover;
 }
 
+// aeste afecta a todos
 .container-client {
-    // por defecto el nav es pequeño
     header nav {
-
-        // borrar esto en produccion y habilitar las lineas de abajo!!!
-        padding-top: .5rem !important;
-        padding-bottom: .5rem !important;
-        // --------------
-
-        /* padding-top: 6rem !important;
-        padding-bottom: 3rem !important; */
-        transition: .3s all 0.5s;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+}
+// solo afecta el index
+.container-client.index {
+    // por defecto el nav es gordito
+    header nav {
+        padding-top: 6rem !important;
+        padding-bottom: 3rem !important;
+        transition: 0.3s all 0.5s;
     }
     // cuando el scroll es cero engordo el nav
     header nav.scrollDown {
-        padding-top: .5rem !important;
-        padding-bottom: .5rem !important;
-        
-        
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
     }
 }
 
@@ -39,6 +39,3 @@ img {
 @include meta.load-css("hamburgers.min");
 @include meta.load-css("reset");
 @include meta.load-css("hover-shadow");
-
-
-

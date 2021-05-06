@@ -2,7 +2,7 @@
 
 <!-- contenido de client -->
 <?php $content = function () { ?>
-<div class='container-client'>
+<div class='container-client index'>
     <!-- header -->
     <?php include_once __DIR__.'/components/header.php';?>
     <!-- ----- -->

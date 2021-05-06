@@ -13,7 +13,7 @@
         <!-- CONECTION ACA PARA SHOP -->
         <?php include_once __DIR__ . '/../connectors/connection.php'; ?>
 
-        <div class='container shop py-5 bg-light'>
+        <div class='container shop py-5'>
 
             <?php include_once __DIR__.'/components/breadcrumb.php';?>
 

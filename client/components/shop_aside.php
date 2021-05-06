@@ -86,7 +86,7 @@
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="shipping[]" value="1" id="shipping" <?= $is_checked('shipping', 1); ?>>
                 <label class="form-check-label" for="shipping">
-                    Envío
+                    Gratis!
                 </label>
             </div>
         </div>
@@ -97,13 +97,17 @@
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="sale[]" value="1" id="sale" <?= $is_checked('sale', 1); ?>>
                 <label class="form-check-label" for="sale">
-                    Sale
+                    En sale
                 </label>
             </div>
         </div>
 
         <div>
-            <button class="btn btn-primary" type="submit">BUSCAR</button>
+        probar aca lo de los colores
+        </div>
+
+        <div>
+            <button class="btn btn-outline-dark" type="submit">BUSCAR</button>
         </div>
 
     </form>

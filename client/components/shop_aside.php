@@ -26,6 +26,18 @@
             ((in_array($value, $_REQUEST[$key])) ? 'checked' : '') :
             '';
 
+        // asignación de colores
+        $array_colors = [
+            '#ffe1bb',
+            'black',
+            '#fff80d',
+            '#d7d7d7',
+
+            '#86bcff',
+            '#f1b55c',
+            '#fff700',
+        ];
+
         ?>
 
         <!-- color -->
@@ -36,9 +48,10 @@
             <?php } else { ?>
                 <?php while ($data = mysqli_fetch_object($res_color)) : ?>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name='color[]' value="<?= $data->color ?>" id="<?= $data->color ?>" <?= $is_checked('color', $data->color); ?>>
+                        <input class="form-check-input" type="checkbox" name='color[]' value="<?= $data->color ?>" id="<?= $data->color ?>" <?= $is_checked('color', $data->color); ?> style="background-color:<?= $data->code ?>;" >
                         <label class="form-check-label" for="<?= $data->color ?>">
                             <?= $data->color ?>
+                            
                         </label>
                     </div>
                 <?php endwhile; ?>
@@ -102,9 +115,6 @@
             </div>
         </div>
 
-        <div>
-        probar aca lo de los colores
-        </div>
 
         <div>
             <button class="btn btn-outline-dark" type="submit">BUSCAR</button>

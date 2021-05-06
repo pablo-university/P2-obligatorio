@@ -51,7 +51,7 @@
                 <main class="col-12 col-lg-8 overflow-autox">
 
                     <!-- caja de products -->
-                    <div class='row row-cols-xxl-4 row-cols-md-2 gy-3 pb-5'>
+                    <div class='row row-cols-xl-4 row-cols-md-2 gy-3 pb-5'>
 
                         <!-- TRAE PRODUCTOS NEW -->
                         <?php

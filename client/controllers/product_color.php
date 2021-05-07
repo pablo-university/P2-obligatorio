@@ -8,13 +8,13 @@ para un color */
 $product_get_band = function ($_id) use ($conn){
 
     $query = "
-    SELECT B.band FROM products P
+    SELECT C.color FROM products P
     
-    JOIN product_band PB
-    ON P._id = PB.id_product
+    JOIN product_color PC
+    ON P._id = PC.id_product
     
-    JOIN band B
-    ON PB.id_band = B._id
+    JOIN color C
+    ON PC.id_color = C._id
     
     WHERE P._id = $_id
     ";
@@ -24,11 +24,11 @@ $product_get_band = function ($_id) use ($conn){
     if ($res->num_rows < 1) :
         return 'sin asignar';
     else :
-        $materials = [];
+        $colors = [];
         while ($data = $res->fetch_object()) {
-            array_push($materials, $data->band);
+            array_push($colors, $data->color);
         }
-        return implode(',', $materials);
+        return implode(',', $colors);
     endif;
 }
 

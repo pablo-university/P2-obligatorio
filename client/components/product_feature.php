@@ -1,7 +1,7 @@
 <?php
 
 include_once __DIR__ . '/../../connectors/connection.php';
-include_once __DIR__ . '/../controllers/product_get_band.php';
+include_once __DIR__ . '/../controllers/product_color.php';
 
 $_id = $_REQUEST['_id'];
 
@@ -77,7 +77,7 @@ endif;
     ];
     ?>
 
-<!-- recorro resultado de consulta -->
+    <!-- recorro resultado de consulta -->
     <?php foreach ($data as $key => $value) { ?>
       <?php if (!in_array($key, $no_print)) { ?>
 
@@ -111,6 +111,11 @@ endif;
 
       <?php } ?>
     <?php } ?>
+
+    <tr>
+      <th>color</th>
+      <td><?= $product_get_band($_id) ?></td>
+    </tr>
 
 
   </tbody>

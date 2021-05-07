@@ -10,25 +10,24 @@ function shop_aside_filter($card_product, $conn): void
 {
     $query = [];
     $clause_in = [];
-    $sub_clause_in = [];
+    $in_values = [];
     /*
     0) recorro el request, que contiene arrays asociativos de names
     y por cada name recorro para obtener valores (name = value)
     e irlos procesando (marque con pasos) */
     foreach ($_REQUEST as $name => $arr) {
         foreach ($arr as $value) {
-            // 1) agregar a sub_clause_in
-            array_push($sub_clause_in, "'$value'");
+            // 1) agregar a in_values
+            array_push($in_values, "'$value'");
         }
         // 2) implode con ,
-        $in_values = implode(",", $sub_clause_in);
+        $in_values = implode(",", $in_values);
 
         // 3) agrego nueva clausula IN
         array_push($clause_in, "$name IN ($in_values)");
 
         // 4) vacio in_values
-        $in_values = "";
-        $sub_clause_in = [];
+        $in_values = [];
     }
 
     // 5) por ultimo uso implode y agrego el AND

@@ -29,7 +29,7 @@
             </div>
             <!-- texto con boton -->
             <div class='flex-row m-auto'>
-                <div class='w-75'>
+                <div class='w-75 py-4'>
                     <figure>
                         <blockquote class="blockquote">
                             <h2>El tiempo es un amigo</h2>
@@ -48,7 +48,7 @@
 </section>
 
 <!-- Nuestra filosofia -->
-<section class="bg-dark text-white-50">
+<section class="bg-dark text-white">
     <div class='container py-5 text-center'>
         <div class='p-5'></div>
         <h3>Nuestra filosofía</h3>
@@ -77,8 +77,8 @@
         <div class="card">
             <img src="<?php echo LOCAL_HOST; ?>assets/img/client-card-1.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title">Incondicional</h5>
+                <p class="card-text">Dónde y cuando lo necesite con vos, es tu compañero de viajes hasta quizá para dormir, tenemos modelos resistentes al gua, puedes ver las diferentes variedades!</p>
             </div>
             <div class="card-footer">
                 <small class="text-muted"></small>
@@ -87,8 +87,8 @@
         <div class="card">
             <img src="<?php echo LOCAL_HOST; ?>assets/img/client-card-2.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <h5 class="card-title">Resistencia</h5>
+                <p class="card-text">Tu reloj debe acompañarte cada día cada momento es por eso que necesita ser resistente, golpes roces o cualquier toque debe soportarlo, puedes ver nuestros diferentes modelos!</p>
             </div>
             <div class="card-footer">
                 <small class="text-muted"></small>
@@ -97,8 +97,8 @@
         <div class="card">
             <img src="<?php echo LOCAL_HOST; ?>assets/img/client-card-3.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <h5 class="card-title">Elegante</h5>
+                <p class="card-text">No es un simple amuleto en tu muñeca y ya, debes sentirte cómodo que vaya con vos, acorde a lo que sientas, debe ser armónico y es por eso que nos encargamos de encontrar tu modelo.</p>
             </div>
             <div class="card-footer">
                 <small class="text-muted"></small>

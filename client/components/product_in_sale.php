@@ -6,7 +6,7 @@
 
     <h3>Linea en sale</h3>
 
-    <div class="row row-cols-lg-4 justify-content-evenly my-5">
+    <div class="row row-cols-lg-4 justify-content-evenly my-5 gy-3">
 
         <?php
         // creo mi query

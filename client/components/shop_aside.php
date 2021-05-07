@@ -1,7 +1,13 @@
 <?php include_once __DIR__ . '/../../connectors/connection.php'; ?>
 
 
-<aside class="col-0 col-lg-4">
+<!-- boton para ocultar aside cuando está en mobil -->
+<button class="btn btn-primary d-sm-none w-75 my-3 m-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-aside" aria-expanded="false" aria-controls="collapseExample">
+    Mostrar filtros
+</button>
+
+
+<aside class="col-0 col-lg-4 py-3 collapse" id="collapse-aside">
     <form action="" class="d-grid gap-3">
 
 
@@ -26,7 +32,7 @@
             ((in_array($value, $_REQUEST[$key])) ? 'checked' : '') :
             '';
 
-        // asignación de colores
+        /* // asignación de colores
         $array_colors = [
             '#ffe1bb',
             'black',
@@ -36,7 +42,7 @@
             '#86bcff',
             '#f1b55c',
             '#fff700',
-        ];
+        ]; */
 
         ?>
 
@@ -48,10 +54,10 @@
             <?php } else { ?>
                 <?php while ($data = mysqli_fetch_object($res_color)) : ?>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name='color[]' value="<?= $data->color ?>" id="<?= $data->color ?>" <?= $is_checked('color', $data->color); ?> style="background-color:<?= $data->code ?>;" >
+                        <input class="form-check-input" type="checkbox" name='color[]' value="<?= $data->color ?>" id="<?= $data->color ?>" <?= $is_checked('color', $data->color); ?> style="background-color:<?= $data->code ?>;">
                         <label class="form-check-label" for="<?= $data->color ?>">
                             <?= $data->color ?>
-                            
+
                         </label>
                     </div>
                 <?php endwhile; ?>

@@ -27,7 +27,7 @@ $res = $conn->query($query);
 <section class='container py-5'>
     <h3>Otros productos</h3>
 
-    <div class="row row-cols-lg-4 justify-content-evenly my-5"">
+    <div class="row row-cols-lg-4 justify-content-evenly my-5 gy-3">
     <?php
     // si la consulta no es vacia la recorro
     if ($res->num_rows < 1) {

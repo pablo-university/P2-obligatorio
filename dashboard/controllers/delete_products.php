@@ -18,11 +18,11 @@
             WHERE products._id = $id
             ";
 
-            $query_product_band = "
+          /*   $query_product_band = "
             DELETE
             FROM product_band
             WHERE product_band.id_product = $id
-            ";
+            "; */
 
             $query_images = "
             DELETE
@@ -30,7 +30,7 @@
             WHERE images.id_product = $id
             ";
 
-            $conn->query($query_product_band);
+            // $conn->query($query_product_band);
             $conn->query($query_images);                                    
             $conn->query($query_products);
         }

@@ -101,10 +101,6 @@ endif;
               echo '<td>' . ($value ? 'si' : 'no') . '</td>';
               break;
 
-            case 'band':
-              echo '<td>' . ($product_get_band($_id)) . '</td>';
-              break;
-
             default:
               echo '<td>' . ($value ? $value : 'no') . '</td>';
               break;

@@ -27,6 +27,7 @@ class Add_new_product
     }
 
     // set product band
+    // ! esta funcion quedo en desuso quiza si armo lo de la relacion de los colores la pueda volver a utilizar
     public function set_product_band()
     {
         // si funciona puedo tomar mi variable global de objeto last_id_inserted
@@ -80,7 +81,7 @@ class Add_new_product
                     return "Error al subir al guardar archivo<br>";
                 }
 
-                // cada que guarde inserto relacion product_band
+                // cada que guarde inserto relacion
                 $this->set_image($name);
             }
 
@@ -101,10 +102,10 @@ class Add_new_product
             // obtener key value
             foreach ($_REQUEST as $key => $value) {
                 //no proceso esto ya que lo hago en set_product_band
-                if (!str_contains($key, 'band')) {
+                // if (!str_contains($key, 'band')) {
                     array_push($to_insert, 'products.' . $key);
                     array_push($insert_value, "'$value'");
-                }
+                // }
             }
 
             $to_insert = implode(', ', $to_insert);
@@ -124,7 +125,7 @@ class Add_new_product
                 $this->last_id_inserted = $this->conn->insert_id;
 
                 // seteo la banda
-                $this->set_product_band();
+                // $this->set_product_band();
                 // guardo imagen y seteo la relación (bucle dentro de imagen)
                 $this->upload_image();
 

@@ -1,6 +1,10 @@
 <?php 
 include_once __DIR__.'/../../connectors/connection.php';
 
+
+/* esta funcion esta en desuso quiza pueda llegar a usarla para
+traer colores, tener varios colores para un reloj y varios relojes
+para un color */
 $product_get_band = function ($_id) use ($conn){
 
     $query = "

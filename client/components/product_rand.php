@@ -16,6 +16,7 @@ $query = "
 $SELECT_FROM
 $JOIN_IMAGES
 $WHERE
+GROUP BY (P._id)
 ORDER BY RAND()
 LIMIT 4 
 ";

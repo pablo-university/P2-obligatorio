@@ -12,7 +12,7 @@
 
     <!-- CARD -->
     <div class='col'>
-        <div class="card card--product m-auto" style="max-width: 18rem;">
+        <div class="card card--product m-auto shadow-sm border-0" style="max-width: 18rem;">
             <a href="<?php echo (!empty($content['_id']) ? "./product.php?_id=$content[_id]" : 'no encontre id'); ?>">
                 <img src="<?php echo LOCAL_HOST .'/assets/img/products/'. $content['img']; ?>" class="card-img" alt="...">
             </a>

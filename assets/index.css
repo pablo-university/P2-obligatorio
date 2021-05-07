@@ -11674,7 +11674,7 @@ $border-radius-pill:          50rem !default; */
 }
 
 .card.card--product:hover {
-  box-shadow: 0 0 20px 0 #00000047;
+  box-shadow: 0 0 20px 0 #00000047 !important;
 }
 
 /* $border-radius-sm:            .2rem !default;

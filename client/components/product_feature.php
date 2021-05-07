@@ -38,7 +38,7 @@ endif;
 </div>
 
 
-<table class="table table-striped table-hover table-light">
+<table class="table table-hover table-light">
   <!-- caption-top -->
   <caption>Lista de características</caption>
   <thead class="table-dark">

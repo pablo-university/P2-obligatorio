@@ -16,6 +16,7 @@
             INNER JOIN images I
             ON P._id = I.id_product
             WHERE sale = '1'
+            GROUP BY (P._id)
             LIMIT 4;
             ";
 
@@ -23,7 +24,7 @@
         $res = mysqli_query($conn, $query);
 
         // si la consulta no es vacia la recorro
-        if (empty($res)) {
+        if ($res->num_rows < 1) {
             echo "no hay productos para mostrar...";
         } else {
             while ($data = mysqli_fetch_object($res)) {

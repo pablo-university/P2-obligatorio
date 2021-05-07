@@ -39,12 +39,16 @@ function shop_aside_filter($card_product, $conn): void
     FROM products P
     INNER JOIN images I
     ON P._id = I.id_product
+
+    JOIN product_color PC
+    ON P._id = PC.id_product
+
     WHERE $query
     GROUP BY (P._id)
     ;
     ";
 
-    
+
     $res = mysqli_query($conn, $query);
 
 

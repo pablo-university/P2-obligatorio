@@ -113,7 +113,7 @@ endif;
     <?php } ?>
 
     <tr>
-      <th>color</th>
+      <th>color disponible</th>
       <td><?= $product_get_band($_id) ?></td>
     </tr>
 

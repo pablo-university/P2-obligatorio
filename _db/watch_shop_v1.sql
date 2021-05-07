@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 06, 2021 at 09:57 PM
+-- Generation Time: May 07, 2021 at 09:38 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -216,22 +216,27 @@ INSERT INTO `products` (`_id`, `model`, `title`, `last_modification`, `display_t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_band`
+-- Table structure for table `product_color`
 --
 
-CREATE TABLE `product_band` (
-  `_id` int(10) NOT NULL,
-  `id_product` int(10) NOT NULL,
-  `id_band` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+CREATE TABLE `product_color` (
+  `_id` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `id_color` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `product_band`
+-- Dumping data for table `product_color`
 --
 
-INSERT INTO `product_band` (`_id`, `id_product`, `id_band`) VALUES
-(1, 4, 6),
-(2, 4, 3);
+INSERT INTO `product_color` (`_id`, `id_product`, `id_color`) VALUES
+(1, 4, 1),
+(2, 4, 2),
+(3, 5, 1),
+(4, 6, 1),
+(5, 7, 1),
+(6, 9, 1),
+(7, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -308,12 +313,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`_id`);
 
 --
--- Indexes for table `product_band`
+-- Indexes for table `product_color`
 --
-ALTER TABLE `product_band`
+ALTER TABLE `product_color`
   ADD PRIMARY KEY (`_id`),
-  ADD KEY `product_band_FK` (`id_product`),
-  ADD KEY `product_band_FK_1` (`id_band`);
+  ADD KEY `product_color_FK` (`id_product`),
+  ADD KEY `product_color_FK_1` (`id_color`);
 
 --
 -- Indexes for table `user_type`
@@ -374,10 +379,10 @@ ALTER TABLE `products`
   MODIFY `_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `product_band`
+-- AUTO_INCREMENT for table `product_color`
 --
-ALTER TABLE `product_band`
-  MODIFY `_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `product_color`
+  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_type`
@@ -396,11 +401,11 @@ ALTER TABLE `images`
   ADD CONSTRAINT `images_FK` FOREIGN KEY (`id_product`) REFERENCES `products` (`_id`);
 
 --
--- Constraints for table `product_band`
+-- Constraints for table `product_color`
 --
-ALTER TABLE `product_band`
-  ADD CONSTRAINT `product_band_FK` FOREIGN KEY (`id_product`) REFERENCES `products` (`_id`),
-  ADD CONSTRAINT `product_band_FK_1` FOREIGN KEY (`id_band`) REFERENCES `band` (`_id`);
+ALTER TABLE `product_color`
+  ADD CONSTRAINT `product_color_FK` FOREIGN KEY (`id_product`) REFERENCES `products` (`_id`),
+  ADD CONSTRAINT `product_color_FK_1` FOREIGN KEY (`id_color`) REFERENCES `color` (`_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

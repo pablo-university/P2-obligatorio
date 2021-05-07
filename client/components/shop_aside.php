@@ -54,7 +54,7 @@
             <?php } else { ?>
                 <?php while ($data = mysqli_fetch_object($res_color)) : ?>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name='color[]' value="<?= $data->color ?>" id="<?= $data->color ?>" <?= $is_checked('color', $data->color); ?> style="background-color:<?= $data->code ?>;">
+                        <input class="form-check-input" type="checkbox" name='id_color[]' value="<?= $data->_id ?>" id="<?= $data->color ?>" <?= $is_checked('id_color', $data->_id); ?> style="background-color:<?= $data->code ?>;">
                         <label class="form-check-label" for="<?= $data->color ?>">
                             <?= $data->color ?>
 

@@ -21,21 +21,30 @@ endif;
 
 
 
-
-
-<h1> <?= !empty($data->title) ? $data->title : 'sin title'; ?> </h1>
-<p class="mb-5 lead">
-  <?= !empty($data->description) ? $data->description : 'sin description'; ?>
-</p>
-
-<div class="mb-5">
-  <h3 class="text-black-50 mb-1">
-    <?= !empty($data->price) ? 'Precio:' . $data->price . '$' : 'sin precio'; ?>
-  </h3>
-  <p class="lead fs-6">
-    <del><?= !empty($data->price) ? 'Precio antes:' . ($data->price * (1.2)) . '$' : 'sin precio'; ?></del>
+<hgroup>
+  <!-- titulo -->
+  <div class="d-flex justify-content-between align-items-baseline mb-4">
+    <h1> <?= !empty($data->title) ? $data->title : 'sin title'; ?> </h1>
+    <h4 class="fw-light fs-5">modelo: <?= !empty($data->model) ? $data->model : 'no especificado'; ?> </h4>
+  </div>
+  <!-- ultima modificacioon -->
+  <time class="text-black-50 fw-light mb-1 border-bottom">Última modificación: <?= !empty($data->last_modification) ? $data->last_modification : 'sin fecha'; ?></time>
+  <!-- descripcion -->
+  <p class="mb-5 lead">
+    <?= !empty($data->description) ? $data->description : 'sin description'; ?>
   </p>
-</div>
+
+  <div class="mb-5">
+    <!-- precio -->
+    <h3 class="text-black-50 mb-1">
+      <?= !empty($data->price) ? 'Precio:' . $data->price . '$' : 'sin precio'; ?>
+    </h3>
+    <!-- precio antes -->
+    <p class="lead fs-6">
+      <del><?= !empty($data->price) ? 'Precio antes:' . ($data->price * (1.2)) . '$' : 'sin precio'; ?></del>
+    </p>
+  </div>
+</hgroup>
 
 
 <table class="table table-hover table-light">
@@ -56,7 +65,9 @@ endif;
       'title',
       'description',
       'price',
-      '_id'
+      '_id',
+      'last_modification',
+      'model'
     ];
 
     $traduction = [
@@ -102,7 +113,7 @@ endif;
               break;
 
             default:
-              echo '<td>' . ($value ? $value : 'no') . '</td>';
+              echo '<td>' . ($value ? $value : '-') . '</td>';
               break;
           }
           ?>
@@ -114,7 +125,12 @@ endif;
 
     <tr>
       <th>color disponible</th>
-      <td><?= $product_get_band($_id) ?></td>
+      <td class="p-0">
+        <?php $res = $product_color($_id); ?>
+        <?php while ($data = $res->fetch_object()) { ?>
+          <i class="bi bi-circle-fill fs-3" title="<?= $data->color ?>" style="color:<?= $data->code ?>;"></i>
+        <?php } ?>
+      </td>
     </tr>
 
 
@@ -124,4 +140,4 @@ endif;
 </table>
 
 
-<a href="#" class="btn btn-outline-dark">COMPRAR1!</a>
+<a href="#" class="btn btn-outline-dark">LO QUIERO</a>

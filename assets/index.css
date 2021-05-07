@@ -12612,11 +12612,4 @@ textarea {
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.18) !important;
 }
 
-/* afecta el aside del shop, cuando es grande muestra el aside */
-@media screen and (min-width: 557px) {
-  .container-client #collapse-aside {
-    display: block;
-  }
-}
-
 /*# sourceMappingURL=index.css.map */

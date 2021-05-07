@@ -13,7 +13,8 @@
         <!-- CONECTION ACA PARA SHOP -->
         <?php include_once __DIR__ . '/../connectors/connection.php'; ?>
 
-        <div class='container shop py-5'>
+        <!-- el overflow es para contener los paddings y margen de bootstrap -->
+        <div class='container shop py-5 overflow-hidden'>
 
             <?php include_once __DIR__.'/components/breadcrumb.php';?>
 

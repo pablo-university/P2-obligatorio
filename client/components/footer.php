@@ -19,7 +19,7 @@
             <div class="mb-4 text-xl-center">
                 <h5 class="text-uppercase text-white">Redes</h5>
 
-                <ul class="list-unstyled mb-0 d-flex flex-column h-75 pt-3 justify-content-between h-75">
+                <ul class="list-unstyled d-grid gap-3 pt-3 ">
                     <li>
                         <a href="#!" class="text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">

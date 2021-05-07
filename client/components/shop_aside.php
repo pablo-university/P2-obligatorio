@@ -7,7 +7,7 @@
 </button>
 
 
-<aside class="col-0 col-lg-4 py-3 collapse" id="collapse-aside">
+<aside class="col-0 col-lg-4 py-3 collapse d-md-block" id="collapse-aside">
     <form action="" class="d-grid gap-3">
 
 

@@ -28,7 +28,7 @@
             $active = 'active';
             while ($data = $res->fetch_object()) {
                 echo "<div class='carousel-item $active'>";
-                echo "<img src=\"$_HOST/assets/img/products/$data->url\" class='d-block m-auto' alt='alt'>";
+                echo "<img src=\"$_HOST/assets/img/products/$data->url\" class='d-block m-auto w-75' alt='alt'>";
                 echo "</div>";
                 $active = '';
             }

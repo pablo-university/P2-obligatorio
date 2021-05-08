@@ -36,11 +36,12 @@
 
         ?>
 
+
         <!-- INDICADOR DE CARRUSEL SI HAY TIEMPO LO HAGO -->
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <?php for ($i = 0; $i < $res->num_rows; $i++) { ?>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?= $i ?>" class="<?= ($i < 1) ? 'active' : '' ?>" aria-current="true" aria-label="Slide <?= $i ?>"></button>
+            <?php } ?>
         </div>
 
     </div>

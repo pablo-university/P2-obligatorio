@@ -47,7 +47,13 @@ endif;
 </hgroup>
 
 
-<table class="table table-hover table-light">
+<p>
+  <button class="btn btn-outline-dark" type="button" name="hidden_button" data-bs-toggle="collapse" data-bs-target="#table-product" aria-expanded="false" aria-controls="collapseExample">
+    Catracterísticas
+  </button>
+</p>
+
+<table class="table table-hover table-light collapse" id="table-product">
   <!-- caption-top -->
   <caption>Lista de características</caption>
   <thead class="table-dark">
@@ -140,4 +146,4 @@ endif;
 </table>
 
 
-<a href="#" class="btn btn-outline-dark">LO QUIERO</a>
+<a href="#" class="btn btn-dark">LO QUIERO!</a>

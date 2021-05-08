@@ -10,7 +10,18 @@
  * si está en htdoc solo va _SERVER, si está en htdoc>pepe
  * será _SERVER/pepe/ y asi...
 **/
-define('LOCAL_HOST', "http://{$_SERVER['HTTP_HOST']}/p2/");
+// echo basename(dirname(__DIR__, 1));
 
+// antiguo
+// define('LOCAL_HOST', "http://{$_SERVER['HTTP_HOST']}/p2/");
+
+// -----new dinamyccc!!-------
+// toma su directorio abuelo (el nombre que quieras ponerle a la carpeta de proyecto)
+$dir_grandfather = basename(dirname(__DIR__, 1));
+// define localhost como: localhost:puerto/directorio_abuelo_al_actual/ 
+define('LOCAL_HOST', "http://{$_SERVER['HTTP_HOST']}/$dir_grandfather/");
+
+
+?>
 
 

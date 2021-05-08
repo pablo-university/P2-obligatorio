@@ -1,22 +1,27 @@
-<?php include_once __DIR__.'/utils/constants.php';?>
-<?php include_once __DIR__.'/components/button.php';?>
+<?php include_once __DIR__ . '/utils/constants.php'; ?>
+<?php include_once __DIR__ . '/components/button.php'; ?>
 
 <!-- ----------CONTENIDO--------------->
-<?php $content = function (){ ?>
-    <a href="client/">IR A CLIENTE</a>
-    <br/>
-    <?php button(['href'=>'./dashboard', 'content'=>'IR A DASH']); ?>
-    <?php
-        // ejemplo de clase anonima
-        $obj = new class() {
-            public $bar = 'estas en la carpeta p2, usa /client o /dashboard';
-        };
-        echo $obj->bar;
+<?php $content = function () { ?>
+    <div class="container-fluid mt-5 ms-5">
+        <h3 class="mb-5">Hola!! Bienvenid@ al proyecto</h3>
+        <pre class="fs-6 fw-lighter">
+Estás en el directorio raiz del proyecto, 
+podés usar /client para acceder al cliente o usar
+los botones que te dejo para navegar
+        </pre>
+
+
+        <a href="client/">IR A CLIENTE</a>
+        <br />
         
-     ?>
-     <br/>
+        <br />
+        
+        <?php button(['href' => './', 'content' => 'PENDIENTE']); ?>
+
+    </div>
 <?php } ?>
 <!-- ----------fin de contenido---------->
 
-<?php include_once __DIR__.'/components/template/layout.php';?>
+<?php include_once __DIR__ . '/components/template/layout.php'; ?>
 <?php layout($content); ?>

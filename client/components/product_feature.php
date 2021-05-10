@@ -2,6 +2,7 @@
 
 include_once __DIR__ . '/../../connectors/connection.php';
 include_once __DIR__ . '/../controllers/product_color.php';
+include_once __DIR__.'/../../utils/constants.php';
 
 $_id = $_REQUEST['_id'];
 
@@ -21,20 +22,25 @@ endif;
 
 
 
-<hgroup>
-  <!-- titulo -->
-  <div class="d-flex justify-content-between align-items-baseline mb-4">
+<hgroup class="d-grid gap-2">
+  <!-- titulo + modelo -->
+  <div class="d-flex justify-content-between align-items-baseline">
     <h1> <?= !empty($data->title) ? $data->title : 'sin title'; ?> </h1>
     <h4 class="fw-light fs-5">modelo: <?= !empty($data->model) ? $data->model : 'no especificado'; ?> </h4>
   </div>
-  <!-- ultima modificacioon -->
-  <time class="text-black-50 fw-light mb-1 border-bottom">Última modificación: <?= !empty($data->last_modification) ? $data->last_modification : 'sin fecha'; ?></time>
-  <!-- descripcion -->
-  <p class="mb-5 lead">
-    <?= !empty($data->description) ? $data->description : 'sin description'; ?>
-  </p>
 
-  <div class="mb-5">
+  <!-- ultima modificacion + descripcion -->
+  <div>
+    <!-- ultima modificacioon -->
+    <time class="text-black-50 fw-light border-bottom">Última modificación: <?= !empty($data->last_modification) ? $data->last_modification : 'sin fecha'; ?></time>
+    <!-- descripcion -->
+    <p class="lead">
+      <?= !empty($data->description) ? $data->description : 'sin description'; ?>
+    </p>
+  </div>
+
+  <!-- precio -->
+  <div class="">
     <!-- precio -->
     <h3 class="text-black-50 mb-1">
       <?= !empty($data->price) ? 'Precio:' . $data->price . '$' : 'sin precio'; ?>
@@ -44,6 +50,31 @@ endif;
       <del><?= !empty($data->price) ? 'Precio antes:' . ($data->price * (1.2)) . '$' : 'sin precio'; ?></del>
     </p>
   </div>
+
+<hr>
+
+  <!-- colores y marca-->
+  <div class="row row-cols-2">
+
+    <div>
+      <h3 class="mb-0">Colores</h3>
+      <p class="lead text-black-50 fs-6">colores disponible</p>
+      <p class="m-0">
+        <?php $res_color = $product_color($_id); ?>
+        <?php while ($data_color = $res_color->fetch_object()) { ?>
+          <i class="bi bi-circle-fill fs-3" title="<?= $data_color->color ?>" style="color:<?= $data_color->code ?>;"></i>
+        <?php } ?>
+      </p>
+    </div>
+
+    <div>
+      <h3 class="m-0 mb-n2">Marca</h3> 
+      <img class="w-25" src="<?= LOCAL_HOST . "assets/img/brands/" . $data->brand . '.svg'?>" alt="<?= $data->brand ?>" title="<?= $data->brand ?>"> 
+    </div>
+    
+  </div>
+
+<hr>
 </hgroup>
 
 
@@ -73,7 +104,8 @@ endif;
       'price',
       '_id',
       'last_modification',
-      'model'
+      'model',
+      'brand'
     ];
 
     $traduction = [
@@ -107,7 +139,7 @@ endif;
           switch ($key) {
 
             case 'sale':
-              echo '<td>' . ($value ? 'sale!' : 'no') . '</td>';
+              echo '<td>' . ($value ? 'en sale!' : 'no') . '</td>';
               break;
 
             case 'shipping':
@@ -128,16 +160,6 @@ endif;
 
       <?php } ?>
     <?php } ?>
-
-    <tr>
-      <th>color disponible</th>
-      <td class="p-0">
-        <?php $res = $product_color($_id); ?>
-        <?php while ($data = $res->fetch_object()) { ?>
-          <i class="bi bi-circle-fill fs-3" title="<?= $data->color ?>" style="color:<?= $data->code ?>;"></i>
-        <?php } ?>
-      </td>
-    </tr>
 
 
   </tbody>

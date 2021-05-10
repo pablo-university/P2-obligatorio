@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 07, 2021 at 10:57 PM
+-- Generation Time: May 10, 2021 at 08:43 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -95,13 +95,13 @@ CREATE TABLE `color` (
 
 INSERT INTO `color` (`_id`, `color`, `code`) VALUES
 (2, 'negro', 'black'),
-(3, 'dorado', '#e5ce4d'),
+(3, 'dorado', '#f7d100'),
 (4, 'plateado', '#808080'),
-(5, 'azul', '#3c4aba'),
-(6, 'marron', '#a15e21'),
-(9, 'rosa', '#e39d9d'),
-(10, 'verde', '#72ba3c'),
-(11, 'rojo', '#ba3c3c');
+(5, 'azul', '#6189fb'),
+(6, 'marron', '#c7905d'),
+(9, 'rosa', '#ffb2b2'),
+(10, 'verde', '#94d067'),
+(11, 'rojo', '#f36767');
 
 -- --------------------------------------------------------
 
@@ -205,8 +205,8 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`_id`, `model`, `title`, `last_modification`, `display_type`, `description`, `price`, `stock`, `band`, `case`, `color`, `user_type`, `moment`, `brand`, `submersible`, `shipping`, `weight`, `sale`) VALUES
 (4, 2136598789, '_4-m', '2021-05-07 20:34:05', 'analógico-digital', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10000, 200, 'nylon', 'cuadrado', 'negro', 'mujer', 'fashion', 'casio', 1, 1, 500, 1),
-(12, 452452, '_5-h', '2021-05-07 20:55:35', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'bage', 'hombre', 'clásico', 'kaunas', 0, 1, 0, 1),
-(13, 2343, '_6-i', '2021-05-07 20:55:35', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'bage', 'infantil', 'clásico', 'kaunas', 0, 0, 0, 1);
+(12, 452452, '_5-h', '2021-05-10 17:57:21', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'bage', 'hombre', 'clásico', 'rolex', 0, 1, 0, 1),
+(13, 2343, '_6-i', '2021-05-10 17:57:21', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'bage', 'infantil', 'clásico', 'seiko', 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 

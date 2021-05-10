@@ -73,7 +73,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  background-color: #fff;
+  background-color: rgba(115, 60, 25, 0.01);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -588,7 +588,7 @@ progress {
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #fff;
+  background-color: rgba(115, 60, 25, 0.01);
   border: 1px solid #dee2e6;
   border-radius: 0;
   max-width: 100%;
@@ -2491,10 +2491,10 @@ textarea.form-control-lg {
   outline: 0;
 }
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(78, 211, 235, 0.25);
+  box-shadow: 0 0 0 1px rgba(115, 60, 25, 0.01), 0 0 0 0.25rem rgba(78, 211, 235, 0.25);
 }
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(78, 211, 235, 0.25);
+  box-shadow: 0 0 0 1px rgba(115, 60, 25, 0.01), 0 0 0 0.25rem rgba(78, 211, 235, 0.25);
 }
 .form-range::-moz-focus-outer {
   border: 0;
@@ -3834,8 +3834,8 @@ textarea.form-control-lg {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #fff;
-  border-color: #dee2e6 #dee2e6 #fff;
+  background-color: rgba(115, 60, 25, 0.01);
+  border-color: #dee2e6 #dee2e6 rgba(115, 60, 25, 0.01);
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -4281,6 +4281,10 @@ textarea.form-control-lg {
   margin-left: -0.5rem;
   border-bottom: 0;
 }
+.card-header-tabs .nav-link.active {
+  background-color: #fff;
+  border-bottom-color: #fff;
+}
 
 .card-header-pills {
   margin-right: -0.5rem;
@@ -4366,7 +4370,7 @@ textarea.form-control-lg {
   font-size: 1rem;
   color: #212529;
   text-align: left;
-  background-color: #fff;
+  background-color: rgba(115, 60, 25, 0.01);
   border: 0;
   border-radius: 0;
   overflow-anchor: none;
@@ -4418,7 +4422,7 @@ textarea.form-control-lg {
 
 .accordion-item {
   margin-bottom: -1px;
-  background-color: #fff;
+  background-color: rgba(115, 60, 25, 0.01);
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .accordion-item:first-of-type {
@@ -7496,7 +7500,7 @@ textarea.form-control-lg {
 }
 
 .bg-body {
-  background-color: #fff !important;
+  background-color: rgba(115, 60, 25, 0.01) !important;
 }
 
 .bg-white {

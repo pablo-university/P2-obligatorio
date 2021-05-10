@@ -12,7 +12,7 @@ los botones que te dejo para navegar
         </pre>
 
 
-        <a href="client/">IR A CLIENTE</a>
+        <a class="link-success" href="client/">IR A CLIENTE</a>
         <br />
         
         <br />

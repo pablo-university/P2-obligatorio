@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 10, 2021 at 08:43 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 11-05-2021 a las 20:24:38
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `watch_shop`
+-- Base de datos: `watch_shop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Estructura de tabla para la tabla `admin`
 --
 
 CREATE TABLE `admin` (
@@ -36,7 +36,7 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `band`
+-- Estructura de tabla para la tabla `band`
 --
 
 CREATE TABLE `band` (
@@ -45,7 +45,7 @@ CREATE TABLE `band` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Dumping data for table `band`
+-- Volcado de datos para la tabla `band`
 --
 
 INSERT INTO `band` (`_id`, `band`) VALUES
@@ -58,7 +58,7 @@ INSERT INTO `band` (`_id`, `band`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brand`
+-- Estructura de tabla para la tabla `brand`
 --
 
 CREATE TABLE `brand` (
@@ -67,20 +67,20 @@ CREATE TABLE `brand` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Dumping data for table `brand`
+-- Volcado de datos para la tabla `brand`
 --
 
 INSERT INTO `brand` (`_id`, `brand`) VALUES
 (2, 'casio'),
 (5, 'rolex'),
 (6, 'seiko'),
-(8, 'tissot'),
-(9, 'hublot');
+(9, 'hublot'),
+(11, 'QQ');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `color`
+-- Estructura de tabla para la tabla `color`
 --
 
 CREATE TABLE `color` (
@@ -90,7 +90,7 @@ CREATE TABLE `color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Dumping data for table `color`
+-- Volcado de datos para la tabla `color`
 --
 
 INSERT INTO `color` (`_id`, `color`, `code`) VALUES
@@ -106,7 +106,7 @@ INSERT INTO `color` (`_id`, `color`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `display_type`
+-- Estructura de tabla para la tabla `display_type`
 --
 
 CREATE TABLE `display_type` (
@@ -115,7 +115,7 @@ CREATE TABLE `display_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Dumping data for table `display_type`
+-- Volcado de datos para la tabla `display_type`
 --
 
 INSERT INTO `display_type` (`_id`, `display_type`) VALUES
@@ -126,7 +126,7 @@ INSERT INTO `display_type` (`_id`, `display_type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `images`
+-- Estructura de tabla para la tabla `images`
 --
 
 CREATE TABLE `images` (
@@ -139,7 +139,7 @@ CREATE TABLE `images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Dumping data for table `images`
+-- Volcado de datos para la tabla `images`
 --
 
 INSERT INTO `images` (`_id`, `url`, `id_product`, `alt`, `title`, `role`) VALUES
@@ -154,7 +154,7 @@ INSERT INTO `images` (`_id`, `url`, `id_product`, `alt`, `title`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `moment`
+-- Estructura de tabla para la tabla `moment`
 --
 
 CREATE TABLE `moment` (
@@ -163,7 +163,7 @@ CREATE TABLE `moment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Dumping data for table `moment`
+-- Volcado de datos para la tabla `moment`
 --
 
 INSERT INTO `moment` (`_id`, `moment`) VALUES
@@ -175,7 +175,7 @@ INSERT INTO `moment` (`_id`, `moment`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Estructura de tabla para la tabla `products`
 --
 
 CREATE TABLE `products` (
@@ -200,18 +200,18 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Dumping data for table `products`
+-- Volcado de datos para la tabla `products`
 --
 
 INSERT INTO `products` (`_id`, `model`, `title`, `last_modification`, `display_type`, `description`, `price`, `stock`, `band`, `case`, `color`, `user_type`, `moment`, `brand`, `submersible`, `shipping`, `weight`, `sale`) VALUES
-(4, 2136598789, '_4-m', '2021-05-07 20:34:05', 'analógico-digital', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10000, 200, 'nylon', 'cuadrado', 'negro', 'mujer', 'fashion', 'casio', 1, 1, 500, 1),
-(12, 452452, '_5-h', '2021-05-10 17:57:21', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'bage', 'hombre', 'clásico', 'rolex', 0, 1, 0, 1),
-(13, 2343, '_6-i', '2021-05-10 17:57:21', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'bage', 'infantil', 'clásico', 'seiko', 0, 0, 0, 1);
+(4, 2136598789, '_4-m', '2021-05-11 17:52:48', 'analógico-digital', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10000, 200, 'nylon', 'cuadrado', 'negro', 'mujer', 'fashion', 'QQ', 1, 1, 500, 1),
+(12, 452452, '_5-h', '2021-05-11 17:52:48', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'bage', 'hombre', 'clásico', 'QQ', 0, 1, 0, 1),
+(13, 2343, '_6-i', '2021-05-11 17:52:48', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'bage', 'infantil', 'clásico', 'QQ', 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_color`
+-- Estructura de tabla para la tabla `product_color`
 --
 
 CREATE TABLE `product_color` (
@@ -221,7 +221,7 @@ CREATE TABLE `product_color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `product_color`
+-- Volcado de datos para la tabla `product_color`
 --
 
 INSERT INTO `product_color` (`_id`, `id_product`, `id_color`) VALUES
@@ -236,7 +236,7 @@ INSERT INTO `product_color` (`_id`, `id_product`, `id_color`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_type`
+-- Estructura de tabla para la tabla `user_type`
 --
 
 CREATE TABLE `user_type` (
@@ -245,7 +245,7 @@ CREATE TABLE `user_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Dumping data for table `user_type`
+-- Volcado de datos para la tabla `user_type`
 --
 
 INSERT INTO `user_type` (`_id`, `user_type`) VALUES
@@ -255,60 +255,60 @@ INSERT INTO `user_type` (`_id`, `user_type`) VALUES
 (4, 'infantil');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `admin`
+-- Indices de la tabla `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`_id`);
 
 --
--- Indexes for table `band`
+-- Indices de la tabla `band`
 --
 ALTER TABLE `band`
   ADD PRIMARY KEY (`_id`);
 
 --
--- Indexes for table `brand`
+-- Indices de la tabla `brand`
 --
 ALTER TABLE `brand`
   ADD PRIMARY KEY (`_id`);
 
 --
--- Indexes for table `color`
+-- Indices de la tabla `color`
 --
 ALTER TABLE `color`
   ADD PRIMARY KEY (`_id`);
 
 --
--- Indexes for table `display_type`
+-- Indices de la tabla `display_type`
 --
 ALTER TABLE `display_type`
   ADD PRIMARY KEY (`_id`);
 
 --
--- Indexes for table `images`
+-- Indices de la tabla `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`_id`),
   ADD KEY `images_FK` (`id_product`);
 
 --
--- Indexes for table `moment`
+-- Indices de la tabla `moment`
 --
 ALTER TABLE `moment`
   ADD PRIMARY KEY (`_id`);
 
 --
--- Indexes for table `products`
+-- Indices de la tabla `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`_id`);
 
 --
--- Indexes for table `product_color`
+-- Indices de la tabla `product_color`
 --
 ALTER TABLE `product_color`
   ADD PRIMARY KEY (`_id`),
@@ -316,87 +316,87 @@ ALTER TABLE `product_color`
   ADD KEY `product_color_FK_1` (`id_color`);
 
 --
--- Indexes for table `user_type`
+-- Indices de la tabla `user_type`
 --
 ALTER TABLE `user_type`
   ADD PRIMARY KEY (`_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT de la tabla `admin`
 --
 ALTER TABLE `admin`
   MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `band`
+-- AUTO_INCREMENT de la tabla `band`
 --
 ALTER TABLE `band`
   MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `brand`
+-- AUTO_INCREMENT de la tabla `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `color`
+-- AUTO_INCREMENT de la tabla `color`
 --
 ALTER TABLE `color`
   MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `display_type`
+-- AUTO_INCREMENT de la tabla `display_type`
 --
 ALTER TABLE `display_type`
   MODIFY `_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `images`
+-- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
   MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `moment`
+-- AUTO_INCREMENT de la tabla `moment`
 --
 ALTER TABLE `moment`
   MODIFY `_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
   MODIFY `_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `product_color`
+-- AUTO_INCREMENT de la tabla `product_color`
 --
 ALTER TABLE `product_color`
   MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `user_type`
+-- AUTO_INCREMENT de la tabla `user_type`
 --
 ALTER TABLE `user_type`
   MODIFY `_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `images`
+-- Filtros para la tabla `images`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `images_FK` FOREIGN KEY (`id_product`) REFERENCES `products` (`_id`);
 
 --
--- Constraints for table `product_color`
+-- Filtros para la tabla `product_color`
 --
 ALTER TABLE `product_color`
   ADD CONSTRAINT `product_color_FK` FOREIGN KEY (`id_product`) REFERENCES `products` (`_id`),

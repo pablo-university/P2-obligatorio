@@ -2,7 +2,7 @@
 
 include_once __DIR__ . '/../../connectors/connection.php';
 include_once __DIR__ . '/../controllers/product_color.php';
-include_once __DIR__.'/../../utils/constants.php';
+include_once __DIR__ . '/../../utils/constants.php';
 
 $_id = $_REQUEST['_id'];
 
@@ -51,12 +51,12 @@ endif;
     </p>
   </div>
 
-<hr>
+  <hr>
 
   <!-- colores y marca-->
-  <div class="row row-cols-2">
+  <div class="row row-cols-3 flex-nowrap gap-md-3">
 
-    <div>
+    <div class="text-center">
       <h3 class="mb-0">Colores</h3>
       <p class="lead text-black-50 fs-6">colores disponible</p>
       <p class="m-0">
@@ -67,14 +67,26 @@ endif;
       </p>
     </div>
 
-    <div>
-      <h3 class="m-0 mb-n2">Marca</h3> 
-      <img class="w-25" src="<?= LOCAL_HOST . "assets/img/brands/" . $data->brand . '.svg'?>" alt="<?= $data->brand ?>" title="<?= $data->brand ?>"> 
+    <div class="text-center">
+      <h3 class="m-0 mb-n3">Marca</h3>
+      <img class="w-50" style="filter: contrast(0.5);" src="<?= LOCAL_HOST . "assets/img/brands/" . $data->brand . '.svg' ?>" alt="<?= $data->brand ?>" title="<?= $data->brand ?>">
     </div>
-    
+
+    <div class="text-center">
+      <h3>Case</h3>
+      <div>
+        <?=
+        match (true) {
+          $data->case == 'redondo' => "<i style=\"filter: contrast(0.5);\" class=\"bi bi-watch fs-1\" title=".$data->case."></i>",
+          $data->case == 'cuadrado' => "<i style=\"filter: contrast(0.5);\" class=\"bi bi-smartwatch fs-1\" title=" .$data->case. "></i>"
+        }
+        ?>
+      </div>
+    </div>
+
   </div>
 
-<hr>
+  <hr>
 </hgroup>
 
 
@@ -105,7 +117,9 @@ endif;
       '_id',
       'last_modification',
       'model',
-      'brand'
+      'brand',
+      'color',
+      'case'
     ];
 
     $traduction = [

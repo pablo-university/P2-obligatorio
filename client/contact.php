@@ -16,11 +16,11 @@
             <div class="row row-cols-xl-2">
                 <!-- contenedor del form -->
                 <div>
-                    <form class="row row-cols-xl-2 g-3 needs-validation" novalidate>
+                    <form class="row row-cols-xl-2 g-3 needs-validation" action="./contact.php" novalidate>
                         <!-- campo nombre -->
                         <div class="">
                             <label for="validationCustom01" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                            <input type="text" class="form-control" id="validationCustom01" name="name" value="" required>
                             <div class="valid-feedback">
                                 GOOD
                             </div>
@@ -31,7 +31,7 @@
                         <!-- email -->
                         <div class="">
                             <label for="inputEmail4" class="form-label">Mail</label>
-                            <input type="email" class="form-control" id="inputEmail4" required>
+                            <input type="email" class="form-control" id="inputEmail4" name="email" required>
                             <div class="invalid-feedback">
                                 debe ser de tipo ejemplo@dominio.com
                             </div>
@@ -39,7 +39,7 @@
                         <!-- mensaje -->
                         <div class="w-100">
                             <label for="validationTextarea" class="form-label">Mensaje</label>
-                            <textarea class="form-control" id="validationTextarea" placeholder="Ingresa tu mensaje" required></textarea>
+                            <textarea class="form-control" id="validationTextarea" name="msg" placeholder="Ingresa tu mensaje" required></textarea>
                             <div class="invalid-feedback">
                                 Ingresa tu mensaje es requerido
                             </div>
@@ -57,9 +57,42 @@
                 </div>
             </div>
 
-
-
         </section>
+
+        <?php
+
+        if (!empty($_REQUEST)) {
+            // mail a donde se envia, podria ser mi servidor
+            $destinatario = "pablo@gmail.com";
+            $asunto = "este es el asunto del mensaje!";
+
+            $mensaje = "
+            nombre: $_REQUEST[name] \r\n
+            mensaje: $_REQUEST[msg] \r\n
+            ";
+
+            // le decimos al mail quien mando para poder responderle
+            $cabecera = "From:$_REQUEST[msg]";
+            /*// Cabecera que especifica que es un HMTL
+            $cabeceras  = "MIME-Version: 1.0" . "\r\n";
+            $cabeceras .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
+            
+            // Cabeceras adicionales
+            $cabeceras .= "From: $mail". "\r\n";
+            $cabeceras .= "Cc: otromail@example.com" . "\r\n";
+            $cabeceras .= "Bcc: copiaoculta@example.com" . "\r\n"; */
+
+            $enviado = mail($destinatario, $asunto, $mensaje, $cabecera);
+
+            if ($enviado) {
+                echo "mensaje enviado";
+            } else {
+                echo "mensaje no enviado";
+            }
+        }
+
+
+        ?>
 
 
         <!-- validador bootstrap -->

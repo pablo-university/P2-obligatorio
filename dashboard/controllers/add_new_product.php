@@ -10,7 +10,7 @@ echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
  * Agrega nuevo producto
  * 
  * agrega producto
- * luego producto relacion con banda
+ * luego product_color!
  * agrega imagen en servidor
  * agrega la imagen en sql
  */
@@ -26,24 +26,27 @@ class Add_new_product
     ) {
     }
 
-    // set product band
+    // set product_color
     // ! esta funcion quedo en desuso quiza si armo lo de la relacion de los colores la pueda volver a utilizar
-    public function set_product_band()
+    public function set_product_color()
     {
         // si funciona puedo tomar mi variable global de objeto last_id_inserted
         $id_inserted = $this->conn->insert_id;
 
-        // cuando pueda tener multiples bandas deberia recorrer
-        // el request[band] y obtener las bandas asociadas
-        $query = "
-        INSERT INTO product_band (id_product, id_band)
-        VALUES ('$id_inserted', '$_REQUEST[band]');
-        ";
+        // inserto la relacion por cada color que haya sido seleccionado
+        foreach ($_REQUEST['color'] as $key => $value) {
 
-        if (!$this->conn->query($query)) {
-            return '>>error en set_product_band<br>';
-        } else {
-            return '>>set_product_band correcta<br>';
+            $query = "
+            INSERT INTO product_color (id_product, id_color)
+            VALUES ('$id_inserted', '$value');
+            ";
+
+
+            if (!$this->conn->query($query)) {
+                return '>>error en set_product_band<br>';
+            } else {
+                return '>>set_product_band correcta<br>';
+            }
         }
     }
 
@@ -93,7 +96,7 @@ class Add_new_product
     // set product
     public function set_product()
     {
-        
+
         if (!empty($_REQUEST)) {
 
             $to_insert = [];
@@ -102,10 +105,10 @@ class Add_new_product
             // obtener key value
             foreach ($_REQUEST as $key => $value) {
                 //no proceso esto ya que lo hago en set_product_band
-                // if (!str_contains($key, 'band')) {
+                if (!str_contains($key, 'color')) {
                     array_push($to_insert, 'products.' . $key);
                     array_push($insert_value, "'$value'");
-                // }
+                }
             }
 
             $to_insert = implode(', ', $to_insert);
@@ -124,10 +127,14 @@ class Add_new_product
                 // obtengo ultimo _id en mi propiedad de objeto
                 $this->last_id_inserted = $this->conn->insert_id;
 
-                // seteo la banda
-                // $this->set_product_band();
+                // seteo product_color
+                $this->set_product_color();
                 // guardo imagen y seteo la relación (bucle dentro de imagen)
-                $this->upload_image();
+                // agregame la iamgen si no está vacío
+                if (!empty($_REQUEST['image'])) {
+                    $this->upload_image();
+                }
+
 
                 return 'Datos guardados!';
             }
@@ -137,6 +144,5 @@ class Add_new_product
 
 $prueba = new Add_new_product($conn);
 
+// setea el nuevo producto y escupe como salio todo
 echo $prueba->set_product();
-
-?>

@@ -14,7 +14,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 <div class="mt-5 mb-5">
     <h3 class="p-3">Ingreso de productos</h3>
 
-<!-- puedo usar aca $_SERVER['PHP_SELF'] -->
+    <!-- puedo usar aca $_SERVER['PHP_SELF'] -->
     <form action="./constructor.php" enctype="multipart/form-data" method="POST" class="row row-cols-sm-2">
 
 
@@ -22,7 +22,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
             <!-- title -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="title" id="floatingInputx" placeholder="name@example.com" required>
+                <input type="text" class="form-control" name="title" id="floatingInputx" placeholder="name@example.com" required value="_prueba_">
                 <label for="floatingInputx">Ingresa titulo de producto</label>
             </div>
 
@@ -34,15 +34,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
                 <?php } ?>
             </select>
 
-            <!-- para cuando lo haga con multiples bandas -->
-            <!-- <?php while ($data = $res_bands->fetch_object()) { ?>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="band[]" value="<?= $data->_id ?>" id="<?= $data->band ?>">
-                    <label class="form-check-label" for="<?= $data->band ?>">
-                        <?= $data->band ?>
-                    </label>
-                </div>
-            <?php } ?> -->
+
 
             <!-- brand -->
             <select class="form-select form-select-md mb-3" name="brand" aria-label=".form-select-lg example">
@@ -61,12 +53,18 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
             </select>
 
             <!-- color -->
-            <select class="form-select form-select-md mb-3" name="color" aria-label=".form-select-lg example">
-                <option selected disabled>Color</option>
+            <!-- aqui tenia lo del color en select cuando era uno, ahora quedo backup en backup este mismo directorio -->
+            <div class="row row-cols-2 px-3 py-3">
+                <!-- para cuando lo haga con multiples colores -->
                 <?php while ($data = $res_colors->fetch_object()) { ?>
-                    <option value="<?= $data->color ?>"><?= $data->color ?></option>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="color[]" value="<?= $data->_id ?>" id="<?= $data->color ?>">
+                        <label class="form-check-label" for="<?= $data->color ?>">
+                            <?= $data->color ?>
+                        </label>
+                    </div>
                 <?php } ?>
-            </select>
+            </div>
 
             <!-- description -->
             <div class="form-floating mb-3">
@@ -84,7 +82,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
             <!-- model -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="model" id="floatingInputx" max='9999' placeholder="name@example.com">
+                <input type="number" class="form-control" name="model" id="floatingInputx" max='9999' placeholder="name@example.com" value="11">
                 <label for="floatingInputx">Número de modelo</label>
             </div>
 
@@ -98,7 +96,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
             <!-- price -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="price" id="floatingInputx" placeholder="name@example.com">
+                <input type="text" class="form-control" name="price" id="floatingInputx" placeholder="name@example.com" value="11">
                 <label for="floatingInputx">Ingresa price de producto</label>
                 <div id="emailHelp" class="form-text">decir algo sobre el precio</div>
             </div>
@@ -121,7 +119,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
             <!-- stock -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="stock" id="floatingInputx" max='50' placeholder="name@example.com">
+                <input type="number" class="form-control" name="stock" id="floatingInputx" max='50' placeholder="name@example.com" value="11">
                 <label for="floatingInputx">Stock (cantidad)</label>
             </div>
 
@@ -143,7 +141,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
             <!-- weight -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="weight" id="floatingInputx" max='500' placeholder="name@example.com">
+                <input type="number" class="form-control" name="weight" id="floatingInputx" max='500' placeholder="name@example.com" value="11">
                 <label for="floatingInputx">Peso (gramos)</label>
             </div>
 

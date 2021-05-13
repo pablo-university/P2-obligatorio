@@ -18,10 +18,10 @@
             WHERE products._id = $id
             ";
 
-          /*   $query_product_band = "
+          /*   $query_product_color = "
             DELETE
-            FROM product_band
-            WHERE product_band.id_product = $id
+            FROM product_color
+            WHERE product_color.id_product = $id
             "; */
 
             $query_images = "

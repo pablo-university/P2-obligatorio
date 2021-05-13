@@ -2,7 +2,7 @@
 include_once __DIR__ . '/../../connectors/connection.php';
 // aqui en este php estaría agregando a la base de datos
 
-echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
+
 
 
 
@@ -96,62 +96,63 @@ class Add_new_product
     public function set_product()
     {
 
-        if (!empty($_REQUEST)) {
 
-            $to_insert = [];
-            $insert_value = [];
 
-            // obtener key value
-            foreach ($_REQUEST as $key => $value) {
-                //no proceso esto ya que lo hago en set_product_band
-                if (!str_contains($key, 'color')) {
-                    array_push($to_insert, 'products.' . $key);
-                    array_push($insert_value, "'$value'");
-                }
+        $to_insert = [];
+        $insert_value = [];
+
+        // obtener key value
+        foreach ($_REQUEST as $key => $value) {
+            // evito set_product_band (se procesa luego)
+            // y chequeo que de no hacer nada con add_new_product
+            if (!str_contains($key, 'color') and !str_contains($key, 'add')) {
+                array_push($to_insert, 'products.' . $key);
+                array_push($insert_value, "'$value'");
             }
+        }
 
-            $to_insert = implode(', ', $to_insert);
-            $insert_value = implode(', ', $insert_value);
+        $to_insert = implode(', ', $to_insert);
+        $insert_value = implode(', ', $insert_value);
 
-            // create query
-            $query = "
+        // create query
+        $query = "
             INSERT INTO products ($to_insert)
             VALUES ($insert_value);
             ";
 
-            // inserto datos
-            if (!$this->conn->query($query)) { //$this->conn->query($query)
-                return 'error al guardar';
-            } else {
-                // obtengo ultimo _id en mi propiedad de objeto
-                $this->last_id_inserted = $this->conn->insert_id;
+        // inserto datos
+        if (!$this->conn->query($query)) { //$this->conn->query($query)
+            return 'error al guardar';
+        } else {
+            // obtengo ultimo _id en mi propiedad de objeto
+            $this->last_id_inserted = $this->conn->insert_id;
 
-                // seteo product_color
-                $this->set_product_color();
-                // guardo imagen y seteo la relación (bucle dentro de imagen)
-                // agregame la iamgen si no está vacío
-                if (!empty($_REQUEST['image'])) {
-                    $this->upload_image();
-                }
-
-
-                return 'Datos guardados!';
+            // seteo product_color
+            $this->set_product_color();
+            // guardo imagen y seteo la relación (bucle dentro de imagen)
+            // agregame la iamgen si no está vacío
+            if (!empty($_REQUEST['image'])) {
+                $this->upload_image();
             }
+
+
+            return 'Datos guardados!';
         }
     }
 }
 
 $prueba = new Add_new_product($conn);
-
-// setea el nuevo producto y escupe como salio todo
-
-$res = $prueba->set_product();
-
 ?>
 
-<?php if ($res) { ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <?= $res ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+<!-- 
+- setea el nuevo producto y escupe como salio todo
+- si hay datos y actualizar es vacio es agregar! 
+-->
+<?php if (!empty($_REQUEST) and empty($_REQUEST['update_at'])) { ?>
+    <?php $res = $prueba->set_product(); ?>
+
+    <script>
+    location.replace("./constructor.php?msg=<?= $res ?>");
+    </script>
+
 <?php } ?>

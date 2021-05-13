@@ -14,8 +14,14 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 <div class="mt-5 mb-5">
     <h3 class="p-3">Ingreso de productos</h3>
 
-    <!-- puedo usar aca $_SERVER['PHP_SELF'] -->
-    <form action="./constructor.php" enctype="multipart/form-data" method="POST" class="row row-cols-sm-2">
+
+    <?php
+    // controlo a donde se envia el formulario
+    // cuando es agregar, las funciones de agregar actúan, y sino lo contrario
+    $url = (!empty($_REQUEST['update_at'])) ? "./constructor.php?update_at=true" : "./constructor.php";
+    ?>
+
+    <form action="<?= $url ?>" enctype="multipart/form-data" method="POST" class="row row-cols-sm-2">
 
 
         <div>
@@ -154,7 +160,9 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
 
             <div class="d-grid justify-content-end">
-                <button type="submit" class="btn btn-primary">GUARDAR</button>
+                <button type="submit" class="btn btn-primary">
+                    <?= (!empty($_REQUEST['update_at'])) ? 'ACTUALIZAR' : 'AGREGAR'; ?>
+                </button>
             </div>
 
         </div>
@@ -163,4 +171,21 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
     </form>
 </div>
 
-<?php include_once __DIR__ . '/../controllers/add_new_product.php'; ?>
+
+<?php echo '<pre>' . var_export($_REQUEST, true) . '</pre>'; ?>
+
+
+<?php
+if (empty($_REQUEST['msg'])) {
+    include_once __DIR__ . '/../controllers/add_new_product.php';
+    include_once __DIR__ . '/../controllers/update_product.php';
+}
+?>
+
+<!-- muetro mensajes -->
+<?php if (!empty($_REQUEST['msg'])) { ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?= $_REQUEST['msg'] ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php } ?>

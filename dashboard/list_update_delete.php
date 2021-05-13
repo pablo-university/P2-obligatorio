@@ -17,11 +17,9 @@
       <div class="table-responsive">
          <table class="table table-striped table-hover">
 
-            <!-- obtengo si hay busqueda-->
-            <?php $search = (!empty($_REQUEST['search'])) ? $_REQUEST['search'] : null; ?>
-
+            
             <!-- traigo datos dependiendo de si hay busqueda o no -->
-            <?php $res_all_products = $get_all_products->get_all_products($search); ?>
+            <?php $res_all_products = $get_all_products->get_all_products(); ?>
 
 
 
@@ -32,16 +30,17 @@
             <?php } else { ?>
 
                <thead>
+              
                   <tr>
-                     <th>Titulo</th>
-                     <th>Marca</th>
-                     <th>case</th>
-                     <th>display</th>
-                     <th>momento</th>
-                     <th>precio</th>
-                     <th>stock</th>
-                     <th>Tipo de usuario</th>
-                     <th>Peso</th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF']?>?orderBy=title">Titulo</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF']?>?orderBy=brand">marca</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF']?>?orderBy=case">case</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF']?>?orderBy=display_type">display</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF']?>?orderBy=moment">momento</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF']?>?orderBy=price">precio</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF']?>?orderBy=stock">stock</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF']?>?orderBy=user_type">tipo de usuario</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF']?>?orderBy=weight">peso</a></th>
                      <th>Actualizar</th>
                      <th>Eliminar</th>
                   </tr>
@@ -52,7 +51,7 @@
                   <?php while ($data = $res_all_products->fetch_object()) { ?>
                      <tr>
                         <!-- estos datos estarían incompletos solo serian para mostraer e identificar el producto -->
-                        <th><?= $data->title ?></th>
+                        <th><a href="./../client/product.php?_id=<?= $data->_id ?>"><?= $data->title ?></a></th>
                         <!-- poner la banda aqui, quiza recicle la funcion de producto especifico -->
                         <td><?= $data->brand ?></td>
                         <td><?= $data->case ?></td>

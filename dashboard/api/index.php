@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: application/json');
+// header('Content-Type: application/json');
 include_once __DIR__ . '/class_chart_info.php';
 include_once __DIR__.'/../../connectors/connection.php';
 

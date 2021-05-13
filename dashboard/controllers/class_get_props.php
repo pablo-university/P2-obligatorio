@@ -17,7 +17,7 @@ class Mi
     }
 
     // trae todo y si hay busqueda busca
-    public function get_all_products($search)
+    public function get_all_products()
     {
         $query = "
         SELECT *
@@ -25,7 +25,8 @@ class Mi
         ";
 
         // si search esta seteado...
-        if (isset($search)):
+        if (!empty($_REQUEST['search'])):
+            $search = $_REQUEST['search'];
             $query .= "
             WHERE 
             title LIKE '%$search%' OR 
@@ -36,13 +37,16 @@ class Mi
             P.price LIKE '%$search%' OR
             P.stock LIKE '%$search%' OR
             P.user_type LIKE '%$search%'
-            ";
+             ";
         endif;
 
-        
+        if (!empty($_REQUEST['orderBy'])) {
+            $query .= "ORDER BY (P.$_REQUEST[orderBy])";
+        }
+
         $res = $this->conn->query($query);
 
-        if ($res->num_rows < 1) :
+        if (!$res) :
             return null;
         else :
             return $res;

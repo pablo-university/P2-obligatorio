@@ -41,13 +41,12 @@ class Add_new_product
             VALUES ('$id_inserted', '$value');
             ";
 
-
             if (!$this->conn->query($query)) {
                 return '>>error en set_product_band<br>';
-            } else {
-                return '>>set_product_band correcta<br>';
             }
         }
+        // retornar todo ok
+        return '>>set_product_band correcta<br>';
     }
 
     public function set_image($url)
@@ -145,4 +144,14 @@ class Add_new_product
 $prueba = new Add_new_product($conn);
 
 // setea el nuevo producto y escupe como salio todo
-echo $prueba->set_product();
+
+$res = $prueba->set_product();
+
+?>
+
+<?php if ($res) { ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?= $res ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php } ?>

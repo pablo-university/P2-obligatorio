@@ -1,4 +1,5 @@
 <?php include_once __DIR__ . '/../controllers/class_get_props.php'; ?>
+<?php include_once __DIR__ . '/../../utils/constants.php'; ?>
 <?php
 ini_set("default_charset", "UTF-8");
 $res_bands = $class_get_props->get_prop('band', 'band');
@@ -11,18 +12,28 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
 ?>
 
-<div class="mt-5 mb-5">
-    <h3 class="p-3">Ingreso de productos</h3>
+<?php echo '<pre>' . var_export($_REQUEST, true) . '</pre>'; ?>
 
+<!-- MUESTRO MENSAJES -->
+<?php if (!empty($_REQUEST['msg'])) { ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?= $_REQUEST['msg'] ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php } ?>
+
+<!-- constructor content -->
+<div class="">
+    <h4 class="pb-3">Ingreso de productos</h4>
 
     <?php
     // controlo a donde se envia el formulario
     // cuando es agregar, las funciones de agregar actúan, y sino lo contrario
-    $url = (!empty($_REQUEST['update_at'])) ? "./constructor.php?update_at=true" : "./constructor.php";
+    $url = LOCAL_HOST . '/dashboard/controllers/';
+    $url .= (!empty($_REQUEST['update_at'])) ? "update_product.php" : "add_new_product.php";
     ?>
 
     <form action="<?= $url ?>" enctype="multipart/form-data" method="POST" class="row row-cols-sm-2">
-
 
         <div>
 
@@ -172,20 +183,3 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 </div>
 
 
-<?php echo '<pre>' . var_export($_REQUEST, true) . '</pre>'; ?>
-
-
-<?php
-if (empty($_REQUEST['msg'])) {
-    include_once __DIR__ . '/../controllers/add_new_product.php';
-    include_once __DIR__ . '/../controllers/update_product.php';
-}
-?>
-
-<!-- muetro mensajes -->
-<?php if (!empty($_REQUEST['msg'])) { ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <?= $_REQUEST['msg'] ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-<?php } ?>

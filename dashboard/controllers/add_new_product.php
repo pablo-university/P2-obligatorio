@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__ . '/../../connectors/connection.php';
+include_once __DIR__ . '/../../utils/constants.php';
 // aqui en este php estaría agregando a la base de datos
 
 
@@ -142,17 +143,11 @@ class Add_new_product
 }
 
 $prueba = new Add_new_product($conn);
-?>
 
-<!-- 
-- setea el nuevo producto y escupe como salio todo
-- si hay datos y actualizar es vacio es agregar! 
--->
-<?php if (!empty($_REQUEST) and empty($_REQUEST['update_at'])) { ?>
-    <?php $res = $prueba->set_product(); ?>
 
-    <script>
-    location.replace("./constructor.php?msg=<?= $res ?>");
-    </script>
+// si existen datos los setea y vuelve al constructor
+if (!empty($_REQUEST)) {
 
-<?php } ?>
+    $res = $prueba->set_product();
+    header("Location: ./../constructor.php?msg=$res");
+}

@@ -1,11 +1,10 @@
-<?php 
+<?php
 
 // clases aqui lo que sea necesario para actualizar
 
-if (!empty($_REQUEST['update_at'])) {
 
-    // aqui podria poner mensajes resultados etc
-   echo "hola soy actualizar";
+if (!empty($_REQUEST)) {
+
+    $res = 'hola mensaje de update!';
+    header("Location: ./../constructor.php?msg=$res");
 }
-
-?>

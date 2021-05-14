@@ -10,16 +10,31 @@ $res_display_types = $class_get_props->get_prop('display_type', 'display_type');
 $res_moments = $class_get_props->get_prop('moment', 'moment');
 $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
-// obtengo todos los datos del producto
+// si hay obtengo id para actualizar
 $id_update_at = (!empty($_REQUEST['update_at'])) ? $_REQUEST['update_at'] : null;
 
+// entonces tenemos id?
 if (!empty($id_update_at)) {
+
+    // trae datos para el id a actualizar
     $res_product = $class_get_props->get_product($id_update_at);
-    var_dump($res_product->num_rows);
+    // copio datos para trabajar colores
+    $res_product_color = $res_product;
+    
+    // obtiene los datos como objeto
     $res_product = $res_product->fetch_object();
     echo '<pre>' . var_export($res_product, true) . '</pre>';
 }
 
+// chequea si coincide colores del producto
+// con el color que se está recorriendo
+function color_is_checked($res_product_color, $color) {
+    foreach ($res_product_color as $key => $value) {
+     if ($value['color'] == $color) {
+        return 'checked';
+     }
+    }
+ }
 ?>
 
 <?php echo '<pre>' . var_export($_REQUEST, true) . '</pre>'; ?>
@@ -50,12 +65,15 @@ if (!empty($id_update_at)) {
                 <input type="text" class="form-control" name="title" id="floatingInputx" value=" <?= (!empty($res_product)) ? $res_product->title : '_prueba_' ?>" required>
                 <label for="floatingInputx">Ingresa titulo de producto</label>
             </div>
-
+            
             <!-- band -->
             <select class="form-select form-select-md mb-3" name="band" aria-label=".form-select-lg example">
                 <option selected disabled>Seleciona una banda para el reloj</option>
                 <?php while ($data = $res_bands->fetch_object()) { ?>
-                    <option value="<?= $data->_id ?>"><?= $data->band ?></option>
+                
+                <?php $is_selected = !empty($res_product) ?  ($data->band == $res_product->band ? 'selected' : '') : '';?>
+                    <option <?= $is_selected ?> value="<?= $data->band ?>"><?= $data->band ?></option>
+                    
                 <?php } ?>
             </select>
 
@@ -63,29 +81,38 @@ if (!empty($id_update_at)) {
             <select class="form-select form-select-md mb-3" name="brand" aria-label=".form-select-lg example">
                 <option selected disabled>Marca</option>
                 <?php while ($data = $res_brands->fetch_object()) { ?>
-                    <option value="<?= $data->brand ?>"><?= $data->brand ?></option>
+
+                    <?php $is_selected = !empty($res_product) ?  ($data->brand == $res_product->brand ? 'selected' : '') : '';?>
+                    <option <?= $is_selected ?> value="<?= $data->brand ?>"><?= $data->brand ?></option>
                 <?php } ?>
+                
             </select>
 
             <!-- case -->
             <select class="form-select form-select-md mb-3" name="case" aria-label=".form-select-lg example">
                 <option selected disabled>Case</option>
                 <?php while ($data = $res_cases->fetch_object()) { ?>
-                    <option value="<?= $data->case ?>"><?= $data->case ?></option>
+                
+                    <?php $is_selected = !empty($res_product) ?  ($data->case == $res_product->case ? 'selected' : '') : '';?>
+                    <option <?= $is_selected ?> value="<?= $data->case ?>"><?= $data->case ?></option>
+
                 <?php } ?>
             </select>
 
             <!-- color -->
-            <!-- aqui tenia lo del color en select cuando era uno, ahora quedo backup en backup este mismo directorio -->
             <div class="row row-cols-2 px-3 py-3">
                 <!-- para cuando lo haga con multiples colores -->
                 <?php while ($data = $res_colors->fetch_object()) { ?>
+
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="color[]" value="<?= $data->_id ?>" id="<?= $data->color ?>">
+                    <!-- si estoy actualizando miro si el color está chequeado -->
+                    <?php $is_checked = !empty($res_product_color) ? (color_is_checked($res_product_color, $data->color)) : '' ?>
+                        <input class="form-check-input" type="checkbox" name="color[]" value="<?= $data->_id ?>" <?= $is_checked ?> id="<?= $data->color ?>">
                         <label class="form-check-label" for="<?= $data->color ?>">
                             <?= $data->color ?>
                         </label>
                     </div>
+
                 <?php } ?>
             </div>
 
@@ -99,7 +126,10 @@ if (!empty($id_update_at)) {
             <select class="form-select form-select-md mb-3" name="display_type" aria-label=".form-select-lg example">
                 <option selected disabled>Tipo de display</option>
                 <?php while ($data = $res_display_types->fetch_object()) { ?>
-                    <option value="<?= $data->display_type ?>"><?= $data->display_type ?></option>
+
+                    <?php $is_selected = !empty($res_product) ?  ($data->display_type == $res_product->display_type ? 'selected' : '') : '';?>
+                    <option <?= $is_selected ?> value="<?= $data->display_type ?>"><?= $data->display_type ?></option>
+
                 <?php } ?>
             </select>
 
@@ -113,7 +143,10 @@ if (!empty($id_update_at)) {
             <select class="form-select form-select-md mb-3" name="moment" aria-label=".form-select-lg example">
                 <option selected disabled>Momento</option>
                 <?php while ($data = $res_moments->fetch_object()) { ?>
-                    <option value="<?= $data->moment ?>"><?= $data->moment ?></option>
+
+                    <?php $is_selected = !empty($res_product) ?  ($data->moment == $res_product->moment ? 'selected' : '') : '';?>
+                    <option <?= $is_selected ?> value="<?= $data->moment ?>"><?= $data->moment ?></option>
+                    
                 <?php } ?>
             </select>
 
@@ -138,23 +171,26 @@ if (!empty($id_update_at)) {
                 <label class="form-check-label" for="flexSwitchCheckDefault">Envío gratis</label>
             </div>
 
-            <!-- stock -->
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="stock" id="floatingInputx" max='50' value="<?= (!empty($res_product)) ? $res_product->stock : '' ?>">
-                <label for="floatingInputx">Stock (cantidad)</label>
-            </div>
-
             <!-- submersible -->
             <div class="form-check form-switch mb-3">
                 <input class="form-check-input" type="checkbox" name="submersible" value="1" <?= (!empty($res_product)) ? ($res_product->submersible ? 'checked' : '') : '' ?> id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Sumergible</label>
             </div>
 
+            <!-- stock -->
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="stock" id="floatingInputx" max='50' value="<?= (!empty($res_product)) ? $res_product->stock : '' ?>">
+                <label for="floatingInputx">Stock (cantidad)</label>
+            </div>
+
             <!-- user_type -->
             <select class="form-select form-select-md mb-3" name="user_type" aria-label=".form-select-lg example">
                 <option selected disabled>Tipo de usuario</option>
                 <?php while ($data = $res_user_types->fetch_object()) { ?>
-                    <option value="<?= $data->user_type ?>"><?= $data->user_type ?></option>
+
+                    <?php $is_selected = !empty($res_product) ?  ($data->user_type == $res_product->user_type ? 'selected' : '') : '';?>
+                    <option <?= $is_selected ?> value="<?= $data->user_type ?>"><?= $data->user_type ?></option>
+
                 <?php } ?>
 
             </select>

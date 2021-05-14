@@ -10,6 +10,16 @@ $res_display_types = $class_get_props->get_prop('display_type', 'display_type');
 $res_moments = $class_get_props->get_prop('moment', 'moment');
 $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
+// obtengo todos los datos del producto
+$id_update_at = (!empty($_REQUEST['update_at'])) ? $_REQUEST['update_at'] : null;
+
+if (!empty($id_update_at)) {
+    $res_product = $class_get_props->get_product($id_update_at);
+    var_dump($res_product->num_rows);
+    $res_product = $res_product->fetch_object();
+    echo '<pre>' . var_export($res_product, true) . '</pre>';
+}
+
 ?>
 
 <?php echo '<pre>' . var_export($_REQUEST, true) . '</pre>'; ?>
@@ -32,14 +42,12 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
     $url = LOCAL_HOST . '/dashboard/controllers/';
     $url .= (!empty($_REQUEST['update_at'])) ? "update_product.php" : "add_new_product.php";
     ?>
-
     <form action="<?= $url ?>" enctype="multipart/form-data" method="POST" class="row row-cols-sm-2">
 
         <div>
-
             <!-- title -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="title" id="floatingInputx" placeholder="name@example.com" required value="_prueba_">
+                <input type="text" class="form-control" name="title" id="floatingInputx" value=" <?= (!empty($res_product)) ? $res_product->title : '_prueba_' ?>" required>
                 <label for="floatingInputx">Ingresa titulo de producto</label>
             </div>
 
@@ -50,8 +58,6 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
                     <option value="<?= $data->_id ?>"><?= $data->band ?></option>
                 <?php } ?>
             </select>
-
-
 
             <!-- brand -->
             <select class="form-select form-select-md mb-3" name="brand" aria-label=".form-select-lg example">
@@ -85,8 +91,8 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
             <!-- description -->
             <div class="form-floating mb-3">
-                <textarea class="form-control" name='description' id="floatingTextarea2" placeholder="Leave a comment here" style="height: 100px"></textarea>
-                <label for="floatingTextarea2">Descripción</label>
+                <textarea class="form-control" name='description' id="floatingTextarea2" style="height: 100px"><?= (!empty($res_product)) ? $res_product->description : '' ?></textarea>
+                <label for="floatingTextarea2">Descripcion</label>
             </div>
 
             <!-- display_type -->
@@ -99,7 +105,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
             <!-- model -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="model" id="floatingInputx" max='9999' placeholder="name@example.com" value="11">
+                <input type="number" class="form-control" name="model" id="floatingInputx" max='9999' value="<?= (!empty($res_product)) ? $res_product->model : '' ?>">
                 <label for="floatingInputx">Número de modelo</label>
             </div>
 
@@ -113,39 +119,36 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
             <!-- price -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="price" id="floatingInputx" placeholder="name@example.com" value="11">
+                <input type="text" class="form-control" name="price" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->price : '' ?>">
                 <label for="floatingInputx">Ingresa price de producto</label>
                 <div id="emailHelp" class="form-text">decir algo sobre el precio</div>
             </div>
-
         </div>
 
         <div>
-
             <!-- sale -->
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" name="sale" value="1" id="flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" name="sale" value="1" <?= (!empty($res_product)) ? ($res_product->sale ? 'checked' : '') : '' ?> id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">En sale</label>
             </div>
 
             <!-- shipping -->
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" name="shipping" value="1" id="flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" name="shipping" value="1" <?= (!empty($res_product)) ? ($res_product->shipping ? 'checked' : '') : '' ?> id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Envío gratis</label>
             </div>
 
             <!-- stock -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="stock" id="floatingInputx" max='50' placeholder="name@example.com" value="11">
+                <input type="number" class="form-control" name="stock" id="floatingInputx" max='50' value="<?= (!empty($res_product)) ? $res_product->stock : '' ?>">
                 <label for="floatingInputx">Stock (cantidad)</label>
             </div>
 
             <!-- submersible -->
             <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" name="submersible" value="1" id="flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" name="submersible" value="1" <?= (!empty($res_product)) ? ($res_product->submersible ? 'checked' : '') : '' ?> id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Sumergible</label>
             </div>
-
 
             <!-- user_type -->
             <select class="form-select form-select-md mb-3" name="user_type" aria-label=".form-select-lg example">
@@ -158,10 +161,9 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
             <!-- weight -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="weight" id="floatingInputx" max='500' placeholder="name@example.com" value="11">
+                <input type="number" class="form-control" name="weight" id="floatingInputx" max='500' value="<?= (!empty($res_product)) ? $res_product->weight : '' ?>">
                 <label for="floatingInputx">Peso (gramos)</label>
             </div>
-
 
             <!-- image -->
             <div class="mb-3">
@@ -169,17 +171,13 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
                 <input type="file" class="form-control form-control-md" name="image[]" multiple id="formFileSm">
             </div>
 
-
             <div class="d-grid justify-content-end">
                 <button type="submit" class="btn btn-primary">
                     <?= (!empty($_REQUEST['update_at'])) ? 'ACTUALIZAR' : 'AGREGAR'; ?>
                 </button>
             </div>
-
         </div>
 
 
     </form>
 </div>
-
-

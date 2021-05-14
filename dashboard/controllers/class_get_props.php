@@ -12,7 +12,7 @@ class Mi
     // !no es necesario declararlas fuera e inicializarlas en el constructor!
 
     public function __construct(
-        public $conn = null
+        public $conn
     ) {
     }
 
@@ -25,7 +25,7 @@ class Mi
         ";
 
         // si search esta seteado...
-        if (!empty($_REQUEST['search'])):
+        if (!empty($_REQUEST['search'])) :
             $search = $_REQUEST['search'];
             $query .= "
             WHERE 
@@ -44,6 +44,33 @@ class Mi
             $query .= "ORDER BY (P.$_REQUEST[orderBy])";
         }
 
+        $res = $this->conn->query($query);
+
+        if (!$res) :
+            return null;
+        else :
+            return $res;
+        endif;
+    }
+
+    function get_product($_id)
+    {
+        // retornar el resultado de esa consulta
+        $query = "
+        SELECT P.*, C.*
+        FROM products P
+        
+        LEFT JOIN images I
+        ON P._id = I.id_product
+
+        JOIN product_color PC
+        ON P._id = PC.id_product
+        
+        JOIN color C
+        ON PC.id_color = C._id
+
+        WHERE P._id = $_id
+        ";
         $res = $this->conn->query($query);
 
         if (!$res) :
@@ -100,5 +127,3 @@ $class_get_props = new Mi($conn);
 
 // instancia para contar valores de cantidad envio gratis en sale etc
 $count_value_in_true = new Mi($conn);
-
-

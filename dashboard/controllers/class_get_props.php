@@ -57,7 +57,7 @@ class Mi
     {
         // retornar el resultado de esa consulta
         $query = "
-        SELECT P.*, C.*
+        SELECT P.*, C.*, I.url
         FROM products P
         
         LEFT JOIN images I

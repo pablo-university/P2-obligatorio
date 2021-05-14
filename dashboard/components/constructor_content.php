@@ -10,6 +10,7 @@ $res_display_types = $class_get_props->get_prop('display_type', 'display_type');
 $res_moments = $class_get_props->get_prop('moment', 'moment');
 $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
+// -------- ACTUALIZACIÓN --------
 // si hay obtengo id para actualizar
 $id_update_at = (!empty($_REQUEST['update_at'])) ? $_REQUEST['update_at'] : null;
 
@@ -20,7 +21,7 @@ if (!empty($id_update_at)) {
     $res_product = $class_get_props->get_product($id_update_at);
     // copio datos para trabajar colores
     $res_product_color = $res_product;
-    
+
     // obtiene los datos como objeto
     $res_product = $res_product->fetch_object();
     echo '<pre>' . var_export($res_product, true) . '</pre>';
@@ -28,24 +29,21 @@ if (!empty($id_update_at)) {
 
 // chequea si coincide colores del producto
 // con el color que se está recorriendo
-function color_is_checked($res_product_color, $color) {
+function color_is_checked($res_product_color, $color)
+{
     foreach ($res_product_color as $key => $value) {
-     if ($value['color'] == $color) {
-        return 'checked';
-     }
+        if (!empty($value['color'] and ($value['color'] == $color))) {
+                return 'checked';
+        }
     }
- }
+}
+//  -----------------------------
 ?>
-
+<!-- IMPRIMO EL REQUEST QUE ESTA LLEGANDO -->
 <?php echo '<pre>' . var_export($_REQUEST, true) . '</pre>'; ?>
 
 <!-- MUESTRO MENSAJES -->
-<?php if (!empty($_REQUEST['msg'])) { ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <?= $_REQUEST['msg'] ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-<?php } ?>
+<?php include_once __DIR__ . '/msg.php'; ?>
 
 <!-- constructor content -->
 <div class="">
@@ -65,15 +63,15 @@ function color_is_checked($res_product_color, $color) {
                 <input type="text" class="form-control" name="title" id="floatingInputx" value=" <?= (!empty($res_product)) ? $res_product->title : '_prueba_' ?>" required>
                 <label for="floatingInputx">Ingresa titulo de producto</label>
             </div>
-            
+
             <!-- band -->
             <select class="form-select form-select-md mb-3" name="band" aria-label=".form-select-lg example">
                 <option selected disabled>Seleciona una banda para el reloj</option>
                 <?php while ($data = $res_bands->fetch_object()) { ?>
-                
-                <?php $is_selected = !empty($res_product) ?  ($data->band == $res_product->band ? 'selected' : '') : '';?>
+
+                    <?php $is_selected = !empty($res_product) ?  ($data->band == $res_product->band ? 'selected' : '') : ''; ?>
                     <option <?= $is_selected ?> value="<?= $data->band ?>"><?= $data->band ?></option>
-                    
+
                 <?php } ?>
             </select>
 
@@ -82,18 +80,18 @@ function color_is_checked($res_product_color, $color) {
                 <option selected disabled>Marca</option>
                 <?php while ($data = $res_brands->fetch_object()) { ?>
 
-                    <?php $is_selected = !empty($res_product) ?  ($data->brand == $res_product->brand ? 'selected' : '') : '';?>
+                    <?php $is_selected = !empty($res_product) ?  ($data->brand == $res_product->brand ? 'selected' : '') : ''; ?>
                     <option <?= $is_selected ?> value="<?= $data->brand ?>"><?= $data->brand ?></option>
                 <?php } ?>
-                
+
             </select>
 
             <!-- case -->
             <select class="form-select form-select-md mb-3" name="case" aria-label=".form-select-lg example">
                 <option selected disabled>Case</option>
                 <?php while ($data = $res_cases->fetch_object()) { ?>
-                
-                    <?php $is_selected = !empty($res_product) ?  ($data->case == $res_product->case ? 'selected' : '') : '';?>
+
+                    <?php $is_selected = !empty($res_product) ?  ($data->case == $res_product->case ? 'selected' : '') : ''; ?>
                     <option <?= $is_selected ?> value="<?= $data->case ?>"><?= $data->case ?></option>
 
                 <?php } ?>
@@ -105,8 +103,8 @@ function color_is_checked($res_product_color, $color) {
                 <?php while ($data = $res_colors->fetch_object()) { ?>
 
                     <div class="form-check">
-                    <!-- si estoy actualizando miro si el color está chequeado -->
-                    <?php $is_checked = !empty($res_product_color) ? (color_is_checked($res_product_color, $data->color)) : '' ?>
+                        <!-- si estoy actualizando miro si el color está chequeado -->
+                        <?php $is_checked = !empty($res_product_color) ? (color_is_checked($res_product_color, $data->color)) : '' ?>
                         <input class="form-check-input" type="checkbox" name="color[]" value="<?= $data->_id ?>" <?= $is_checked ?> id="<?= $data->color ?>">
                         <label class="form-check-label" for="<?= $data->color ?>">
                             <?= $data->color ?>
@@ -127,7 +125,7 @@ function color_is_checked($res_product_color, $color) {
                 <option selected disabled>Tipo de display</option>
                 <?php while ($data = $res_display_types->fetch_object()) { ?>
 
-                    <?php $is_selected = !empty($res_product) ?  ($data->display_type == $res_product->display_type ? 'selected' : '') : '';?>
+                    <?php $is_selected = !empty($res_product) ?  ($data->display_type == $res_product->display_type ? 'selected' : '') : ''; ?>
                     <option <?= $is_selected ?> value="<?= $data->display_type ?>"><?= $data->display_type ?></option>
 
                 <?php } ?>
@@ -144,9 +142,9 @@ function color_is_checked($res_product_color, $color) {
                 <option selected disabled>Momento</option>
                 <?php while ($data = $res_moments->fetch_object()) { ?>
 
-                    <?php $is_selected = !empty($res_product) ?  ($data->moment == $res_product->moment ? 'selected' : '') : '';?>
+                    <?php $is_selected = !empty($res_product) ?  ($data->moment == $res_product->moment ? 'selected' : '') : ''; ?>
                     <option <?= $is_selected ?> value="<?= $data->moment ?>"><?= $data->moment ?></option>
-                    
+
                 <?php } ?>
             </select>
 
@@ -188,7 +186,7 @@ function color_is_checked($res_product_color, $color) {
                 <option selected disabled>Tipo de usuario</option>
                 <?php while ($data = $res_user_types->fetch_object()) { ?>
 
-                    <?php $is_selected = !empty($res_product) ?  ($data->user_type == $res_product->user_type ? 'selected' : '') : '';?>
+                    <?php $is_selected = !empty($res_product) ?  ($data->user_type == $res_product->user_type ? 'selected' : '') : ''; ?>
                     <option <?= $is_selected ?> value="<?= $data->user_type ?>"><?= $data->user_type ?></option>
 
                 <?php } ?>
@@ -206,6 +204,20 @@ function color_is_checked($res_product_color, $color) {
                 <label for="formFileSm" class="form-label">Ingresa imagen</label>
                 <input type="file" class="form-control form-control-md" name="image[]" multiple id="formFileSm">
             </div>
+
+            <!-- aqui van imágenes si estamos actualizando -->
+            <?php if (!empty($res_product)) {
+                echo '<div class="mb-3 row">';
+                foreach ($res_product_color as $key => $value) {
+                    if (!empty($value['url'])) {
+                        $HOST = LOCAL_HOST;
+                        $img = $value['url'];
+                        echo "<img class='col-3' src=\"{$HOST}assets/img/products/{$img} \" >";
+                    }
+                }
+                echo '</div>';
+            } ?>
+<img src=" LOCAL_HOST . " alt="">
 
             <div class="d-grid justify-content-end">
                 <button type="submit" class="btn btn-primary">

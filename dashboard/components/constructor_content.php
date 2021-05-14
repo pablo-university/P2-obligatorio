@@ -33,7 +33,7 @@ function color_is_checked($res_product_color, $color)
 {
     foreach ($res_product_color as $key => $value) {
         if (!empty($value['color'] and ($value['color'] == $color))) {
-                return 'checked';
+            return 'checked';
         }
     }
 }
@@ -60,7 +60,7 @@ function color_is_checked($res_product_color, $color)
         <div>
             <!-- title -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="title" id="floatingInputx" value=" <?= (!empty($res_product)) ? $res_product->title : '_prueba_' ?>" required>
+                <input type="text" class="form-control" name="title" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->title : '_prueba_' ?>" required>
                 <label for="floatingInputx">Ingresa titulo de producto</label>
             </div>
 
@@ -158,22 +158,32 @@ function color_is_checked($res_product_color, $color)
 
         <div>
             <!-- sale -->
-            <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" name="sale" value="1" <?= (!empty($res_product)) ? ($res_product->sale ? 'checked' : '') : '' ?> id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">En sale</label>
+            <div class="form-floating mb-3">
+                <select class="form-select form-select-md mb-3" id="sale" name="sale">
+                    <option selected value="0">no</option>
+                    <option <?= (!empty($res_product)) ? ($res_product->sale ? 'selected' : '') : '' ?> value="1">si</option>
+                </select>
+                <label for="sale">Sale _brra</label>
             </div>
 
             <!-- shipping -->
-            <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" name="shipping" value="1" <?= (!empty($res_product)) ? ($res_product->shipping ? 'checked' : '') : '' ?> id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Envío gratis</label>
+            <div class="form-floating mb-3">
+                <select class="form-select form-select-md mb-3" id="shipping" name="shipping">
+                    <option selected value="0">No</option>
+                    <option <?= (!empty($res_product)) ? ($res_product->shipping ? 'selected' : '') : '' ?> value="1">Si</option>
+                </select>
+                <label for="shipping">Envío</label>
             </div>
 
             <!-- submersible -->
-            <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" name="submersible" value="1" <?= (!empty($res_product)) ? ($res_product->submersible ? 'checked' : '') : '' ?> id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Sumergible</label>
+            <div class="form-floating mb-3">
+                <select class="form-select form-select-md mb-3" id="submersible" name="submersible">
+                    <option selected value="0">No</option>
+                    <option <?= (!empty($res_product)) ? ($res_product->submersible ? 'selected' : '') : '' ?> value="1">Si</option>
+                </select>
+                <label for="submersible">Sumergible</label>
             </div>
+
 
             <!-- stock -->
             <div class="form-floating mb-3">
@@ -205,19 +215,33 @@ function color_is_checked($res_product_color, $color)
                 <input type="file" class="form-control form-control-md" name="image[]" multiple id="formFileSm">
             </div>
 
-            <!-- aqui van imágenes si estamos actualizando -->
-            <?php if (!empty($res_product)) {
-                echo '<div class="mb-3 row">';
-                foreach ($res_product_color as $key => $value) {
-                    if (!empty($value['url'])) {
-                        $HOST = LOCAL_HOST;
-                        $img = $value['url'];
-                        echo "<img class='col-3' src=\"{$HOST}assets/img/products/{$img} \" >";
-                    }
-                }
-                echo '</div>';
-            } ?>
-<img src=" LOCAL_HOST . " alt="">
+            <!-- chequeo que esté actualizando y vengan url en la query -->
+            <?php if (!empty($res_product) and !empty($res_product->url)) { ?>
+                <div class="mb-3 row">
+
+                    <?php foreach ($res_product_color as $key => $value) { ?>
+                        <div class="position-relative">
+                            <a href="#" class="text-decoration-none text-secondary position-absolute" title="eliminar imagen"><i class="bi bi-trash"></i></a>
+
+                            <?php if (!empty($value['url'])) {
+                                $HOST = LOCAL_HOST;
+                                $img = $value['url'];
+                                echo "<img class='col-3' src=\"{$HOST}assets/img/products/{$img} \" >";
+                            } ?>
+
+                        </div>
+                    <?php  } ?>
+
+                </div>
+            <?php  } ?>
+            <!-- ----------------------------- -->
+
+            <!-- CAMPO PARA CUANDO EL update_at ESTÁ SETEADO -->
+            <?php if ($id_update_at) { ?>
+                <input type="hidden" name="update_at" value="<?= $id_update_at ?>">
+            <?php } ?>
+            <!-- ------------------------------------------- -->
+
 
             <div class="d-grid justify-content-end">
                 <button type="submit" class="btn btn-primary">

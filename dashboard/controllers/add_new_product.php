@@ -104,9 +104,9 @@ class Add_new_product
 
         // obtener key value
         foreach ($_REQUEST as $key => $value) {
-            // evito set_product_band (se procesa luego)
+            // evito set_product_band (se procesa luego) e upload_img
             // y chequeo que de no hacer nada con add_new_product
-            if (!str_contains($key, 'color') and !str_contains($key, 'add')) {
+            if (!str_contains($key, 'color') and !str_contains($key, 'image')) {
                 array_push($to_insert, 'products.' . $key);
                 array_push($insert_value, "'$value'");
             }
@@ -123,7 +123,7 @@ class Add_new_product
 
         // inserto datos
         if (!$this->conn->query($query)) { //$this->conn->query($query)
-            return 'error al guardar';
+            return 'error al guardar datos';
         } else {
             // obtengo ultimo _id en mi propiedad de objeto
             $this->last_id_inserted = $this->conn->insert_id;

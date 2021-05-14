@@ -71,12 +71,13 @@ class Add_new_product
         // si la imagen existe
         if (isset($_FILES['image'])) {
 
-            // target path
-            $target_path = __DIR__ . '/../../assets/img/products/';
 
             foreach ($_FILES['image']['tmp_name'] as $key => $value) {
 
-                $name = uniqid() . '.jpg';
+                // target path
+                $target_path = __DIR__ . '/../../assets/img/products/';
+
+                $name = uniqid() . '.png';
                 $target_path = $target_path . $name;
 
                 // mover archivo a directorio
@@ -132,7 +133,7 @@ class Add_new_product
             $this->set_product_color();
             // guardo imagen y seteo la relación (bucle dentro de imagen)
             // agregame la iamgen si no está vacío
-            if (!empty($_REQUEST['image'])) {
+            if (!empty($_FILES['image'])) {
                 $this->upload_image();
             }
 
@@ -147,7 +148,7 @@ $prueba = new Add_new_product($conn);
 
 // si existen datos los setea y vuelve al constructor
 if (!empty($_REQUEST)) {
-
+    echo '<pre>' . var_export($_FILES['image'], true) . '</pre>';
     $res = $prueba->set_product();
     header("Location: ./../constructor.php?msg=$res");
 }

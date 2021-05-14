@@ -38,9 +38,7 @@ class Update
             WHERE _id = $this->update_at
             ";
 
-
         echo "$query";
-
 
         // inserto datos
         if (!$this->conn->query($query)) { //!$this->conn->query($query)

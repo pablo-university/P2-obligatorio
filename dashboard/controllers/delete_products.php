@@ -1,6 +1,7 @@
 <?php
 // ob_start();
 include_once __DIR__ . '/../../connectors/connection.php';
+include_once __DIR__.'/../../utils/constants.php';
 
 /** ELIMINO EL PRODUCTO Y LAS RELACIONES
  * queda pendiente volver a la pagina sin la query por si el user recarga
@@ -37,10 +38,23 @@ if (!empty($_REQUEST['delete'])) {
             WHERE images.id_product = $id
             ";
 
+        $query_delete_images = "
+            SELECT *
+            FROM images
+            WHERE images.id_product = $id
+            ";
+
+        // borrar imagenes de directorio
+        $images_for_delete = $conn->query($query_delete_images);
+        while ($data = $images_for_delete->fetch_object()) {
+            echo "Quisiera eliminar: " . __DIR__ . '/../../assets/img/products/' . $data->url . '<br>';
+            unlink(__DIR__ . '/../../assets/img/products/' . $data->url);
+        }
+
         $conn->query($query_product_color);
         $conn->query($query_images);
         $conn->query($query_products);
-    } 
+    }
 
 
     $res = 'elementos eliminados';

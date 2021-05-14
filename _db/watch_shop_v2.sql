@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-05-2021 a las 20:24:38
+-- Tiempo de generación: 14-05-2021 a las 03:19:59
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.2
 
@@ -144,12 +144,8 @@ CREATE TABLE `images` (
 
 INSERT INTO `images` (`_id`, `url`, `id_product`, `alt`, `title`, `role`) VALUES
 (3, '4v1.png', 4, 'empty', 'empty', 'product'),
-(9, '4v2.png', 4, 'empty', 'empty', 'product'),
-(10, '4v3.png', 4, 'empty', 'empty', 'product'),
 (11, '5v1.png', 12, 'empty', 'empty', 'product'),
-(12, '5v2.png', 12, 'empty', 'empty', 'product'),
-(13, '6v1.png', 13, 'empty', 'empty', 'product'),
-(14, '6v2.png', 13, 'empty', 'empty', 'product');
+(13, '6v1.png', 13, 'empty', 'empty', 'product');
 
 -- --------------------------------------------------------
 
@@ -189,7 +185,6 @@ CREATE TABLE `products` (
   `stock` smallint(4) NOT NULL DEFAULT 0,
   `band` tinytext COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'resina',
   `case` enum('redondo','cuadrado') COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'redondo',
-  `color` tinytext COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'bage',
   `user_type` tinytext COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'mujer',
   `moment` tinytext COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'clásico',
   `brand` tinytext COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'kaunas',
@@ -203,10 +198,11 @@ CREATE TABLE `products` (
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`_id`, `model`, `title`, `last_modification`, `display_type`, `description`, `price`, `stock`, `band`, `case`, `color`, `user_type`, `moment`, `brand`, `submersible`, `shipping`, `weight`, `sale`) VALUES
-(4, 2136598789, '_4-m', '2021-05-11 17:52:48', 'analógico-digital', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10000, 200, 'nylon', 'cuadrado', 'negro', 'mujer', 'fashion', 'QQ', 1, 1, 500, 1),
-(12, 452452, '_5-h', '2021-05-11 17:52:48', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'bage', 'hombre', 'clásico', 'QQ', 0, 1, 0, 1),
-(13, 2343, '_6-i', '2021-05-11 17:52:48', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'bage', 'infantil', 'clásico', 'QQ', 0, 0, 0, 1);
+INSERT INTO `products` (`_id`, `model`, `title`, `last_modification`, `display_type`, `description`, `price`, `stock`, `band`, `case`, `user_type`, `moment`, `brand`, `submersible`, `shipping`, `weight`, `sale`) VALUES
+(4, 2136598789, '_4-m', '2021-05-11 17:52:48', 'analógico-digital', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10000, 200, 'nylon', 'cuadrado', 'mujer', 'fashion', 'QQ', 1, 1, 500, 1),
+(12, 452452, '_5-h', '2021-05-11 17:52:48', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'hombre', 'clásico', 'QQ', 0, 1, 0, 1),
+(13, 2343, '_6-i', '2021-05-11 17:52:48', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'infantil', 'clásico', 'QQ', 0, 0, 0, 1),
+(80, 11, '_prueba_', '2021-05-14 01:08:45', 'analógico', '', 11, 11, 'resina', 'redondo', 'mujer', 'clásico', 'kaunas', 0, 0, 11, 0);
 
 -- --------------------------------------------------------
 
@@ -226,12 +222,9 @@ CREATE TABLE `product_color` (
 
 INSERT INTO `product_color` (`_id`, `id_product`, `id_color`) VALUES
 (1, 4, 2),
-(2, 4, 5),
-(7, 4, 6),
 (8, 12, 2),
-(9, 12, 9),
-(10, 13, 5),
-(11, 13, 10);
+(83, 80, 5),
+(84, 80, 6);
 
 -- --------------------------------------------------------
 
@@ -371,13 +364,13 @@ ALTER TABLE `moment`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `product_color`
 --
 ALTER TABLE `product_color`
-  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT de la tabla `user_type`

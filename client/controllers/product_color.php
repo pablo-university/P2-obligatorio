@@ -22,7 +22,7 @@ $product_color = function ($_id) use ($conn){
     $res = $conn->query($query);
 
     if ($res->num_rows < 1) :
-        return 'sin asignar';
+        return null;
     else :
         return $res;
     endif;

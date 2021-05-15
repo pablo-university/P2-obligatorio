@@ -61,9 +61,14 @@ endif;
       <p class="lead text-black-50 fs-6">colores disponible</p>
       <p class="m-0">
         <?php $res_color = $product_color($_id); ?>
-        <?php while ($data_color = $res_color->fetch_object()) { ?>
-          <i class="bi bi-circle-fill fs-3" title="<?= $data_color->color ?>" style="color:<?= $data_color->code ?>;"></i>
-        <?php } ?>
+        <?php if ($res_color) { ?>
+          <?php while ($data_color = $res_color->fetch_object()) { ?>
+            <i class="bi bi-circle-fill fs-3" title="<?= $data_color->color ?>" style="color:<?= $data_color->code ?>;"></i>
+          <?php } ?>
+        <?php } else {?>
+        <p>color no asignado</p>
+        <?php }?>
+
       </p>
     </div>
 
@@ -77,8 +82,8 @@ endif;
       <div>
         <?=
         match (true) {
-          $data->case == 'redondo' => "<i style=\"filter: contrast(0.5);\" class=\"bi bi-watch fs-1\" title=".$data->case."></i>",
-          $data->case == 'cuadrado' => "<i style=\"filter: contrast(0.5);\" class=\"bi bi-smartwatch fs-1\" title=" .$data->case. "></i>"
+          $data->case == 'redondo' => "<i style=\"filter: contrast(0.5);\" class=\"bi bi-watch fs-1\" title=" . $data->case . "></i>",
+          $data->case == 'cuadrado' => "<i style=\"filter: contrast(0.5);\" class=\"bi bi-smartwatch fs-1\" title=" . $data->case . "></i>"
         }
         ?>
       </div>

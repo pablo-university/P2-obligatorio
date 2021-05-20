@@ -93,6 +93,43 @@ class Update
         }
     }
 
+    function delete_image()
+    {
+        
+        // eliminar registro images
+        $query_images = "
+            DELETE
+            FROM images
+            WHERE images.id_product = $this->update_at
+            ";
+
+        $query_delete_images = "
+            SELECT *
+            FROM images
+            WHERE images.id_product = $this->update_at
+            ";
+
+        // borrar imagenes de directorio
+        $images_for_delete = $this->conn->query($query_delete_images);
+        while ($data = $images_for_delete->fetch_object()) {
+            echo "Quisiera eliminar: " . __DIR__ . '/../../assets/img/products/' . $data->url . '<br>';
+            $res = unlink(__DIR__ . '/../../assets/img/products/' . $data->url);
+            if (!$res) {
+                $this->walker("
+                Error al eliminar la imagen del directorio: <br>
+                __DIR__ . '/../../assets/img/products/' . $data->url
+                ", 404);
+            }
+        }
+
+        // elimina registro de imagen
+        $res = $this->conn->query($query_images);
+
+        if (empty($res)) {
+            $this->walker('error al eliminar relación de imagen', 404);
+        }
+    }
+
     function update_product()
     {
         // evito que color sea vacio!
@@ -146,6 +183,17 @@ class Update
 // instancio con la conexión y mi update_at
 $update = new Update($conn, $_REQUEST['update_at']);
 
+// probando eliminar
+if (!empty($_REQUEST['delete_image'])) {
+    $update->delete_image();
+    // |||||||||||| TRABAJANDO AQUIIIIIII ||||||||||||||||||||||
+    // funciona pero me esta borrando todas las imagenes y todas las relaciones de imagenes....
+    $update->walker('borre la imagen correctamente?');
+}
+
 // ejecuto mi instancia
 $update->update_product();
+
+
 // $update->upload_image();
+// delete_image=true para cuando quiero eliminar imagen....

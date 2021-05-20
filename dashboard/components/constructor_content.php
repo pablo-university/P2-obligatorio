@@ -13,6 +13,7 @@ $res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 // -------- ACTUALIZACIÓN --------
 // si hay obtengo id para actualizar
 $id_update_at = (!empty($_REQUEST['update_at'])) ? $_REQUEST['update_at'] : null;
+$res_product = null;
 
 // entonces tenemos id?
 if (!empty($id_update_at)) {
@@ -221,7 +222,8 @@ function color_is_checked($res_product_color, $color)
 
                     <?php foreach ($res_product_color as $key => $value) { ?>
                         <div class="position-relative">
-                            <a href="#" class="text-decoration-none text-secondary position-absolute" title="eliminar imagen"><i class="bi bi-trash"></i></a>
+                        
+                            <a href="./controllers/update_product.php?update_at=<?= $id_update_at ?>&delete_image=true" class="text-decoration-none text-secondary position-absolute" title="eliminar imagen"><i class="bi bi-trash"></i></a>
 
                             <?php if (!empty($value['url'])) {
                                 $HOST = LOCAL_HOST;

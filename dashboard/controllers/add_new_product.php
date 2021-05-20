@@ -151,6 +151,9 @@ class Add_new_product
 
 $prueba = new Add_new_product($conn);
 
+// sanitizar con
+// html_entity_decode("")
+
 // evito que color sea vacio!
 if (empty($_REQUEST['color'])) {
     header("Location: ./../constructor.php?msg=no se asignaron colores&code=404");

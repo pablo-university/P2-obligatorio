@@ -14,10 +14,12 @@ los botones que te dejo para navegar
 
         <a class="link-success" href="client/">IR A CLIENTE</a>
         <br />
-        
+
         <br />
-        
+
         <?php button(['href' => './', 'content' => 'PENDIENTE']); ?>
+
+        
 
     </div>
 <?php } ?>

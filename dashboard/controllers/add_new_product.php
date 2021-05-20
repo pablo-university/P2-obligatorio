@@ -26,6 +26,12 @@ class Add_new_product
         public $conn
     ) {
     }
+    
+    function walker($msg = 'default message', $code = '')
+    {
+        header("Location: ./../constructor.php?msg=$msg&code=$code");
+        exit();
+    }
 
     // set product_color
     // ! esta funcion quedo en desuso quiza si armo lo de la relacion de los colores la pueda volver a utilizar
@@ -145,10 +151,16 @@ class Add_new_product
 
 $prueba = new Add_new_product($conn);
 
+// evito que color sea vacio!
+if (empty($_REQUEST['color'])) {
+    header("Location: ./../constructor.php?msg=no se asignaron colores&code=404");
+    exit();
+}
 
 // si existen datos los setea y vuelve al constructor
 if (!empty($_REQUEST)) {
     echo '<pre>' . var_export($_FILES['image'], true) . '</pre>';
     $res = $prueba->set_product();
     header("Location: ./../constructor.php?msg=$res");
+    exit();
 }

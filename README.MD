@@ -12,3 +12,8 @@
 * agregar alertas con bootstrap alerts
 * paginacion?
 
+
+* evitar que no agreguen colores causaria errores
+
+## The walker history =D
+_Amo tener a walker es mi caminante en una clase, solo avisa si hay errores y muestra mensajes de ok o error en la interfaz pero bueno es gran tipo_

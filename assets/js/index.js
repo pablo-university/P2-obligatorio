@@ -20,8 +20,11 @@ if (document.querySelector('.container-client')) {
 
 
 // new burguer menu
-document.querySelector('.hamburger').addEventListener('click', burguerMenu);
 function burguerMenu() {
     this.classList.toggle("is-active");
+}
+const nodeBurguer = document.querySelector('.hamburger');
+if (nodeBurguer){
+    nodeBurguer.addEventListener('click', burguerMenu);
 }
 

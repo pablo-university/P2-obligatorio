@@ -15,10 +15,11 @@ class Update
         public $update_at
     ) {
     }
-    // crear funcion de errores aqui? al llamarla termina el script y envia un mensaje cn code
-    function walker($msg = 'default message', $code = '')
+
+    // walker es mi funcion mensajera
+    function walker($msg = 'default message', $code = '', $optional_query = '')
     {
-        header("Location: ./../constructor.php?msg=$msg&code=$code");
+        header("Location: ./../constructor.php?msg=$msg&code=$code&$optional_query");
         exit();
     }
 
@@ -97,14 +98,14 @@ class Update
     {
         $delete_image = $_REQUEST['delete_image'];
 
-        
+
         // eliminar registro fisico de la imagen
         $query_delete_images = "
         SELECT *
         FROM images I
         WHERE I.id_product = $this->update_at AND I._id = $delete_image
         ";
-        
+
         // borrar imagenes de directorio
         $images_for_delete = $this->conn->query($query_delete_images);
         $data = $images_for_delete->fetch_object();
@@ -113,13 +114,16 @@ class Update
         $res = unlink(__DIR__ . '/../../assets/img/products/' . $data->url);
 
         if (!$res) {
-            $this->walker("
+            $this->walker(
+                "
             Error al eliminar la imagen del directorio: <br>
             __DIR__ . '/../../assets/img/products/' . $data->url
-            ", 404);
+            ",
+                404
+            );
         }
         // ---------------------------------
-        
+
         // eliminar registro images
         $query_images = "
             DELETE
@@ -133,14 +137,22 @@ class Update
             $this->walker('error al eliminar relación de imagen', 404);
         }
         // ------------------
-        
+
     }
 
     function update_product()
     {
+        // eliminador de imagen
+        if (!empty($_REQUEST['delete_image'])) {
+            $this->delete_image();
+            // |||||||||||| TRABAJANDO AQUIIIIIII ||||||||||||||||||||||
+            $this->walker('borre la imagen correctamente?', 200, "update_at=$this->update_at");
+        }
+
+
         // evito que color sea vacio!
         if (empty($_REQUEST['color'])) {
-            $this->walker('debes asignar al menos un color a tu reloj', 404);
+            $this->walker('debes asignar al menos un color a tu reloj', 404, "update_at=$this->update_at");
         }
 
         // confirmo tener un request
@@ -180,7 +192,7 @@ class Update
                 // guardo imagen y seteo la relación (bucle dentro de imagen)
                 $this->upload_image();
 
-                $this->walker('Datos actualizados!');
+                $this->walker('Datos actualizados!', 200, "update_at=$this->update_at");
             }
         }
     }
@@ -189,17 +201,7 @@ class Update
 // instancio con la conexión y mi update_at
 $update = new Update($conn, $_REQUEST['update_at']);
 
-// probando eliminar
-if (!empty($_REQUEST['delete_image'])) {
-    $update->delete_image();
-    // |||||||||||| TRABAJANDO AQUIIIIIII ||||||||||||||||||||||
-    // funciona pero me esta borrando todas las imagenes y todas las relaciones de imagenes....
-    $update->walker('borre la imagen correctamente?');
-}
+
 
 // ejecuto mi instancia
 $update->update_product();
-
-
-// $update->upload_image();
-// delete_image=true para cuando quiero eliminar imagen....

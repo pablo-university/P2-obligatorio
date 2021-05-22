@@ -95,39 +95,45 @@ class Update
 
     function delete_image()
     {
+        $delete_image = $_REQUEST['delete_image'];
+
+        
+        // eliminar registro fisico de la imagen
+        $query_delete_images = "
+        SELECT *
+        FROM images I
+        WHERE I.id_product = $this->update_at AND I._id = $delete_image
+        ";
+        
+        // borrar imagenes de directorio
+        $images_for_delete = $this->conn->query($query_delete_images);
+        $data = $images_for_delete->fetch_object();
+
+        echo "Quisiera eliminar: " . __DIR__ . '/../../assets/img/products/' . $data->url . '<br>';
+        $res = unlink(__DIR__ . '/../../assets/img/products/' . $data->url);
+
+        if (!$res) {
+            $this->walker("
+            Error al eliminar la imagen del directorio: <br>
+            __DIR__ . '/../../assets/img/products/' . $data->url
+            ", 404);
+        }
+        // ---------------------------------
         
         // eliminar registro images
         $query_images = "
             DELETE
             FROM images
-            WHERE images.id_product = $this->update_at
+            WHERE images._id = $delete_image
             ";
 
-        $query_delete_images = "
-            SELECT *
-            FROM images
-            WHERE images.id_product = $this->update_at
-            ";
-
-        // borrar imagenes de directorio
-        $images_for_delete = $this->conn->query($query_delete_images);
-        while ($data = $images_for_delete->fetch_object()) {
-            echo "Quisiera eliminar: " . __DIR__ . '/../../assets/img/products/' . $data->url . '<br>';
-            $res = unlink(__DIR__ . '/../../assets/img/products/' . $data->url);
-            if (!$res) {
-                $this->walker("
-                Error al eliminar la imagen del directorio: <br>
-                __DIR__ . '/../../assets/img/products/' . $data->url
-                ", 404);
-            }
-        }
-
-        // elimina registro de imagen
         $res = $this->conn->query($query_images);
 
-        if (empty($res)) {
+        if (!$res) {
             $this->walker('error al eliminar relación de imagen', 404);
         }
+        // ------------------
+        
     }
 
     function update_product()

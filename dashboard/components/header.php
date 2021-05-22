@@ -9,7 +9,7 @@
   </button>
 
   <!-- logo -->
-  <a class="navbar-brand col-md-3 col-lg-3 me-0 px-3" href="#">WatchClock</a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">WatchClock</a>
 
   <form class="w-100" action="./list_update_delete.php">
     <input class="form-control form-control-dark w-100" name="search" type="text" placeholder="Buscar productos" aria-label="Search">

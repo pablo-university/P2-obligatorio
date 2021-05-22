@@ -223,7 +223,7 @@ function color_is_checked($res_product_color, $color)
                     <?php foreach ($res_product_color as $key => $value) { ?>
                         <div class="position-relative">
                         
-                            <a href="./controllers/update_product.php?update_at=<?= $id_update_at ?>&delete_image=true" class="text-decoration-none text-secondary position-absolute" title="eliminar imagen"><i class="bi bi-trash"></i></a>
+                            <a href="./controllers/update_product.php?update_at=<?= $id_update_at ?>&delete_image=<?= $value['_id_img'] ?>" class="text-decoration-none text-secondary position-absolute" title="eliminar imagen"><i class="bi bi-trash"></i></a>
 
                             <?php if (!empty($value['url'])) {
                                 $HOST = LOCAL_HOST;

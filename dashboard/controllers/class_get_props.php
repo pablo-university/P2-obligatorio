@@ -56,8 +56,9 @@ class Mi
     function get_product($_id)
     {
         // retornar el resultado de esa consulta
+        // uso _id_img para borrar la imagen en upodates
         $query = "
-        SELECT P.*, C.*, I.url
+        SELECT P.*, C.*, I.url, I._id AS _id_img
         FROM products P
         
         LEFT JOIN images I

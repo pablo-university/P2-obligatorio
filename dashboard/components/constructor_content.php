@@ -1,4 +1,4 @@
-<?php include_once __DIR__ . '/../controllers/class_get_props.php'; ?>
+<?php include_once __DIR__ . '/../controllers/get_props.php'; ?>
 <?php include_once __DIR__ . '/../../utils/constants.php'; ?>
 <?php
 ini_set("default_charset", "UTF-8");

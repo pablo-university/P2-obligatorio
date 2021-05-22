@@ -1,4 +1,4 @@
-<?php include_once __DIR__ . '/../controllers/class_get_props.php'; ?>
+<?php include_once __DIR__ . '/../controllers/get_props.php'; ?>
 
 <?php $values_for_get = [
   'sale' => 'productos de linea que están en sale',

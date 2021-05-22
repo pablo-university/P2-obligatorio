@@ -6,8 +6,8 @@
 
 <?php $content_dashboard = function (): void { ?>
 
-   <!-- incluyo la clase get props -->
-   <?php include_once __DIR__ . '/controllers/class_get_props.php'; ?>
+   <!-- incluyo controlador get props -->
+   <?php include_once __DIR__ . '/controllers/get_props.php'; ?>
 
    <!-- titulo  -->
    <?php header_content('Listado, actualización y eliminación de contenido'); ?>

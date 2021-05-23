@@ -11,7 +11,7 @@
 
 <div class="d-flex justify-content-start flex-wrap gap-5">
   <?php foreach ($values_for_get as $key => $value) { ?>
-    <?php $res = $count_value_in_true->count_value_in_true('products', $key)->fetch_object()->res; ?>
+    <?php $res = $get_props_instance->count_value_in_true('products', $key)->fetch_object()->res; ?>
     <!-- <div class="col"> -->
     <div class="card flex-fill border-0 shadow-sm mb-3 p-0 hover-shadow-lg" style="max-width: 18rem;">
       <div class="card-header"><?= $key ?></div>

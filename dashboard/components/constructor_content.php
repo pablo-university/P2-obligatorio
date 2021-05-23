@@ -1,58 +1,9 @@
 <?php include_once __DIR__ . '/../controllers/get_props.php'; ?>
 <?php include_once __DIR__ . '/../../utils/constants.php'; ?>
-<?php
-ini_set("default_charset", "UTF-8");
-$res_bands = $class_get_props->get_prop('band', 'band');
-$res_brands = $class_get_props->get_prop('brand', 'brand');
-$res_cases = $class_get_props->get_prop('products', 'case');
-$res_colors = $class_get_props->get_prop('color', 'color');
-$res_display_types = $class_get_props->get_prop('display_type', 'display_type');
-$res_moments = $class_get_props->get_prop('moment', 'moment');
-$res_user_types = $class_get_props->get_prop('user_type', 'user_type');
 
-// -------- ACTUALIZACIÓN --------
-// si hay obtengo id para actualizar
-$id_update_at = (!empty($_REQUEST['update_at'])) ? $_REQUEST['update_at'] : null;
-$res_product = null;
-$res_product_color = null;
+<!-- este controlador trae las propiedades y prepara para actualizar -->
+<?php include_once __DIR__.'/../controllers/constructor_get_props.php'; ?>
 
-// entonces tenemos id?
-if (!empty($id_update_at)) {
-
-    // trae datos para el id a actualizar
-    $res_product = $class_get_props->get_product($id_update_at);
-    // copio datos para trabajar colores
-    $res_product_color = $res_product;
-
-    // obtiene los datos como objeto
-    $res_product = $res_product->fetch_object();
-
-    // respuesta de la consulta para actualizar
-    // echo '<pre>' . var_export($res_product, true) . '</pre>';
-
-// $res_product_image = $class_get_props->get_prop('display_type', 'display_type');
-
-    foreach ($res_product_color as $key => $value) {
-      echo '<pre>' . var_export($value, true) . '</pre>'; 
-    }
-    
-}
-
-// chequea si coincide colores del producto
-// con el color que se está recorriendo
-function color_is_checked($res_product_color, $color)
-{
-    if (!empty($res_product_color)) {
-        foreach ($res_product_color as $key => $value) {
-            if (!empty($value['color'] and ($value['color'] == $color))) {
-                return 'checked';
-            }
-        }
-    }
-    return '';
-}
-//  -----------------------------
-?>
 <!-- IMPRIMO EL REQUEST QUE ESTA LLEGANDO -->
 <?php echo '<pre>' . var_export($_REQUEST, true) . '</pre>'; ?>
 
@@ -252,17 +203,17 @@ function color_is_checked($res_product_color, $color)
 
             <!-- si estoy actualizando chequear que vengan imagenes en la consulta -->
             <?php if (!empty($res_product) and !empty($res_product->url)) { ?>
-                <div class="mb-3 row">
+                <div class="mb-3 row-cols-2 row row-cols-xl-3 g-3">
 
-                    <?php foreach ($res_product_color as $key => $value) { ?>
+                    <?php foreach ($res_product_image as $key => $value) { ?>
                         <div class="position-relative">
 
-                            <a href="./controllers/update_product.php?update_at=<?= $id_update_at ?>&delete_image=<?= $value['_id_img'] ?>" class="text-decoration-none text-secondary position-absolute" title="eliminar imagen"><i class="bi bi-trash"></i></a>
+                            <a href="./controllers/update_product.php?update_at=<?= $id_update_at ?>&delete_image=<?= $value['_id'] ?>" class="text-decoration-none text-secondary position-absolute" title="eliminar imagen"><i class="bi bi-trash border bg-light rounded"></i></a>
 
                             <?php if (!empty($value['url'])) {
                                 $HOST = LOCAL_HOST;
                                 $img = $value['url'];
-                                echo "<img class='col-3' src=\"{$HOST}assets/img/products/{$img} \" >";
+                                echo "<img class='w-100' src=\"{$HOST}assets/img/products/{$img} \" >";
                             } ?>
 
                         </div>

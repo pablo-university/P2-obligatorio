@@ -78,14 +78,15 @@ class Mi
     }
 
     // trae propiedades, hay que especificarle tabla y columna
-    public function get_prop($table, $column, $where = '')
+    public function get_prop($table, $where = '')
     {
+        // $table.$column, _id
         $query = "
-        SELECT DISTINCT $table.$column, _id
-        FROM $table
-        $where
-        GROUP BY ($table.$column)
+            SELECT *
+            FROM $table
+            $where
         ";
+        // GROUP BY ($table.$column)
 
         $res = $this->conn->query($query);
 

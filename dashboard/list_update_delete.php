@@ -27,7 +27,7 @@
 
 
             <!-- traigo datos dependiendo de si hay busqueda o no -->
-            <?php $res_all_products = $get_all_products->get_all_products(); ?>
+            <?php $res_all_products = $get_props_instance->get_all_products(); ?>
 
 
             <!-- PINTO PRODUCTOS -->
@@ -106,7 +106,7 @@
 
 
    <p class="text-secondary fst-italic">
-      *Se está mostrando una vista simplificada de los datos, no están completos
+      *Se está mostrando una vista simplificada de los datos, clickea en el título para ampliar
    </p>
 
 <?php } ?>

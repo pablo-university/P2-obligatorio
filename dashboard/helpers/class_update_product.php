@@ -139,7 +139,7 @@ class Update
         if (!empty($_REQUEST['delete_image'])) {
             $this->delete_image();
             // |||||||||||| TRABAJANDO AQUIIIIIII ||||||||||||||||||||||
-            $this->walker('borre la imagen correctamente?', 200, "update_at=$this->update_at");
+            $this->walker('imagen borrada correctamente', 200, "update_at=$this->update_at");
         }
 
 

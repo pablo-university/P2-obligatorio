@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 /**
@@ -100,18 +100,15 @@ class Add_new_product
 
         // evito que color sea vacio!
         if (empty($_REQUEST['color'])) {
-            // header("Location: ./../constructor.php?msg=no se asignaron colores&code=404");
-            echo "
-            <script>
-                history.back();
-                location.href += '?msg=no asignastes colores!&code=404'
-            </script>";
-            exit();
+            header("Location: ./../constructor.php?msg=no se asignaron colores, <a href='javascript:history.back()'>recuperar datos?</a>&code=404");
+            // exit();
+            return '';
+            // estoy queriendo volver pero con un mensaje!
         }
 
         // si existen datos los setea y vuelve al constructor
         if (!empty($_REQUEST)) {
-           
+
 
             $to_insert = [];
             $insert_value = [];

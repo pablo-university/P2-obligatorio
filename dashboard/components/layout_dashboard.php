@@ -15,7 +15,7 @@ pasarselo a la función Layout comun. -->
     <!-- me re costó encontrar que la función hija tenga alcance a esta variable, solucione con use -->
     <?php $content = function () use ($args) { ?>
 
-        <div class="container-dashboard">
+        <div class="container-dashboard max-width-1920 m-auto bg-light">
 
             <?php include_once __DIR__ . '/header.php'; ?>
 

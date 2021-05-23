@@ -1,0 +1,71 @@
+$grid-breakpoints: (
+    "xs": "0",
+    "sm": "576px",
+    "md": "768px",
+    "lg": "992px",
+    "xl": "1200px",
+    "xxl": "1400px",
+);
+
+// MIN HEIGHT
+@mixin min-height($list) {
+    @each $value in $list {
+        .min-height-#{$value} {
+            min-height: #{$value};
+            @content;
+        }
+    }
+}
+
+// MEDIAS
+// "xs": "0",
+// "sm": "576px",
+// "md": "768px",
+// "lg": "992px",
+// "xl": "1200px",
+// "xxl": "1400px",
+// por ahora solo uso esta
+@mixin media-md {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+// --- CREADOR DE REGLAS RESPONSIVAS ----
+@mixin responsive-rule($prop, $alias, $map) {
+    // recorre el mapa enviado por parametro
+    @each $name, $data in $map {
+        // creo regla de uso normal
+        .#{$alias}-#{$name} {
+            #{$prop}: #{$data};
+        }
+        // por cada mapa recorre y crea breakpoints
+        @each $key, $value in $grid-breakpoints {
+            .#{$key}\:#{$alias}-#{$name} {
+                @media (min-width: $value) {
+                    #{$prop}: #{$data};
+                }
+            }
+        }
+    }
+}
+// actualmente me escupe 3 veces no deberia... probe en sass meiter y funcioona ok....
+// @include responsive-rule("background-color","bg-color",("red": "blue"));
+
+// glass-effect
+@mixin glass-effect {
+    .glass-effect {
+        background: #f9f9f900;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 0.5rem 20rem rgb(0 0 0 / 10%);
+        @content;
+    }
+}
+
+@mixin z-index-variables {
+    @each $key, $value in ("n1": -1, "0": 0, "1": 1, "2": 2, "3": 3) {
+        .z-index-#{$key} {
+            z-index: $value;
+        }
+    }
+}

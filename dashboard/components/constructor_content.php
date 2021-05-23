@@ -90,9 +90,7 @@
 
             <!-- description -->
             <div class="form-floating mb-3">
-                <textarea class="form-control" name='description' id="floatingTextarea2" style="height: 100px" required>
-                    <?= (!empty($res_product)) ? $res_product->description : '' ?>
-                </textarea>
+                <textarea class="form-control" name='description' id="floatingTextarea2" style="height: 100px" required><?= (!empty($res_product)) ? $res_product->description : '' ?></textarea>
                 <label for="floatingTextarea2">Descripcion</label>
                 <div class="invalid-feedback">Ingresa una descripcion de producto por favor</div>
             </div>

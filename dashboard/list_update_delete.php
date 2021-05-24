@@ -23,7 +23,7 @@
    <form action="./controllers/delete_products.php">
 
       <div class="table-responsive">
-         <table class="table table-striped table-hover">
+         <table class="table table-hover">
 
 
             <!-- traigo datos dependiendo de si hay busqueda o no -->

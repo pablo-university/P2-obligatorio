@@ -1,3 +1,14 @@
+/*
+--- COLORES ----
+violeta
+rgb(50, 30, 60)
+
+verde
+30,60,50 
+
+gris
+'rgb(150, 150, 150)'
+*/
 
 // me deja en dashboard
 const href = window.location.href;
@@ -19,24 +30,22 @@ const fetchConfig = {
     let response = node.getAttribute('data-chart');
     response = await JSON.parse(response);
 
-    // console.log(response)
-
     const data = {
       labels: response.labels,
       datasets: [{
         label: 'My First Dataset',
         data: response.data,
         backgroundColor: [
-          'rgb(200, 192, 255)',
-          'rgb(255, 150, 200)',
-          'rgb(255, 100, 150)',
-          'rgb(201, 203, 207)'
+          'rgb(50, 30, 60)',
+          'rgb(30, 50, 60)',
+          'rgb(50, 30, 60)',
+          'rgb(150, 150, 150)'
         ]
       }]
     };
     const config = {
       // type: 'line',
-      type: 'polarArea',
+      type: 'doughnut',
       data: data,
       options: {
         plugins: {
@@ -51,7 +60,7 @@ const fetchConfig = {
         },
         responsive: true,
         maintainAspectRatio: true,
-        aspectRatio: 2
+        aspectRatio: 1.8
 
       }
     };
@@ -85,8 +94,8 @@ const fetchConfig = {
         {
           label: 'Tipo de usuario',
           data: response.data,
-          borderColor: 'rgb(0, 0, 0, .6)',
-          backgroundColor: 'rgb(255, 150, 200)',
+          borderColor: 'rgb(10, 10, 10)',
+          backgroundColor: 'rgb(50, 30, 60)',
           fill: true// relleno?
         }
       ]
@@ -136,8 +145,7 @@ const fetchConfig = {
       labels: response.labels,
       datasets: [{
         label: 'Marcas (cantidad por marca)',
-        backgroundColor: 'rgb(255, 100, 150)',
-        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgb(50, 30, 60)',
         data: response.data,
       }]
     };

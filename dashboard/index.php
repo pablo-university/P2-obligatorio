@@ -10,7 +10,7 @@
   <?php header_content('Dashboard') ?>
 
   <!-- CARDS DE NIEVL SUPERIOR -->
- <?php include_once __DIR__.'/components/index_card_top.php';?>
+  <?php include_once __DIR__ . '/components/index_card_top.php'; ?>
 
   <?php
   // inicio mis objetos
@@ -22,15 +22,15 @@
   <main>
     <div class="row row-cols-md-2
      charts">
-      <!-- chartUserType -->
+      <!-- user type -->
       <div>
-        <canvas id="chartUserType" data-chart='<?= $chartUserType->chart_main(); ?>'>
+        <canvas style="height: 100%!important;" id="chartMoment" data-chart='<?= $moment->chart_main(); ?>'>
         </canvas>
       </div>
 
-      <!-- user type -->
+      <!-- chartUserType -->
       <div>
-        <canvas style="height: 100%!important;"  id="chartMoment" data-chart='<?= $moment->chart_main(); ?>'>
+        <canvas id="chartUserType" data-chart='<?= $chartUserType->chart_main(); ?>'>
         </canvas>
       </div>
     </div>

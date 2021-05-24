@@ -7,7 +7,7 @@ $get_props_instance = new Mi($conn);
 ini_set("default_charset", "UTF-8");
 $res_bands = $get_props_instance->get_prop('band');
 $res_brands = $get_props_instance->get_prop('brand');
-$res_cases = $get_props_instance->get_prop('products');
+$res_cases = $get_props_instance->get_prop('products', 'case');
 $res_colors = $get_props_instance->get_prop('color');
 $res_display_types = $get_props_instance->get_prop('display_type');
 $res_moments = $get_props_instance->get_prop('moment');
@@ -18,7 +18,7 @@ $res_user_types = $get_props_instance->get_prop('user_type');
 $id_update_at = (!empty($_REQUEST['update_at'])) ? $_REQUEST['update_at'] : null;
 $res_product = null;
 $res_product_color = null;
-$res_product_image = null;
+$res_product_image = [null];
 
 // entonces tenemos id?
 if (!empty($id_update_at)) {
@@ -35,7 +35,7 @@ if (!empty($id_update_at)) {
     // echo '<pre>' . var_export($res_product, true) . '</pre>';
 
     // trae las imagenes para actualizar!
-    $res_product_image = $get_props_instance->get_prop('images', "WHERE images.id_product = $id_update_at");
+    $res_product_image = $get_props_instance->get_prop('images', '*', "WHERE images.id_product = $id_update_at");
 }
 
 // chequea si coincide colores del producto

@@ -2,7 +2,7 @@
 <?php include_once __DIR__ . '/../../utils/constants.php'; ?>
 
 <!-- este controlador trae las propiedades y prepara para actualizar -->
-<?php include_once __DIR__.'/../controllers/constructor_get_props.php'; ?>
+<?php include_once __DIR__ . '/../controllers/constructor_get_props.php'; ?>
 
 <!-- IMPRIMO EL REQUEST QUE ESTA LLEGANDO -->
 <?php echo '<pre>' . var_export($_REQUEST, true) . '</pre>'; ?>
@@ -25,7 +25,7 @@
         <div>
             <!-- title -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="title" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->title : '_prueba_' ?>" required>
+                <input type="text" class="form-control" name="title" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->title : '_prueba_' ?>"  placeholder="#" required>
                 <label for="floatingInputx">Ingresa titulo de producto</label>
                 <div class="invalid-feedback">
                     Ingresa un titulo de producto por favor
@@ -90,7 +90,7 @@
 
             <!-- description -->
             <div class="form-floating mb-3">
-                <textarea class="form-control" name='description' id="floatingTextarea2" style="height: 100px" required><?= (!empty($res_product)) ? $res_product->description : '' ?></textarea>
+                <textarea class="form-control" name='description' id="floatingTextarea2" style="height: 100px"   placeholder="#" required><?= (!empty($res_product)) ? $res_product->description : '' ?></textarea>
                 <label for="floatingTextarea2">Descripcion</label>
                 <div class="invalid-feedback">Ingresa una descripcion de producto por favor</div>
             </div>
@@ -110,9 +110,9 @@
 
             <!-- model -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="model" id="floatingInputx" max='9999' value="<?= (!empty($res_product)) ? $res_product->model : '000' ?>" required>
+                <input type="number" class="form-control" name="model" id="floatingInputx" max='9999' value="<?= (!empty($res_product)) ? $res_product->model : '000' ?>"  placeholder="#" required>
                 <label for="floatingInputx">Número de modelo</label>
-                <div class="invalid-feedback">Ingresa número de modelo por favor</div>
+                <div class="invalid-feedback">Ingresa número de modelo mas chico</div>
             </div>
 
             <!-- moment -->
@@ -130,7 +130,7 @@
 
             <!-- price -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="price" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->price : '000' ?>" required>
+                <input type="text" class="form-control" name="price" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->price : '000' ?>"  placeholder="#" required>
                 <label for="floatingInputx">Ingresa price de producto</label>
                 <div class="invalid-feedback">Ingresa el precio por favor</div>
             </div>
@@ -167,9 +167,9 @@
 
             <!-- stock -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="stock" id="floatingInputx" max='50' value="<?= (!empty($res_product)) ? $res_product->stock : '000' ?>" required>
+                <input type="number" class="form-control" name="stock" id="floatingInputx" max='50' value="<?= (!empty($res_product)) ? $res_product->stock : '000' ?>" placeholder="#" required>
                 <label for="floatingInputx">Stock (cantidad)</label>
-                <div class="invalid-feedback">Ingresa el stock por favor</div>
+                <div class="invalid-feedback">Ingresa el stock inferior</div>
             </div>
 
             <!-- user_type -->
@@ -188,9 +188,9 @@
 
             <!-- weight -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="weight" id="floatingInputx" max='500' value="<?= (!empty($res_product)) ? $res_product->weight : '000' ?>"  required>
+                <input type="number" class="form-control" name="weight" id="floatingInputx" max='500' value="<?= (!empty($res_product)) ? $res_product->weight : '000' ?>" placeholder="#" required>
                 <label for="floatingInputx">Peso (gramos)</label>
-                <div class="invalid-feedback">Ingresa el peso por favor</div>
+                <div class="invalid-feedback">Ingresa el peso menor a 500</div>
             </div>
 
             <!-- image -->

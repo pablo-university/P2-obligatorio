@@ -1,13 +1,16 @@
-<?php 
+<?php
 
-trait walker{
+include_once __DIR__.'/../../utils/constants.php';
+trait trait_walker
+{
     // walker es mi funcion mensajera
-    public function walker($msg = 'default message', $code = '', $optional_query = '')
+    public function walker($params)
     {
-        header("Location: ./../constructor.php?msg=$msg&code=$code&$optional_query");
+        ['dir' => $dir, 'msg' => $msg, 'code' => $code, 'optional_query' => $optional_query] = $params;
+
+        $HOST = LOCAL_HOST;
+        // echo "Location: $HOST$dir?msg=$msg&code=$code&$optional_query";
+        header("Location: $HOST$dir?msg=$msg&code=$code&$optional_query");
         exit();
     }
 }
-
-
-?>

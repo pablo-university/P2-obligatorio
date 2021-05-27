@@ -1,11 +1,18 @@
 <?php
 include_once __DIR__ . '/../helpers/class_get_props.php';
 include_once __DIR__ . '/../../connectors/connection.php';
+include_once __DIR__.'/../helpers/trait_walker.php';
 // controlar si el usuario es correcto ingresarlo sino
 // no ingresarlo y darle mensaje
 
-
+// instancia de get_props
 $get_props_instance = new Mi($conn);
+
+// instancia de mi trait walker
+$walker_instance = new class()
+{
+    use trait_walker;
+};
 
 
 // obtener datos de url
@@ -35,13 +42,22 @@ if ($final_validate) {
     session_start();
     $_SESSION['user_name'] = $user_name;
     // redirecciono
-    header("Location: ./../index.php");
+    $walker_instance->walker([
+        'dir' => 'dashboard/index.php', 
+        'msg' => null, 
+        'code' => null, 
+        'optional_query' => null
+    ]);
 } else {
 
     $msg .= $user_name_checked ? '' : "nombre no válido<br>";
     $msg .= $password_checked ? '' : "constraseña no válida";
 
     $code = 404;
-    header("Location: ./../login.php?msg=$msg&code=$code");
-    exit();
+    $walker_instance->walker([
+        'dir' => 'dashboard/login.php', 
+        'msg' => $msg, 
+        'code' => '404', 
+        'optional_query' => null
+    ]);
 }

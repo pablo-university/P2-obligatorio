@@ -19,7 +19,7 @@
             <div class="mb-4 text-xl-center">
                 <h5 class="text-uppercase text-white">Redes</h5>
 
-                <ul class="list-unstyled d-grid gap-3 pt-3 ">
+                <ul class="list-unstyled d-flex d-xl-grid gap-3 pt-3 ">
                     <li>
                         <a href="#!" class="text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
@@ -80,8 +80,7 @@
 
     <!-- Copyright -->
     <div class="text-center text-white p-lg-5">
-        © 2020 Copyright:
-        <a class="text-white" href="#">Quedan reservados los derechos</a>
+        © 2020 Copyright: 2021-<?= date("Y");?>
     </div>
     <!-- Copyright -->
 </footer>

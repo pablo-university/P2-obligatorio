@@ -27,7 +27,7 @@
                     <li class="nav-item">
                         <a class="nav-link 
                         <?php echo (str_contains(basename($_SERVER["REQUEST_URI"]), "index") ? 'active' : ''); ?>" aria-current="page" href="./index.php">
-                            inicio
+                            Inicio
                         </a>
                     </li>
 
@@ -75,7 +75,7 @@
                     <li class="nav-item">
                         <a class="nav-link
                          <?php echo (str_contains(basename($_SERVER["REQUEST_URI"]), "conta") ? 'active' : ''); ?>" href="./contact.php" tabindex="-1" aria-disabled="true">
-                            contacto
+                            Contacto
                         </a>
                     </li>
                 </ul>

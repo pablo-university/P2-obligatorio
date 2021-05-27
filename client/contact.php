@@ -13,7 +13,7 @@
             <h3>Contacto</h3>
             <p class='lead mb-5'>Todos los campos son requeridos!</p>
 
-            <div class="row row-cols-xl-2">
+            <div class="row row-cols-md-2 g-4">
                 <!-- contenedor del form -->
                 <div>
                     <form class="row row-cols-xl-2 g-3 needs-validation" action="./contact.php" novalidate>

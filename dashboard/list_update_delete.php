@@ -1,6 +1,6 @@
 <?php include_once __DIR__ . '/components/layout_dashboard.php'; ?>
 <?php include_once __DIR__ . '/components/header_content.php'; ?>
-
+<?php include_once __DIR__.'/components/login_session.php';?>
 
 
 

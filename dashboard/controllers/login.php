@@ -4,9 +4,7 @@ include_once __DIR__ . '/../../connectors/connection.php';
 // controlar si el usuario es correcto ingresarlo sino
 // no ingresarlo y darle mensaje
 
-/* 
-- * setear una sesion
-*/
+
 $get_props_instance = new Mi($conn);
 
 
@@ -31,6 +29,12 @@ $final_validate = ($user_name_checked and $password_checked);
 $msg = null;
 
 if ($final_validate) {
+    // destruyo sessiones activas
+    session_unset();
+    // inicio una sesión
+    session_start();
+    $_SESSION['user_name'] = $user_name;
+    // redirecciono
     header("Location: ./../index.php");
 } else {
 

@@ -5,9 +5,6 @@
 <?php $content = function (): void { ?>
 
 
-
-
-
     <div class="container-login container-fluid ">
 
 
@@ -19,6 +16,8 @@
             </div>
             <!-- ------------------------------ -->
             <div class="d-flex flex-column justify-content-center align-items-center">
+
+
                 <figure class="figure d-flex justify-content-center">
                     <!-- <img src="https://cdn.onlinewebfonts.com/svg/img_568656.png" class="figure-img img-fluid rounded-circle" alt="..."> -->
                     <svg viewBox="-42 0 512 512.001" xmlns="http://www.w3.org/2000/svg" class="w-50">
@@ -27,28 +26,31 @@
                     </svg>
                 </figure>
 
-                <form action="./index.php" class="needs-validation" novalidate>
-                    <div class="mb-3">
+                <form action="./controllers/login.php" class="needs-validation" novalidate>
+                <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="user_name" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder="nombre de usuario">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder="mail">
                         <!-- <div id="emailHelp" class="form-text">Ingresa tu email por favor</div> -->
-                        <div class="invalid-feedback">mail incorrecto.</div>
-                        <div class="valid-feedback">ok</div>
+                        <div class="invalid-feedback">debes llenar este campo</div>
+                        <!-- <div class="valid-feedback">ok</div> -->
                     </div>
-                    <div class="mb-3">
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" name="password" id="exampleInputPassword1" required placeholder="contraseña">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" required placeholder="contraseña">
                         <!-- <div id="exampleInputPassword1" class="form-text">Ingresa tu contraseña</div> -->
-                        <div class="invalid-feedback">contraseña incorrecta o vacía</div>
-                        <div class="valid-feedback">parece correcta</div>
+                        <div class="invalid-feedback">debes ingresar una contraseña</div>
+                        <!-- <div class="valid-feedback">parece correcta</div> -->
                     </div>
-                    <div class="mb-3 form-check">
+                    <!-- <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">recordame</label>
-                        <!-- <div id="exampleCheck1" class="form-text">recordar datos</div> -->
-                    </div>
+                    </div> -->
                     <button type="submit" class="btn btn-primary">INGRESAR</button>
                 </form>
+
+                <div class="msg mt-3">
+                    <?php include_once __DIR__ . '/components/msg.php'; ?>
+                </div>
             </div>
             <!-- ------------------------------ -->
             <script>
@@ -66,9 +68,9 @@
                                 if (!form.checkValidity()) {
                                     event.preventDefault()
                                     event.stopPropagation()
+                                    form.classList.add('was-validated')
                                 }
 
-                                form.classList.add('was-validated')
                             }, false)
                         })
                 })()
@@ -77,11 +79,7 @@
 
         </div>
 
-
     </div>
-
-
-
 
 
 

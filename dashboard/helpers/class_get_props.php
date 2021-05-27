@@ -88,7 +88,6 @@ class Mi
         ";
         // GROUP BY ($table.$column)
         
-
         $res = $this->conn->query($query);
 
         if ($res->num_rows < 1) :

@@ -6,7 +6,7 @@
 * mostrar quien es el admin actual
 * paginacion?
 * si hay tiempo sanitizar para que no se inyecten codigos sql etc
-<!-- html_entity_decode ? -->
+* idea colores agregar un color por defecto o insertar un color por defecto nomas!
 
 
 ## The walker history =D

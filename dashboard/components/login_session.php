@@ -1,6 +1,6 @@
 <?php
 include_once __DIR__ . '/../../utils/constants.php';
-include_once __DIR__ . '/../helpers/trait_walker.php';
+include_once __DIR__ . '/../helpers/traits.php';
 
 $HOST = LOCAL_HOST;
 // inicio mi walker
@@ -34,7 +34,7 @@ if (!isset($_SESSION['user_time'])) {
     $_SESSION['user_time'] = time();
 } else {
     // si estas mas de 30min sin hacer nada te saca (1800sg)
-    if ((time() - $_SESSION['user_time']) > 3) {
+    if ((time() - $_SESSION['user_time']) > 1800) {
         $walker_instance->walker([
             'dir' => 'dashboard/login.php', 
             'msg' => 'tiempo de sesión expirado', 

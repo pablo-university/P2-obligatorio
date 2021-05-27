@@ -2,6 +2,17 @@
 /* $border-radius-sm:            .2rem !default;
 $border-radius-lg:            .3rem !default;
 $border-radius-pill:          50rem !default; */
+/* // max-width
+$utilities: map-merge(
+    (
+        "max-width": (
+            property: max-width,
+            class: max-width,
+            values:  $spacers,
+        ),
+    ),
+    $utilities
+); */
 .max-width-1920 {
   max-width: 1920px;
 }
@@ -7527,6 +7538,54 @@ textarea.form-control-lg {
 
 .invisible {
   visibility: hidden !important;
+}
+
+.min-height-60vh {
+  min-height: 60vh !important;
+}
+
+.min-height-80vh {
+  min-height: 80vh !important;
+}
+
+.min-height-100vh {
+  min-height: 100vh !important;
+}
+
+.min-height-400vh {
+  min-height: 400vh !important;
+}
+
+.z-index-n1 {
+  z-index: -1 !important;
+}
+
+.z-index-0 {
+  z-index: 0 !important;
+}
+
+.z-index-1 {
+  z-index: 1 !important;
+}
+
+.z-index-2 {
+  z-index: 2 !important;
+}
+
+.z-index-3 {
+  z-index: 3 !important;
+}
+
+.shadow-0 {
+  box-shadow: 0 !important;
+}
+
+.shadow-xl {
+  box-shadow: 0px 3rem 4rem rgba(0, 0, 0, 0.2) !important;
+}
+
+.shadow-xl-light {
+  box-shadow: 0px 0rem 20rem rgba(0, 0, 0, 0.1) !important;
 }
 
 @media (min-width: 576px) {

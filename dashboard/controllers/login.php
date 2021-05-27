@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__ . '/../helpers/class_get_props.php';
 include_once __DIR__ . '/../../connectors/connection.php';
-include_once __DIR__.'/../helpers/trait_walker.php';
+include_once __DIR__.'/../helpers/traits.php';
 // controlar si el usuario es correcto ingresarlo sino
 // no ingresarlo y darle mensaje
 

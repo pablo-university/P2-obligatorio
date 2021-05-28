@@ -101,9 +101,11 @@
 
 
     <li class="nav-item | mt-auto mb-4">
-      <a class="nav-link" aria-current="page" href="./login.php">Salir</a>
+      <a class="nav-link" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#modal-salir">Salir</a>
     </li>
   </ul>
+
+<!-- Button trigger modal -->
 
 
 

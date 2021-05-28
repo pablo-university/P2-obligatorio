@@ -25,7 +25,7 @@
         <div>
             <!-- title -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="title" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->title : '_prueba_' ?>"  placeholder="#" required>
+                <input type="text" class="form-control" name="title" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->title : '_prueba_' ?>" placeholder="#" required>
                 <label for="floatingInputx">Ingresa titulo de producto</label>
                 <div class="invalid-feedback">
                     Ingresa un titulo de producto por favor
@@ -73,6 +73,8 @@
 
 
             <!-- color -->
+            <div class="border pt-3 ps-3 mb-3">
+            <label for="" class="form-label">Escoge un color</label>
             <div class="row row-cols-2 px-3 py-3">
                 <?php while ($data = $res_colors->fetch_object()) { ?>
 
@@ -87,10 +89,11 @@
 
                 <?php } ?>
             </div>
+            </div>
 
             <!-- description -->
             <div class="form-floating mb-3">
-                <textarea class="form-control" name='description' id="floatingTextarea2" style="height: 100px"   placeholder="#" required><?= (!empty($res_product)) ? $res_product->description : '' ?></textarea>
+                <textarea class="form-control" name='description' id="floatingTextarea2" style="height: 100px" placeholder="#" required><?= (!empty($res_product)) ? $res_product->description : '' ?></textarea>
                 <label for="floatingTextarea2">Descripcion</label>
                 <div class="invalid-feedback">Ingresa una descripcion de producto por favor</div>
             </div>
@@ -110,7 +113,7 @@
 
             <!-- model -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="model" id="floatingInputx" max='9999' value="<?= (!empty($res_product)) ? $res_product->model : '000' ?>"  placeholder="#" required>
+                <input type="number" class="form-control" name="model" id="floatingInputx" max='9999' value="<?= (!empty($res_product)) ? $res_product->model : '000' ?>" placeholder="#" required>
                 <label for="floatingInputx">Número de modelo</label>
                 <div class="invalid-feedback">Ingresa número de modelo mas chico</div>
             </div>
@@ -130,7 +133,7 @@
 
             <!-- price -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="price" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->price : '000' ?>"  placeholder="#" required>
+                <input type="text" class="form-control" name="price" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->price : '000' ?>" placeholder="#" required>
                 <label for="floatingInputx">Ingresa price de producto</label>
                 <div class="invalid-feedback">Ingresa el precio por favor</div>
             </div>
@@ -247,6 +250,27 @@
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.querySelectorAll('.needs-validation')
 
+        // valida check box
+        function validaCheckBox(event) {
+            // removeAttribute('checked','');
+            const colorsChecked = document.querySelectorAll('input[name^=color]:checked');
+            const colors = document.querySelectorAll('input[name^=color]');
+            console.log('valor respuesta: ', colorsChecked.length)
+            if (!colorsChecked.length) {
+                colors.forEach((elem) => {
+                    elem.setAttribute('required', '');
+                    console.log('tiene required?:::', elem.hasAttribute('required'))
+                });
+                console.log('asigno required')
+            } else {
+                colors.forEach((elem) => {
+                    elem.removeAttribute('required', '');
+                });
+                console.log('quito')
+            }
+
+        }
+
         // Loop over them and prevent submission
         Array.prototype.slice.call(forms)
             .forEach(function(form) {
@@ -254,7 +278,9 @@
                     if (!form.checkValidity()) {
                         event.preventDefault()
                         event.stopPropagation()
-                        // esto estaba fuera del if lo saque
+
+                        validaCheckBox(event);
+                        // esto estaba fuera del if, lo saque
                         form.classList.add('was-validated')
                     }
 

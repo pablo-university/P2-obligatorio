@@ -17,7 +17,7 @@ los botones que te dejo para navegar
 
         <br />
 
-        <?php button(['href' => './dashboard', 'content' => 'DASHBOARD']); ?>
+        <?php button(['href' => './dashboard/login.php', 'content' => 'DASHBOARD']); ?>
 
         
 

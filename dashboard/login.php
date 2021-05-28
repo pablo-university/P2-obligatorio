@@ -13,7 +13,7 @@ session_unset();
 <?php $content = function (): void { ?>
 
 
-    <div class="container-login container-fluid ">
+    <div class="container-login container-fluid">
 
 
         <div class="row row-cols-md-2 min-vh-100">
@@ -23,7 +23,7 @@ session_unset();
                 <img src="<?php echo LOCAL_HOST . "/assets/img/dashboard-login.jpg"; ?>" class="w-100 min-vh-100" alt="">
             </div>
             <!-- ------------------------------ -->
-            <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column justify-content-center align-items-center py-5">
 
 
                 <figure class="figure d-flex justify-content-center">

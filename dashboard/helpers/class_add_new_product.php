@@ -28,7 +28,7 @@ class Add_new_product
     // ! esta funcion quedo en desuso quiza si armo lo de la relacion de los colores la pueda volver a utilizar
     public function set_product_color()
     {
-        // si funciona puedo tomar mi variable global de objeto last_id_inserted
+        // toma mi variable global de objeto last_id_inserted
         $id_inserted = $this->conn->insert_id;
 
         // inserto la relacion por cada color que haya sido seleccionado

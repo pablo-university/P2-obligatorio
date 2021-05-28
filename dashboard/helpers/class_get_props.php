@@ -36,6 +36,7 @@ class Mi
              ";
         endif;
 
+        // si orderBy esta seteado
         if (!empty($_REQUEST['orderBy'])) {
             $query .= "ORDER BY (P.$_REQUEST[orderBy])";
         }

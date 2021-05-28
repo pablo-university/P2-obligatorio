@@ -1,6 +1,6 @@
 <?php include_once __DIR__ . '/components/layout_dashboard.php'; ?>
 <?php include_once __DIR__ . '/components/header_content.php'; ?>
-<?php include_once __DIR__.'/components/login_session.php';?>
+<?php include_once __DIR__ . '/components/login_session.php'; ?>
 
 
 
@@ -12,13 +12,8 @@
    <!-- titulo  -->
    <?php header_content('Listado, actualización y eliminación de contenido'); ?>
 
-   <!-- MUESTRA SI HAY MENSAJES -->
-   <?php if (!empty($_REQUEST['msg'])) { ?>
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-         <?= $_REQUEST['msg'] ?>
-         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-   <?php } ?>
+   <!-- COMPONENTE MENSAJES -->
+   <?php include_once __DIR__ . '/components/msg.php'; ?>
 
    <form action="./controllers/delete_products.php">
 
@@ -26,27 +21,34 @@
          <table class="table table-hover">
 
 
-            <!-- traigo datos dependiendo de si hay busqueda o no -->
-            <?php $res_all_products = $get_props_instance->get_all_products(); ?>
+            <?php
+            // TRAE PRODUCTOS DEPENDIENDO SI HAY BUSQUEDA O NO
+            $res_all_products = $get_props_instance->get_all_products();
+
+
+            ?>
 
 
             <!-- PINTO PRODUCTOS -->
-            <?php if (!isset($res_all_products)) { ?>
-               <?= 'no hay resultados coincidentes con la búsqueda' ?>
+            <?php if (!isset($res_all_products) or ($res_all_products->num_rows < 1)) { ?>
+               <?= 'no hay resultados coincidentes' ?>
             <?php } else { ?>
 
                <thead>
 
                   <tr>
-                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=title">Titulo</a></th>
-                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=brand">marca</a></th>
-                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=case">case</a></th>
-                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=display_type">display</a></th>
-                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=moment">momento</a></th>
-                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=price">precio</a></th>
-                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=stock">stock</a></th>
-                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=user_type">tipo de usuario</a></th>
-                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=weight">peso</a></th>
+                  <?php $tooltip_order = 'data-bs-toggle="tooltip" data-bs-placement="top" title="ordenar!"';?>
+                  
+                     <th>Imagen</th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=title" <?= $tooltip_order ?>>Titulo</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=brand" <?= $tooltip_order ?>>marca</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=case" <?= $tooltip_order ?>>case</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=display_type" <?= $tooltip_order ?>>display</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=moment" <?= $tooltip_order ?>>momento</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=price" <?= $tooltip_order ?>>precio</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=stock" <?= $tooltip_order ?>>stock</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=user_type" <?= $tooltip_order ?>>usuario</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=weight" <?= $tooltip_order ?>>peso</a></th>
                      <th>Actualizar</th>
                      <th>Eliminar</th>
                   </tr>
@@ -54,11 +56,17 @@
                <tbody>
 
 
+                  <!-- GENERA FILAS DE LA TABLA -->
                   <?php while ($data = $res_all_products->fetch_object()) { ?>
+
+
+
                      <tr>
-                        <!-- estos datos estarían incompletos solo serian para mostraer e identificar el producto -->
-                        <th><a href="./../client/product.php?_id=<?= $data->_id ?>"><?= $data->title ?></a></th>
-                        <!-- poner la banda aqui, quiza recicle la funcion de producto especifico -->
+                        <td>
+                           <!-- TRAE IMÁGENES DE PRODUCTO QUE SE ESTE RECORRIENDO -->
+                           <?php include __DIR__.'/components/list_get_image.php';?>
+                        </td>
+                        <td><a href="./../client/product.php?_id=<?= $data->_id ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Ver producto"><?= $data->title ?></a></td>
                         <td><?= $data->brand ?></td>
                         <td><?= $data->case ?></td>
                         <td><?= $data->display_type ?></td>
@@ -71,7 +79,7 @@
                         <!-- UPDATE -->
                         <td class=''>
                            <div class='form-check'>
-                              <a href="./constructor.php?update_at=<?= $data->_id ?>" class="text-secondary bi bi-pencil-square color">
+                              <a href="./constructor.php?update_at=<?= $data->_id ?>" class="text-secondary bi bi-pencil-square color" data-bs-toggle="tooltip" data-bs-placement="top" title="Actualizar">
                               </a>
                               <!-- <i class="bi bi-pencil-square"> -->
                            </div>

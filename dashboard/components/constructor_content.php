@@ -20,13 +20,14 @@
     $url = LOCAL_HOST . '/dashboard/controllers/';
     $url .= (!empty($_REQUEST['update_at'])) ? "update_product.php" : "add_new_product.php";
     ?>
-    <form action="<?= $url ?>" enctype="multipart/form-data" method="POST" class="row row-cols-sm-2 needs-validation" novalidate>
+    <form action="<?= $url ?>" enctype="multipart/form-data" method="POST" class="row row-cols-lg-3 needs-validation" novalidate>
 
+        <!-- column 1 -->
         <div>
             <!-- title -->
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" name="title" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->title : '_prueba_' ?>" placeholder="#" required>
-                <label for="floatingInputx">Ingresa titulo de producto</label>
+                <label for="floatingInputx">Titulo de producto</label>
                 <div class="invalid-feedback">
                     Ingresa un titulo de producto por favor
                 </div>
@@ -74,21 +75,21 @@
 
             <!-- color -->
             <div class="border pt-3 ps-3 mb-3">
-            <label for="" class="form-label">Escoge un color</label>
-            <div class="row row-cols-2 px-3 py-3">
-                <?php while ($data = $res_colors->fetch_object()) { ?>
+                <label for="" class="form-label">Escoge un color</label>
+                <div class="row row-cols-2 px-3 py-3">
+                    <?php while ($data = $res_colors->fetch_object()) { ?>
 
-                    <div class="form-check">
-                        <!-- si estoy actualizando miro si el color está chequeado -->
-                        <?php $is_checked = color_is_checked($res_product_color, $data->color); ?>
-                        <input class="form-check-input" type="checkbox" name="color[]" value="<?= $data->_id ?>" <?= $is_checked ?> id="<?= $data->color ?>">
-                        <label class="form-check-label" for="<?= $data->color ?>">
-                            <?= $data->color ?>
-                        </label>
-                    </div>
+                        <div class="form-check">
+                            <!-- si estoy actualizando miro si el color está chequeado -->
+                            <?php $is_checked = color_is_checked($res_product_color, $data->color); ?>
+                            <input class="form-check-input" type="checkbox" name="color[]" value="<?= $data->_id ?>" <?= $is_checked ?> id="<?= $data->color ?>">
+                            <label class="form-check-label" for="<?= $data->color ?>">
+                                <?= $data->color ?>
+                            </label>
+                        </div>
 
-                <?php } ?>
-            </div>
+                    <?php } ?>
+                </div>
             </div>
 
             <!-- description -->
@@ -97,6 +98,12 @@
                 <label for="floatingTextarea2">Descripcion</label>
                 <div class="invalid-feedback">Ingresa una descripcion de producto por favor</div>
             </div>
+
+
+        </div>
+
+        <!-- column 2 -->
+        <div>
 
             <!-- display_type -->
             <div class="form-floating mb-3">
@@ -109,13 +116,6 @@
                     <?php } ?>
                 </select>
                 <label for="display_type">Tipo de display</label>
-            </div>
-
-            <!-- model -->
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="model" id="floatingInputx" max='9999' value="<?= (!empty($res_product)) ? $res_product->model : '000' ?>" placeholder="#" required>
-                <label for="floatingInputx">Número de modelo</label>
-                <div class="invalid-feedback">Ingresa número de modelo mas chico</div>
             </div>
 
             <!-- moment -->
@@ -131,14 +131,38 @@
                 <label for="moment">Momento</label>
             </div>
 
+            <!-- model -->
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="model" id="floatingInputx" max='9999' value="<?= (!empty($res_product)) ? $res_product->model : '000' ?>" placeholder="#" required>
+                <label for="floatingInputx">Número de modelo</label>
+                <div class="invalid-feedback">Ingresa número de modelo inferior a 9999</div>
+            </div>
+
             <!-- price -->
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" name="price" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->price : '000' ?>" placeholder="#" required>
-                <label for="floatingInputx">Ingresa price de producto</label>
-                <div class="invalid-feedback">Ingresa el precio por favor</div>
+                <label for="floatingInputx">Precio de producto</label>
+                <div class="invalid-feedback">Ingresa el precio</div>
             </div>
+
+            <!-- stock -->
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="stock" id="floatingInputx" max='50' value="<?= (!empty($res_product)) ? $res_product->stock : '000' ?>" placeholder="#" required>
+                <label for="floatingInputx">Stock (cantidad)</label>
+                <div class="invalid-feedback">Ingresa un stock inferior a 80</div>
+            </div>
+
+
+            <!-- weight -->
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="weight" id="floatingInputx" max='500' value="<?= (!empty($res_product)) ? $res_product->weight : '000' ?>" placeholder="#" required>
+                <label for="floatingInputx">Peso (gramos)</label>
+                <div class="invalid-feedback">Ingresa el peso menor a 500</div>
+            </div>
+
         </div>
 
+        <!-- column 3 -->
         <div>
             <!-- sale -->
             <div class="form-floating mb-3">
@@ -168,13 +192,6 @@
             </div>
 
 
-            <!-- stock -->
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="stock" id="floatingInputx" max='50' value="<?= (!empty($res_product)) ? $res_product->stock : '000' ?>" placeholder="#" required>
-                <label for="floatingInputx">Stock (cantidad)</label>
-                <div class="invalid-feedback">Ingresa el stock inferior</div>
-            </div>
-
             <!-- user_type -->
             <div class="form-floating mb-3">
                 <select class="form-select form-select-md mb-3" name="user_type" id="user_type" aria-label=".form-select-lg example">
@@ -187,13 +204,6 @@
 
                 </select>
                 <label for="user_type">Tipo de usuario</label>
-            </div>
-
-            <!-- weight -->
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="weight" id="floatingInputx" max='500' value="<?= (!empty($res_product)) ? $res_product->weight : '000' ?>" placeholder="#" required>
-                <label for="floatingInputx">Peso (gramos)</label>
-                <div class="invalid-feedback">Ingresa el peso menor a 500</div>
             </div>
 
             <!-- image -->
@@ -231,12 +241,14 @@
             <!-- ------------------------------------------- -->
 
 
+
             <div class="d-grid justify-content-end">
                 <button type="submit" class="btn btn-primary">
                     <?= (!empty($_REQUEST['update_at'])) ? 'ACTUALIZAR' : 'AGREGAR'; ?>
                 </button>
             </div>
         </div>
+
 
 
     </form>

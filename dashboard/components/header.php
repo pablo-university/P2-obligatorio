@@ -18,19 +18,19 @@
       <!-- navbar -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="./../client/index.php">
+          <a class="nav-link text-nowrap" aria-current="page" href="./../client/index.php">
             <i class="bi bi-eye-fill"></i>
             Ver sitio
           </a>
         </li>
         <li class="nav-item">
-          <p class="nav-link m-0 text-light">
+          <p class="nav-link m-0 text-light text-nowrap">
             <i class="bi bi-person-fill"></i>
             <?= 'Bienvenido@: ' . $_SESSION['user_name'] ?>
           </p>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/images/myw3schoolsimage.jpg" download="w3logo">
+          <a class="nav-link text-nowrap" href="/images/myw3schoolsimage.jpg" download="w3logo">
           <i class="bi bi-save2-fill"></i>
           Backup db
           </a>

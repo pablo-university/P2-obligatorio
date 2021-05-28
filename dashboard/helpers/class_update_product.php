@@ -21,10 +21,6 @@ class Update
 
     function update_color()
     {
-        /**  
-         * eliminar colores existentes
-         * agregar los nuevos
-         **/
 
         // eliminar registros product_color
         $query_product_color = "
@@ -116,7 +112,6 @@ class Update
     {
         $delete_image = $_REQUEST['delete_image'];
 
-
         // eliminar registro fisico de la imagen
         $query_delete_images = "
         SELECT *
@@ -128,7 +123,6 @@ class Update
         $images_for_delete = $this->conn->query($query_delete_images);
         $data = $images_for_delete->fetch_object();
 
-        echo "Quisiera eliminar: " . __DIR__ . '/../../assets/img/products/' . $data->url . '<br>';
         $res = unlink(__DIR__ . '/../../assets/img/products/' . $data->url);
 
         if (!$res) {

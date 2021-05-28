@@ -10,6 +10,9 @@ include_once __DIR__ . '/traits.php';
  * agrega la imagen en sql
  */
 
+// RECUPERADOR DE DATOS
+// <a href='javascript:history.back()'>recuperar datos</a>
+// ---------------------
 
 
 class Add_new_product
@@ -69,7 +72,7 @@ class Add_new_product
         // si la imagen existe
         if (!empty($_FILES['image']['name'][0])) {
 
-            $this->check_image_valide();// valida imagen
+            $this->check_image_valide(); // valida imagen
 
             foreach ($_FILES['image']['tmp_name'] as $key => $value) {
 
@@ -81,7 +84,7 @@ class Add_new_product
 
                 // mover archivo a directorio
                 if (!move_uploaded_file($value, $target_path)) {
-                    return "Error al subir al guardar archivo<br>";
+                    return "Error al guardar archivo<br>";
                 }
 
                 // cada que guarde inserto relacion
@@ -94,13 +97,6 @@ class Add_new_product
     public function set_product()
     {
 
-        // evito que color sea vacio!
-        if (empty($_REQUEST['color'])) {
-            header("Location: ./../constructor.php?msg=no se asignaron colores, <a href='javascript:history.back()'>recuperar datos?</a>&code=404");
-            // exit();
-            return '';
-            // estoy queriendo volver pero con un mensaje!
-        }
 
         // si existen datos los setea y vuelve al constructor
         if (!empty($_REQUEST)) {
@@ -143,9 +139,7 @@ class Add_new_product
                 $this->set_product_color();
                 // guardo imagen y seteo la relación (bucle dentro de imagen)
                 // agregame la iamgen si no está vacío
-                if (!empty($_FILES['image'])) {
-                    $this->upload_image();
-                }
+                $this->upload_image();
 
 
                 // vuelvo al constructor

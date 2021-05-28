@@ -10,3 +10,6 @@
 * agregar ir a sitio
 
 * ver seccion de subida de imagenes
+
+
+* proxima prioridad seria no perder datos cuando esta actualizando y sale algo mal...?

@@ -2,7 +2,7 @@
 <?php include_once __DIR__ . '/../../utils/constants.php'; ?>
 
 <!-- este controlador trae las propiedades y prepara para actualizar -->
-<?php include_once __DIR__ . '/../controllers/constructor_get_props.php'; ?>
+<?php include_once __DIR__ . '/constructor_get_props.php'; ?>
 
 <!-- IMPRIMO EL REQUEST QUE ESTA LLEGANDO -->
 <?php echo '<pre>' . var_export($_REQUEST, true) . '</pre>'; ?>

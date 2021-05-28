@@ -14,3 +14,27 @@ trait trait_walker
         exit();
     }
 }
+
+trait trait_check_image_valide
+{
+    // walker es mi funcion mensajera
+    public function check_image_valide($optional_query = null)
+    {
+        // check image is real
+        foreach ($_FILES["image"]["tmp_name"] as $key => $value) {
+            $check = getimagesize($value);
+            if (!$check) {
+                echo "llamar el walker y salir";
+                $this->walker([
+                    'dir' => 'dashboard/constructor.php', 
+                    'msg' => 'lo que ingresaste no es una imagen', 
+                    'code' => 404, 
+                    'optional_query' => $optional_query
+                    ]);
+            } 
+        }
+    }
+}
+
+// USO
+// walker(['dir' => $dir, 'msg' => $msg, 'code' => $code, 'optional_query' => $optional_query]);

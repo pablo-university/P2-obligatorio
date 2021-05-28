@@ -1,5 +1,5 @@
 <?php 
-include_once __DIR__.'/get_props.php';
+include_once __DIR__.'/../controllers/get_props.php';
 
 // Instancia para traer todas las propiedades
 $get_props_instance = new Mi($conn);

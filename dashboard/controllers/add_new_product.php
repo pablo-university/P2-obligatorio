@@ -11,6 +11,8 @@ $prueba = new Add_new_product($conn);
 
 
 $prueba->set_product();
+// $prueba->upload_image();
+
 // sanitizar con
 // html_entity_decode("")
 

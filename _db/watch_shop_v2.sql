@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-05-2021 a las 03:19:59
+-- Tiempo de generación: 28-05-2021 a las 01:04:24
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.2
 
@@ -29,9 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `_id` int(11) NOT NULL,
-  `name` tinytext COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'empty',
-  `mail` tinytext COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'pepe@gmail.com'
+  `user_name` tinytext COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'empty',
+  `password` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `admin`
+--
+
+INSERT INTO `admin` (`_id`, `user_name`, `password`) VALUES
+(3, 'pablo@dffdv.com', 'kksmdfksdklfmlksmdf'),
+(4, '1', '1'),
+(5, 'q', 'q'),
+(6, 'root', 'root');
 
 -- --------------------------------------------------------
 
@@ -201,8 +211,7 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`_id`, `model`, `title`, `last_modification`, `display_type`, `description`, `price`, `stock`, `band`, `case`, `user_type`, `moment`, `brand`, `submersible`, `shipping`, `weight`, `sale`) VALUES
 (4, 2136598789, '_4-m', '2021-05-11 17:52:48', 'analógico-digital', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10000, 200, 'nylon', 'cuadrado', 'mujer', 'fashion', 'QQ', 1, 1, 500, 1),
 (12, 452452, '_5-h', '2021-05-11 17:52:48', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'hombre', 'clásico', 'QQ', 0, 1, 0, 1),
-(13, 2343, '_6-i', '2021-05-11 17:52:48', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'infantil', 'clásico', 'QQ', 0, 0, 0, 1),
-(80, 11, '_prueba_', '2021-05-14 01:08:45', 'analógico', '', 11, 11, 'resina', 'redondo', 'mujer', 'clásico', 'kaunas', 0, 0, 11, 0);
+(13, 2343, '_6-i', '2021-05-11 17:52:48', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'infantil', 'clásico', 'QQ', 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -222,9 +231,7 @@ CREATE TABLE `product_color` (
 
 INSERT INTO `product_color` (`_id`, `id_product`, `id_color`) VALUES
 (1, 4, 2),
-(8, 12, 2),
-(83, 80, 5),
-(84, 80, 6);
+(8, 12, 2);
 
 -- --------------------------------------------------------
 
@@ -322,7 +329,7 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT de la tabla `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `band`
@@ -352,7 +359,7 @@ ALTER TABLE `display_type`
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de la tabla `moment`
@@ -364,13 +371,13 @@ ALTER TABLE `moment`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT de la tabla `product_color`
 --
 ALTER TABLE `product_color`
-  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
 
 --
 -- AUTO_INCREMENT de la tabla `user_type`

@@ -1,5 +1,5 @@
 <?php
-
+include_once __DIR__ . '/traits.php';
 
 /**
  * Agrega nuevo producto
@@ -21,11 +21,8 @@ class Add_new_product
     ) {
     }
 
-    function walker($msg = 'default message', $code = '')
-    {
-        header("Location: ./../constructor.php?msg=$msg&code=$code");
-        exit();
-    }
+    use trait_walker;
+    use trait_check_image_valide;
 
     // set product_color
     // ! esta funcion quedo en desuso quiza si armo lo de la relacion de los colores la pueda volver a utilizar
@@ -68,9 +65,11 @@ class Add_new_product
     // upload image
     public function upload_image()
     {
-        // si la imagen existe
-        if (isset($_FILES['image'])) {
 
+        // si la imagen existe
+        if (!empty($_FILES['image']['name'][0])) {
+
+            $this->check_image_valide();// valida imagen
 
             foreach ($_FILES['image']['tmp_name'] as $key => $value) {
 
@@ -88,9 +87,6 @@ class Add_new_product
                 // cada que guarde inserto relacion
                 $this->set_image($name);
             }
-
-            // para debuguear
-            return '>>imagenes subidas<br>';
         }
     }
 
@@ -123,9 +119,9 @@ class Add_new_product
                 }
             }
 
-            
+
             $to_insert = implode(', ', $to_insert);
-            $insert_value = implode(', ', $insert_value); 
+            $insert_value = implode(', ', $insert_value);
 
             // sanitiza antes de insertar
             $insert_value = htmlentities($insert_value);

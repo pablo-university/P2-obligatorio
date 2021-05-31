@@ -171,7 +171,7 @@ class Update
         }
 
 
-        // evito que color sea vacio!
+        // evito que color sea vacio! (por si del front no se detiene)
         if (empty($_REQUEST['color'])) {
             $this->walker([
                 'dir' => 'dashboard/constructor.php', 

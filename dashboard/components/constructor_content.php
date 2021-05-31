@@ -5,7 +5,7 @@
 <?php include_once __DIR__ . '/constructor_get_props.php'; ?>
 
 <!-- IMPRIMO EL REQUEST QUE ESTA LLEGANDO -->
-<?php echo '<pre>' . var_export($_REQUEST, true) . '</pre>'; ?>
+<!-- <?php //echo '<pre>' . var_export($_REQUEST, true) . '</pre>'; ?> -->
 
 <!-- MUESTRO MENSAJES -->
 <?php include_once __DIR__ . '/msg.php'; ?>
@@ -94,7 +94,7 @@
 
             <!-- description -->
             <div class="form-floating mb-3">
-                <textarea class="form-control" name='description' id="floatingTextarea2" style="height: 100px" placeholder="#" required><?= (!empty($res_product)) ? $res_product->description : '' ?></textarea>
+                <textarea class="form-control" name='description' id="floatingTextarea2" style="height: 9.5rem" placeholder="#" required><?= (!empty($res_product)) ? $res_product->description : '' ?></textarea>
                 <label for="floatingTextarea2">Descripcion</label>
                 <div class="invalid-feedback">Ingresa una descripcion de producto por favor</div>
             </div>
@@ -160,10 +160,6 @@
                 <div class="invalid-feedback">Ingresa el peso menor a 500</div>
             </div>
 
-        </div>
-
-        <!-- column 3 -->
-        <div>
             <!-- sale -->
             <div class="form-floating mb-3">
                 <select class="form-select form-select-md mb-3" id="sale" name="sale">
@@ -191,7 +187,10 @@
                 <label for="submersible">Sumergible</label>
             </div>
 
+        </div>
 
+        <!-- column 3 -->
+        <div>
             <!-- user_type -->
             <div class="form-floating mb-3">
                 <select class="form-select form-select-md mb-3" name="user_type" id="user_type" aria-label=".form-select-lg example">
@@ -287,11 +286,11 @@
         Array.prototype.slice.call(forms)
             .forEach(function(form) {
                 form.addEventListener('submit', function(event) {
+                    validaCheckBox(event);
                     if (!form.checkValidity()) {
                         event.preventDefault()
                         event.stopPropagation()
 
-                        validaCheckBox(event);
                         // esto estaba fuera del if, lo saque
                         form.classList.add('was-validated')
                     }

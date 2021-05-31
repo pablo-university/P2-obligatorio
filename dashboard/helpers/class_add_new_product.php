@@ -96,7 +96,15 @@ class Add_new_product
     // set product
     public function set_product()
     {
-
+        // evito que color sea vacio! (por si del front no se detiene)
+        if (empty($_REQUEST['color'])) {
+            $this->walker([
+                'dir' => 'dashboard/constructor.php',
+                'msg' => 'debes asignar al menos un color a tu reloj',
+                'code' => 404,
+                'optional_query' => "update_at=$this->update_at"
+            ]);
+        }
 
         // si existen datos los setea y vuelve al constructor
         if (!empty($_REQUEST)) {

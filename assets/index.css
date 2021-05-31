@@ -11677,7 +11677,7 @@ $border-radius-pill:          50rem !default; */
 
 .card.card--product .card__sale {
   width: fit-content;
-  box-shadow: -13px 5px 0 10px #291313;
+  box-shadow: -13px 5px 0 10px #53c779;
   padding: 0 !important;
   height: 0;
 }

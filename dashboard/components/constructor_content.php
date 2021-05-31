@@ -133,9 +133,9 @@
 
             <!-- model -->
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="model" id="floatingInputx" max='9999' value="<?= (!empty($res_product)) ? $res_product->model : '000' ?>" placeholder="#" required>
+                <input type="number" class="form-control" name="model" id="floatingInputx" max='999999999' value="<?= (!empty($res_product)) ? $res_product->model : '000' ?>" placeholder="#" required>
                 <label for="floatingInputx">Número de modelo</label>
-                <div class="invalid-feedback">Ingresa número de modelo inferior a 9999</div>
+                <div class="invalid-feedback">Ingresa número de modelo inferior a 999999999</div>
             </div>
 
             <!-- price -->

@@ -7,7 +7,8 @@ $get_props_instance = new Mi($conn);
 ini_set("default_charset", "UTF-8");
 $res_bands = $get_props_instance->get_prop('band');
 $res_brands = $get_props_instance->get_prop('brand');
-$res_cases = $get_props_instance->get_prop('products', 'case');
+// toma de la tabla case (debo ser especifico sino es problematico)
+$res_cases = $get_props_instance->get_prop('`case` as C', 'C.*');
 $res_colors = $get_props_instance->get_prop('color');
 $res_display_types = $get_props_instance->get_prop('display_type');
 $res_moments = $get_props_instance->get_prop('moment');

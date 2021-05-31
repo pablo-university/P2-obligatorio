@@ -1,3 +1,7 @@
 @use 'mixins';
 
 @include mixins.responsive-rule("max-width", "max-width", ("1920":"1920px"));
+
+.drop-shadow{
+    filter: drop-shadow(-30px 0 10px rgb(0 0 0 / 30%));
+}

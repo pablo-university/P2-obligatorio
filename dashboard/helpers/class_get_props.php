@@ -78,17 +78,18 @@ class Mi
         endif;
     }
 
-    // trae propiedades, hay que especificarle tabla y columna
+    // trae propiedades, hay que especificarle tabla
+    // uso: get_prop('table_name', '*', 'column')
     public function get_prop($table, $column = '*', $where = '')
     {
         // $table.$column, _id
         $query = "
-            SELECT DISTINCT $table.$column
+            SELECT $column
             FROM $table
             $where
         ";
         // GROUP BY ($table.$column)
-        
+       
         $res = $this->conn->query($query);
 
         if ($res->num_rows < 1) :

@@ -7,7 +7,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "server": "browser-sync start --proxy 'localhost/p2' --files './*.php' --browser 'chrome'",
+    "alone-server": "browser-sync start --proxy 'localhost/p2' --files './*.php' --browser 'chrome'",
     "sass": "gulp sass",
     "dev": "gulp"
   },

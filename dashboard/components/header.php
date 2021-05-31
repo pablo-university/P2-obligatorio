@@ -1,4 +1,4 @@
-<header class="navbar navbar-expand-md navbar-dark bg-dark | shadow position-sticky top-0 z-index-1">
+<header class="navbar navbar-expand-md navbar-dark bg-primary | shadow position-sticky top-0 z-index-1">
   <div class="container-fluid">
 
     <!-- boton -->

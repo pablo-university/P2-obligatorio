@@ -1,7 +1,7 @@
 <?php include_once __DIR__ . '/../../connectors/connection.php'; ?>
 
 <!-- contenedor del menu-->
-<header class='sticky-top bg-dark'>
+<header class='sticky-top bg-primary'>
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark container py-xl-5">
         <div class="container-fluid px-0">
@@ -81,7 +81,7 @@
                 </ul>
                 <form class="d-flex" action="./shop.php">
                     <input class="form-control me-2" name='search' type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-outline-info" type="submit" >buscar</button>
+                    <button class="btn btn-outline-light" type="submit" >buscar</button>
                 </form>
             </div>
         </div>

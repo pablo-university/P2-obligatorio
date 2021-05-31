@@ -96,7 +96,7 @@ endif;
 
 
 <p>
-  <button class="btn btn-outline-dark" type="button" name="hidden_button" data-bs-toggle="collapse" data-bs-target="#table-product" aria-expanded="false" aria-controls="collapseExample">
+  <button class="btn btn-outline-primary" type="button" name="hidden_button" data-bs-toggle="collapse" data-bs-target="#table-product" aria-expanded="false" aria-controls="collapseExample">
     Catracterísticas
   </button>
 </p>
@@ -187,4 +187,4 @@ endif;
 </table>
 
 
-<a href="#" class="btn btn-dark">LO QUIERO!</a>
+<a href="#" class="btn btn-primary">LO QUIERO!</a>

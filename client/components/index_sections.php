@@ -5,7 +5,7 @@
 <!-- contenedor de reloj moderno y foto -->
 <section class='container-fluid px-0'>
     <!-- reloj moderno -->
-    <div class='bg-dark'>
+    <div class='bg-primary'>
         <div class='container' style='height: 3.7rem;'>
             <h1 class='text-white text-end m-0 display-3'>A MODERN CLOCK</h1>
         </div>
@@ -40,7 +40,7 @@
                     </figure>
                     <p> Desde 1976, más de 500 millones de relojes han sido comprados y amados por personas en más de 120 países. Esta marca significa "Calidad y cantidad". Lo que significa que combinamos estos rasgos mediante la producción de relojes confiables y de calidad utilizando la artesanía japonesa en Cantidades para personas de todo el mundo.
                     </p>
-                    <a href="./shop.php" class='btn btn-outline-dark'>IR AL SHOP</a>
+                    <a href="./shop.php" class='btn btn-outline-primary'>IR AL SHOP</a>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
 </section>
 
 <!-- Nuestra filosofia -->
-<section class="bg-dark text-white">
+<section class="bg-primary text-white">
     <div class='container py-5 text-center'>
         <div class='p-5'></div>
         <h3>Nuestra filosofía</h3>

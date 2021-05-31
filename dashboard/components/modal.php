@@ -10,8 +10,8 @@
                     <p>Confirma que deseas abandonar la sesión actual</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-                        <a href="./login.php" class="btn btn-dark">CERRAR SESIÓN</a>
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+                        <a href="./login.php" class="btn btn-primary">CERRAR SESIÓN</a>
                         <!-- <button type="button" class="">Save changes</button> -->
                     </div>
                 </div>

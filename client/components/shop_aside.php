@@ -123,7 +123,7 @@
 
 
         <div>
-            <button class="btn btn-outline-dark" type="submit">BUSCAR</button>
+            <button class="btn btn-outline-primary" type="submit">BUSCAR</button>
         </div>
 
     </form>

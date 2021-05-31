@@ -19,7 +19,7 @@ session_unset();
         <div class="row row-cols-md-2 min-vh-100">
 
             <!-- ------ IMAGEN LOGIN------ -->
-            <div class="bg-dark p-0">
+            <div class="bg-primary p-0">
                 <img src="<?php echo LOCAL_HOST . "/assets/img/dashboard-login.jpg"; ?>" class="w-100 min-vh-100" alt="">
             </div>
             <!-- ------------------------------ -->

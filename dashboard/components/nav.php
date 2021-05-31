@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="bg-dark | col-md-3 col-lg-2 d-md-block position-fixed z-index-1 collapse p-0 py-3 pb-5" style="height:100vh;">
+<nav id="sidebarMenu" class="bg-primary | col-md-3 col-lg-2 d-md-block position-fixed z-index-1 collapse p-0 py-3 pb-5" style="height:100vh;">
 
   <ul class="nav nav-pills flex-column h-100">
     <li class="nav-item">

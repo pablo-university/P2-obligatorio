@@ -46,7 +46,7 @@
                         </div>
                         <!-- BOTON ENVIAR -->
                         <div class="w-100">
-                            <button class="btn btn-outline-dark" type="submit">ENVIAR</button>
+                            <button class="btn btn-outline-primary" type="submit">ENVIAR</button>
                         </div>
                     </form>
                 </div>

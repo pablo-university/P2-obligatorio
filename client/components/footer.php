@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="bg-dark">
+<footer class="bg-primary">
     <!-- este div solo agrega padding -->
     <div class='p-lg-5'></div>
     <div class="container p-5">

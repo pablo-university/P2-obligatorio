@@ -208,7 +208,7 @@
             <!-- image -->
             <div class="mb-3">
                 <label for="formFileSm" class="form-label">Ingresa imagen</label>
-                <input type="file" class="form-control form-control-md" name="image[]" multiple id="formFileSm">
+                <input type="file" class="form-control form-control-md" name="image[]" accept="image/*" multiple id="formFileSm">
             </div>
 
             <!-- si estoy actualizando chequear que vengan imagenes en la consulta -->

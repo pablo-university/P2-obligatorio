@@ -3,13 +3,8 @@
 
 
 
-* mostrar quien es el admin actual
 * paginacion?
 * si hay tiempo sanitizar para que no se inyecten codigos sql etc
-* idea colores agregar un color por defecto o insertar un color por defecto nomas!
-* agregar ir a sitio
-
-* ver seccion de subida de imagenes
 
 
 * proxima prioridad seria no perder datos cuando esta actualizando y sale algo mal...?

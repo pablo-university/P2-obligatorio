@@ -198,6 +198,9 @@ class Update
             // $to_insert = implode(', ', $to_insert);---
             $update_value = implode(' , ', $update_value);
 
+            // sanitiza antes de actualizar
+            $update_value = htmlentities($update_value);
+
             // create query
             $query = "
             UPDATE products P

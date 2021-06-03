@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2021 a las 01:04:24
+-- Tiempo de generación: 01-06-2021 a las 00:05:11
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.2
 
@@ -90,6 +90,25 @@ INSERT INTO `brand` (`_id`, `brand`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `case`
+--
+
+CREATE TABLE `case` (
+  `_id` int(10) NOT NULL,
+  `case` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `case`
+--
+
+INSERT INTO `case` (`_id`, `case`) VALUES
+(1, 'cuadrado'),
+(2, 'redondo');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `color`
 --
 
@@ -153,9 +172,14 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`_id`, `url`, `id_product`, `alt`, `title`, `role`) VALUES
-(3, '4v1.png', 4, 'empty', 'empty', 'product'),
-(11, '5v1.png', 12, 'empty', 'empty', 'product'),
-(13, '6v1.png', 13, 'empty', 'empty', 'product');
+(72, '60b5198b7ec04.png', 132, 'empty', 'empty', 'product'),
+(73, '60b5198b7fa0e.png', 132, 'empty', 'empty', 'product'),
+(75, '60b51c7077ea6.png', 133, 'empty', 'empty', 'product'),
+(76, '60b51c707adca.png', 133, 'empty', 'empty', 'product'),
+(77, '60b51ddfdc9fc.png', 134, 'empty', 'empty', 'product'),
+(78, '60b51ddfdd415.png', 134, 'empty', 'empty', 'product'),
+(79, '60b51ddfdec1f.png', 134, 'empty', 'empty', 'product'),
+(80, '60b528256943c.png', 132, 'empty', 'empty', 'product');
 
 -- --------------------------------------------------------
 
@@ -194,7 +218,7 @@ CREATE TABLE `products` (
   `price` smallint(4) NOT NULL DEFAULT 10,
   `stock` smallint(4) NOT NULL DEFAULT 0,
   `band` tinytext COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'resina',
-  `case` enum('redondo','cuadrado') COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'redondo',
+  `case` tinytext COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'redondo',
   `user_type` tinytext COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'mujer',
   `moment` tinytext COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'clásico',
   `brand` tinytext COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'kaunas',
@@ -209,9 +233,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`_id`, `model`, `title`, `last_modification`, `display_type`, `description`, `price`, `stock`, `band`, `case`, `user_type`, `moment`, `brand`, `submersible`, `shipping`, `weight`, `sale`) VALUES
-(4, 2136598789, '_4-m', '2021-05-11 17:52:48', 'analógico-digital', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10000, 200, 'nylon', 'cuadrado', 'mujer', 'fashion', 'QQ', 1, 1, 500, 1),
-(12, 452452, '_5-h', '2021-05-11 17:52:48', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'hombre', 'clásico', 'QQ', 0, 1, 0, 1),
-(13, 2343, '_6-i', '2021-05-11 17:52:48', 'analógico', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis mauris quis tempor eleifend. Donec nisl metus.', 10, 0, 'resina', 'redondo', 'infantil', 'clásico', 'QQ', 0, 0, 0, 1);
+(132, 5615616, 'QQ niño', '2021-05-31 17:18:59', 'analógico', 'Reloj para niño varios tamaños y variedades, escribinos para saber mas detalles!', 600, 5, 'resina', 'redondo', 'infantil', 'deportivo', 'QQ', 1, 1, 200, 1),
+(133, 2343, 'QQ mujer', '2021-05-31 17:29:54', 'analógico', 'Reloj para mujer', 1600, 5, 'silicona', 'redondo', 'mujer', 'fashion', 'QQ', 1, 0, 120, 1),
+(134, 432432, 'Seiko hombre', '2021-05-31 19:21:28', 'digital', 'Seiko para hombre, metálico agregar mas datos a esta descripción', 2500, 4, 'resina', 'cuadrado', 'hombre', 'clásico', 'seiko', 0, 0, 250, 0);
 
 -- --------------------------------------------------------
 
@@ -230,8 +254,9 @@ CREATE TABLE `product_color` (
 --
 
 INSERT INTO `product_color` (`_id`, `id_product`, `id_color`) VALUES
-(1, 4, 2),
-(8, 12, 2);
+(375, 132, 5),
+(384, 133, 9),
+(388, 134, 3);
 
 -- --------------------------------------------------------
 
@@ -274,6 +299,12 @@ ALTER TABLE `band`
 -- Indices de la tabla `brand`
 --
 ALTER TABLE `brand`
+  ADD PRIMARY KEY (`_id`);
+
+--
+-- Indices de la tabla `case`
+--
+ALTER TABLE `case`
   ADD PRIMARY KEY (`_id`);
 
 --
@@ -344,6 +375,12 @@ ALTER TABLE `brand`
   MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT de la tabla `case`
+--
+ALTER TABLE `case`
+  MODIFY `_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `color`
 --
 ALTER TABLE `color`
@@ -359,7 +396,7 @@ ALTER TABLE `display_type`
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT de la tabla `moment`
@@ -371,13 +408,13 @@ ALTER TABLE `moment`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT de la tabla `product_color`
 --
 ALTER TABLE `product_color`
-  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
+  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=390;
 
 --
 -- AUTO_INCREMENT de la tabla `user_type`

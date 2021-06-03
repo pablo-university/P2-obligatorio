@@ -10,6 +10,13 @@ gris
 'rgb(150, 150, 150)'
 */
 
+// toma un contexto CanvasGradient, e inserta un gradiente para usar luego en barras
+const ctxForGradient = document.getElementById('chartMoment').getContext("2d");
+const gradientFill = ctxForGradient.createLinearGradient(0, 200, 0, 1);
+gradientFill.addColorStop(0, "rgba(50, 30, 60, 1)");
+gradientFill.addColorStop(1, "rgba(50, 30, 60, .6)");
+// ---------------------
+
 // me deja en dashboard
 const href = window.location.href;
 const fetchConfig = {
@@ -19,6 +26,7 @@ const fetchConfig = {
   }
 
 };
+// --------------------
 
 
 // chartUserType
@@ -76,6 +84,8 @@ const fetchConfig = {
 
 
 
+
+
 // chartMoment
 (async function () {
 
@@ -92,10 +102,10 @@ const fetchConfig = {
       labels: response.labels,
       datasets: [
         {
-          label: 'Tipo de usuario',
+          label: 'Momento',
           data: response.data,
-          borderColor: 'rgb(10, 10, 10)',
-          backgroundColor: 'rgb(50, 30, 60)',
+          borderColor: 'white',
+          backgroundColor: gradientFill,//'rgb(50, 30, 60)'
           fill: true// relleno?
         }
       ]
@@ -112,7 +122,7 @@ const fetchConfig = {
           },
           title: {
             display: true,
-            text: 'Gráfico tipo de usuarios'
+            text: 'Gráfico Momento'
           }
         }
 
@@ -145,7 +155,7 @@ const fetchConfig = {
       labels: response.labels,
       datasets: [{
         label: 'Marcas (cantidad por marca)',
-        backgroundColor: 'rgb(50, 30, 60)',
+        backgroundColor: gradientFill,//'rgb(50, 30, 60)'
         data: response.data,
       }]
     };

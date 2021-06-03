@@ -9,7 +9,7 @@
 
 
 
-<div class="d-flex justify-content-start flex-wrap gap-5">
+<div class="d-flex justify-content-around justify-content-md-start flex-wrap gap-5">
   <?php foreach ($values_for_get as $key => $value) { ?>
     <?php $res = $get_props_instance->count_value_in_true('products', $key)->fetch_object()->res; ?>
     <!-- <div class="col"> -->

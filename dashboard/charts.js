@@ -12,9 +12,9 @@ gris
 
 // toma un contexto CanvasGradient, e inserta un gradiente para usar luego en barras
 const ctxForGradient = document.getElementById('chartMoment').getContext("2d");
-const gradientFill = ctxForGradient.createLinearGradient(0, 200, 0, 1);
+const gradientFill = ctxForGradient.createLinearGradient(0, 350, 0, 1);
 gradientFill.addColorStop(0, "rgba(50, 30, 60, 1)");
-gradientFill.addColorStop(1, "rgba(50, 30, 60, .6)");
+gradientFill.addColorStop(1, "rgba(50, 30, 60, .7)");
 // ---------------------
 
 // me deja en dashboard
@@ -145,6 +145,7 @@ const fetchConfig = {
 (async function () {
 
   const node = document.getElementById('chartBrands');
+  node.height = 100;
 
   if (node) {
 
@@ -175,8 +176,15 @@ const fetchConfig = {
           }
         },
         responsive: true,
-        maintainAspectRatio: true,
-        aspectRatio: 4
+        // hay un height debajo del nodo seleccionado asignando tamaño
+        // maintainAspectRatio: true,
+        // aspectRatio: 3
+        /* scales: {
+          y: {
+              max: 2
+          }
+      } */
+        // ---
       }
     };
 

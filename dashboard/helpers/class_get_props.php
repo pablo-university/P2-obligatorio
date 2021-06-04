@@ -17,11 +17,17 @@ class Mi
     {
 
         $SELECT = "
-        SELECT *
+        SELECT P.*, I.url
         FROM products AS P
+
+        LEFT JOIN images AS I
+	    ON P._id = I.id_product
         ";
         $WHERE = "
         WHERE true
+        ";
+        $GROUP_BY = "
+        GROUP BY P._id
         ";
         $ORDER_BY = "";
         $LIMIT = "";
@@ -31,18 +37,20 @@ class Mi
         if (!empty($_REQUEST['search'])) :
             $search = $_REQUEST['search'];
             $WHERE .= " AND 
-            (title LIKE '%$search%' OR 
-            description LIKE '%$search%' OR
+            (
+            P.title LIKE '%$search%' OR 
+            P.description LIKE '%$search%' OR
             P.brand LIKE '%$search%' OR
             P.case LIKE '%$search%' OR
             P.display_type LIKE '%$search%' OR
             P.price LIKE '%$search%' OR
             P.stock LIKE '%$search%' OR
-            P.user_type LIKE '%$search%')
+            P.user_type LIKE '%$search%'
+            )
              ";
         endif;
 
-        // CURRENT_PAGE
+        // LIMIT AND current_page
         // tomar pagina actual, si existe
         if (isset($current_page)) {
 
@@ -58,15 +66,22 @@ class Mi
         if (!empty($_REQUEST['orderBy'])) {
             $ORDER_BY .= "ORDER BY (P.$_REQUEST[orderBy])";
         }
+        // si order_asc esta seteado
+        if (isset($_REQUEST['order_asc'])) {
+            $ORDER_BY .= "ORDER BY P.price ASC";
+        }
+        // si order_desc esta seteado
+        if (isset($_REQUEST['order_desc'])) {
+            $ORDER_BY .= "ORDER BY P.price DESC";
+        }
 
         $query = "
         $SELECT
         $WHERE
+        $GROUP_BY
         $ORDER_BY
         $LIMIT
         ";
-        echo "$query";
-
 
         $res = $this->conn->query($query);
 

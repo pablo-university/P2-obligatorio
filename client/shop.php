@@ -16,7 +16,7 @@
         <!-- el overflow es para contener los paddings y margen de bootstrap -->
         <div class='container shop py-5 overflow-hidden'>
 
-            <?php include_once __DIR__.'/components/breadcrumb.php';?>
+            <?php include_once __DIR__ . '/components/breadcrumb.php'; ?>
 
             <!-- titulo y select de ordenación -->
             <div class="d-flex justify-content-between pb-4 pe-5">
@@ -56,61 +56,22 @@
 
                         <!-- TRAE PRODUCTOS NEW -->
                         <?php
+                        // traer la isntancia
+                        include_once __DIR__ . '/../dashboard/controllers/get_props.php';
 
-                        // defino query
-                        $query = null;
+                        // chequear que NO estoy filtrando
+                        $not_is_filter = (isset($_REQUEST['current_page']) or empty($_REQUEST) or isset($_REQUEST['search']) or isset($_REQUEST['order_asc']) or isset($_REQUEST['order_desc']));
 
-                        $SELECT_FROM = "
-                        SELECT P._id, I.url, P.title, P.price, P.sale
-                        FROM products AS P
-                        ";
-                        $JOIN_IMAGES = "
-                        INNER JOIN images AS I
-                        ON P._id = I.id_product
-                        ";
-                        // matcheo vacia? search? order_by? O SINO FILTRAR!
-                        $query = match (true) { //matchea con el que de true
-                            // cuando no se setea el request
-                            empty($_REQUEST) => "
-                                $SELECT_FROM
-                                $JOIN_IMAGES
-                                GROUP BY P._id
-                                ;
-                                ",
-                            isset($_REQUEST['search']) => "
-                                $SELECT_FROM
-                                $JOIN_IMAGES
-                                WHERE 
-                                    P.title LIKE '%$_REQUEST[search]%' OR 
-                                    P.description LIKE '%$_REQUEST[search]%' OR
-                                    P.brand LIKE '%$_REQUEST[search]%' OR
-                                    P.case LIKE '%$_REQUEST[search]%' OR
-                                    P.display_type LIKE '%$_REQUEST[search]%' OR
-                                    P.price LIKE '%$_REQUEST[search]%' OR
-                                    P.stock LIKE '%$_REQUEST[search]%' OR
-                                    P.user_type LIKE '%$_REQUEST[search]%'
-                                GROUP BY P._id
-                                ",
-                            isset($_REQUEST['order_asc']) => "
-                                $SELECT_FROM
-                                $JOIN_IMAGES
-                                GROUP BY P._id
-                                ORDER BY P.price ASC
-                                ",
-                            isset($_REQUEST['order_desc']) => "
-                                $SELECT_FROM
-                                $JOIN_IMAGES
-                                GROUP BY P._id
-                                ORDER BY P.price DESC
-                                ",
-                            default => null
-                        };
+                        // -----------------------
                         // echo "$query";
                         // query con datos, consulta normal
-                        if (!empty($query)) :
+                        if ($not_is_filter) : //!empty($query)
 
-                            // hago una consulta
-                            $res = mysqli_query($conn, $query);
+                            $current_page = isset($_REQUEST['current_page']) ? $_REQUEST['current_page'] : 0;
+                            // defino artiulos por pagina
+                            $amount = 8;
+                            // obtengo respuesta
+                            $res = $get_props_instance->get_all_products($current_page, $amount);
 
                             // si la consulta no es vacia la recorro
                             if ($res->num_rows < 1) {
@@ -130,8 +91,6 @@
 
                         // sino filtrar
                         else :
-                            /* echo '<pre>' . var_export($_REQUEST, true) . '</pre>';
-                            echo "<hr><br>"; */
                             // esta función ahora es un controller
                             shop_aside_filter("card_product", $conn);
                         endif;
@@ -143,24 +102,31 @@
 
                     </div>
 
-                    <!-- pagination -->
-                    <!--                     <nav aria-label="Page navigation example">
+                    <!-- paginación -->
+                    <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
+                            <?php
+                            include_once __DIR__ . '/../dashboard/controllers/get_props.php';
+                            // obtener pagina actual si existe
+                            $current_page = isset($_REQUEST['current_page']) ? $_REQUEST['current_page'] : 0;
+                            // defino artiulos por pagina
+                            
+                            // get total rows
+                            $res_all_products = $get_props_instance->get_all_products();
+                            $total_pages = $res_all_products->num_rows / $amount;
+                            $total_pages = ($total_pages - intval($total_pages)) == 0 ? $total_pages : intval($total_pages) + 1;
+                            ?>
+                            <li class="page-item"><a href="./shop.php?current_page=0" class="page-link">Inicio</a></li>
+
+                            <!-- solucionar como y cuantas paginas se imprimen...-->
+                            <?php for ($i = (($current_page) > 0) ? $current_page - 1 : $current_page; ($i < ($current_page + 3)) and ($i < $total_pages); $i++) { ?>
+
+                                <li class="page-item <?= $current_page == $i ? 'active' : '' ?>"><a href="./shop.php?current_page=<?= $i ?>" class="page-link"><?= $i ?></a></li>
+                            <?php } ?>
+
+                            <li class="page-item"><a class="page-link" href="./shop.php?current_page=<?= $total_pages - 1 ?>">Final</a></li>
                         </ul>
-                    </nav> -->
+                    </nav>
 
                 </main>
             </div>

@@ -1,20 +1,23 @@
-<?php function pagination($url = null)
-{ ?>
+<?php
+//incluyo controlador get props
+include_once __DIR__ . '/../dashboard/controllers/get_props.php';
 
-    <!-- incluyo controlador get props -->
-    <?php include_once __DIR__ . '/../dashboard/controllers/get_props.php';
+// obtener pagina actual si existe
+$current_page = isset($_REQUEST['current_page']) ? $_REQUEST['current_page'] : 0;
+// previene que amount este null
+$amount = isset($amount) ? $amount : 100;
+?>
 
 
-    // obtener pagina actual si existe
-    $current_page = isset($_REQUEST['current_page']) ? $_REQUEST['current_page'] : 0;
-    // defino artiulos por pagina
-    $amount = 5;
-    ?>
+<?php $pagination = function ($url = null) use ($current_page, $amount, $get_props_instance) { ?>
+    
 
     <!-- paginación -->
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <?php
+            include_once __DIR__ . '/../dashboard/controllers/get_props.php';
+
             // get total rows
             $res_all_products = $get_props_instance->get_all_products();
             $total_pages = $res_all_products->num_rows / $amount;

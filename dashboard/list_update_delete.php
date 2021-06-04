@@ -116,28 +116,9 @@
 
    </form>
 
-   <!-- paginación -->
-   <nav aria-label="Page navigation example">
-      <ul class="pagination">
-         <?php
-               // get total rows
-               $res_all_products = $get_props_instance->get_all_products();
-               $total_pages = $res_all_products->num_rows / $amount;
-               $total_pages = ($total_pages - intval($total_pages)) == 0 ? $total_pages : intval($total_pages) + 1;
-         ?>
-         <li class="page-item"><a href="./list_update_delete.php?current_page=0" class="page-link">Inicio</a></li>
 
-         <!-- solucionar como y cuantas paginas se imprimen...-->
-         <?php for ($i = (($current_page) > 0) ? $current_page - 1 : $current_page; ($i < ($current_page + 3)) and ($i < $total_pages); $i++) { ?>
-
-            <li class="page-item <?= $current_page == $i ? 'active' : '' ?>"><a href="./list_update_delete.php?current_page=<?= $i ?>" class="page-link"><?= $i ?></a></li>
-         <?php } ?>
-
-         <li class="page-item"><a class="page-link" href="./list_update_delete.php?current_page=<?= $total_pages - 1 ?>">Final</a></li>
-      </ul>
-   </nav>
-
-   <!-- incluir aqui componente de paginacion para optimizar -->
+   <?php include_once __DIR__ . '/../components/pagination.php'; ?>
+   <?php $pagination('./list_update_delete.php'); ?>
 
    <p class="text-secondary fst-italic">
       *Se está mostrando una vista simplificada de los datos, clickea en el título para ampliar

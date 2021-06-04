@@ -23,7 +23,12 @@
 
             <?php
             // TRAE PRODUCTOS DEPENDIENDO SI HAY BUSQUEDA O NO
-            $res_all_products = $get_props_instance->get_all_products();
+            // asigna la pagina actual
+            $current_page = isset($_REQUEST['current_page']) ? $_REQUEST['current_page']: 0;
+            // defino artiulos por pagina
+            $amount = 10;
+            // obtengo respuesta
+            $res_all_products = $get_props_instance->get_all_products($current_page, $amount);
 
 
             ?>
@@ -37,8 +42,8 @@
                <thead>
 
                   <tr>
-                  <?php $tooltip_order = 'data-bs-toggle="tooltip" data-bs-placement="top" title="ordenar!"';?>
-                  
+                     <?php $tooltip_order = 'data-bs-toggle="tooltip" data-bs-placement="top" title="ordenar!"'; ?>
+
                      <th>Imagen</th>
                      <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=title" <?= $tooltip_order ?>>Titulo</a></th>
                      <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=brand" <?= $tooltip_order ?>>marca</a></th>
@@ -64,7 +69,7 @@
                      <tr>
                         <td>
                            <!-- TRAE IMÁGENES DE PRODUCTO QUE SE ESTE RECORRIENDO -->
-                           <?php include __DIR__.'/components/list_get_image.php';?>
+                           <?php include __DIR__ . '/components/list_get_image.php'; ?>
                         </td>
                         <td><a href="./../client/product.php?_id=<?= $data->_id ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Ver producto"><?= $data->title ?></a></td>
                         <td><?= $data->brand ?></td>
@@ -111,7 +116,28 @@
 
    </form>
 
+   <!-- paginación -->
+   <nav aria-label="Page navigation example">
+      <ul class="pagination">
+         <?php 
+         // get total rows
+         $res_all_products = $get_props_instance->get_all_products();
+         $total_pages = $res_all_products->num_rows / $amount;
+         $total_pages = round($total_pages + 0.5, 0, PHP_ROUND_HALF_UP);
+         // obtener pagina actual si existe
+         $current_page;
+         ?> 
+         <li class="page-item"><a href="./list_update_delete.php?current_page=0" class="page-link">Inicio</a></li>
 
+         <!-- solucionar como y cuantas paginas se imprimen...-->
+         <?php for ($i = (($current_page) > 0) ? $current_page - 1 : $current_page; ($i < ($current_page + 3)) and ($i < $total_pages); $i++) { ?> 
+         
+            <li class="page-item <?= $current_page == $i ? 'active':'' ?>"><a href="./list_update_delete.php?current_page=<?= $i ?>" class="page-link"><?= $i ?></a></li>
+         <?php } ?>
+
+         <li class="page-item"><a class="page-link" href="./list_update_delete.php?current_page=<?= $total_pages - 1 ?>">Final</a></li>
+      </ul>
+   </nav>
 
    <p class="text-secondary fst-italic">
       *Se está mostrando una vista simplificada de los datos, clickea en el título para ampliar

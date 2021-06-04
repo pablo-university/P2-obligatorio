@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Mi
 {
@@ -13,33 +13,60 @@ class Mi
     }
 
     // trae todo y si hay busqueda busca
-    public function get_all_products()
+    public function get_all_products($current_page = null, $amount = null)
     {
-        $query = "
+
+        $SELECT = "
         SELECT *
         FROM products AS P
         ";
+        $WHERE = "
+        WHERE true
+        ";
+        $ORDER_BY = "";
+        $LIMIT = "";
 
+        // WHERE SECTION
         // si search esta seteado...
         if (!empty($_REQUEST['search'])) :
             $search = $_REQUEST['search'];
-            $query .= "
-            WHERE 
-            title LIKE '%$search%' OR 
+            $WHERE .= " AND 
+            (title LIKE '%$search%' OR 
             description LIKE '%$search%' OR
             P.brand LIKE '%$search%' OR
             P.case LIKE '%$search%' OR
             P.display_type LIKE '%$search%' OR
             P.price LIKE '%$search%' OR
             P.stock LIKE '%$search%' OR
-            P.user_type LIKE '%$search%'
+            P.user_type LIKE '%$search%')
              ";
         endif;
 
+        // CURRENT_PAGE
+        // tomar pagina actual, si existe
+        if (isset($current_page)) {
+
+            // calculo
+            $current_page = $current_page * $amount;
+            $LIMIT .= "
+                LIMIT $current_page, $amount
+            ";
+        }
+
+        // ORDER BY SECTION
         // si orderBy esta seteado
         if (!empty($_REQUEST['orderBy'])) {
-            $query .= "ORDER BY (P.$_REQUEST[orderBy])";
+            $ORDER_BY .= "ORDER BY (P.$_REQUEST[orderBy])";
         }
+
+        $query = "
+        $SELECT
+        $WHERE
+        $ORDER_BY
+        $LIMIT
+        ";
+        echo "$query";
+
 
         $res = $this->conn->query($query);
 
@@ -89,7 +116,7 @@ class Mi
             $where
         ";
         // GROUP BY ($table.$column)
-       
+
         $res = $this->conn->query($query);
 
         if ($res->num_rows < 1) :

@@ -64,7 +64,9 @@ class Mi
         // ORDER BY SECTION
         // si orderBy esta seteado
         if (!empty($_REQUEST['orderBy'])) {
-            $ORDER_BY .= "ORDER BY (P.$_REQUEST[orderBy])";
+            $ORDER_BY .= ($_REQUEST['orderBy'] == 'last_modification') ? 
+            "ORDER BY (P.$_REQUEST[orderBy]) DESC" : 
+            "ORDER BY (P.$_REQUEST[orderBy]) ASC";
         }
         // si order_asc esta seteado
         if (isset($_REQUEST['order_asc'])) {

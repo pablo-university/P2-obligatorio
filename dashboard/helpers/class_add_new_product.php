@@ -127,8 +127,9 @@ class Add_new_product
             $to_insert = implode(', ', $to_insert);
             $insert_value = implode(', ', $insert_value);
 
-            // sanitiza antes de insertar
-            $insert_value = htmlentities($insert_value); //filter_var($insert_value, FILTER_SANITIZE_SPECIAL_CHARS);
+            // sanitiza antes de insertar (comentado, problemas con tildes)
+            // $insert_value = htmlentities($insert_value); //filter_var($insert_value, FILTER_SANITIZE_SPECIAL_CHARS);
+            $insert_value = strip_tags($insert_value);
 
             // create query
             $query = "

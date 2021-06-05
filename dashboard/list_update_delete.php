@@ -26,7 +26,7 @@
             // asigna la pagina actual
             $current_page = isset($_REQUEST['current_page']) ? $_REQUEST['current_page'] : 0;
             // defino artiulos por pagina
-            $amount = 8;
+            $amount = 6;
             // obtengo respuesta
             $res_all_products = $get_props_instance->get_all_products($current_page, $amount);
 
@@ -46,6 +46,7 @@
 
                      <th>Imagen</th>
                      <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=title" <?= $tooltip_order ?>>Titulo</a></th>
+                     <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=last_modification" <?= $tooltip_order ?>>modificación</a></th>
                      <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=brand" <?= $tooltip_order ?>>marca</a></th>
                      <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=case" <?= $tooltip_order ?>>case</a></th>
                      <th><a class="link-success" href=" <?= $_SERVER['PHP_SELF'] ?>?orderBy=display_type" <?= $tooltip_order ?>>display</a></th>
@@ -72,6 +73,7 @@
                            <?php include __DIR__ . '/components/list_get_image.php'; ?>
                         </td>
                         <td><a href="./../client/product.php?_id=<?= $data->_id ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Ver producto"><?= $data->title ?></a></td>
+                        <td><?=  date_format(date_create($data->last_modification),"m/d-H:i")?></td>
                         <td><?= $data->brand ?></td>
                         <td><?= $data->case ?></td>
                         <td><?= $data->display_type ?></td>

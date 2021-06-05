@@ -26,7 +26,7 @@
         <div>
             <!-- title -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="title" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->title : '_prueba_' ?>" placeholder="#" required>
+                <input type="text" class="form-control" name="title" id="floatingInputx" value="<?= (!empty($res_product)) ? $res_product->title : '_fake' ?>" placeholder="#" required>
                 <label for="floatingInputx">Titulo de producto</label>
                 <div class="invalid-feedback">
                     Ingresa un titulo de producto por favor

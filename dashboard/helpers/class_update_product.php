@@ -1,5 +1,5 @@
-<?php 
-include_once __DIR__.'/traits.php';
+<?php
+include_once __DIR__ . '/traits.php';
 class Update
 {
 
@@ -31,11 +31,11 @@ class Update
         $res = $this->conn->query($query_product_color);
         if (empty($res)) {
             $this->walker([
-                'dir' => 'dashboard/constructor.php', 
-                'msg' => 'error al borrar colores para actualizar', 
-                'code' => 404, 
+                'dir' => 'dashboard/constructor.php',
+                'msg' => 'error al borrar colores para actualizar',
+                'code' => 404,
                 'optional_query' => null
-                ]);
+            ]);
         }
 
         // inserto la relacion por cada color que haya sido seleccionado
@@ -48,11 +48,11 @@ class Update
 
             if (!$this->conn->query($query)) {
                 $this->walker([
-                    'dir' => 'dashboard/constructor.php', 
-                    'msg' => 'error al agregar colores para actualizar', 
-                    'code' => 404, 
+                    'dir' => 'dashboard/constructor.php',
+                    'msg' => 'error al agregar colores para actualizar',
+                    'code' => 404,
                     'optional_query' => null
-                    ]);
+                ]);
             }
         }
     }
@@ -67,22 +67,22 @@ class Update
         ";
         if (!$this->conn->query($query)) {
             $this->walker([
-                'dir' => 'dashboard/constructor.php', 
-                'msg' => 'Error al relacionar imagen con el producto', 
-                'code' => 404, 
+                'dir' => 'dashboard/constructor.php',
+                'msg' => 'Error al relacionar imagen con el producto',
+                'code' => 404,
                 'optional_query' => null
-                ]);
+            ]);
         }
     }
 
     // upload image
     public function upload_image()
     {
-        
+
         // si la imagen existe
         if (!empty($_FILES['image']['name'][0])) {
-            
-            $this->check_image_valide("update_at=$this->update_at");// valida imagen
+
+            $this->check_image_valide("update_at=$this->update_at"); // valida imagen
 
             foreach ($_FILES['image']['tmp_name'] as $key => $value) {
 
@@ -95,11 +95,11 @@ class Update
                 // mover archivo a directorio
                 if (!move_uploaded_file($value, $target_path)) {
                     $this->walker([
-                        'dir' => 'dashboard/constructor.php', 
-                        'msg' => 'Error al subir el archivo', 
-                        'code' => 404, 
+                        'dir' => 'dashboard/constructor.php',
+                        'msg' => 'Error al subir el archivo',
+                        'code' => 404,
                         'optional_query' => null
-                        ]);
+                    ]);
                 }
 
                 // cada que guarde inserto relacion
@@ -127,11 +127,11 @@ class Update
 
         if (!$res) {
             $this->walker([
-                    'dir' => 'dashboard/constructor.php', 
-                    'msg' => "Error al eliminar la imagen del directorio: <br> __DIR__ . '/../../assets/img/products/' . $data->url", 
-                    'code' => 404, 
-                    'optional_query' => null
-                    ]);
+                'dir' => 'dashboard/constructor.php',
+                'msg' => "Error al eliminar la imagen del directorio: <br> __DIR__ . '/../../assets/img/products/' . $data->url",
+                'code' => 404,
+                'optional_query' => null
+            ]);
         }
         // ---------------------------------
 
@@ -146,11 +146,11 @@ class Update
 
         if (!$res) {
             $this->walker([
-                'dir' => 'dashboard/constructor.php', 
-                'msg' => 'error al eliminar la relación de imagen', 
-                'code' => 404, 
+                'dir' => 'dashboard/constructor.php',
+                'msg' => 'error al eliminar la relación de imagen',
+                'code' => 404,
                 'optional_query' => null
-                ]);
+            ]);
         }
         // ------------------
 
@@ -163,22 +163,22 @@ class Update
             $this->delete_image();
             // |||||||||||| TRABAJANDO AQUIIIIIII ||||||||||||||||||||||
             $this->walker([
-                'dir' => 'dashboard/constructor.php', 
-                'msg' => 'imagen borrada correctamente', 
-                'code' => 200, 
+                'dir' => 'dashboard/constructor.php',
+                'msg' => 'imagen borrada correctamente',
+                'code' => 200,
                 'optional_query' => "update_at=$this->update_at"
-                ]);
+            ]);
         }
 
 
         // evito que color sea vacio! (por si del front no se detiene)
         if (empty($_REQUEST['color'])) {
             $this->walker([
-                'dir' => 'dashboard/constructor.php', 
-                'msg' => 'debes asignar al menos un color a tu reloj', 
-                'code' => 404, 
+                'dir' => 'dashboard/constructor.php',
+                'msg' => 'debes asignar al menos un color a tu reloj',
+                'code' => 404,
                 'optional_query' => "update_at=$this->update_at"
-                ]);
+            ]);
         }
 
         // confirmo tener un request y updateo
@@ -198,8 +198,9 @@ class Update
             // $to_insert = implode(', ', $to_insert);---
             $update_value = implode(' , ', $update_value);
 
-            // sanitiza antes de actualizar
-            $update_value = htmlentities($update_value);
+            // sanitiza antes de actualizar (comentado, problemas con tildes)
+            // $update_value = htmlentities($update_value);
+            $update_value = strip_tags($update_value);
 
             // create query
             $query = "

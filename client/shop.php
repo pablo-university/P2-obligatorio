@@ -49,7 +49,7 @@
                 <?php include_once __DIR__ . '/components/shop_aside.php'; ?>
 
                 <!-- productos -->
-                <main class="col-12 col-lg-8 overflow-autox">
+                <main class="col-12 col-md-9 col-lg-10 overflow-autox">
 
                     <!-- caja de products -->
                     <div class='row row-cols-xl-4 row-cols-md-2 gy-3 pb-5'>

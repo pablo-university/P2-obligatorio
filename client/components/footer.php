@@ -62,7 +62,7 @@
                         <a href="#!" class="text-white">+556481484</a>
                     </li>
                     <li>
-                        <a href="#!" class="text-white">theedxample@gmail.com</a>
+                        <a href="#!" class="text-white">pablodelfantexp@gmail.com</a>
                     </li>
                     <li>
                         <a href="#!" class="text-white">AWC@AWC.com</a>
@@ -80,7 +80,7 @@
 
     <!-- Copyright -->
     <div class="text-center text-white p-lg-5">
-        © 2020 Copyright: 2021-<?= date("Y");?>
+        © 2021 Copyright: 2021-<?= date("Y");?>
     </div>
     <!-- Copyright -->
 </footer>

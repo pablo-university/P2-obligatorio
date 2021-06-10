@@ -11,7 +11,7 @@ INNER JOIN images I
 ON P._id = I.id_product
 ";
 $WHERE = isset($_REQUEST['_id']) ? "WHERE P._id != $_REQUEST[_id]" : '';
-
+$WHERE .= " AND P.sale = 0";//que no estén en sale
 $query = "
 $SELECT_FROM
 $JOIN_IMAGES

@@ -20,22 +20,17 @@ $user_name = $_REQUEST['user_name'];
 $password = $_REQUEST['password'];
 
 // consulta db
-$res_user_name = $get_props_instance->get_prop('admin', '*', "WHERE user_name=$user_name");
-$res_password = $get_props_instance->get_prop('admin', '*', "WHERE user_name=$password");
+$res_query = $get_props_instance->get_prop('admin', '*', "WHERE (user_name='$user_name' AND password='$password')");
+// $res_password = $get_props_instance->get_prop('admin', '*', "WHERE user_name=$password");
 
 // extact data from query, if exist...
-$res_user_name = empty($res_user_name) ? null : $res_user_name->fetch_object();
-$res_password = empty($res_password) ? null : $res_password->fetch_object();
+$res_query = empty($res_query) ? null : $res_query->fetch_object();
 
-// valido que sea coincidente
-$user_name_checked = $res_user_name ? ($res_user_name->user_name == $user_name) : null;
-$password_checked = $res_password ? ($res_password->password == $password) : null;
-$final_validate = ($user_name_checked and $password_checked);
 // -----------------------------
 
 $msg = null;
 
-if ($final_validate) {
+if ($res_query) {
     // destruyo sessiones activas
     session_unset();
     // inicio una sesión
@@ -50,8 +45,7 @@ if ($final_validate) {
     ]);
 } else {
 
-    $msg .= $user_name_checked ? '' : "nombre no válido<br>";
-    $msg .= $password_checked ? '' : "constraseña no válida";
+    $msg .= $res_query ? '' : "credenciales incorrectas";
 
     $code = 404;
     $walker_instance->walker([

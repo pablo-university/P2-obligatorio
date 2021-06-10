@@ -21,7 +21,7 @@ if (!isset($_SESSION['user_name'])) {
 
     $walker_instance->walker([
         'dir' => 'dashboard/login.php', 
-        'msg' => 'no estás logueado chinwenwencha', 
+        'msg' => 'no estás logueado', 
         'code' => '404', 
         'optional_query' => null
     ]);

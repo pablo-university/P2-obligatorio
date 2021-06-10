@@ -1,3 +1,5 @@
+<?php include_once __DIR__ . './../../utils/constants.php'; ?>
+
 <header class="navbar navbar-expand-md navbar-dark bg-primary | shadow position-sticky top-0 z-index-1">
   <div class="container-fluid">
 
@@ -30,9 +32,9 @@
           </p>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-nowrap" href="/images/myw3schoolsimage.jpg" download="w3logo">
-          <i class="bi bi-save2-fill"></i>
-          Backup db
+          <a class="nav-link text-nowrap" href="<?= LOCAL_HOST . '_db/watch_shop.sql' ?>" download="db_backup.sql">
+            <i class="bi bi-save2-fill"></i>
+            Backup db
           </a>
         </li>
       </ul>

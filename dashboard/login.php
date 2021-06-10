@@ -34,17 +34,17 @@ session_unset();
                     </svg>
                 </figure>
 
-                <form action="./controllers/login.php" class="needs-validation" novalidate>
+                <form action="./controllers/login_control.php" class="needs-validation" novalidate>
                 <div class="form-floating mb-3">
                         <input type="text" class="form-control" name="user_name" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder="nombre de usuario">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <label for="exampleInputEmail1" class="form-label">Usuario</label>
                         <!-- <div id="emailHelp" class="form-text">Ingresa tu email por favor</div> -->
                         <div class="invalid-feedback">debes llenar este campo</div>
                         <!-- <div class="valid-feedback">ok</div> -->
                     </div>
                     <div class="form-floating mb-3">
                         <input type="password" class="form-control" name="password" id="exampleInputPassword1" required placeholder="contraseña">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                         <!-- <div id="exampleInputPassword1" class="form-text">Ingresa tu contraseña</div> -->
                         <div class="invalid-feedback">debes ingresar una contraseña</div>
                         <!-- <div class="valid-feedback">parece correcta</div> -->

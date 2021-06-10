@@ -136,7 +136,7 @@ class Mi
 
         $res = $this->conn->query($query);
 
-        if ($res->num_rows < 1) :
+        if (!$res) :
             return null;
         else :
             // var_dump($res);

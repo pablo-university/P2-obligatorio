@@ -20,7 +20,7 @@
                         <!-- campo nombre -->
                         <div class="">
                             <label for="validationCustom01" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="validationCustom01" name="name" value="" required>
+                            <input type="text" class="form-control" id="validationCustom01" name="name" value="" placeholder="nombre" required>
                             <div class="valid-feedback">
                                 GOOD
                             </div>
@@ -31,7 +31,7 @@
                         <!-- email -->
                         <div class="">
                             <label for="inputEmail4" class="form-label">Mail</label>
-                            <input type="email" class="form-control" id="inputEmail4" name="email" required>
+                            <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="email" required>
                             <div class="invalid-feedback">
                                 debe ser de tipo ejemplo@dominio.com
                             </div>

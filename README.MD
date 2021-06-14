@@ -1,7 +1,3 @@
-# Notas
-* SIN apuro, si sobra tiempo cambiar nombre en tablas de color->colors!!
-* quitar fake del campo title?
-
 ## Descripción
 Proyecto académico para programación con lenguaje `PHP y MYSQL`, la propuesta era realizar dos secciones, una donde se ecuentra el client, y la otra un panel de administración de contenido.
 

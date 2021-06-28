@@ -9,13 +9,17 @@
     <div class="row row-cols-lg-4 justify-content-evenly my-5 gy-3">
 
         <?php
+        // si hay id lo obtengo para evitar que el en sale sea igual al del id
+        $id_exist = isset($_GET['_id']) ? $_GET['_id'] : false;
+        $id_exist = $id_exist ? "AND (NOT (P._id = $id_exist))": '';
+
         // creo mi query
         $query = "
             SELECT P._id, I.url, P.title, P.price, P.sale
             FROM products P
             INNER JOIN images I
             ON P._id = I.id_product
-            WHERE sale = '1'
+            WHERE sale = '1' $id_exist
             GROUP BY (P._id)
             LIMIT 4;
             ";

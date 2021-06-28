@@ -59,4 +59,6 @@ if (!empty($_REQUEST['delete'])) {
 
     $res = 'elementos eliminados';
     header("Location: ./../list_update_delete.php?msg=$res");
+} else{
+    header("Location: ./../list_update_delete.php");
 }

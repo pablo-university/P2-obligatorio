@@ -1,8 +1,6 @@
-<?php 
-
+<?php
 
 // LOGIC FOR NAV COMPONENT
-
 // this function get theme class
 function get_theme_class()
 {
@@ -35,17 +33,17 @@ function change_theme()
   return '?theme=dark';
 }
 
-function print_current_icon (){
-    $dark = "<i class=\"bi bi-moon-stars\"></i>";
-    $light = "<i class=\"bi bi-brightness-high\"></i>";
+function print_current_icon()
+{
+  $dark = "<i class=\"bi bi-moon-stars\"></i>";
+  $light = "<i class=\"bi bi-brightness-high\"></i>";
 
 
-    if (isset($_REQUEST['theme'])) {
-      $current = $_REQUEST['theme'];
-      $data = ($current == 'dark') ? $dark : $light;
-      echo $data;
-    } else {
-      echo $light;
-    }
+  if (isset($_REQUEST['theme'])) {
+    $current = $_REQUEST['theme'];
+    $data = ($current == 'dark') ? $dark : $light;
+    echo $data;
+  } else {
+    echo $light;
   }
-?>
+}

@@ -64,9 +64,9 @@ class Mi
         // ORDER BY SECTION
         // si orderBy esta seteado
         if (!empty($_REQUEST['orderBy'])) {
-            $ORDER_BY .= ($_REQUEST['orderBy'] == 'last_modification') ? 
-            "ORDER BY (P.$_REQUEST[orderBy]) DESC" : 
-            "ORDER BY (P.$_REQUEST[orderBy]) ASC";
+            $ORDER_BY .= ($_REQUEST['orderBy'] == 'last_modification') ?
+                "ORDER BY (P.$_REQUEST[orderBy]) DESC" :
+                "ORDER BY (P.$_REQUEST[orderBy]) ASC";
         }
         // si order_asc esta seteado
         if (isset($_REQUEST['order_asc'])) {
@@ -157,6 +157,24 @@ class Mi
         $res = $this->conn->query($query);
 
         if ($res->num_rows < 1) :
+            return null;
+        else :
+            // var_dump($res);
+            return $res;
+        endif;
+    }
+
+    // get AVG of X table and property
+    public function get_avg($table = 'products', $column = 'price')
+    {
+        $query = "
+        SELECT AVG($column) AS res
+        FROM $table
+        ";
+
+        $res = $this->conn->query($query);
+
+        if (!$res) :
             return null;
         else :
             // var_dump($res);

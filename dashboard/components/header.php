@@ -37,6 +37,31 @@
             Backup db
           </a>
         </li>
+        <li class="nav-item">
+          <?php
+          function change_theme()
+          {
+            if (isset($_REQUEST['theme'])) {
+              $current = $_REQUEST['theme'];
+              $data = ($current == 'dark') ? '?theme=light' : '?theme=dark';
+              return $data;
+            }
+            return '?theme=light';
+          }
+          ?>
+          <a class="nav-link text-nowrap" href="./<?= change_theme() ?>">
+            <?php
+            if (isset($_REQUEST['theme'])) {
+              $current = $_REQUEST['theme'];
+              $data = ($current == 'dark') ? "<i class='bi bi-moon-stars-fill'></i>" : '<i class="bi bi-brightness-high-fill"></i>';
+              echo $data;
+            } else {
+              echo "<i class='bi bi-moon-stars-fill'></i>";
+            }
+            ?>
+            Switch theme
+          </a>
+        </li>
       </ul>
       <!-- buscador -->
       <form class="" action="./list_update_delete.php">

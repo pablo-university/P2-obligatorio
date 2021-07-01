@@ -1,19 +1,9 @@
-<?php 
-function get_theme_class (){
-  return isset($_REQUEST['theme']) ? 
-  (($_REQUEST['theme'] == 'dark') ? 'bg-dark navbar-dark' : '') :
-  '' ;
-}
+<?php include_once __DIR__.'/theme_logic.php';?>
 
-function get_current_theme (): string {
-if (isset($_REQUEST['theme'])) {
-  return '?theme=' . $_REQUEST['theme'];
-}
-}
-?>
-<nav id="sidebarMenu" class="navba|r <?= get_theme_class()?> | shadow-xl-light col-md-3 col-lg-2 d-md-block position-fixed z-index-1 collapse p-0 py-3 pb-5" style="height:100vh;">
+
+<nav id="sidebarMenu" class="navba|r <?= get_theme_class() ?> | shadow-xl-light col-md-3 col-lg-2 d-md-block position-fixed z-index-1 collapse p-0 py-3 pb-5" style="height:100vh;">
   <!-- <div class="container-fluid"> -->
-<!-- navbar-nav (tolera navbar-dark y light) ||| nav nav-pills | hice una mezcla!-->
+  <!-- navbar-nav (tolera navbar-dark y light) ||| nav nav-pills | hice una mezcla!-->
   <ul class="navbar-nav nav-pills flex-column h-100">
     <li class="nav-item">
       <a class="nav-link | ps-4 <?= (str_contains(basename($_SERVER["REQUEST_URI"]), "index") ? 'active' : ''); ?>" aria-current="page" href="./index.php<?= get_current_theme() ?>">

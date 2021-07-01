@@ -1,4 +1,5 @@
 <?php include_once __DIR__ . './../../utils/constants.php'; ?>
+<?php include_once __DIR__.'/theme_logic.php';?>
 
 <header class="navbar navbar-expand-md navbar-dark bg-primary | shadow position-sticky top-0 z-index-1">
   <div class="container-fluid">
@@ -21,43 +22,33 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link text-nowrap" aria-current="page" href="./../client/index.php">
-            <i class="bi bi-eye-fill"></i>
+          <i class="bi bi-eye"></i>
             Ver sitio
           </a>
         </li>
         <li class="nav-item">
           <p class="nav-link m-0 text-light text-nowrap">
-            <i class="bi bi-person-fill"></i>
+          <i class="bi bi-person"></i>
             <?= 'Bienvenido@: ' . $_SESSION['user_name'] ?>
           </p>
         </li>
         <li class="nav-item">
           <a class="nav-link text-nowrap" href="<?= LOCAL_HOST . '_db/watch_shop.sql' ?>" download="db_backup.sql">
-            <i class="bi bi-save2-fill"></i>
+          <i class="bi bi-box-seam"></i>
             Backup db
           </a>
         </li>
         <li class="nav-item">
           <?php
-          function change_theme()
-          {
-            if (isset($_REQUEST['theme'])) {
-              $current = $_REQUEST['theme'];
-              $data = ($current == 'dark') ? '?theme=light' : '?theme=dark';
-              return $data;
-            }
-            return '?theme=light';
-          }
+          // this function get the next theme for change
+          
           ?>
-          <a class="nav-link text-nowrap" href="./<?= change_theme() ?>">
+
+
+          <a class="nav-link text-nowrap" href="./<?=  basename($_SERVER['PHP_SELF']) . change_theme() ?>">
             <?php
-            if (isset($_REQUEST['theme'])) {
-              $current = $_REQUEST['theme'];
-              $data = ($current == 'dark') ? "<i class='bi bi-moon-stars-fill'></i>" : '<i class="bi bi-brightness-high-fill"></i>';
-              echo $data;
-            } else {
-              echo "<i class='bi bi-moon-stars-fill'></i>";
-            }
+            
+            print_current_icon();
             ?>
             Switch theme
           </a>

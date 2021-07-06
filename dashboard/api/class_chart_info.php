@@ -22,8 +22,8 @@ class Chart_info
         // aca piensa que $conn es null pero se lo paso en el constructor
         $res = $this->conn->query($query);
 
-        if ($res->num_rows < 1) :
-            echo "res fail";
+        if (!$res) :
+            return [];
         else :
 
             $array_labels = [];
@@ -55,7 +55,7 @@ class Chart_info
 
             $res = $this->conn->query($query);
 
-            if ($res->num_rows < 1) :
+            if (!$res) :
                 return [];
             else :
                 array_push($data, $res->fetch_object()->res);

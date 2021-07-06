@@ -7,7 +7,7 @@ include_once __DIR__.'/../../connectors/connection.php';
 // Si request contiene algo creo una instancia
 // sino retorno mensaje vacio
 if (empty($_REQUEST)) {
-    echo json_encode(['msg' => 'empty']);
+    echo json_encode(['msg' => 'se debe asignar una propiedad target valida']);
     exit;
 } else {
     

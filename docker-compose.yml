@@ -12,8 +12,10 @@ services:
     image: mariadb
     restart: always
     environment:
+      # root/your_root_password
       MYSQL_ROOT_PASSWORD: your_root_password
       # MYSQL_DATABASE: your_database_name
+      # your_database_user/your_database_password
       MYSQL_USER: your_database_user
       MYSQL_PASSWORD: your_database_password
     ports:

@@ -1,8 +1,8 @@
 <?php 
 
-const HOST = "localhost";
+const HOST = "db:3306";
 const USER_NAME = "root";
-const PASSWORD = "";
+const PASSWORD = "your_root_password";
 const DB = "watch_shop";
 
 /* $data_conection = (object)[

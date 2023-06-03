@@ -1,6 +1,6 @@
 <?php 
 
-const HOST = "db:3306";
+const HOST = "db";
 const USER_NAME = "root";
 const PASSWORD = "your_root_password";
 const DB = "watch_shop";

@@ -23,3 +23,8 @@ Referido al panel de administración, se pretendía realizar las tareas esencial
 -   localhost:8080 para phpmyadmin
 -   localhost:80 para proyecto
 -   localhost:3306 para db
+
+## versions
+
+php:8 required
+mariadb

@@ -24,7 +24,11 @@ Referido al panel de administración, se pretendía realizar las tareas esencial
 -   localhost:80 para proyecto
 -   localhost:3306 para db
 
-## versions
+## Versions required
 
-php:8 required
-mariadb
+php:8.1, 2021
+10.11.3-MariaDB-1:10.11.3+maria~ubu2204
+
+## To get started project
+
+`docker compose up`

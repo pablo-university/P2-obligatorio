@@ -1,14 +1,8 @@
-### Uso en desarrollo
-
-    npm run dev
-
-> usa gulp y browserSync
-
-### Uso docker compose
+### **Docker compose** 🚀
 
     docker compose up
 
-### Links after get up docker compose
+### Links after get up docker compose 👽️
 
 [project](localhost:80)
 
@@ -16,7 +10,13 @@
 
 [db](localhost:3306)
 
-## Versions required
+### Uso en desarrollo 🧑‍💻
+
+    npm run dev
+
+usa gulp y browserSync
+
+## Versions required 🔖
 
 php:8.1, 2021
 10.11.3-MariaDB-1:10.11.3+maria~ubu2204

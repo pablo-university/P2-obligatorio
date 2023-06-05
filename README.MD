@@ -21,6 +21,10 @@ usa gulp y browserSync
 php:8.1, 2021
 10.11.3-MariaDB-1:10.11.3+maria~ubu2204
 
+## Credentials for test project
+
+mariadb: root/your_root_password
+
 ---
 
 ## Descripción

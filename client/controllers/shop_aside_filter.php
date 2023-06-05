@@ -22,21 +22,19 @@ function shop_aside_filter($card_product, $conn): void
                 // 1) agregar a in_values
                 array_push($in_values, "'$value'");
             }
+            // 2) implode con ,
+            $in_values = implode(",", $in_values);
+
+            // 3) agrego nueva clausula IN
+            array_push($clause_in, "$name IN ($in_values)");
+
+            // 4) vacio in_values
+            $in_values = [];
         }
-       
-        // 2) implode con ,
-        $in_values = implode(",", $in_values);
-
-        // 3) agrego nueva clausula IN
-        array_push($clause_in, "$name IN ($in_values)");
-
-        // 4) vacio in_values
-        $in_values = [];
     }
-
     // 5) por ultimo uso implode y agrego el AND
     $query = implode(" AND ", $clause_in); //no es estricto en una porpiedad con valores, pero si cuando tiene varias!
-
+   
     // COMPLETO MI QUERY
     $query = "
     SELECT P._id, I.url, P.title, P.price, P.sale
@@ -51,7 +49,6 @@ function shop_aside_filter($card_product, $conn): void
     GROUP BY (P._id)
     ;
     ";
-
 
     $res = mysqli_query($conn, $query);
 

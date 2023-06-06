@@ -1,5 +1,4 @@
 <?php
-session_unset();
 session_start();
 include_once __DIR__ . '/../helpers/class_get_props.php';
 include_once __DIR__ . '/../../connectors/connection.php';
@@ -32,10 +31,6 @@ $res_query = empty($res_query) ? null : $res_query->fetch_object();
 $msg = null;
 
 if ($res_query) {
-    // destruyo sessiones activas
-    // session_unset();
-    // inicio una sesión
-    //session_start();
     $_SESSION['user_name'] = $user_name;
     // redirecciono
     $walker_instance->walker([

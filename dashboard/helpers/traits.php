@@ -1,14 +1,14 @@
 <?php
-include_once __DIR__.'/../../utils/constants.php';
+// include_once __DIR__.'/../../utils/constants.php';
 trait trait_walker
 {
     // walker es mi funcion mensajera
     public function walker($params)
     {
         ['dir' => $dir, 'msg' => $msg, 'code' => $code, 'optional_query' => $optional_query] = $params;
-
-        $HOST = LOCAL_HOST;
-        // echo "Location: $HOST$dir?msg=$msg&code=$code&$optional_query";
+        // $HOST =  LOCAL_HOST;
+        // TODO: i would like to use variable from constants.php
+        $HOST =  "http://{$_SERVER['HTTP_HOST']}/";
         header("Location: $HOST$dir?msg=$msg&code=$code&$optional_query");
         exit();
     }
@@ -16,7 +16,6 @@ trait trait_walker
 
 trait trait_check_image_valide
 {
-    // walker es mi funcion mensajera
     public function check_image_valide($optional_query = null)
     {
         // check image is real

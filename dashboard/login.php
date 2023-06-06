@@ -1,6 +1,6 @@
 <?php 
-session_start();
 session_unset(); 
+session_start();
 include_once __DIR__ . '/../components/template/layout.php'; 
 include_once __DIR__ . '/components/layout_dashboard.php'; 
 include_once __DIR__ . '/../utils/constants.php'; 

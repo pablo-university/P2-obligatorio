@@ -1,4 +1,6 @@
 <?php
+session_unset();
+session_start();
 include_once __DIR__ . '/../helpers/class_get_props.php';
 include_once __DIR__ . '/../../connectors/connection.php';
 include_once __DIR__.'/../helpers/traits.php';
@@ -7,7 +9,6 @@ include_once __DIR__.'/../helpers/traits.php';
 
 // instancia de get_props
 $get_props_instance = new Mi($conn);
-
 // instancia de mi trait walker
 $walker_instance = new class()
 {
@@ -32,9 +33,9 @@ $msg = null;
 
 if ($res_query) {
     // destruyo sessiones activas
-    session_unset();
+    // session_unset();
     // inicio una sesión
-    session_start();
+    //session_start();
     $_SESSION['user_name'] = $user_name;
     // redirecciono
     $walker_instance->walker([

@@ -1,5 +1,7 @@
 <?php
 session_start();
+session_destroy();
+session_start();
 include_once __DIR__ . '/../helpers/class_get_props.php';
 include_once __DIR__ . '/../../connectors/connection.php';
 include_once __DIR__.'/../helpers/traits.php';

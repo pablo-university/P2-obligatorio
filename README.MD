@@ -1,8 +1,12 @@
-### **Docker compose** 🚀
+### **Get-up with Docker compose** 🚀
 
-    docker compose up
+```console
+docker compose up
+```
 
-### Links after get up docker compose 👽️
+**Note:** currently recommend use windows with docker compose, other systems as linux possibly require
+
+### **Links after get up docker compose** 👽️
 
 [project](localhost:80)
 
@@ -10,23 +14,19 @@
 
 [db](localhost:3306)
 
-### Uso en desarrollo 🧑‍💻
+### **Uso en desarrollo** 🧑‍💻
 
-    npm run dev
+```console
+npm run dev
+```
 
 usa gulp y browserSync
 
-## Versions required 🔖
+### **Original Requirements** 🔖
 
-php:8.1, 2021
-10.11.3-MariaDB-1:10.11.3+maria~ubu2204
+-   php:8.1, 2021
+-   10.11.3-MariaDB-1:10.11.3+maria~ubu2204
 
-## Credentials for test project
+### **Credentials for test project**
 
 mariadb: root/your_root_password
-
----
-
-### Final words
-
-This is a academic project, the docker version is only for get-up purpose

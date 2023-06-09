@@ -14,7 +14,7 @@ docker compose up
 
 [db](localhost:3306)
 
-### **Uso en desarrollo** 🧑‍💻
+### **Develop** 🧑‍💻
 
 ```console
 npm run dev

@@ -15,8 +15,6 @@ if (!empty($_REQUEST['delete'])) {
         siguientes querys */
 
     foreach ($_REQUEST['delete'] as $key => $id) {
-        echo "la id a borrar es: $id <br>";
-
         // eliminar registro productos
         $query_products = "
             DELETE
@@ -47,7 +45,6 @@ if (!empty($_REQUEST['delete'])) {
         // borrar imagenes de directorio
         $images_for_delete = $conn->query($query_delete_images);
         while ($data = $images_for_delete->fetch_object()) {
-            echo "Quisiera eliminar: " . __DIR__ . '/../../assets/img/products/' . $data->url . '<br>';
             unlink(__DIR__ . '/../../assets/img/products/' . $data->url);
         }
 

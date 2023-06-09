@@ -1,15 +1,14 @@
 <?php
-
 include_once __DIR__.'/../../utils/constants.php';
+// USO
+// walker(['dir' => $dir, 'msg' => $msg, 'code' => $code, 'optional_query' => $optional_query]);
 trait trait_walker
 {
     // walker es mi funcion mensajera
     public function walker($params)
     {
         ['dir' => $dir, 'msg' => $msg, 'code' => $code, 'optional_query' => $optional_query] = $params;
-
-        $HOST = LOCAL_HOST;
-        // echo "Location: $HOST$dir?msg=$msg&code=$code&$optional_query";
+        $HOST =  LOCAL_HOST;
         header("Location: $HOST$dir?msg=$msg&code=$code&$optional_query");
         exit();
     }
@@ -17,7 +16,6 @@ trait trait_walker
 
 trait trait_check_image_valide
 {
-    // walker es mi funcion mensajera
     public function check_image_valide($optional_query = null)
     {
         // check image is real
@@ -35,6 +33,3 @@ trait trait_check_image_valide
         }
     }
 }
-
-// USO
-// walker(['dir' => $dir, 'msg' => $msg, 'code' => $code, 'optional_query' => $optional_query]);

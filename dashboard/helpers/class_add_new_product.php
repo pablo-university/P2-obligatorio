@@ -112,15 +112,19 @@ class Add_new_product
 
             $to_insert = [];
             $insert_value = [];
-
             // obtener key value
             foreach ($_REQUEST as $key => $value) {
                 // evito set_product_band (se procesa luego) e upload_img
                 // y chequeo que de no hacer nada con add_new_product
-                if (!str_contains($key, 'color') and !str_contains($key, 'image')) {
-                    array_push($to_insert, 'products.' . $key);
-                    array_push($insert_value, "'$value'");
+
+                // fix type of data
+                if (gettype($key) == 'array') {
+                    if (!str_contains($key, 'color') and !str_contains($key, 'image')) {
+                        array_push($to_insert, 'products.' . $key);
+                        array_push($insert_value, "'$value'");
+                    }
                 }
+                
             }
 
 

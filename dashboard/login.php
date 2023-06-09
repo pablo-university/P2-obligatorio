@@ -1,14 +1,8 @@
-<?php include_once __DIR__ . '/../components/template/layout.php'; ?>
-<?php include_once __DIR__ . '/components/layout_dashboard.php'; ?>
-<?php include_once __DIR__ . '/../utils/constants.php'; ?>
-
-
 <?php 
-// si vengo de dashboard me deslogueo y estoy por ingresar nada limpia sesiones activas
-session_start();
-session_unset(); 
+include_once __DIR__ . '/../components/template/layout.php'; 
+include_once __DIR__ . '/components/layout_dashboard.php'; 
+include_once __DIR__ . '/../utils/constants.php'; 
 ?>
-<!-- --------------------------- -->
 
 <?php $content = function (): void { ?>
 

@@ -16,23 +16,25 @@ function shop_aside_filter($card_product, $conn): void
     y por cada name recorro para obtener valores (name = value)
     e irlos procesando (marque con pasos) */
     foreach ($_REQUEST as $name => $arr) {
-        foreach ($arr as $value) {
-            // 1) agregar a in_values
-            array_push($in_values, "'$value'");
+        // fix: recorrer solo si es array
+        if (gettype($arr) == 'array'){
+            foreach ($arr as $value) {
+                // 1) agregar a in_values
+                array_push($in_values, "'$value'");
+            }
+            // 2) implode con ,
+            $in_values = implode(",", $in_values);
+
+            // 3) agrego nueva clausula IN
+            array_push($clause_in, "$name IN ($in_values)");
+
+            // 4) vacio in_values
+            $in_values = [];
         }
-        // 2) implode con ,
-        $in_values = implode(",", $in_values);
-
-        // 3) agrego nueva clausula IN
-        array_push($clause_in, "$name IN ($in_values)");
-
-        // 4) vacio in_values
-        $in_values = [];
     }
-
     // 5) por ultimo uso implode y agrego el AND
     $query = implode(" AND ", $clause_in); //no es estricto en una porpiedad con valores, pero si cuando tiene varias!
-
+   
     // COMPLETO MI QUERY
     $query = "
     SELECT P._id, I.url, P.title, P.price, P.sale
@@ -48,12 +50,11 @@ function shop_aside_filter($card_product, $conn): void
     ;
     ";
 
-
     $res = mysqli_query($conn, $query);
 
-
     // si la consulta no es vacia la recorro
-    if ($res->num_rows < 1) {
+    // fix: se seteo !$res para prevenir mostrar sin consulta
+    if (!$res or $res->num_rows < 1) {
         echo "<p>no hay productos para mostrar...<p/>";
     } else {
         while ($data = mysqli_fetch_object($res)) {

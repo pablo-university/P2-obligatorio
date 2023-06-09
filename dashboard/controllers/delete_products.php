@@ -15,8 +15,6 @@ if (!empty($_REQUEST['delete'])) {
         siguientes querys */
 
     foreach ($_REQUEST['delete'] as $key => $id) {
-        echo "la id a borrar es: $id <br>";
-
         // eliminar registro productos
         $query_products = "
             DELETE

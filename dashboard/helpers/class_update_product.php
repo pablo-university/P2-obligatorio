@@ -189,9 +189,11 @@ class Update
             foreach ($_REQUEST as $key => $value) {
                 // evito set_product_band (se procesa luego)
                 // y chequeo que de no hacer nada con add_new_product
-                if (!str_contains($key, 'color') and !str_contains($key, 'image') and !str_contains($key, 'update_at')) {
-                    // array_push($to_insert, 'products.' . $key);--
-                    array_push($update_value, "P.$key = '$value'");
+                if (gettype($key) == 'array') {
+                    if (!str_contains($key, 'color') and !str_contains($key, 'image') and !str_contains($key, 'update_at')) {
+                        // array_push($to_insert, 'products.' . $key);--
+                        array_push($update_value, "P.$key = '$value'");
+                    }
                 }
             }
 
@@ -209,7 +211,7 @@ class Update
             WHERE _id = $this->update_at
             ";
 
-            echo "$query";
+            // echo "$query";
 
             // inserto datos
             if (!$this->conn->query($query)) { //!$this->conn->query($query)

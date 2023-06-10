@@ -8,13 +8,13 @@ docker compose up
 
 ### **Links after get up docker compose** 👽️
 
-[project](localhost:80)
+[project](http://localhost:80)
 
-[phpmyadmin](localhost:8080)
+[phpmyadmin](http://localhost:8080)
 
-[db](localhost:3306)
+[db](http://localhost:3306)
 
-### **Uso en desarrollo** 🧑‍💻
+### **Develop** 🧑‍💻
 
 ```console
 npm run dev
@@ -29,4 +29,4 @@ usa gulp y browserSync
 
 ### **Credentials for test project**
 
-mariadb: root/your_root_password
+mariadb: root/root

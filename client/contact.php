@@ -66,6 +66,9 @@
             $destinatario = "pablo@gmail.com";
             $asunto = "este es el asunto del mensaje!";
 
+            if (!isset($_REQUEST['name']) || !isset($_REQUEST['msg'])) {
+                return null;
+            }
             $mensaje = "
             nombre: $_REQUEST[name] \r\n
             mensaje: $_REQUEST[msg] \r\n

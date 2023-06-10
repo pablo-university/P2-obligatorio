@@ -14,12 +14,11 @@ services:
     image: mariadb
     restart: always
     environment:
-      # root credentials: root/your_root_password
-      MYSQL_ROOT_PASSWORD: your_root_password
-      # user credentials: your_database_user/your_database_password
-      MYSQL_USER: your_database_user
-      MYSQL_PASSWORD: your_database_password
-      # database created on init container
+      # root credentials: root/root
+      MYSQL_ROOT_PASSWORD: root
+      # user credentials: admin/admin
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
       MYSQL_DATABASE: watch_shop
     ports:
       - 3306:3306

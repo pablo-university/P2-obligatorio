@@ -14,16 +14,18 @@ services:
     image: mariadb
     restart: always
     environment:
-      # root/your_root_password
+      # root credentials: root/your_root_password
       MYSQL_ROOT_PASSWORD: your_root_password
-      # MYSQL_DATABASE: your_database_name
-      # your_database_user/your_database_password
+      # user credentials: your_database_user/your_database_password
       MYSQL_USER: your_database_user
       MYSQL_PASSWORD: your_database_password
+      # database created on init container
+      MYSQL_DATABASE: watch_shop
     ports:
       - 3306:3306
     volumes:
-      - ./_db/watch_shop_files:/var/lib/mysql
+      - watch_shop:/var/lib/mysql
+      - ./_db/watch_shop.sql:/docker-entrypoint-initdb.d/watch_shop.sql
   phpmyadmin:
     image: phpmyadmin
     restart: always
@@ -43,3 +45,5 @@ services:
   #   command: npm install && npm start
   #   depends_on:
   #     - db
+volumes:
+  watch_shop:

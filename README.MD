@@ -4,8 +4,6 @@
 docker compose up
 ```
 
-**Note:** currently recommend use windows with docker compose, other systems as linux possibly require
-
 ### **Links after get up docker compose** 👽️
 
 [project](http://localhost:80)

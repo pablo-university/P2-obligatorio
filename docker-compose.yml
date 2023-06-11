@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   php:
     build:
@@ -7,7 +7,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - .:/var/www/html
+      - app:/var/www/html
     depends_on:
       - db
   db:
@@ -46,3 +46,4 @@ services:
   #     - db
 volumes:
   watch_shop:
+  app:

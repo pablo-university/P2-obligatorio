@@ -2,7 +2,7 @@
 
 const HOST = "db";
 const USER_NAME = "root";
-const PASSWORD = "your_root_password";
+const PASSWORD = "root";
 const DB = "watch_shop";
 
 /* $data_conection = (object)[

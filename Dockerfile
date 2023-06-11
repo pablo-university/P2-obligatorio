@@ -12,6 +12,8 @@ RUN apt-get update && \
 # Copy your PHP application files to the container
 COPY . /var/www/html
 
+RUN chown -R www-data:www-data /var/www/html
+
 # Set the working directory
 WORKDIR /var/www/html
 

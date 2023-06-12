@@ -24,8 +24,9 @@ usa gulp y browserSync
 
 ### **Original Requirements** 🔖
 
--   php:8.1, 2021
--   10.11.3-MariaDB-1:10.11.3+maria~ubu2204
+- PHP version: 8.0.2
+- Server version: 10.4.17-MariaDB
+- phpMyAdmin SQL Dump: 5.0.4
 
 ### **Credentials for test project**
 
